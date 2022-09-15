@@ -14,8 +14,8 @@ export type airplaneParamsType = {
 };
 
 type paramsType = {
-    readonly airplaneRepository: airplaneRepositoryType,
     readonly logger: loggerType,
+    readonly airplaneRepository: airplaneRepositoryType,
     readonly airplaneParams: airplaneParamsType,
 };
 

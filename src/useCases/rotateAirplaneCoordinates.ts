@@ -4,9 +4,12 @@ import { loggerType } from '../ports/logger';
 type paramsType = {
     logger: loggerType;
     airplaneRepository: airplaneRepositoryType;
-    maxTime: number;
+    selectedIds: any[];
+    angle: number;
+    centerOfRotationX: number;
+    centerOfRotationY: number;
 };
 
-export type airplanesInRouteOfCollision = (
+export type rotateAirplaneCoordinates = (
     params: paramsType
 ) => void;
