@@ -1,5 +1,5 @@
 import { airplaneType, unsavedAirplane } from '../entities/airplane';
-import { airplaneRepository } from '../ports/airplaneRepository';
+import { airplaneRepositoryType } from '../ports/airplaneRepository';
 
 function add(airplane: unsavedAirplane): void {
 
@@ -17,7 +17,7 @@ function retrieve(): readonly airplaneType[] {
     return ([] as airplaneType[]);
 }
 
-export const airplaneRepositoryImplementation: airplaneRepository = {
+export const airplaneRepositoryImplementation: airplaneRepositoryType = {
     add,
     remove,
     update,
