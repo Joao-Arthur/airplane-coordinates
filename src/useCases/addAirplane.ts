@@ -13,8 +13,10 @@ export type airplaneParamsType = {
     direction: number;
 };
 
-export type addAirplnane = (
-    airplaneRepository: airplaneRepositoryType,
-    airplaneParams: airplaneParamsType,
-    logger: loggerType
-) => void;
+type paramsType = {
+    readonly airplaneRepository: airplaneRepositoryType,
+    readonly logger: loggerType,
+    readonly airplaneParams: airplaneParamsType,
+};
+
+export type addAirplane = (params: paramsType) => void;
