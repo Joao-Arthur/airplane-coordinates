@@ -16,6 +16,7 @@ specifiers:
   eslint-plugin-react: ^7.31.8
   eslint-plugin-react-hooks: ^4.6.0
   immer: ^9.0.15
+  nanoid: ^4.0.0
   ramda: ^0.28.0
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -26,6 +27,7 @@ specifiers:
 
 dependencies:
   immer: 9.0.15
+  nanoid: 4.0.0
   ramda: 0.28.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2129,6 +2131,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
+
+  /nanoid/4.0.0:
+    resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
