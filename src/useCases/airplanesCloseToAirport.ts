@@ -7,6 +7,10 @@ type paramsType = {
     maxDistance: number;
 };
 
-export type airplanesCloseToAirport = (
-    params: paramsType
-) => void;
+export function airplanesCloseToAirport({
+    logger,
+    airplaneRepository,
+    maxDistance,
+}: paramsType) {
+    logger.info('Calculando aviões mais próximos do aeroporto');
+}

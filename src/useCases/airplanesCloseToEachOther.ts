@@ -7,6 +7,10 @@ type paramsType = {
     maxDistance: number;
 };
 
-export type airplanesCloseToEachOther = (
-    params: paramsType
-) => void;
+export function airplanesCloseToEachOther({
+    logger,
+    airplaneRepository,
+    maxDistance,
+}: paramsType) {
+    logger.info('Calculando aviões mais próximos entre sí');
+}

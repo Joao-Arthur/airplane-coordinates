@@ -7,6 +7,10 @@ type paramsType = {
     maxTime: number;
 };
 
-export type airplanesInRouteOfCollision = (
-    params: paramsType
-) => void;
+export function airplanesInRouteOfCollision({
+    logger,
+    airplaneRepository,
+    maxTime,
+}: paramsType) {
+    logger.info('Calculando aviõs em rota de colisão');
+}

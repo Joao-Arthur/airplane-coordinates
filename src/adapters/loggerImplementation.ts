@@ -1,19 +1,24 @@
 import { loggerType } from '../ports/logger';
 
-function log(message: string): void {
+function info(message: string): void {
+    console.log(message);
+}
+
+function success(message: string): void {
     console.log(message);
 }
 
 function warn(message: string): void {
-    console.log(message);
+    console.warn(message);
 }
 
 function error(message: string): void {
-    console.log(message);
+    console.error(message);
 }
 
 export const loggerImplementation: loggerType = {
-    log,
+    info,
+    success,
     warn,
     error,
 };

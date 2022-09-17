@@ -10,6 +10,13 @@ type paramsType = {
     centerOfRotationY: number;
 };
 
-export type rotateAirplaneCoordinates = (
-    params: paramsType
-) => void;
+export function rotateAirplaneCoordinates({
+    logger,
+    airplaneRepository,
+    selectedIds,
+    angle,
+    centerOfRotationX,
+    centerOfRotationY,
+}: paramsType) {
+    logger.info('Aplicando rotação de coordenadas');
+}
