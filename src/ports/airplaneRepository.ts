@@ -1,7 +1,7 @@
-import { airplaneType, unsavedAirplane } from '../entities/airplane';
+import { airplaneType } from '../entities/airplane';
 
 export type airplaneRepositoryType = {
-    readonly add: (airplane: unsavedAirplane) => void;
+    readonly add: (airplane: airplaneType) => void;
     readonly remove: (id: string) => void;
     readonly update: (airplane: airplaneType) => void;
     readonly retrieve: () => readonly airplaneType[];
