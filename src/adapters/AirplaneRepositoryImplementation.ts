@@ -1,5 +1,5 @@
 import { mapFns } from '../core/mapFns';
-import { airplaneType } from '../features/airplane';
+import { airplaneType } from '../models/airplane';
 import { airplaneRepositoryType } from '../ports/airplaneRepository';
 
 export class AirplaneRepositoryImplementation implements airplaneRepositoryType {

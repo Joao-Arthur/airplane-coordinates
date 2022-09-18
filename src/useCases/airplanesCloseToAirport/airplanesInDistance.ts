@@ -1,5 +1,5 @@
 import { cartesianPlane } from '../../core/cartesianPlane';
-import { airplaneType } from '../../features/airplane';
+import { airplaneType } from '../../models/airplane';
 
 type paramsType = {
     readonly airplanes: readonly airplaneType[];

@@ -1,4 +1,4 @@
-import { airplaneType } from '../features/airplane';
+import { airplaneType } from '../models/airplane';
 
 export type airplaneRepositoryType = {
     readonly add: (airplane: airplaneType) => void;
