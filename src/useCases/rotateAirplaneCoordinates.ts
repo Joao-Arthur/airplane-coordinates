@@ -2,12 +2,12 @@ import { airplaneRepositoryType } from '../ports/airplaneRepository';
 import { loggerType } from '../ports/logger';
 
 type paramsType = {
-    logger: loggerType;
-    airplaneRepository: airplaneRepositoryType;
-    selectedIds: any[];
-    angle: number;
-    centerOfRotationX: number;
-    centerOfRotationY: number;
+    readonly logger: loggerType;
+    readonly airplaneRepository: airplaneRepositoryType;
+    readonly selectedIds: readonly string[];
+    readonly angle: number;
+    readonly centerOfRotationX: number;
+    readonly centerOfRotationY: number;
 };
 
 export function rotateAirplaneCoordinates({

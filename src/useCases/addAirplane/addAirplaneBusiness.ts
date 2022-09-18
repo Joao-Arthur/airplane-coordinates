@@ -3,12 +3,12 @@ import { uniqueIdentifierType } from '../../ports/uniqueIdentifier';
 import { loggerType } from '../../ports/logger';
 
 type airplaneParamsType = {
-    x: number;
-    y: number;
-    radius: number;
-    angle: number;
-    speed: number;
-    direction: number;
+    readonly x: number;
+    readonly y: number;
+    readonly radius: number;
+    readonly angle: number;
+    readonly speed: number;
+    readonly direction: number;
 };
 
 type paramsType = {
@@ -18,7 +18,7 @@ type paramsType = {
     readonly airplaneParams: airplaneParamsType;
 };
 
-export function addAirplane({
+export function addAirplaneBusiness({
     logger,
     uniqueIdentifier,
     airplaneRepository,
@@ -37,6 +37,6 @@ export function addAirplane({
         logger.success('Avião adicionado com sucesso');
     } catch (error) {
         if (error instanceof Error)
-            logger.error(error.message);
+            logger.error(`Erro ao adicionar avião: ${error.message}`);
     }
 }

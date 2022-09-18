@@ -3,9 +3,9 @@ import { loggerType } from '../../ports/logger';
 import { airplanesCloseToAirportBusiness } from './airplanesCloseToAirportBusiness';
 
 type paramsType = {
-    logger: loggerType;
-    airplaneRepository: airplaneRepositoryType;
-    maxDistance: number;
+    readonly logger: loggerType;
+    readonly airplaneRepository: airplaneRepositoryType;
+    readonly maxDistance: number;
 };
 
 export function airplanesCloseToAirportService({

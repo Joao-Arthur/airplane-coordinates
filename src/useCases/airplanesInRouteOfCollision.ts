@@ -2,9 +2,9 @@ import { airplaneRepositoryType } from '../ports/airplaneRepository';
 import { loggerType } from '../ports/logger';
 
 type paramsType = {
-    logger: loggerType;
-    airplaneRepository: airplaneRepositoryType;
-    maxTime: number;
+    readonly logger: loggerType;
+    readonly airplaneRepository: airplaneRepositoryType;
+    readonly maxTime: number;
 };
 
 export function airplanesInRouteOfCollision({

@@ -2,11 +2,11 @@ import { airplaneRepositoryType } from '../ports/airplaneRepository';
 import { loggerType } from '../ports/logger';
 
 type paramsType = {
-    logger: loggerType;
-    airplaneRepository: airplaneRepositoryType;
-    selectedIds: any[];
-    x: number;
-    y: number;
+    readonly logger: loggerType;
+    readonly airplaneRepository: airplaneRepositoryType;
+    readonly selectedIds: readonly string[];
+    readonly x: number;
+    readonly y: number;
 };
 
 export function scalonateAirplaneCoordinates({
