@@ -12,16 +12,15 @@ type returnType = {
 }[];
 
 export function airplanesInDistance({ airplanes, maxDistance }: paramsType): returnType {
-    return Array.from(airplanes)
-        .map(airplane => ({
-            ...airplane,
+    return airplanes
+        .map(({ id, x, y }) => ({
+            id,
             distanceFromAirport: cartesianPlane
                 .distance(
-                    { x: airplane.x, y: airplane.y },
+                    { x, y },
                     { x: 0, y: 0 },
                 ),
         }))
         .filter(({ distanceFromAirport }) => distanceFromAirport <= maxDistance)
-        .sort((a, b) => (a.distanceFromAirport > b.distanceFromAirport ? 1 : -1))
-        .map(({ id, distanceFromAirport }) => ({ id, distanceFromAirport }));
+        .sort((a, b) => (a.distanceFromAirport > b.distanceFromAirport ? 1 : -1));
 }

@@ -34,7 +34,7 @@ export function addAirplane({
             direction: airplaneParams.direction,
         };
         airplaneRepository.add(airplaneToSave);
-        logger.success('Avião adicionado com sucesso!');
+        logger.success('Avião adicionado com sucesso');
     } catch (error) {
         if (error instanceof Error)
             logger.error(error.message);

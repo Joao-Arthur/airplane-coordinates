@@ -18,7 +18,9 @@ export function airplanesCloseToAirport({
     const closeAirplanes = airplanesInDistance({ airplanes, maxDistance });
     if (closeAirplanes.length)
         for (const airplane of closeAirplanes)
-            logger.info(`Avião ${airplane.id} a ${airplane.distanceFromAirport} metros do aeroporto`);
+            logger.info(
+                `Avião #${airplane.id} a ${airplane.distanceFromAirport}m do aeroporto`,
+            );
     else
-        logger.info('Nenhum avião nessa distância.');
+        logger.info('Nenhum avião encontrado nessa distância');
 }

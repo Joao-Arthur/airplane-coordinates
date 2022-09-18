@@ -12,5 +12,5 @@ export function airplanesInRouteOfCollision({
     airplaneRepository,
     maxTime,
 }: paramsType) {
-    logger.info('Calculando aviõs em rota de colisão');
+    logger.info('Calculando aviões em rota de colisão');
 }
