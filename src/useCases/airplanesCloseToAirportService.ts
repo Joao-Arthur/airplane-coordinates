@@ -1,5 +1,5 @@
-import { airplaneRepositoryType } from '../../ports/airplaneRepository';
-import { loggerType } from '../../ports/logger';
+import { airplaneRepositoryType } from '../ports/airplaneRepository';
+import { loggerType } from '../ports/logger';
 import { airplanesInDistance } from './airplanesInDistance';
 
 type paramsType = {
@@ -8,19 +8,19 @@ type paramsType = {
     maxDistance: number;
 };
 
-export function airplanesCloseToEachOther({
+export function airplanesCloseToAirport({
     logger,
     airplaneRepository,
     maxDistance,
 }: paramsType) {
-    logger.info('Calculando aviões mais próximos entre sí');
+    logger.info('Calculando aviões mais próximos do aeroporto');
     const airplanes = airplaneRepository.retrieve();
     const closeAirplanes = airplanesInDistance({ airplanes, maxDistance });
     if (closeAirplanes.length)
         for (const airplane of closeAirplanes)
             logger.info(
-                `Avião #${airplane.a} e #${airplane.b} a ${airplane.distance}m de distância entre si`,
+                `Avião #${airplane.id} a ${airplane.distanceFromAirport}m do aeroporto`,
             );
     else
-        logger.info('Nenhum avião encontrado nessa distância.');
+        logger.info('Nenhum avião encontrado nessa distância');
 }

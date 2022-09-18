@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { airplanesInDistance } from './airplanesInDistance';
+import { airplanesCloseToAirport } from './airplanesCloseToAirport';
 
-describe('airplanesInDistance', () => {
+describe('airplanesCloseToAirport', () => {
     it('should return the airplanes in the distance from the airport', () => {
         expect(
-            airplanesInDistance({
+            airplanesCloseToAirport({
                 airplanes: [
                     {
                         id: '1', x: 0, y: 8, speed: 0, direction: 0,
