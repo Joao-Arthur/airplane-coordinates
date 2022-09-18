@@ -1,6 +1,6 @@
 import { combination } from '../../core/arrayFns/combination';
 import { cartesianPlane } from '../../core/cartesianPlane';
-import { airplaneType } from '../../entities/airplane';
+import { airplaneType } from '../../features/airplane';
 
 type paramsType = {
     readonly airplanes: readonly airplaneType[];

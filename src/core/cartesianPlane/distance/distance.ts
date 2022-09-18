@@ -1,4 +1,4 @@
-import { pointType } from '../../../entities/point';
+import { pointType } from '../../point';
 
 export function distance(pointA: pointType, pointB: pointType) {
     const deltaX = pointA.x - pointB.x;
