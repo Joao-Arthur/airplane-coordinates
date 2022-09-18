@@ -1,5 +1,5 @@
-import { airplaneRepositoryType } from '../ports/airplaneRepository';
-import { loggerType } from '../ports/logger';
+import { airplaneRepositoryType } from '../../ports/airplaneRepository';
+import { loggerType } from '../../ports/logger';
 
 type paramsType = {
     logger: loggerType;
