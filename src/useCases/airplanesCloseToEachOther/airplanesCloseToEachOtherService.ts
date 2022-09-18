@@ -1,6 +1,6 @@
-import { airplaneRepositoryType } from '../ports/airplaneRepository';
-import { loggerType } from '../ports/logger';
-import { airplanesCloseToEachOther } from '../features/airplanesCloseToEachOther';
+import { airplaneRepositoryType } from '../../ports/airplaneRepository';
+import { loggerType } from '../../ports/logger';
+import { airplanesCloseToEachOtherBusiness } from './airplanesCloseToEachOtherBusiness';
 
 type paramsType = {
     logger: loggerType;
@@ -15,7 +15,7 @@ export function airplanesCloseToEachOtherService({
 }: paramsType) {
     logger.info('Calculando aviões mais próximos entre sí');
     const airplanes = airplaneRepository.retrieve();
-    const closeAirplanes = airplanesCloseToEachOther({ airplanes, maxDistance });
+    const closeAirplanes = airplanesCloseToEachOtherBusiness({ airplanes, maxDistance });
     if (closeAirplanes.length)
         for (const airplane of closeAirplanes)
             logger.info(

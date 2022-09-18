@@ -11,7 +11,10 @@ type returnType = {
     readonly distanceFromAirport: number;
 }[];
 
-export function airplanesCloseToAirport({ airplanes, maxDistance }: paramsType): returnType {
+export function airplanesCloseToAirportBusiness({
+    airplanes,
+    maxDistance,
+}: paramsType): returnType {
     return airplanes
         .map(({ id, x, y }) => ({
             id,

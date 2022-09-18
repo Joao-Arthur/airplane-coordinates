@@ -1,1 +1,0 @@
-export { airplanesCloseToAirport } from './airplanesCloseToAirport';

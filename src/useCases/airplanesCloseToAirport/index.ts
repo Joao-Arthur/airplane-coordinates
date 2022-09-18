@@ -1,1 +1,1 @@
-export { airplanesCloseToAirport } from '.';
+export { airplanesCloseToAirportService } from './airplanesCloseToAirportService';

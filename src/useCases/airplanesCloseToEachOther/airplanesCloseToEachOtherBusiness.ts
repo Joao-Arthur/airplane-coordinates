@@ -13,7 +13,10 @@ type returnType = {
     readonly distance: number;
 }[];
 
-export function airplanesCloseToEachOther({ airplanes, maxDistance }: paramsType): returnType {
+export function airplanesCloseToEachOtherBusiness({
+    airplanes,
+    maxDistance,
+}: paramsType): returnType {
     return combination(airplanes.map(({ id }) => id))
         .map(
             ([a, b]) => ({

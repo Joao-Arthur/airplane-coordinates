@@ -1,1 +1,0 @@
-export { airplanesCloseToEachOther } from './airplanesCloseToEachOther';
