@@ -1,6 +1,6 @@
-import { airplaneRepositoryType } from '../ports/airplaneRepository';
-import { uniqueIdentifierType } from '../ports/uniqueIdentifier';
-import { loggerType } from '../ports/logger';
+import { airplaneRepositoryType } from '../../ports/airplaneRepository';
+import { uniqueIdentifierType } from '../../ports/uniqueIdentifier';
+import { loggerType } from '../../ports/logger';
 
 type airplaneParamsType = {
     x: number;
