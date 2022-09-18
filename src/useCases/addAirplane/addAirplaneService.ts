@@ -1,6 +1,7 @@
 import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 import { uniqueIdentifierType } from '../../ports/uniqueIdentifier';
 import { loggerType } from '../../ports/logger';
+import { addAirplaneBusiness } from './addAirplaneBusiness';
 
 type airplaneParamsType = {
     readonly x: number;
@@ -26,13 +27,10 @@ export function addAirplaneService({
 }: paramsType) {
     logger.info('Adicionando avião');
     try {
-        const airplaneToSave = {
+        const airplaneToSave = addAirplaneBusiness({
+            ...airplaneParams,
             id: uniqueIdentifier(),
-            x: airplaneParams.x,
-            y: airplaneParams.y,
-            speed: airplaneParams.speed,
-            direction: airplaneParams.direction,
-        };
+        });
         airplaneRepository.add(airplaneToSave);
         logger.success('Avião adicionado com sucesso');
     } catch (error) {

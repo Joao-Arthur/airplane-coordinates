@@ -1,8 +1,7 @@
-import { airplaneRepositoryType } from '../../ports/airplaneRepository';
-import { uniqueIdentifierType } from '../../ports/uniqueIdentifier';
-import { loggerType } from '../../ports/logger';
+import { airplaneType } from '../../models/airplane';
 
-type airplaneParamsType = {
+type paramsType = {
+    readonly id: string;
     readonly x: number;
     readonly y: number;
     readonly radius: number;
@@ -11,32 +10,22 @@ type airplaneParamsType = {
     readonly direction: number;
 };
 
-type paramsType = {
-    readonly logger: loggerType;
-    readonly uniqueIdentifier: uniqueIdentifierType;
-    readonly airplaneRepository: airplaneRepositoryType;
-    readonly airplaneParams: airplaneParamsType;
-};
-
 export function addAirplaneBusiness({
-    logger,
-    uniqueIdentifier,
-    airplaneRepository,
-    airplaneParams,
-}: paramsType) {
-    logger.info('Adicionando avião');
-    try {
-        const airplaneToSave = {
-            id: uniqueIdentifier(),
-            x: airplaneParams.x,
-            y: airplaneParams.y,
-            speed: airplaneParams.speed,
-            direction: airplaneParams.direction,
-        };
-        airplaneRepository.add(airplaneToSave);
-        logger.success('Avião adicionado com sucesso');
-    } catch (error) {
-        if (error instanceof Error)
-            logger.error(`Erro ao adicionar avião: ${error.message}`);
-    }
+    id,
+    x,
+    y,
+    radius,
+    angle,
+    speed,
+    direction,
+}: paramsType): airplaneType {
+    return {
+        id,
+        x,
+        y,
+        // radius,
+        // angle,
+        speed,
+        direction,
+    };
 }
