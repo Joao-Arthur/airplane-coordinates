@@ -53,6 +53,14 @@ module.exports = {
         'default-case': 'off',
         'no-restricted-syntax': 'off',
         curly: ['error', 'multi'],
-        'nonblock-statement-body-position': ['error', 'below']
+        'nonblock-statement-body-position': ['error', 'below'],
+
+        'object-curly-newline': ['error', {
+            'ObjectExpression': 'multiline',
+            'ObjectPattern': 'multiline',
+            'ImportDeclaration': 'never',
+            'ExportDeclaration': 'multiline'
+        }]
+
     },
 };

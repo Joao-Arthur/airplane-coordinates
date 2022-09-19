@@ -25,12 +25,12 @@ export function airplanesCloseToEachOtherBusiness({
                 distance: cartesianPlane
                     .distance(
                         {
-                            x: airplanes.find(airplane => airplane.id === a)!.x,
-                            y: airplanes.find(airplane => airplane.id === a)!.y,
+                            x: airplanes.find(({ id }) => id === a)!.x,
+                            y: airplanes.find(({ id }) => id === a)!.y,
                         },
                         {
-                            x: airplanes.find(airplane => airplane.id === b)!.x,
-                            y: airplanes.find(airplane => airplane.id === b)!.y,
+                            x: airplanes.find(({ id }) => id === b)!.x,
+                            y: airplanes.find(({ id }) => id === b)!.y,
                         },
                     ),
             }),

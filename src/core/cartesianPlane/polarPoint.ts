@@ -1,4 +1,4 @@
 export type polarPointType = {
-    readonly r: number;
+    readonly radius: number;
     readonly angle: number;
 };
