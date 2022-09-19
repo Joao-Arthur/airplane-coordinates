@@ -1,6 +1,6 @@
 import { numberFns } from '../../numberFns';
 import { cartesianPointType } from '../cartesianPoint';
-import { polarPointType } from '../polarPoint';
+import { polarPointType } from '../../polarPlane/polarPoint';
 
 export function fromPolar({ radius, angle }: polarPointType): cartesianPointType {
     return {
