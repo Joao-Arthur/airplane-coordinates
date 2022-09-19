@@ -1,5 +1,5 @@
-import { airplaneRepositoryType } from '../ports/airplaneRepository';
-import { loggerType } from '../ports/logger';
+import { airplaneRepositoryType } from '../../ports/airplaneRepository';
+import { loggerType } from '../../ports/logger';
 
 type paramsType = {
     readonly logger: loggerType;
@@ -7,7 +7,7 @@ type paramsType = {
     readonly maxTime: number;
 };
 
-export function airplanesInRouteOfCollision({
+export function airplanesInRouteOfCollisionService({
     logger,
     airplaneRepository,
     maxTime,

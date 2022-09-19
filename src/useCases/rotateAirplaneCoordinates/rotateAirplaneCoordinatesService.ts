@@ -1,5 +1,5 @@
-import { airplaneRepositoryType } from '../ports/airplaneRepository';
-import { loggerType } from '../ports/logger';
+import { airplaneRepositoryType } from '../../ports/airplaneRepository';
+import { loggerType } from '../../ports/logger';
 
 type paramsType = {
     readonly logger: loggerType;
@@ -10,7 +10,7 @@ type paramsType = {
     readonly centerOfRotationY: number;
 };
 
-export function rotateAirplaneCoordinates({
+export function rotateAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
