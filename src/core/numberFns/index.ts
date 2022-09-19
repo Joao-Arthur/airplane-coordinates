@@ -1,0 +1,1 @@
+export { numberFns } from './numberFns';
