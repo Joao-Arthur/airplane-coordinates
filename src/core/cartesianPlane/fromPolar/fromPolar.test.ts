@@ -37,4 +37,8 @@ describe('fromPolar', () => {
             { x: 0.70710678118655, y: 0.70710678118655 }
         );
     });
+
+    it('should transform the point on the starting point', () => {
+        expect(fromPolar({ radius: 0, angle: 0 })).toEqual({ x: 0, y: 0 });
+    });
 });
