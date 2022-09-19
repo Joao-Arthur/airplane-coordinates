@@ -1,3 +1,4 @@
+import { cartesianPlane } from "../../core/cartesianPlane";
 import { airplaneType } from "../../models/airplane";
 
 type paramsType = {
@@ -9,7 +10,9 @@ type paramsType = {
 export function transformAirplaneCoordinatesBusiness({ airplanes, x, y }: paramsType): readonly airplaneType[] {
     return airplanes.map(airplane => ({
         ...airplane,
-        x: airplane.x + x,
-        y: airplane.y + y
+        ...cartesianPlane.transform({
+            point: { x: airplane.x, y: airplane.y },
+            factor: { x, y }
+        })
     }))
 } 
