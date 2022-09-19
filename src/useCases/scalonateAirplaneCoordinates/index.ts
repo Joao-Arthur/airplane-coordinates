@@ -1,0 +1,1 @@
+export { scalonateAirplaneCoordinatesService } from './scalonateAirplaneCoordinatesService';

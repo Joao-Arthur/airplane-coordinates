@@ -1,5 +1,6 @@
 import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 import { loggerType } from '../../ports/logger';
+import { transformAirplaneCoordinatesBusiness } from './transformAirplaneCoordinatesBusiness';
 
 type paramsType = {
     readonly logger: loggerType;
@@ -9,7 +10,7 @@ type paramsType = {
     readonly y: number;
 };
 
-export function transformAirplaneCoordinates({
+export function transformAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
@@ -21,14 +22,11 @@ export function transformAirplaneCoordinates({
         logger.warn('É necessário selecionar ao menos um avião!');
         return;
     }
-    const selectedAirplanes = airplaneRepository
+    const airplanes = airplaneRepository
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
-    for (const airplane of selectedAirplanes)
-        airplaneRepository.update({
-            ...airplane,
-            x: airplane.x + x,
-            y: airplane.y + y,
-        });
+    const updatedAirplanes = transformAirplaneCoordinatesBusiness({ airplanes, x, y });
+    for (const airplane of updatedAirplanes)
+        airplaneRepository.update(airplane);
     logger.success('Transformação realizada com sucesso!');
 }

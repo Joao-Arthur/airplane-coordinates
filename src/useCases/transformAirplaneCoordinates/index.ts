@@ -1,1 +1,1 @@
-export { transformAirplaneCoordinates } from './transformAirplaneCoordinates';
+export { transformAirplaneCoordinatesService } from './transformAirplaneCoordinatesService';
