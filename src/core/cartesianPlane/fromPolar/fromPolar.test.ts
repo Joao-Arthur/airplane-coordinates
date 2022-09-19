@@ -6,8 +6,8 @@ describe('fromPolar', () => {
         expect(fromPolar({ radius: 1, angle: 0 })).toEqual({ x: 1, y: 0 });
         expect(fromPolar({ radius: 1, angle: 90 })).toEqual({ x: 0, y: 1 });
         expect(fromPolar({ radius: 1, angle: 180 })).toEqual({ x: -1, y: 0 });
-        expect(fromPolar({ radius: 1, angle: 270 })).toEqual({ x: -0, y: -1 });
-        expect(fromPolar({ radius: 1, angle: 360 })).toEqual({ x: 1, y: -0 });
+        expect(fromPolar({ radius: 1, angle: 270 })).toEqual({ x: 0, y: -1 });
+        expect(fromPolar({ radius: 1, angle: 360 })).toEqual({ x: 1, y: 0 });
     });
 
     it('should transform the point inbetween the four axis', () => {

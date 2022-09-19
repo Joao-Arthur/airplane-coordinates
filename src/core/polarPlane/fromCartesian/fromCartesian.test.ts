@@ -6,8 +6,8 @@ describe('fromCartesian', () => {
         expect(fromCartesian({ x: 1, y: 0 })).toEqual({ radius: 1, angle: 0 });
         expect(fromCartesian({ x: 0, y: 1 })).toEqual({ radius: 1, angle: 90 });
         expect(fromCartesian({ x: -1, y: 0 })).toEqual({ radius: 1, angle: 180 });
-        expect(fromCartesian({ x: -0, y: -1 })).toEqual({ radius: 1, angle: 270 });
-        expect(fromCartesian({ x: 1, y: -0 })).toEqual({ radius: 1, angle: 360 });
+        expect(fromCartesian({ x: 0, y: -1 })).toEqual({ radius: 1, angle: 270 });
+        expect(fromCartesian({ x: 1, y: 0 })).toEqual({ radius: 1, angle: 360 });
     });
 
     it('should transform the point inbetween the four axis', () => {
