@@ -3,6 +3,7 @@ import { AirplanesTable } from "./AirplanesTable";
 import { CloseToAirport } from "./CloseToAirport";
 import { CloseToEachOther } from "./CloseToEachOther";
 import { InRouteOfCollision } from "./InRouteOfCollision";
+import { Radar } from "./Radar";
 import { Report } from "./Report";
 import { Rotate } from "./Rotate";
 import { Scalonate } from "./Scalonate";
@@ -23,6 +24,9 @@ export function MainPage() {
             <div className="relative w-1/4">
                 <AirplanesTable />
                 <Report />
+            </div>
+            <div className="relative w-1/4">
+                <Radar />
             </div>
         </>
     )
