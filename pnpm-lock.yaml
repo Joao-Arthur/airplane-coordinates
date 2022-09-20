@@ -10,6 +10,7 @@ specifiers:
   '@vitejs/plugin-react': ^2.1.0
   autoprefixer: ^10.4.11
   c8: ^7.12.0
+  classnames: ^2.3.2
   eslint: ^8.23.1
   eslint-config-airbnb: ^19.0.4
   eslint-config-airbnb-typescript: ^17.0.0
@@ -30,6 +31,7 @@ specifiers:
   vitest: ^0.20.3
 
 dependencies:
+  classnames: 2.3.2
   immer: 9.0.15
   nanoid: 4.0.0
   ramda: 0.28.0
@@ -946,6 +948,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: false
 
   /cliui/7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}
