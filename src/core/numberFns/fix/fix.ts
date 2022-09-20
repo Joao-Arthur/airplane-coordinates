@@ -4,7 +4,7 @@ import { toScale } from "../toScale";
 
 export function fix(initialValue: number) {
     return pipe(
-        value => toScale(value, 14),
+        value => toScale(value, 10),
         value => normalizeZero(value),
     )(initialValue);
 }
