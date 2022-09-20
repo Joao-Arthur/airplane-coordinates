@@ -5,6 +5,7 @@ import {
 } from './canvas';
 import { useWindowDimensions } from './useWindowDimensions';
 import './index.css';
+import { MainPage } from './pages/MainPage/MainPage';
 
 export function App() {
     const dimensions = useWindowDimensions();
@@ -22,6 +23,7 @@ export function App() {
 
     return (
         <StrictMode>
+            <MainPage />
             <canvas
                 width={dimensions.width}
                 height={dimensions.height}
