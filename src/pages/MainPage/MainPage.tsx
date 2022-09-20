@@ -3,6 +3,7 @@ import { AirplanesTable } from "./AirplanesTable";
 import { CloseToAirport } from "./CloseToAirport";
 import { CloseToEachOther } from "./CloseToEachOther";
 import { InRouteOfCollision } from "./InRouteOfCollision";
+import { Report } from "./Report";
 import { Rotate } from "./Rotate";
 import { Scalonate } from "./Scalonate";
 import { Translate } from "./Translate";
@@ -21,7 +22,7 @@ export function MainPage() {
             </div>
             <div className="relative w-1/4">
                 <AirplanesTable />
-
+                <Report />
             </div>
         </>
     )
