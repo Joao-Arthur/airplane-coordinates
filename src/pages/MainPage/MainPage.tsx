@@ -1,3 +1,4 @@
+import { Tab } from "../../components/Tab";
 import { AddAirplane } from "./AddAirplane";
 import { AirplanesTable } from "./AirplanesTable";
 import { CloseToAirport } from "./CloseToAirport";
@@ -13,13 +14,34 @@ export function MainPage() {
     return (
         <>
             <div className="relative w-1/4">
-                <AddAirplane />
-                <Translate />
-                <Scalonate />
-                <Rotate />
-                <CloseToAirport />
-                <CloseToEachOther />
-                <InRouteOfCollision />
+                <Tab
+                    tabs={[
+                        {
+                            title: 'Adicionar',
+                            comp: <AddAirplane />
+                        },
+                        {
+                            title: 'Transformar',
+                            comp: (
+                                <div>
+                                    <Translate />
+                                    <Scalonate />
+                                    <Rotate />
+                                </div>
+                            )
+                        },
+                        {
+                            title: 'Rastrear',
+                            comp: (
+                                <div>
+                                    <CloseToAirport />
+                                    <CloseToEachOther />
+                                    <InRouteOfCollision />
+                                </div>
+                            )
+                        },
+                    ]}
+                />
             </div>
             <div className="relative w-1/4">
                 <AirplanesTable />
