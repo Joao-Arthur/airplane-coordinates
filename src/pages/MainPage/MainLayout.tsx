@@ -18,10 +18,16 @@ export function MainLayout() {
     const [dimensions, setDimensions] = useState(0);
 
     function resize() {
-        setDimensions(Math.min(radarContainer?.current?.clientWidth || 0, radarContainer?.current?.clientHeight || 0));
+        setDimensions(
+            Math.min(
+                (radarContainer?.current?.clientWidth || 0) - 50,
+                (radarContainer?.current?.clientHeight || 0) - 50,
+            )
+        );
     }
 
     useDidMount(() => {
+        resize();
         window.addEventListener('resize', resize);
         return () => window.removeEventListener('resize', resize);
     });

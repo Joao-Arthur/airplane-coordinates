@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { useDidMount } from 'rooks';
 import { initCanvasPaint } from "../../canvas";
 
 type props = {
@@ -16,18 +15,20 @@ export function Radar({ dimensions }: props) {
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        initCanvasPaint(context);
+        initCanvasPaint(context, dimensions);
     }, [dimensions]);
 
     return (
-        <canvas
-            width={dimensions}
-            height={dimensions}
-            style={{
-                width: dimensions,
-                height: dimensions,
-            }}
-            ref={canvasRef}
-        />
+        <div className="h-full flex justify-center items-center">
+            <canvas
+                width={dimensions}
+                height={dimensions}
+                style={{
+                    width: dimensions,
+                    height: dimensions,
+                }}
+                ref={canvasRef}
+            />
+        </div>
     );
 }
