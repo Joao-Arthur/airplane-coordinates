@@ -7,10 +7,10 @@ type paramsType = {
     readonly y: number;
 }
 
-export function transformAirplaneCoordinatesBusiness({ airplanes, x, y }: paramsType): readonly airplaneType[] {
+export function translateAirplaneCoordinatesBusiness({ airplanes, x, y }: paramsType): readonly airplaneType[] {
     return airplanes.map(airplane => ({
         ...airplane,
-        ...cartesianPlane.transform({
+        ...cartesianPlane.translate({
             point: { x: airplane.x, y: airplane.y },
             factor: { x, y }
         })

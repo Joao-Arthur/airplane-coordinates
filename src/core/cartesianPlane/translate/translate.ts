@@ -6,7 +6,7 @@ type paramsType = {
     readonly factor: cartesianPointType;
 }
 
-export function transform({ point, factor }: paramsType): cartesianPointType {
+export function translate({ point, factor }: paramsType): cartesianPointType {
     return {
         x: numberFns.fix(point.x + factor.x),
         y: numberFns.fix(point.y + factor.y)

@@ -1,6 +1,6 @@
 import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 import { loggerType } from '../../ports/logger';
-import { transformAirplaneCoordinatesBusiness } from './transformAirplaneCoordinatesBusiness';
+import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
 
 type paramsType = {
     readonly logger: loggerType;
@@ -10,7 +10,7 @@ type paramsType = {
     readonly y: number;
 };
 
-export function transformAirplaneCoordinatesService({
+export function translateAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
@@ -25,7 +25,7 @@ export function transformAirplaneCoordinatesService({
     const airplanes = airplaneRepository
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
-    const updatedAirplanes = transformAirplaneCoordinatesBusiness({ airplanes, x, y });
+    const updatedAirplanes = translateAirplaneCoordinatesBusiness({ airplanes, x, y });
     for (const airplane of updatedAirplanes)
         airplaneRepository.update(airplane);
     logger.success('Transformação realizada com sucesso!');

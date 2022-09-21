@@ -1,11 +1,11 @@
 import { distance } from './distance';
 import { fromPolar } from './fromPolar';
 import { scalonate } from './scalonate';
-import { transform } from './transform';
+import { translate } from './translate';
 
 export const cartesianPlane = {
     distance,
     fromPolar,
     scalonate,
-    transform
+    translate
 } as const;
