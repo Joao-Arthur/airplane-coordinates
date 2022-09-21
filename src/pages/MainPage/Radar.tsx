@@ -4,7 +4,7 @@ import { initCanvasPaint } from "../../canvas";
 import { useWindowDimensions } from "../../useWindowDimensions";
 
 export function Radar() {
-    const dimensions = useWindowDimensions();
+    const dimensions = { width: 200, height: 200 };//useWindowDimensions();
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useDidMount(() => {

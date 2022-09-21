@@ -14,7 +14,7 @@ import { Translate } from "./Translate";
 export function MainLayout() {
     return (
         <>
-            <div className="relative w-1/4">
+            <div className="flex flex-col w-1/4">
                 <Tab
                     tabs={[
                         {
@@ -44,11 +44,11 @@ export function MainLayout() {
                     ]}
                 />
             </div>
-            <div className="relative w-1/4">
+            <div className="flex flex-col w-1/4">
                 <AirplanesTable />
                 <Report />
             </div>
-            <div className="relative w-1/4">
+            <div className="flex flex-col w-2/4">
                 <Radar />
             </div>
         </>
