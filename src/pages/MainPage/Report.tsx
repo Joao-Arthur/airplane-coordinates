@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid"
+
 export function Report() {
     const reports = [
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -18,7 +20,7 @@ export function Report() {
             <table className="min-w-full text-sm divide-y-2 divide-gray-200">
                 <tbody className="divide-y divide-gray-200">
                     {reports.map(report => (
-                        <tr>
+                        <tr key={nanoid()}>
                             <td className="px-4 py-2 whitespace-nowrap">{report}</td>
                         </tr>
                     ))}

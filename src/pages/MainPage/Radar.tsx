@@ -1,29 +1,31 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDidMount } from 'rooks';
 import { initCanvasPaint } from "../../canvas";
-import { useWindowDimensions } from "../../useWindowDimensions";
 
-export function Radar() {
-    const dimensions = { width: 200, height: 200 };//useWindowDimensions();
+type props = {
+    dimensions: number;
+}
+
+export function Radar({ dimensions }: props) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    console.log(dimensions);
 
-    useDidMount(() => {
+    useEffect(() => {
         if (!canvasRef.current)
             return;
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        initCanvasPaint(context, dimensions);
-        window.addEventListener('keypress', console.log);
-    });
+        initCanvasPaint(context);
+    }, [dimensions]);
 
     return (
         <canvas
-            width={dimensions.width}
-            height={dimensions.height}
+            width={dimensions}
+            height={dimensions}
             style={{
-                width: dimensions.width,
-                height: dimensions.height,
+                width: dimensions,
+                height: dimensions,
             }}
             ref={canvasRef}
         />

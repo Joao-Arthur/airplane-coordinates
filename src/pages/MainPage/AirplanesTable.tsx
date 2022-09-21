@@ -24,7 +24,7 @@ export function AirplanesTable() {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                     {airplanes.map(airplane => (
-                        <tr>
+                        <tr key={airplane.id}>
                             <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
                                 <input type='checkbox' />
                             </td>

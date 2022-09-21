@@ -1,4 +1,6 @@
 
+import { useEffect, useRef, useState } from "react";
+import { useDidMount } from "rooks";
 import { Tab } from "../../components/Tab";
 import { AddAirplane } from "./AddAirplane";
 import { AirplanesTable } from "./AirplanesTable";
@@ -12,6 +14,18 @@ import { Scalonate } from "./Scalonate";
 import { Translate } from "./Translate";
 
 export function MainLayout() {
+    const radarContainer = useRef<HTMLDivElement>()
+    const [dimensions, setDimensions] = useState(0);
+
+    function resize() {
+        setDimensions(Math.min(radarContainer?.current?.clientWidth || 0, radarContainer?.current?.clientHeight || 0));
+    }
+
+    useDidMount(() => {
+        window.addEventListener('resize', resize);
+        return () => window.removeEventListener('resize', resize);
+    });
+
     return (
         <>
             <div className="flex flex-col w-1/4">
@@ -48,8 +62,8 @@ export function MainLayout() {
                 <AirplanesTable />
                 <Report />
             </div>
-            <div className="flex flex-col w-2/4">
-                <Radar />
+            <div className="flex flex-col w-2/4" ref={radarContainer}>
+                <Radar dimensions={dimensions} />
             </div>
         </>
     )

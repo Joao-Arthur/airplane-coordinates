@@ -18,6 +18,7 @@ export function Tab({ tabs }: props) {
             <div className="flex text-sm font-medium border-b border-gray-100" >
                 {tabs.map(({ title }) => (
                     <div
+                        key={title}
                         className={classnames(
                             "p-4 -mb-px border-b text-cyan-500",
                             title === active ? 'border-current' : 'border-transparent'
