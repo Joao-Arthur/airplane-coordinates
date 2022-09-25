@@ -3,13 +3,17 @@ import { ChangeEvent } from "react";
 type props = {
     title: string;
     name: string;
-    value: number;
-    onChange: (newValue: number) => void;
+    options: {
+        name: string;
+        label: string;
+    }[];
+    value: string;
+    onChange: (newValue: string) => void;
 }
 
-export function Input({ title, name, value, onChange }: props) {
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
-        onChange(Number(e.target.value));
+export function Select({ title, name, options, value, onChange }: props) {
+    function handleChange(e: ChangeEvent<HTMLSelectElement>) {
+        onChange(e.target.value);
     }
 
     return (
@@ -20,13 +24,14 @@ export function Input({ title, name, value, onChange }: props) {
             >
                 {title}
             </label>
-            <input
+            <select
                 className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
                 name={name}
-                type="number"
                 value={value}
                 onChange={handleChange}
-            />
+            >
+                {options.map(({ name, label }) => <option value={name}>{label}</option>)}
+            </select>
         </>
     )
 }

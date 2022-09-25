@@ -54,7 +54,7 @@ module.exports = {
         'no-restricted-syntax': 'off',
         curly: ['error', 'multi'],
         'nonblock-statement-body-position': ['error', 'below'],
-
+        'semi': ['error', 'always'],
         'object-curly-newline': ['error', {
             'ObjectExpression': 'multiline',
             'ObjectPattern': 'multiline',

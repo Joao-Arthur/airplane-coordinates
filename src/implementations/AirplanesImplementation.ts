@@ -1,4 +1,3 @@
-
 import { addAirplaneService } from "../useCases/addAirplane";
 import { airplanesCloseToAirportService } from "../useCases/airplanesCloseToAirport";
 import { airplanesCloseToEachOtherService } from "../useCases/airplanesCloseToEachOther";
