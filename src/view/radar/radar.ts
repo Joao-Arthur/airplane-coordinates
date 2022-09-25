@@ -1,5 +1,5 @@
 import { dimensionType } from "../../models/dimension";
-import { drawContextType } from "../../ports/drawContext";
+import { drawContextType } from "../../models/drawContext";
 
 export function radarView(drawContext: drawContextType, { x, y, width, height }: dimensionType) {
     drawCenter(drawContext, { x, y, width, height });

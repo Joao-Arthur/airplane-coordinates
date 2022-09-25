@@ -1,5 +1,5 @@
-import { airplaneRepositoryType } from '../../ports/airplaneRepository';
-import { loggerType } from '../../ports/logger';
+import { airplaneRepositoryType } from '../../models/airplaneRepository';
+import { loggerType } from '../../models/logger';
 import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
 
 type paramsType = {

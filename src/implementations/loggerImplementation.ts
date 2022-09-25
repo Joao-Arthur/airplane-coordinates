@@ -1,4 +1,4 @@
-import { loggerType } from '../ports/logger';
+import { loggerType } from '../models/logger';
 
 function info(message: string): void {
     console.log(message);

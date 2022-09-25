@@ -1,4 +1,4 @@
-import { DrawContextImplementation } from "./adapters/DrawContextImplementation";
+import { DrawContextImplementation } from "./implementations/DrawContextImplementation";
 import { dimensionType } from "./models/dimension";
 import { radarView } from "./view/radar/radar";
 

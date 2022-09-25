@@ -1,6 +1,6 @@
 import { mapFns } from '../core/mapFns';
 import { airplaneType } from '../models/airplane';
-import { airplaneRepositoryType } from '../ports/airplaneRepository';
+import { airplaneRepositoryType } from '../models/airplaneRepository';
 
 export class AirplaneRepositoryImplementation implements airplaneRepositoryType {
     private airplanesDatabase = new Map<string, airplaneType>();
