@@ -1,7 +1,11 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-export function CloseToAirport() {
+type props = {
+    getCloseToAirport: (maxDistance: number) => void;
+}
+
+export function CloseToAirport({ getCloseToAirport }: props) {
     return (
         <>
             <Input title='Distancia mínima' name='minDistance' />

@@ -1,7 +1,11 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-export function AddAirplane() {
+type props = {
+    add: (airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) => void;
+}
+
+export function AddAirplane({ add }: props) {
     return (
         <>
             <Input title='X' name='x' />

@@ -1,7 +1,15 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-export function Scalonate() {
+type props = {
+    scalonateCoordinates: (
+        selectedIds: readonly string[],
+        x: number,
+        y: number,
+    ) => void;
+}
+
+export function Scalonate({ scalonateCoordinates }: props) {
     return (
         <>
             <Input title='X' name='x' />

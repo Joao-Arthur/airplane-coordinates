@@ -1,7 +1,15 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-export function Translate() {
+type props = {
+    translateCoordinates: (
+        selectedIds: readonly string[],
+        x: number,
+        y: number,
+    ) => void;
+}
+
+export function Translate({ translateCoordinates }: props) {
     return (
         <>
             <Input title='X' name='x' />

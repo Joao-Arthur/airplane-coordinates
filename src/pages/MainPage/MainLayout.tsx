@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDidMount } from "rooks";
 import { Tab } from "../../components/Tab";
 import { AddAirplane } from "./AddAirplane";
@@ -12,10 +12,20 @@ import { Report } from "./Report";
 import { Rotate } from "./Rotate";
 import { Scalonate } from "./Scalonate";
 import { Translate } from "./Translate";
+import { useAirplanes } from "./useAirplanes";
 
 export function MainLayout() {
-    const radarContainer = useRef<HTMLDivElement>()
+    const radarContainer = useRef<HTMLDivElement | null>(null);
     const [dimensions, setDimensions] = useState(0);
+    const {
+        add,
+        getCloseToAirport,
+        getCloseToEachOther,
+        getInRouteOfCollision,
+        rotateCoordinates,
+        scalonateCoordinates,
+        translateCoordinates
+    } = useAirplanes();
 
     function resize() {
         setDimensions(
@@ -39,15 +49,15 @@ export function MainLayout() {
                     tabs={[
                         {
                             title: 'Adicionar',
-                            comp: <AddAirplane />
+                            comp: <AddAirplane add={add} />
                         },
                         {
                             title: 'Transformar',
                             comp: (
                                 <div>
-                                    <Translate />
-                                    <Scalonate />
-                                    <Rotate />
+                                    <Translate translateCoordinates={translateCoordinates} />
+                                    <Scalonate scalonateCoordinates={scalonateCoordinates} />
+                                    <Rotate rotateCoordinates={rotateCoordinates} />
                                 </div>
                             )
                         },
@@ -55,9 +65,9 @@ export function MainLayout() {
                             title: 'Rastrear',
                             comp: (
                                 <div>
-                                    <CloseToAirport />
-                                    <CloseToEachOther />
-                                    <InRouteOfCollision />
+                                    <CloseToAirport getCloseToAirport={getCloseToAirport} />
+                                    <CloseToEachOther getCloseToEachOther={getCloseToEachOther} />
+                                    <InRouteOfCollision getInRouteOfCollision={getInRouteOfCollision} />
                                 </div>
                             )
                         },

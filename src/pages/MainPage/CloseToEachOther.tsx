@@ -1,7 +1,11 @@
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-export function CloseToEachOther() {
+type props = {
+    getCloseToEachOther: (maxDistance: number) => void;
+}
+
+export function CloseToEachOther({ getCloseToEachOther }: props) {
     return (
         <>
             <Input title='Distancia mínima' name='minDistance' />
