@@ -1,12 +1,10 @@
+import { DrawContextImplementation } from "./adapters/DrawContextImplementation";
+import { dimensionType } from "./models/dimension";
+import { radarView } from "./view/radar/radar";
+
 export function initCanvasPaint(
     context: CanvasRenderingContext2D,
-    dimensions: number
+    dimension: dimensionType
 ) {
-    context.fillStyle = '#5555aa';
-    context.fillRect(
-        0,
-        0,
-        dimensions,
-        dimensions,
-    );
+    radarView(new DrawContextImplementation(context), dimension);
 }

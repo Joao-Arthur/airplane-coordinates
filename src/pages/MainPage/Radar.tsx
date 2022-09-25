@@ -15,7 +15,7 @@ export function Radar({ dimensions }: props) {
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        initCanvasPaint(context, dimensions);
+        initCanvasPaint(context, { x: 0, y: 0, width: dimensions, height: dimensions });
     }, [dimensions]);
 
     return (
