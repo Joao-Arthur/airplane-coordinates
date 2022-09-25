@@ -2,12 +2,13 @@ import { dimensionType } from "../../models/dimension";
 import { drawContextType } from "../../models/drawContext";
 
 export function radarView(drawContext: drawContextType, { x, y, width, height }: dimensionType) {
-    drawCenter(drawContext, { x, y, width, height });
     drawRadarPoints(drawContext, { x, y, width, height });
+    drawCenter(drawContext, { x, y, width, height });
 }
 
 function drawCenter(drawContext: drawContextType, { width, height }: dimensionType) {
-    drawContext.drawSquare({ x: width / 2 - 4, y: height / 2 - 4, width: 8, height: 8 }, '#00aa6f');
+    const centerSize = 8;
+    drawContext.drawCircle({ x: width / 2 - (centerSize / 2), y: height / 2 - (centerSize / 2), width: centerSize, height: centerSize }, '#3835fd');
 }
 
 function drawRadarPoints(drawContext: drawContextType, { width, height }: dimensionType) {

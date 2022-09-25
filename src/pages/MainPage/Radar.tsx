@@ -7,7 +7,6 @@ type props = {
 
 export function Radar({ dimensions }: props) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    console.log(dimensions);
 
     useEffect(() => {
         if (!canvasRef.current)
