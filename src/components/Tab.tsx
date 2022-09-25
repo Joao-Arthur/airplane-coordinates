@@ -20,7 +20,7 @@ export function Tab({ tabs }: props) {
                     <div
                         key={title}
                         className={classnames(
-                            "p-4 -mb-px border-b text-cyan-500",
+                            "p-4 -mb-px border-b text-cyan-500 cursor-pointer",
                             title === active ? 'border-current' : 'border-transparent'
                         )}
                         onClick={() => setActive(title)}
