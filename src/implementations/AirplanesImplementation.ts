@@ -7,14 +7,14 @@ import { airplanesInRouteOfCollisionService } from "../useCases/airplanesInRoute
 import { rotateAirplaneCoordinatesService } from "../useCases/rotateAirplaneCoordinates";
 import { scalonateAirplaneCoordinatesService } from "../useCases/scalonateAirplaneCoordinates";
 import { translateAirplaneCoordinatesService } from "../useCases/translateAirplaneCoordinates";
-import { AirplaneRepositoryImplementation } from "./AirplaneRepositoryImplementation";
-import { LoggerImplementation } from "./LoggerImplementation";
+import { AirplaneRepositoryImplementationProxy } from "./AirplaneRepositoryImplementationProxy";
+import { LoggerImplementationProxy } from "./LoggerImplementationProxy";
 import { uniqueIdentifierBig } from "./uniqueIdentifierBig";
 import { uniqueIdentifierImplementation } from "./uniqueIdentifierImplementation";
 
 export class AirplanesImplementation {
-    private readonly logger = new LoggerImplementation(uniqueIdentifierBig);
-    private readonly airplaneRepository = new AirplaneRepositoryImplementation();
+    private readonly logger = new LoggerImplementationProxy(uniqueIdentifierBig);
+    private readonly airplaneRepository = new AirplaneRepositoryImplementationProxy();
     private readonly uniqueIdentifier = uniqueIdentifierImplementation;
 
     public addAirplane(airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) {
