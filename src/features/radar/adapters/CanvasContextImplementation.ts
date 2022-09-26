@@ -1,8 +1,7 @@
-import { dimensionType } from '../features/dimension';
-import { drawContextType } from '../features/drawContext';
+import { dimensionType } from '../models/dimension';
+import { drawContextType } from '../ports/drawContext';
 
-export class DrawContextImplementation implements drawContextType {
-
+export class CanvasContextImplementation implements drawContextType {
     public constructor(private readonly context: CanvasRenderingContext2D) { }
 
     public drawSquare({ x, y, width, height }: dimensionType, color: string) {

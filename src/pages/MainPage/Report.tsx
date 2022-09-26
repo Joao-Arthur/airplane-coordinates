@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid'
 import { useState } from 'react';
 import { useDidMount } from 'rooks';
-import { messageType } from '../../models/message';
+import { messageType } from '../../features/logger/model';
 
 type props = {
     onLogUpdated: (callback: (logs: readonly messageType[]) => void) => void;

@@ -3,6 +3,9 @@ import { airplanesInRouteOfCollisionBusiness } from './airplanesInRouteOfCollisi
 
 describe('airplanesInRouteOfCollisionBusiness', () => {
     it('should return the airplanes in route of collision', () => {
-        expect(airplanesInRouteOfCollisionBusiness([])).toEqual([]);
+        expect(airplanesInRouteOfCollisionBusiness({
+            airplanes: [],
+            maxTime: 1000
+        })).toEqual([]);
     })
 })

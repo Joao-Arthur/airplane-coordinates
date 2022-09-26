@@ -60,7 +60,7 @@ module.exports = {
             'ObjectPattern': 'multiline',
             'ImportDeclaration': 'never',
             'ExportDeclaration': 'multiline'
-        }]
-
+        }],
+        quotes: ["error", "single"]
     },
 };

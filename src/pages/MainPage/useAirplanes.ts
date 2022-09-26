@@ -1,26 +1,25 @@
 import { useRef } from 'react';
-import { AirplanesImplementation } from '../../implementations/AirplanesImplementation';
-import { airplaneType } from '../../models/airplane';
-import { messageType } from '../../models/message';
-
+import { AirplaneGateway } from '../../features/airplane/gateways';
+import { airplaneType } from '../../features/airplane/models';
+import { messageType } from '../../features/logger/model';
 
 export function useAirplanes() {
-    const airplanesImplementation = useRef(new AirplanesImplementation());
+    const airplaneGateway = useRef(new AirplaneGateway());
 
     function add(airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) {
-        return airplanesImplementation.current.addAirplane(airplaneParams);
+        return airplaneGateway.current.addAirplane(airplaneParams);
     }
 
     function getCloseToAirport(maxDistance: number) {
-        return airplanesImplementation.current.getAirplanesCloseToAirport(maxDistance);
+        return airplaneGateway.current.getAirplanesCloseToAirport(maxDistance);
     }
 
     function getCloseToEachOther(maxDistance: number) {
-        return airplanesImplementation.current.getAirplanesCloseToEachOther(maxDistance);
+        return airplaneGateway.current.getAirplanesCloseToEachOther(maxDistance);
     }
 
     function getInRouteOfCollision(maxTime: number) {
-        return airplanesImplementation.current.getAirplanesInRouteOfCollision(maxTime);
+        return airplaneGateway.current.getAirplanesInRouteOfCollision(maxTime);
     }
 
     function rotateCoordinates(
@@ -29,7 +28,7 @@ export function useAirplanes() {
         centerOfRotationX: number,
         centerOfRotationY: number
     ) {
-        return airplanesImplementation.current.rotateAirplanesCoordinates(
+        return airplaneGateway.current.rotateAirplanesCoordinates(
             selectedIds,
             angle,
             centerOfRotationX,
@@ -42,7 +41,7 @@ export function useAirplanes() {
         x: number,
         y: number,
     ) {
-        return airplanesImplementation.current.scalonateAirplanesCoordinates(
+        return airplaneGateway.current.scalonateAirplanesCoordinates(
             selectedIds,
             x,
             y,
@@ -54,7 +53,7 @@ export function useAirplanes() {
         x: number,
         y: number,
     ) {
-        return airplanesImplementation.current.translateAirplanesCoordinates(
+        return airplaneGateway.current.translateAirplanesCoordinates(
             selectedIds,
             x,
             y
@@ -62,11 +61,11 @@ export function useAirplanes() {
     }
 
     function onLogUpdated(callback: (logs: readonly messageType[]) => void) {
-        airplanesImplementation.current.onLogUpdated(callback);
+        airplaneGateway.current.onLogUpdated(callback);
     }
 
     function onRepositoryUpdated(callback: (airplanes: readonly airplaneType[]) => void) {
-        airplanesImplementation.current.onRepositoryUpdated(callback);
+        airplaneGateway.current.onRepositoryUpdated(callback);
     }
 
     return {

@@ -12,7 +12,7 @@ import { rotateAirplaneCoordinatesService } from '../useCases/rotateAirplaneCoor
 import { scalonateAirplaneCoordinatesService } from '../useCases/scalonateAirplaneCoordinates';
 import { translateAirplaneCoordinatesService } from '../useCases/translateAirplaneCoordinates';
 
-export class AirplanesImplementation {
+export class AirplaneGateway {
     private readonly logger = new LoggerImplementationProxy(uniqueIdentifierBig);
     private readonly airplaneRepository = new AirplaneRepositoryImplementationProxy();
     private readonly uniqueIdentifier = uniqueIdentifierImplementation;

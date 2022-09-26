@@ -1,4 +1,4 @@
-import { airplaneType } from '../../models/airplane';
+import { airplaneType } from '../../features/airplane/models';
 
 export function AirplanesTable() {
 

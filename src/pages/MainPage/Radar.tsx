@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDidMount } from 'rooks';
-import { canvasRadar } from '../../implementations/canvasRadar';
-import { airplaneType } from '../../models/airplane';
+import { airplaneType } from '../../features/airplane/models';
+import { CanvasRadarGateway } from '../../features/radar/gateway';
 
 type props = {
     dimensions: number;
@@ -20,7 +20,7 @@ export function Radar({ dimensions, onRepositoryUpdated }: props) {
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        canvasRadar(context, { x: 0, y: 0, width: dimensions, height: dimensions }, airplanes);
+        new CanvasRadarGateway().drawRadar(context, { x: 0, y: 0, width: dimensions, height: dimensions }, airplanes);
     }, [dimensions, airplanes]);
 
     return (
