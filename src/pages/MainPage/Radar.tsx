@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDidMount } from "rooks";
-import { initCanvasPaint } from "../../canvas";
+import { canvasRadar } from "../../implementations/canvasRadar";
 import { airplaneType } from "../../models/airplane";
 
 type props = {
@@ -20,7 +20,7 @@ export function Radar({ dimensions, onRepositoryUpdated }: props) {
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        initCanvasPaint(context, { x: 0, y: 0, width: dimensions, height: dimensions });
+        canvasRadar(context, { x: 0, y: 0, width: dimensions, height: dimensions }, airplanes);
     }, [dimensions, airplanes]);
 
     return (

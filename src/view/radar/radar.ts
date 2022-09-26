@@ -1,9 +1,16 @@
+import { airplaneType } from "../../models/airplane";
 import { dimensionType } from "../../models/dimension";
 import { drawContextType } from "../../models/drawContext";
 
-export function radarView(drawContext: drawContextType, { x, y, width, height }: dimensionType) {
+export function radarView(drawContext: drawContextType, { x, y, width, height }: dimensionType, airplanes: readonly airplaneType[]) {
+    clearWindow(drawContext, { x, y, width, height });
     drawRadarPoints(drawContext, { x, y, width, height });
     drawCenter(drawContext, { x, y, width, height });
+    drawAirplanes(drawContext, { x, y, width, height }, airplanes)
+}
+
+function clearWindow(drawContext: drawContextType, { x, y, width, height }: dimensionType,) {
+    drawContext.drawSquare({ x, y, width, height }, '#fff');
 }
 
 function drawCenter(drawContext: drawContextType, { width, height }: dimensionType) {
@@ -21,5 +28,27 @@ function drawRadarPoints(drawContext: drawContextType, { width, height }: dimens
         drawContext.drawSquare({ x: widthSize * (i + halfNumberOfParts) - 1, y: 0, width: 1, height }, '#0602db');
         drawContext.drawSquare({ x: 0, y: heightSize * i, width, height: 1 }, '#0602db');
         drawContext.drawSquare({ x: 0, y: heightSize * (i + halfNumberOfParts) - 1, width, height: 1 }, '#0602db');
+    }
+}
+
+function drawAirplanes(drawContext: drawContextType, { x, y, width, height }: dimensionType, airplanes: readonly airplaneType[]) {
+    const numberOfParts = 20;
+    const widthSize = width / numberOfParts;
+    const heightSize = height / numberOfParts;
+    const halfNumberOfParts = numberOfParts / 2;
+
+    const dimension = 6;
+
+    for (const airplane of airplanes) {
+        console.log(airplane)
+        drawContext.drawSquare(
+            {
+                x: halfNumberOfParts * widthSize + airplane.x * widthSize - dimension / 2,
+                y: halfNumberOfParts * heightSize + airplane.y * heightSize - dimension / 2,
+                width: dimension,
+                height: dimension
+            },
+            '#ff0000'
+        )
     }
 }
