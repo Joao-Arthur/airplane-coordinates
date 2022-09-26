@@ -1,6 +1,6 @@
-import { airplaneType } from "../../models/airplane";
-import { dimensionType } from "../../models/dimension";
-import { drawContextType } from "../../models/drawContext";
+import { airplaneType } from '../../features/airplane/models';
+import { dimensionType } from '../../features/dimension';
+import { drawContextType } from '../../features/drawContext';
 
 export function radarView(drawContext: drawContextType, { x, y, width, height }: dimensionType, airplanes: readonly airplaneType[]) {
     clearWindow(drawContext, { x, y, width, height });

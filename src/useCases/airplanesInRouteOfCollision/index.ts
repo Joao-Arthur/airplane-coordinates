@@ -1,1 +1,0 @@
-export { airplanesInRouteOfCollision } from './airplanesInRouteOfCollisionService';

@@ -1,5 +1,5 @@
-import { numberFns } from "../../numberFns";
-import { polarPointType } from "../polarPoint";
+import { numberFns } from '../../numberFns';
+import { polarPointType } from '../polarPoint';
 
 type paramsType = {
     readonly point: polarPointType;

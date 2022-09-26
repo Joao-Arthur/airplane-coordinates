@@ -1,5 +1,5 @@
-import { numberFns } from "../../numberFns";
-import { cartesianPointType } from "../cartesianPoint";
+import { numberFns } from '../../numberFns';
+import { cartesianPointType } from '../cartesianPoint';
 
 type paramsType = {
     readonly point: cartesianPointType;

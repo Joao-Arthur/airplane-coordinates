@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
 type props = {
     title: string;
@@ -19,13 +19,13 @@ export function Select({ title, name, options, value, onChange }: props) {
     return (
         <>
             <label
-                className="block text-xs font-medium text-gray-500"
+                className='block text-xs font-medium text-gray-500'
                 htmlFor={name}
             >
                 {title}
             </label>
             <select
-                className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
+                className='w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded'
                 name={name}
                 value={value}
                 onChange={handleChange}

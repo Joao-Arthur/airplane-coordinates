@@ -1,5 +1,5 @@
-import { dimensionType } from '../models/dimension';
-import { drawContextType } from '../models/drawContext';
+import { dimensionType } from '../features/dimension';
+import { drawContextType } from '../features/drawContext';
 
 export class DrawContextImplementation implements drawContextType {
 

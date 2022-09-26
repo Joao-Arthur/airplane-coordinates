@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState } from 'react';
 import classnames from 'classnames';
 
 type props = {
@@ -15,12 +15,12 @@ export function Tab({ tabs }: props) {
 
     return (
         <>
-            <div className="flex text-sm font-medium border-b border-gray-100" >
+            <div className='flex text-sm font-medium border-b border-gray-100' >
                 {tabs.map(({ title }) => (
                     <div
                         key={title}
                         className={classnames(
-                            "p-4 -mb-px border-b text-cyan-500 cursor-pointer",
+                            'p-4 -mb-px border-b text-cyan-500 cursor-pointer',
                             title === active ? 'border-current' : 'border-transparent'
                         )}
                         onClick={() => setActive(title)}

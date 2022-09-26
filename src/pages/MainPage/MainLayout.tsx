@@ -1,18 +1,18 @@
 
-import { useRef, useState } from "react";
-import { useDidMount } from "rooks";
-import { Tab } from "../../components/Tab";
-import { AddAirplane } from "./AddAirplane";
-import { AirplanesTable } from "./AirplanesTable";
-import { CloseToAirport } from "./CloseToAirport";
-import { CloseToEachOther } from "./CloseToEachOther";
-import { InRouteOfCollision } from "./InRouteOfCollision";
-import { Radar } from "./Radar";
-import { Report } from "./Report";
-import { Rotate } from "./Rotate";
-import { Scalonate } from "./Scalonate";
-import { Translate } from "./Translate";
-import { useAirplanes } from "./useAirplanes";
+import { useRef, useState } from 'react';
+import { useDidMount } from 'rooks';
+import { Tab } from '../../components/Tab';
+import { AddAirplane } from './AddAirplane';
+import { AirplanesTable } from './AirplanesTable';
+import { CloseToAirport } from './CloseToAirport';
+import { CloseToEachOther } from './CloseToEachOther';
+import { InRouteOfCollision } from './InRouteOfCollision';
+import { Radar } from './Radar';
+import { Report } from './Report';
+import { Rotate } from './Rotate';
+import { Scalonate } from './Scalonate';
+import { Translate } from './Translate';
+import { useAirplanes } from './useAirplanes';
 
 export function MainLayout() {
     const radarContainer = useRef<HTMLDivElement | null>(null);
@@ -46,7 +46,7 @@ export function MainLayout() {
 
     return (
         <>
-            <div className="flex flex-col w-1/4">
+            <div className='flex flex-col w-1/4'>
                 <Tab
                     tabs={[
                         {
@@ -76,11 +76,11 @@ export function MainLayout() {
                     ]}
                 />
             </div>
-            <div className="flex flex-col w-1/4">
+            <div className='flex flex-col w-1/4'>
                 <AirplanesTable />
                 <Report onLogUpdated={onLogUpdated} />
             </div>
-            <div className="flex flex-col w-2/4" ref={radarContainer}>
+            <div className='flex flex-col w-2/4' ref={radarContainer}>
                 <Radar dimensions={dimensions} onRepositoryUpdated={onRepositoryUpdated} />
             </div>
         </>

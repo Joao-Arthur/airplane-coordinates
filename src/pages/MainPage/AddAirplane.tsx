@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
-import { Select } from "../../components/Select";
+import { useState } from 'react';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
+import { Select } from '../../components/Select';
 
 type props = {
     add: (airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) => void;

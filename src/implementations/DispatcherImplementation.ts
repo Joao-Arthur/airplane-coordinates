@@ -1,4 +1,4 @@
-import { dispatcherType } from "../models/dispatcher";
+import { dispatcherType } from '../models/dispatcher';
 
 export class DispatcherImplementation<T> implements dispatcherType<T> {
     private callbacks: ((payload: T) => void)[] = [];

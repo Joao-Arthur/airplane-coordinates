@@ -1,7 +1,7 @@
-import { airplaneType } from "../models/airplane";
-import { dimensionType } from "../models/dimension";
-import { radarView } from "../view/radar/radar";
-import { DrawContextImplementation } from "./DrawContextImplementation";
+import { airplaneType } from '../features/airplane/models';
+import { dimensionType } from '../features/dimension';
+import { radarView } from '../view/radar/radar';
+import { DrawContextImplementation } from './DrawContextImplementation';
 
 export function canvasRadar(
     context: CanvasRenderingContext2D,

@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { useDidMount } from "rooks";
-import { canvasRadar } from "../../implementations/canvasRadar";
-import { airplaneType } from "../../models/airplane";
+import { useEffect, useRef, useState } from 'react';
+import { useDidMount } from 'rooks';
+import { canvasRadar } from '../../implementations/canvasRadar';
+import { airplaneType } from '../../models/airplane';
 
 type props = {
     dimensions: number;
@@ -24,7 +24,7 @@ export function Radar({ dimensions, onRepositoryUpdated }: props) {
     }, [dimensions, airplanes]);
 
     return (
-        <div className="h-full flex justify-center items-center">
+        <div className='h-full flex justify-center items-center'>
             <canvas
                 width={dimensions}
                 height={dimensions}

@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useDidMount } from "rooks";
-import { MainLayout } from "./MainLayout";
+import { useState } from 'react';
+import { useDidMount } from 'rooks';
+import { MainLayout } from './MainLayout';
 
 
 export function MainPage() {

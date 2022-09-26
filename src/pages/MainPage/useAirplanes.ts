@@ -1,7 +1,7 @@
-import { useRef } from "react";
-import { AirplanesImplementation } from "../../implementations/AirplanesImplementation";
-import { airplaneType } from "../../models/airplane";
-import { messageType } from "../../models/message";
+import { useRef } from 'react';
+import { AirplanesImplementation } from '../../implementations/AirplanesImplementation';
+import { airplaneType } from '../../models/airplane';
+import { messageType } from '../../models/message';
 
 
 export function useAirplanes() {
