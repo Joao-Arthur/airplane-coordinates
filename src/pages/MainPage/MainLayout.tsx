@@ -24,7 +24,9 @@ export function MainLayout() {
         getInRouteOfCollision,
         rotateCoordinates,
         scalonateCoordinates,
-        translateCoordinates
+        translateCoordinates,
+        onLogUpdated,
+        onRepositoryUpdated
     } = useAirplanes();
 
     function resize() {
@@ -76,10 +78,10 @@ export function MainLayout() {
             </div>
             <div className="flex flex-col w-1/4">
                 <AirplanesTable />
-                <Report />
+                <Report onLogUpdated={onLogUpdated} />
             </div>
             <div className="flex flex-col w-2/4" ref={radarContainer}>
-                <Radar dimensions={dimensions} />
+                <Radar dimensions={dimensions} onRepositoryUpdated={onRepositoryUpdated} />
             </div>
         </>
     )

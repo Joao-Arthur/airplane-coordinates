@@ -1,12 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDidMount } from "rooks";
 import { initCanvasPaint } from "../../canvas";
+import { airplaneType } from "../../models/airplane";
 
 type props = {
     dimensions: number;
+    onRepositoryUpdated: (callback: (airplanes: readonly airplaneType[]) => void) => void;
 }
 
-export function Radar({ dimensions }: props) {
+export function Radar({ dimensions, onRepositoryUpdated }: props) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [airplanes, setAirplanes] = useState<readonly airplaneType[]>([]);
+
+    useDidMount(() => { onRepositoryUpdated(setAirplanes); });
 
     useEffect(() => {
         if (!canvasRef.current)
@@ -15,7 +21,7 @@ export function Radar({ dimensions }: props) {
         if (!context)
             return;
         initCanvasPaint(context, { x: 0, y: 0, width: dimensions, height: dimensions });
-    }, [dimensions]);
+    }, [dimensions, airplanes]);
 
     return (
         <div className="h-full flex justify-center items-center">

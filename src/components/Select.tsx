@@ -30,7 +30,9 @@ export function Select({ title, name, options, value, onChange }: props) {
                 value={value}
                 onChange={handleChange}
             >
-                {options.map(({ name, label }) => <option value={name}>{label}</option>)}
+                {options.map(({ name, label }) => (
+                    <option key={name} value={name}>{label}</option>
+                ))}
             </select>
         </>
     )
