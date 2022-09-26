@@ -39,8 +39,7 @@ function drawAirplanes(drawContext: drawContextType, { x, y, width, height }: di
 
     const dimension = 6;
 
-    for (const airplane of airplanes) {
-        console.log(airplane)
+    for (const airplane of airplanes)
         drawContext.drawSquare(
             {
                 x: halfNumberOfParts * widthSize + airplane.x * widthSize - dimension / 2,
@@ -49,6 +48,5 @@ function drawAirplanes(drawContext: drawContextType, { x, y, width, height }: di
                 height: dimension
             },
             '#ff0000'
-        )
-    }
+        );
 }

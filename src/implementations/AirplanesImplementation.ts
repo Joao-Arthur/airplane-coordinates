@@ -8,7 +8,6 @@ import { rotateAirplaneCoordinatesService } from "../useCases/rotateAirplaneCoor
 import { scalonateAirplaneCoordinatesService } from "../useCases/scalonateAirplaneCoordinates";
 import { translateAirplaneCoordinatesService } from "../useCases/translateAirplaneCoordinates";
 import { AirplaneRepositoryImplementation } from "./AirplaneRepositoryImplementation";
-import { DispatcherImplementation } from "./DispatcherImplementation";
 import { LoggerImplementation } from "./LoggerImplementation";
 import { uniqueIdentifierBig } from "./uniqueIdentifierBig";
 import { uniqueIdentifierImplementation } from "./uniqueIdentifierImplementation";
@@ -17,8 +16,6 @@ export class AirplanesImplementation {
     private readonly logger = new LoggerImplementation(uniqueIdentifierBig);
     private readonly airplaneRepository = new AirplaneRepositoryImplementation();
     private readonly uniqueIdentifier = uniqueIdentifierImplementation;
-    private readonly logDispatcher = new DispatcherImplementation(() => this.logger.retrieve());
-    private readonly airplanesDispatcher = new DispatcherImplementation(() => this.airplaneRepository.retrieve());
 
     public addAirplane(airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) {
         addAirplaneService({
@@ -27,8 +24,6 @@ export class AirplanesImplementation {
             uniqueIdentifier: this.uniqueIdentifier,
             airplaneParams
         });
-        this.airplanesDispatcher.dispatch();
-        this.logDispatcher.dispatch();
     }
 
     public getAirplanesCloseToAirport(maxDistance: number) {
@@ -37,8 +32,6 @@ export class AirplanesImplementation {
             airplaneRepository: this.airplaneRepository,
             maxDistance
         });
-        this.airplanesDispatcher.dispatch();
-        this.logDispatcher.dispatch();
     }
 
     public getAirplanesCloseToEachOther(maxDistance: number) {
@@ -47,8 +40,6 @@ export class AirplanesImplementation {
             airplaneRepository: this.airplaneRepository,
             maxDistance
         });
-        this.airplanesDispatcher.dispatch();
-        this.logDispatcher.dispatch();
     }
 
     public getAirplanesInRouteOfCollision(maxTime: number) {
@@ -57,8 +48,6 @@ export class AirplanesImplementation {
             airplaneRepository: this.airplaneRepository,
             maxTime
         });
-        this.airplanesDispatcher.dispatch();
-        this.logDispatcher.dispatch();
     }
 
     public rotateAirplanesCoordinates(
@@ -75,8 +64,6 @@ export class AirplanesImplementation {
             centerOfRotationX,
             centerOfRotationY
         });
-        this.airplanesDispatcher.dispatch();
-        this.logDispatcher.dispatch();
     }
 
     public scalonateAirplanesCoordinates(
@@ -91,8 +78,6 @@ export class AirplanesImplementation {
             x,
             y
         });
-        this.airplanesDispatcher.dispatch();
-        this.logDispatcher.dispatch();
     }
 
     public translateAirplanesCoordinates(
@@ -107,15 +92,13 @@ export class AirplanesImplementation {
             x,
             y
         });
-        this.airplanesDispatcher.dispatch();
-        this.logDispatcher.dispatch();
     }
 
     public onLogUpdated(callback: (logs: readonly messageType[]) => void) {
-        this.logDispatcher.addCallback(callback);
+        this.logger.addCallback(callback);
     }
 
     public onRepositoryUpdated(callback: (airplanes: readonly airplaneType[]) => void) {
-        this.airplanesDispatcher.addCallback(callback);
+        this.airplaneRepository.addCallback(callback);
     }
 }
