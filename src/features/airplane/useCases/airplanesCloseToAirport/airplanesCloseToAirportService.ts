@@ -1,18 +1,11 @@
-import { loggerRepositoryType } from '../../../logger/ports/loggerRepository';
-import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 import { airplanesCloseToAirportBusiness } from './airplanesCloseToAirportBusiness';
-
-type paramsType = {
-    readonly logger: loggerRepositoryType;
-    readonly airplaneRepository: airplaneRepositoryType;
-    readonly maxDistance: number;
-};
+import { airplanesCloseToAirportParamsType } from './airplanesCloseToAirportParams';
 
 export function airplanesCloseToAirportService({
     logger,
     airplaneRepository,
     maxDistance,
-}: paramsType) {
+}: airplanesCloseToAirportParamsType) {
     logger.info('Calculando aviões mais próximos do aeroporto');
     const airplanes = airplaneRepository.retrieve();
     const closeAirplanes = airplanesCloseToAirportBusiness({ airplanes, maxDistance });

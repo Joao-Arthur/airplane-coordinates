@@ -1,15 +1,5 @@
-import { loggerRepositoryType } from '../../../logger/ports/loggerRepository';
-import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 import { rotateAirplaneCoordinatesBusiness } from './rotateAirplaneCoordinatesBusiness';
-
-type paramsType = {
-    readonly logger: loggerRepositoryType;
-    readonly airplaneRepository: airplaneRepositoryType;
-    readonly selectedIds: readonly string[];
-    readonly angle: number;
-    readonly centerOfRotationX: number;
-    readonly centerOfRotationY: number;
-};
+import { rotateAirplaneCoordinatesParamsType } from './rotateAirplaneCoordinatesParams';
 
 export function rotateAirplaneCoordinatesService({
     logger,
@@ -18,7 +8,7 @@ export function rotateAirplaneCoordinatesService({
     angle,
     centerOfRotationX,
     centerOfRotationY,
-}: paramsType) {
+}: rotateAirplaneCoordinatesParamsType) {
     logger.info('Aplicando rotação de coordenadas');
     if (!selectedIds.length) {
         logger.warn('É necessário selecionar ao menos um avião!');

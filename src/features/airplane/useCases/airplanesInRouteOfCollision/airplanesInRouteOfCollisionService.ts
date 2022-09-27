@@ -1,18 +1,11 @@
-import { loggerRepositoryType } from '../../../logger/ports/loggerRepository';
-import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 import { airplanesInRouteOfCollisionBusiness } from './airplanesInRouteOfCollisionBusiness';
-
-type paramsType = {
-    readonly logger: loggerRepositoryType;
-    readonly airplaneRepository: airplaneRepositoryType;
-    readonly maxTime: number;
-};
+import { airplanesInRouteOfCollisionParamsType } from './airplanesInRouteOfCollisionParams';
 
 export function airplanesInRouteOfCollisionService({
     logger,
     airplaneRepository,
     maxTime,
-}: paramsType) {
+}: airplanesInRouteOfCollisionParamsType) {
     logger.info('Calculando aviões em rota de colisão');
     const airplanes = airplaneRepository.retrieve();
     const airplanesInRouteOfCollision = airplanesInRouteOfCollisionBusiness({ airplanes, maxTime });

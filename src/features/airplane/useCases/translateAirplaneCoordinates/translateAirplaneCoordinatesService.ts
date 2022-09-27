@@ -1,14 +1,5 @@
-import { loggerRepositoryType } from '../../../logger/ports/loggerRepository';
-import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
-
-type paramsType = {
-    readonly logger: loggerRepositoryType;
-    readonly airplaneRepository: airplaneRepositoryType;
-    readonly selectedIds: readonly string[];
-    readonly x: number;
-    readonly y: number;
-};
+import { translateAirplaneCoordinatesParamsType } from './translateAirplaneCoordinatesParams';
 
 export function translateAirplaneCoordinatesService({
     logger,
@@ -16,7 +7,7 @@ export function translateAirplaneCoordinatesService({
     selectedIds,
     x,
     y,
-}: paramsType) {
+}: translateAirplaneCoordinatesParamsType) {
     logger.info('Aplicando transformação de coordenadas');
     if (!selectedIds.length) {
         logger.warn('É necessário selecionar ao menos um avião!');
