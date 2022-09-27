@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
+import { gatewayAddAirplaneParamsType } from '../../features/airplane/gateways';
 
 type props = {
-    add: (airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) => void;
+    add: (addAirplaneParams: gatewayAddAirplaneParamsType) => void;
 }
 
 export function AddAirplane({ add }: props) {
@@ -18,12 +19,14 @@ export function AddAirplane({ add }: props) {
 
     function onClick() {
         add({
-            x,
-            y,
-            radius,
-            angle,
-            speed,
-            direction,
+            airplaneParams: {
+                x,
+                y,
+                radius,
+                angle,
+                speed,
+                direction,
+            }
         });
     }
 

@@ -1,2 +1,2 @@
 export { addAirplaneService } from './addAirplaneService';
-export type { addAirplaneParamsType } from './addAirplaneParams';
+export type { airplaneParamsType, addAirplaneParamsType } from './addAirplaneParams';

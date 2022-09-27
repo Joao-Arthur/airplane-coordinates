@@ -2,7 +2,7 @@ import { loggerRepositoryType } from '../../../logger/ports/loggerRepository';
 import { uniqueIdentifierType } from '../../../uniqueIdentifier/ports/uniqueIdentifier';
 import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 
-type airplaneParamsType = {
+export type airplaneParamsType = {
     readonly x: number;
     readonly y: number;
     readonly radius: number;

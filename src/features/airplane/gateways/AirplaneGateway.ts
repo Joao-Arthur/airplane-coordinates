@@ -4,20 +4,55 @@ import { uniqueIdentifierBig } from '../../uniqueIdentifier/adapters/uniqueIdent
 import { uniqueIdentifierImplementation } from '../../uniqueIdentifier/adapters/uniqueIdentifierImplementation';
 import { AirplaneRepositoryImplementationProxy } from '../adapters/AirplaneRepositoryImplementationProxy';
 import { airplaneType } from '../models';
-import { addAirplaneService } from '../useCases/addAirplane';
+import { addAirplaneService, airplaneParamsType } from '../useCases/addAirplane';
 import { airplanesCloseToAirportService } from '../useCases/airplanesCloseToAirport';
 import { airplanesCloseToEachOtherService } from '../useCases/airplanesCloseToEachOther';
-import { airplanesInRouteOfCollisionService } from '../useCases/airplanesInRouteOfCollision/airplanesInRouteOfCollisionService';
+import { airplanesInRouteOfCollisionService } from '../useCases/airplanesInRouteOfCollision';
 import { rotateAirplaneCoordinatesService } from '../useCases/rotateAirplaneCoordinates';
 import { scalonateAirplaneCoordinatesService } from '../useCases/scalonateAirplaneCoordinates';
 import { translateAirplaneCoordinatesService } from '../useCases/translateAirplaneCoordinates';
+
+export type gatewayAddAirplaneParamsType = {
+    readonly airplaneParams: airplaneParamsType;
+};
+
+export type gatewayAirplanesCloseToAirportParamsType = {
+    readonly maxDistance: number;
+};
+
+export type gatewayAirplanesCloseToEachOtherParamsType = {
+    readonly maxDistance: number;
+};
+
+export type gatewayAirplanesInRouteOfCollisionParamsType = {
+    readonly maxTime: number;
+};
+
+export type gatewayRotateAirplaneCoordinatesParamsType = {
+    readonly selectedIds: readonly string[];
+    readonly angle: number;
+    readonly centerOfRotationX: number;
+    readonly centerOfRotationY: number;
+};
+
+export type gatewayScalonateAirplaneCoordinatesParamsType = {
+    readonly selectedIds: readonly string[];
+    readonly x: number;
+    readonly y: number;
+};
+
+export type gatewayTranslateAirplaneCoordinatesParamsType = {
+    readonly selectedIds: readonly string[];
+    readonly x: number;
+    readonly y: number;
+};
 
 export class AirplaneGateway {
     private readonly logger = new LoggerImplementationProxy(uniqueIdentifierBig);
     private readonly airplaneRepository = new AirplaneRepositoryImplementationProxy();
     private readonly uniqueIdentifier = uniqueIdentifierImplementation;
 
-    public addAirplane(airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) {
+    public addAirplane({ airplaneParams }: gatewayAddAirplaneParamsType) {
         addAirplaneService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
@@ -26,7 +61,7 @@ export class AirplaneGateway {
         });
     }
 
-    public getAirplanesCloseToAirport(maxDistance: number) {
+    public getAirplanesCloseToAirport({ maxDistance }: gatewayAirplanesCloseToAirportParamsType) {
         airplanesCloseToAirportService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
@@ -34,7 +69,7 @@ export class AirplaneGateway {
         });
     }
 
-    public getAirplanesCloseToEachOther(maxDistance: number) {
+    public getAirplanesCloseToEachOther({ maxDistance }: gatewayAirplanesCloseToEachOtherParamsType) {
         airplanesCloseToEachOtherService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
@@ -42,7 +77,7 @@ export class AirplaneGateway {
         });
     }
 
-    public getAirplanesInRouteOfCollision(maxTime: number) {
+    public getAirplanesInRouteOfCollision({ maxTime }: gatewayAirplanesInRouteOfCollisionParamsType) {
         airplanesInRouteOfCollisionService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
@@ -50,12 +85,12 @@ export class AirplaneGateway {
         });
     }
 
-    public rotateAirplanesCoordinates(
-        selectedIds: readonly string[],
-        angle: number,
-        centerOfRotationX: number,
-        centerOfRotationY: number,
-    ) {
+    public rotateAirplanesCoordinates({
+        selectedIds,
+        angle,
+        centerOfRotationX,
+        centerOfRotationY,
+    }: gatewayRotateAirplaneCoordinatesParamsType) {
         rotateAirplaneCoordinatesService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
@@ -66,11 +101,11 @@ export class AirplaneGateway {
         });
     }
 
-    public scalonateAirplanesCoordinates(
-        selectedIds: readonly string[],
-        x: number,
-        y: number,
-    ) {
+    public scalonateAirplanesCoordinates({
+        selectedIds,
+        x,
+        y,
+    }: gatewayScalonateAirplaneCoordinatesParamsType) {
         scalonateAirplaneCoordinatesService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
@@ -80,11 +115,11 @@ export class AirplaneGateway {
         });
     }
 
-    public translateAirplanesCoordinates(
-        selectedIds: readonly string[],
-        x: number,
-        y: number,
-    ) {
+    public translateAirplanesCoordinates({
+        selectedIds,
+        x,
+        y,
+    }: gatewayTranslateAirplaneCoordinatesParamsType) {
         translateAirplaneCoordinatesService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,

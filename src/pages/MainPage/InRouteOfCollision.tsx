@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
+import { gatewayAirplanesInRouteOfCollisionParamsType } from '../../features/airplane/gateways';
 
 type props = {
-    getInRouteOfCollision: (maxTime: number) => void;
+    getInRouteOfCollision: (airplanesInRouteOfCollisionParams: gatewayAirplanesInRouteOfCollisionParamsType) => void;
 }
 
 export function InRouteOfCollision({ getInRouteOfCollision }: props) {
     const [maxTime, setMaxTime] = useState(0);
 
     function onClick() {
-        getInRouteOfCollision(maxTime);
+        getInRouteOfCollision({ maxTime });
     }
 
     return (

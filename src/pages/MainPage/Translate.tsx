@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
+import { gatewayTranslateAirplaneCoordinatesParamsType } from '../../features/airplane/gateways';
 
 type props = {
     selectedIds: readonly string[];
-    translateCoordinates: (
-        selectedIds: readonly string[],
-        x: number,
-        y: number,
-    ) => void;
+    translateCoordinates: (translateAirplaneCoordinatesParams: gatewayTranslateAirplaneCoordinatesParamsType) => void;
 }
 
 export function Translate({ selectedIds, translateCoordinates }: props) {
@@ -16,7 +13,7 @@ export function Translate({ selectedIds, translateCoordinates }: props) {
     const [y, setY] = useState(0);
 
     function onClick() {
-        translateCoordinates(selectedIds, x, y);
+        translateCoordinates({ selectedIds, x, y });
     }
 
     return (

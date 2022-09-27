@@ -1,6 +1,15 @@
 import { useRef, useState } from 'react';
 import { useDidMount } from 'rooks';
-import { AirplaneGateway } from '../../features/airplane/gateways';
+import {
+    AirplaneGateway,
+    gatewayAddAirplaneParamsType,
+    gatewayAirplanesCloseToAirportParamsType,
+    gatewayAirplanesCloseToEachOtherParamsType,
+    gatewayAirplanesInRouteOfCollisionParamsType,
+    gatewayRotateAirplaneCoordinatesParamsType,
+    gatewayScalonateAirplaneCoordinatesParamsType,
+    gatewayTranslateAirplaneCoordinatesParamsType
+} from '../../features/airplane/gateways';
 import { airplaneType } from '../../features/airplane/models';
 import { messageType } from '../../features/logger/model';
 
@@ -9,58 +18,32 @@ export function useAirplanes() {
     const [airplanes, setAirplanes] = useState<readonly airplaneType[]>([]);
     const [reports, setReports] = useState<readonly messageType[]>([]);
 
-    function add(airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) {
-        return airplaneGateway.current.addAirplane(airplaneParams);
+    function add(addAirplaneParams: gatewayAddAirplaneParamsType) {
+        return airplaneGateway.current.addAirplane(addAirplaneParams);
     }
 
-    function getCloseToAirport(maxDistance: number) {
-        return airplaneGateway.current.getAirplanesCloseToAirport(maxDistance);
+    function getCloseToAirport(airplanesCloseToAirportParams: gatewayAirplanesCloseToAirportParamsType) {
+        return airplaneGateway.current.getAirplanesCloseToAirport(airplanesCloseToAirportParams);
     }
 
-    function getCloseToEachOther(maxDistance: number) {
-        return airplaneGateway.current.getAirplanesCloseToEachOther(maxDistance);
+    function getCloseToEachOther(airplanesCloseToEachOtherParams: gatewayAirplanesCloseToEachOtherParamsType) {
+        return airplaneGateway.current.getAirplanesCloseToEachOther(airplanesCloseToEachOtherParams);
     }
 
-    function getInRouteOfCollision(maxTime: number) {
-        return airplaneGateway.current.getAirplanesInRouteOfCollision(maxTime);
+    function getInRouteOfCollision(airplanesInRouteOfCollisionParams: gatewayAirplanesInRouteOfCollisionParamsType) {
+        return airplaneGateway.current.getAirplanesInRouteOfCollision(airplanesInRouteOfCollisionParams);
     }
 
-    function rotateCoordinates(
-        selectedIds: readonly string[],
-        angle: number,
-        centerOfRotationX: number,
-        centerOfRotationY: number
-    ) {
-        return airplaneGateway.current.rotateAirplanesCoordinates(
-            selectedIds,
-            angle,
-            centerOfRotationX,
-            centerOfRotationY
-        );
+    function rotateCoordinates(rotateAirplaneCoordinatesParams: gatewayRotateAirplaneCoordinatesParamsType) {
+        return airplaneGateway.current.rotateAirplanesCoordinates(rotateAirplaneCoordinatesParams);
     }
 
-    function scalonateCoordinates(
-        selectedIds: readonly string[],
-        x: number,
-        y: number,
-    ) {
-        return airplaneGateway.current.scalonateAirplanesCoordinates(
-            selectedIds,
-            x,
-            y,
-        );
+    function scalonateCoordinates(scalonateAirplaneCoordinatesParams: gatewayScalonateAirplaneCoordinatesParamsType) {
+        return airplaneGateway.current.scalonateAirplanesCoordinates(scalonateAirplaneCoordinatesParams);
     }
 
-    function translateCoordinates(
-        selectedIds: readonly string[],
-        x: number,
-        y: number,
-    ) {
-        return airplaneGateway.current.translateAirplanesCoordinates(
-            selectedIds,
-            x,
-            y
-        );
+    function translateCoordinates(translateAirplaneCoordinatesParams: gatewayTranslateAirplaneCoordinatesParamsType) {
+        return airplaneGateway.current.translateAirplanesCoordinates(translateAirplaneCoordinatesParams);
     }
 
     function onLogUpdated(callback: (logs: readonly messageType[]) => void) {
