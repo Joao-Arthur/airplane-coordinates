@@ -1,10 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { useDidMount } from 'rooks';
 import { AirplaneGateway } from '../../features/airplane/gateways';
 import { airplaneType } from '../../features/airplane/models';
 import { messageType } from '../../features/logger/model';
 
 export function useAirplanes() {
     const airplaneGateway = useRef(new AirplaneGateway());
+    const [airplanes, setAirplanes] = useState<readonly airplaneType[]>([]);
+    const [reports, setReports] = useState<readonly messageType[]>([]);
 
     function add(airplaneParams: { x: number; y: number; radius: number; angle: number; speed: number; direction: number; }) {
         return airplaneGateway.current.addAirplane(airplaneParams);
@@ -68,6 +71,14 @@ export function useAirplanes() {
         airplaneGateway.current.onRepositoryUpdated(callback);
     }
 
+    useDidMount(() => {
+        onLogUpdated(setReports);
+    });
+
+    useDidMount(() => {
+        onRepositoryUpdated(setAirplanes);
+    });
+
     return {
         add,
         getCloseToAirport,
@@ -76,7 +87,7 @@ export function useAirplanes() {
         rotateCoordinates,
         scalonateCoordinates,
         translateCoordinates,
-        onLogUpdated,
-        onRepositoryUpdated
+        airplanes,
+        reports,
     };
 }

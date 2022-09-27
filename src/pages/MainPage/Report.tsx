@@ -1,17 +1,11 @@
 import { nanoid } from 'nanoid'
-import { useState } from 'react';
-import { useDidMount } from 'rooks';
 import { messageType } from '../../features/logger/model';
 
 type props = {
-    onLogUpdated: (callback: (logs: readonly messageType[]) => void) => void;
+    reports: readonly messageType[];
 }
 
-export function Report({ onLogUpdated }: props) {
-    const [reports, setReports] = useState<readonly messageType[]>([]);
-
-    useDidMount(() => { onLogUpdated(setReports); });
-
+export function Report({ reports }: props) {
     return (
         <div className='overflow-x-auto'>
             <table className='min-w-full text-sm divide-y-2 divide-gray-200'>
@@ -24,5 +18,5 @@ export function Report({ onLogUpdated }: props) {
                 </tbody>
             </table>
         </div >
-    )
+    );
 }

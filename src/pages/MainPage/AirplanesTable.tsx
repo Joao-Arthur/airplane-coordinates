@@ -1,19 +1,13 @@
-import { useState } from 'react';
-import { useDidMount } from 'rooks';
 import { airplaneType } from '../../features/airplane/models';
 
 type props = {
+    airplanes: readonly airplaneType[];
     selectedIds: readonly string[];
     selectId: (id: string) => void;
     unselectId: (id: string) => void;
-    onRepositoryUpdated: (callback: (airplanes: readonly airplaneType[]) => void) => void;
 }
 
-export function AirplanesTable({ onRepositoryUpdated, selectedIds, selectId, unselectId }: props) {
-    const [airplanes, setAirplanes] = useState<readonly airplaneType[]>([]);
-
-    useDidMount(() => { onRepositoryUpdated(setAirplanes); });
-
+export function AirplanesTable({ airplanes, selectedIds, selectId, unselectId }: props) {
     return (
         <div className='overflow-x-auto'>
             <table className='min-w-full text-sm divide-y-2 divide-gray-200'>

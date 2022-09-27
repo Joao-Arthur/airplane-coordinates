@@ -1,18 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDidMount } from 'rooks';
+import { useEffect, useRef } from 'react';
 import { airplaneType } from '../../features/airplane/models';
 import { CanvasRadarGateway } from '../../features/radar/gateway';
 
 type props = {
+    airplanes: readonly airplaneType[];
     dimensions: number;
-    onRepositoryUpdated: (callback: (airplanes: readonly airplaneType[]) => void) => void;
 }
 
-export function Radar({ dimensions, onRepositoryUpdated }: props) {
+export function Radar({ airplanes, dimensions }: props) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [airplanes, setAirplanes] = useState<readonly airplaneType[]>([]);
-
-    useDidMount(() => { onRepositoryUpdated(setAirplanes); });
 
     useEffect(() => {
         if (!canvasRef.current)

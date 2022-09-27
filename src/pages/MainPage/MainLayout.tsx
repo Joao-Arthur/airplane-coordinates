@@ -26,8 +26,8 @@ export function MainLayout() {
         rotateCoordinates,
         scalonateCoordinates,
         translateCoordinates,
-        onLogUpdated,
-        onRepositoryUpdated
+        airplanes,
+        reports,
     } = useAirplanes();
 
     function resize() {
@@ -87,15 +87,20 @@ export function MainLayout() {
             </div>
             <div className='flex flex-col w-1/4'>
                 <AirplanesTable
-                    onRepositoryUpdated={onRepositoryUpdated}
+                    airplanes={airplanes}
                     selectedIds={selectedIds}
                     selectId={handleSelect}
                     unselectId={handleUnselect}
                 />
-                <Report onLogUpdated={onLogUpdated} />
+                <Report
+                    reports={reports}
+                />
             </div>
             <div className='flex flex-col w-2/4' ref={radarContainer}>
-                <Radar dimensions={dimensions} onRepositoryUpdated={onRepositoryUpdated} />
+                <Radar
+                    dimensions={dimensions}
+                    airplanes={airplanes}
+                />
             </div>
         </>
     )
