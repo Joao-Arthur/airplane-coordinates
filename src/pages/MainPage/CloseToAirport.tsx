@@ -10,7 +10,7 @@ export function CloseToAirport({ getCloseToAirport }: props) {
     const [maxDistance, setMaxDistance] = useState(0);
 
     function onClick() {
-
+        getCloseToAirport(maxDistance);
     }
 
     return (

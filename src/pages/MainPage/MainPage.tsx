@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDidMount } from 'rooks';
 import { MainLayout } from './MainLayout';
 
-
 export function MainPage() {
     const [height, setHeight] = useState(window.innerHeight);
 

@@ -10,7 +10,7 @@ export function InRouteOfCollision({ getInRouteOfCollision }: props) {
     const [maxTime, setMaxTime] = useState(0);
 
     function onClick() {
-
+        getInRouteOfCollision(maxTime);
     }
 
     return (

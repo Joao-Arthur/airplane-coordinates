@@ -3,6 +3,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 type props = {
+    selectedIds: readonly string[];
     translateCoordinates: (
         selectedIds: readonly string[],
         x: number,
@@ -10,12 +11,12 @@ type props = {
     ) => void;
 }
 
-export function Translate({ translateCoordinates }: props) {
+export function Translate({ selectedIds, translateCoordinates }: props) {
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
 
     function onClick() {
-
+        translateCoordinates(selectedIds, x, y);
     }
 
     return (

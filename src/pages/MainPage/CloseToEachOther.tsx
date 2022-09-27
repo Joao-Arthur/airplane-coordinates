@@ -10,7 +10,7 @@ export function CloseToEachOther({ getCloseToEachOther }: props) {
     const [maxDistance, setMaxDistance] = useState(0);
 
     function onClick() {
-
+        getCloseToEachOther(maxDistance);
     }
 
     return (

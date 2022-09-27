@@ -3,6 +3,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 type props = {
+    selectedIds: readonly string[];
     scalonateCoordinates: (
         selectedIds: readonly string[],
         x: number,
@@ -10,12 +11,12 @@ type props = {
     ) => void;
 }
 
-export function Scalonate({ scalonateCoordinates }: props) {
+export function Scalonate({ selectedIds, scalonateCoordinates }: props) {
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
 
     function onClick() {
-
+        scalonateCoordinates(selectedIds, x, y);
     }
 
     return (

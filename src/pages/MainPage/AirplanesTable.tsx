@@ -1,13 +1,18 @@
+import { useState } from 'react';
+import { useDidMount } from 'rooks';
 import { airplaneType } from '../../features/airplane/models';
 
-export function AirplanesTable() {
+type props = {
+    selectedIds: readonly string[];
+    selectId: (id: string) => void;
+    unselectId: (id: string) => void;
+    onRepositoryUpdated: (callback: (airplanes: readonly airplaneType[]) => void) => void;
+}
 
-    const airplanes: airplaneType[] = [
-        { id: '1', x: 10, y: 20, speed: 1000, direction: 100 },
-        { id: '2', x: 1, y: -8, speed: 1000, direction: 100 },
-        { id: '3', x: -9, y: -1, speed: 1000, direction: 100 },
-        { id: '4', x: -3, y: 5, speed: 1000, direction: 100 },
-    ];
+export function AirplanesTable({ onRepositoryUpdated, selectedIds, selectId, unselectId }: props) {
+    const [airplanes, setAirplanes] = useState<readonly airplaneType[]>([]);
+
+    useDidMount(() => { onRepositoryUpdated(setAirplanes); });
 
     return (
         <div className='overflow-x-auto'>
@@ -26,7 +31,19 @@ export function AirplanesTable() {
                     {airplanes.map(airplane => (
                         <tr key={airplane.id}>
                             <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>
-                                <input type='checkbox' />
+                                <input
+                                    type='checkbox'
+                                    checked={selectedIds.includes(airplane.id)}
+                                    onChange={e => {
+                                        if (e.target.checked) {
+                                            selectId(airplane.id);
+                                        } else {
+                                            unselectId(airplane.id);
+                                        }
+                                    }}
+
+
+                                />
                             </td>
                             <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>{airplane.id}</td>
                             <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.x}</td>
