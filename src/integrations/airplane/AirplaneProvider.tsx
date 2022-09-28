@@ -1,12 +1,17 @@
 import { ReactNode, useRef } from "react";
 import { AirplaneGateway } from "../../features/airplane/gateways";
+import { AirplaneContext } from "./AirplaneContext";
 
 type props = {
     readonly children: ReactNode;
 }
 
 export function AirplaneProvider({ children }: props) {
-    (window as any).airplaneGateway = useRef(new AirplaneGateway()).current;
+    const airplaneGateway = useRef(new AirplaneGateway()).current;
 
-    return <>{children}</>
+    return (
+        <AirplaneContext.Provider value={{ airplaneGateway }}>
+            {children}
+        </AirplaneContext.Provider>
+    );
 }

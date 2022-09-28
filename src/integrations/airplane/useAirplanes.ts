@@ -1,7 +1,6 @@
-import { useRef } from 'react';
+import { useContext } from 'react';
 import { useDidMount } from 'rooks';
 import {
-    AirplaneGateway,
     gatewayAddAirplaneParamsType,
     gatewayAirplanesCloseToAirportParamsType,
     gatewayAirplanesCloseToEachOtherParamsType,
@@ -12,46 +11,47 @@ import {
 } from '../../features/airplane/gateways';
 import { airplaneType } from '../../features/airplane/models';
 import { messageType } from '../../features/logger/model';
+import { AirplaneContext } from './AirplaneContext';
 import { useAirplaneStore } from './airplanesStore';
 
 export function useAirplanes() {
-    const airplaneGateway = useRef((window as any).airplaneGateway as AirplaneGateway);
+    const { airplaneGateway } = useContext(AirplaneContext);
     const { setAirplanes, setReports } = useAirplaneStore(state => state);
 
     function add(addAirplaneParams: gatewayAddAirplaneParamsType) {
-        return airplaneGateway.current.addAirplane(addAirplaneParams);
+        return airplaneGateway.addAirplane(addAirplaneParams);
     }
 
     function getCloseToAirport(airplanesCloseToAirportParams: gatewayAirplanesCloseToAirportParamsType) {
-        return airplaneGateway.current.getAirplanesCloseToAirport(airplanesCloseToAirportParams);
+        return airplaneGateway.getAirplanesCloseToAirport(airplanesCloseToAirportParams);
     }
 
     function getCloseToEachOther(airplanesCloseToEachOtherParams: gatewayAirplanesCloseToEachOtherParamsType) {
-        return airplaneGateway.current.getAirplanesCloseToEachOther(airplanesCloseToEachOtherParams);
+        return airplaneGateway.getAirplanesCloseToEachOther(airplanesCloseToEachOtherParams);
     }
 
     function getInRouteOfCollision(airplanesInRouteOfCollisionParams: gatewayAirplanesInRouteOfCollisionParamsType) {
-        return airplaneGateway.current.getAirplanesInRouteOfCollision(airplanesInRouteOfCollisionParams);
+        return airplaneGateway.getAirplanesInRouteOfCollision(airplanesInRouteOfCollisionParams);
     }
 
     function rotateCoordinates(rotateAirplaneCoordinatesParams: gatewayRotateAirplaneCoordinatesParamsType) {
-        return airplaneGateway.current.rotateAirplanesCoordinates(rotateAirplaneCoordinatesParams);
+        return airplaneGateway.rotateAirplanesCoordinates(rotateAirplaneCoordinatesParams);
     }
 
     function scalonateCoordinates(scalonateAirplaneCoordinatesParams: gatewayScalonateAirplaneCoordinatesParamsType) {
-        return airplaneGateway.current.scalonateAirplanesCoordinates(scalonateAirplaneCoordinatesParams);
+        return airplaneGateway.scalonateAirplanesCoordinates(scalonateAirplaneCoordinatesParams);
     }
 
     function translateCoordinates(translateAirplaneCoordinatesParams: gatewayTranslateAirplaneCoordinatesParamsType) {
-        return airplaneGateway.current.translateAirplanesCoordinates(translateAirplaneCoordinatesParams);
+        return airplaneGateway.translateAirplanesCoordinates(translateAirplaneCoordinatesParams);
     }
 
     function onLogUpdated(callback: (logs: readonly messageType[]) => void) {
-        airplaneGateway.current.onLogUpdated(callback);
+        airplaneGateway.onLogUpdated(callback);
     }
 
     function onRepositoryUpdated(callback: (airplanes: readonly airplaneType[]) => void) {
-        airplaneGateway.current.onRepositoryUpdated(callback);
+        airplaneGateway.onRepositoryUpdated(callback);
     }
 
     useDidMount(() => {
