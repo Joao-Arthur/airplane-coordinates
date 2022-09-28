@@ -12,7 +12,7 @@ export function AddAirplane() {
     const [angle, setAngle] = useState(0);
     const [speed, setSpeed] = useState(0);
     const [direction, setDirection] = useState(0);
-    const [coordinatesType, setCoordinatesType] = useState('cartesian');
+    const [coordinatesType, setCoordinatesType] = useState<'cartesian' | 'polar'>('cartesian');
 
     function onClick() {
         add({
@@ -40,7 +40,7 @@ export function AddAirplane() {
                     { name: 'cartesian', label: 'Cartesianas' },
                 ]}
                 value={coordinatesType}
-                onChange={setCoordinatesType}
+                onChange={newValue => setCoordinatesType(newValue as 'cartesian' | 'polar')}
             />
             {coordinatesType === 'cartesian' ? (
                 <>
