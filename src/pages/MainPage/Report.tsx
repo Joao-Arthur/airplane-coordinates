@@ -1,11 +1,9 @@
 import { nanoid } from 'nanoid'
-import { messageType } from '../../features/logger/model';
+import { useAirplaneStore } from './airplanesStore';
 
-type props = {
-    reports: readonly messageType[];
-}
+export function Report() {
+    const reports = useAirplaneStore(state => state.reports);
 
-export function Report({ reports }: props) {
     return (
         <div className='overflow-x-auto'>
             <table className='min-w-full text-sm divide-y-2 divide-gray-200'>

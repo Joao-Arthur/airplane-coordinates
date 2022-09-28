@@ -1,10 +1,10 @@
 import { ChangeEvent } from 'react';
 
 type props = {
-    title: string;
-    name: string;
-    value: number;
-    onChange: (newValue: number) => void;
+    readonly title: string;
+    readonly name: string;
+    readonly value: number;
+    readonly onChange: (newValue: number) => void;
 }
 
 export function Input({ title, name, value, onChange }: props) {

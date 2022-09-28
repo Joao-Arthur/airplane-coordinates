@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
-import { airplaneType } from '../../features/airplane/models';
 import { CanvasRadarGateway } from '../../features/radar/gateway';
+import { useAirplaneStore } from './airplanesStore';
 
 type props = {
-    airplanes: readonly airplaneType[];
-    dimensions: number;
+    readonly dimensions: number;
 }
 
-export function Radar({ airplanes, dimensions }: props) {
+export function Radar({ dimensions }: props) {
+    const airplanes = useAirplaneStore(state => state.airplanes);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {

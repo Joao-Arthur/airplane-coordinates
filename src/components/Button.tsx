@@ -1,6 +1,6 @@
 type props = {
-    title: string;
-    onClick: () => void;
+    readonly title: string;
+    readonly onClick: () => void;
 }
 
 export function Button({ title, onClick }: props) {

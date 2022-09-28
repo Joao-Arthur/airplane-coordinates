@@ -1,11 +1,13 @@
 import { ReactNode, useState } from 'react';
 import classnames from 'classnames';
 
+type tabType = {
+    readonly title: string;
+    readonly comp: ReactNode;
+}
+
 type props = {
-    tabs: {
-        title: string;
-        comp: ReactNode;
-    }[];
+    readonly tabs: readonly tabType[];
 }
 
 export function Tab({ tabs }: props) {

@@ -4,7 +4,7 @@ import { Input } from '../../components/Input';
 import { gatewayAirplanesCloseToAirportParamsType } from '../../features/airplane/gateways';
 
 type props = {
-    getCloseToAirport: (airplanesCloseToAirportParams: gatewayAirplanesCloseToAirportParamsType) => void;
+    readonly getCloseToAirport: (airplanesCloseToAirportParams: gatewayAirplanesCloseToAirportParamsType) => void;
 }
 
 export function CloseToAirport({ getCloseToAirport }: props) {

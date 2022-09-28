@@ -1,13 +1,11 @@
-import { airplaneType } from '../../features/airplane/models';
+import { useAirplaneStore } from './airplanesStore';
 
-type props = {
-    airplanes: readonly airplaneType[];
-    selectedIds: readonly string[];
-    selectId: (id: string) => void;
-    unselectId: (id: string) => void;
-}
+export function AirplanesTable() {
+    const airplanes = useAirplaneStore(state => state.airplanes);
+    const selectedAirplanes = useAirplaneStore(state => state.selectedAirplanes);
+    const selectAirplane = useAirplaneStore(state => state.selectAirplane);
+    const unselectAirplane = useAirplaneStore(state => state.unselectAirplane);
 
-export function AirplanesTable({ airplanes, selectedIds, selectId, unselectId }: props) {
     return (
         <div className='overflow-x-auto'>
             <table className='min-w-full text-sm divide-y-2 divide-gray-200'>
@@ -27,16 +25,14 @@ export function AirplanesTable({ airplanes, selectedIds, selectId, unselectId }:
                             <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>
                                 <input
                                     type='checkbox'
-                                    checked={selectedIds.includes(airplane.id)}
+                                    checked={selectedAirplanes.includes(airplane.id)}
                                     onChange={e => {
                                         if (e.target.checked) {
-                                            selectId(airplane.id);
+                                            selectAirplane(airplane.id);
                                         } else {
-                                            unselectId(airplane.id);
+                                            unselectAirplane(airplane.id);
                                         }
                                     }}
-
-
                                 />
                             </td>
                             <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>{airplane.id}</td>

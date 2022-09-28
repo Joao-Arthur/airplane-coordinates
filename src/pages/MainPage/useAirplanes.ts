@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useDidMount } from 'rooks';
 import {
     AirplaneGateway,
@@ -12,11 +12,11 @@ import {
 } from '../../features/airplane/gateways';
 import { airplaneType } from '../../features/airplane/models';
 import { messageType } from '../../features/logger/model';
+import { useAirplaneStore } from './airplanesStore';
 
 export function useAirplanes() {
     const airplaneGateway = useRef(new AirplaneGateway());
-    const [airplanes, setAirplanes] = useState<readonly airplaneType[]>([]);
-    const [reports, setReports] = useState<readonly messageType[]>([]);
+    const { setAirplanes, setReports } = useAirplaneStore(state => state);
 
     function add(addAirplaneParams: gatewayAddAirplaneParamsType) {
         return airplaneGateway.current.addAirplane(addAirplaneParams);
@@ -70,7 +70,5 @@ export function useAirplanes() {
         rotateCoordinates,
         scalonateCoordinates,
         translateCoordinates,
-        airplanes,
-        reports,
-    };
+    } as const;
 }

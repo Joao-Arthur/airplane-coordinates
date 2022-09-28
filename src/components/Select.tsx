@@ -1,14 +1,16 @@
 import { ChangeEvent } from 'react';
 
+type optionType = {
+    readonly name: string;
+    readonly label: string;
+}
+
 type props = {
-    title: string;
-    name: string;
-    options: {
-        name: string;
-        label: string;
-    }[];
-    value: string;
-    onChange: (newValue: string) => void;
+    readonly title: string;
+    readonly name: string;
+    readonly options: readonly optionType[];
+    readonly value: string;
+    readonly onChange: (newValue: string) => void;
 }
 
 export function Select({ title, name, options, value, onChange }: props) {

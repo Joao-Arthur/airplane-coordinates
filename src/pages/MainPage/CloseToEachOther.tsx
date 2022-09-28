@@ -4,7 +4,7 @@ import { Input } from '../../components/Input';
 import { gatewayAirplanesCloseToEachOtherParamsType } from '../../features/airplane/gateways';
 
 type props = {
-    getCloseToEachOther: (airplanesCloseToEachOtherParams: gatewayAirplanesCloseToEachOtherParamsType) => void;
+    readonly getCloseToEachOther: (airplanesCloseToEachOtherParams: gatewayAirplanesCloseToEachOtherParamsType) => void;
 }
 
 export function CloseToEachOther({ getCloseToEachOther }: props) {

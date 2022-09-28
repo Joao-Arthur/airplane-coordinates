@@ -5,7 +5,7 @@ import { Select } from '../../components/Select';
 import { gatewayAddAirplaneParamsType } from '../../features/airplane/gateways';
 
 type props = {
-    add: (addAirplaneParams: gatewayAddAirplaneParamsType) => void;
+    readonly add: (addAirplaneParams: gatewayAddAirplaneParamsType) => void;
 }
 
 export function AddAirplane({ add }: props) {

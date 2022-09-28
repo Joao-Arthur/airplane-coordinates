@@ -17,7 +17,6 @@ import { useAirplanes } from './useAirplanes';
 export function MainLayout() {
     const radarContainer = useRef<HTMLDivElement | null>(null);
     const [dimensions, setDimensions] = useState(0);
-    const [selectedIds, setSelectedIds] = useState<readonly string[]>([]);
     const {
         add,
         getCloseToAirport,
@@ -26,8 +25,6 @@ export function MainLayout() {
         rotateCoordinates,
         scalonateCoordinates,
         translateCoordinates,
-        airplanes,
-        reports,
     } = useAirplanes();
 
     function resize() {
@@ -45,14 +42,6 @@ export function MainLayout() {
         return () => window.removeEventListener('resize', resize);
     });
 
-    function handleSelect(id: string) {
-        setSelectedIds(selectedIds.concat(id))
-    }
-
-    function handleUnselect(id: string) {
-        setSelectedIds(selectedIds.filter(sId => sId !== id))
-    }
-
     return (
         <>
             <div className='flex flex-col w-1/4'>
@@ -66,9 +55,9 @@ export function MainLayout() {
                             title: 'Transformar',
                             comp: (
                                 <div>
-                                    <Translate selectedIds={selectedIds} translateCoordinates={translateCoordinates} />
-                                    <Scalonate selectedIds={selectedIds} scalonateCoordinates={scalonateCoordinates} />
-                                    <Rotate selectedIds={selectedIds} rotateCoordinates={rotateCoordinates} />
+                                    <Translate translateCoordinates={translateCoordinates} />
+                                    <Scalonate scalonateCoordinates={scalonateCoordinates} />
+                                    <Rotate rotateCoordinates={rotateCoordinates} />
                                 </div>
                             )
                         },
@@ -86,21 +75,11 @@ export function MainLayout() {
                 />
             </div>
             <div className='flex flex-col w-1/4'>
-                <AirplanesTable
-                    airplanes={airplanes}
-                    selectedIds={selectedIds}
-                    selectId={handleSelect}
-                    unselectId={handleUnselect}
-                />
-                <Report
-                    reports={reports}
-                />
+                <AirplanesTable />
+                <Report />
             </div>
             <div className='flex flex-col w-2/4' ref={radarContainer}>
-                <Radar
-                    dimensions={dimensions}
-                    airplanes={airplanes}
-                />
+                <Radar dimensions={dimensions} />
             </div>
         </>
     )

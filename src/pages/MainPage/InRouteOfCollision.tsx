@@ -4,7 +4,7 @@ import { Input } from '../../components/Input';
 import { gatewayAirplanesInRouteOfCollisionParamsType } from '../../features/airplane/gateways';
 
 type props = {
-    getInRouteOfCollision: (airplanesInRouteOfCollisionParams: gatewayAirplanesInRouteOfCollisionParamsType) => void;
+    readonly getInRouteOfCollision: (airplanesInRouteOfCollisionParams: gatewayAirplanesInRouteOfCollisionParamsType) => void;
 }
 
 export function InRouteOfCollision({ getInRouteOfCollision }: props) {

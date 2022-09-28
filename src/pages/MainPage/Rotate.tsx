@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { gatewayRotateAirplaneCoordinatesParamsType } from '../../features/airplane/gateways';
+import { useAirplaneStore } from './airplanesStore';
 
 type props = {
-    selectedIds: readonly string[];
-    rotateCoordinates: (rotateAirplaneCoordinatesParams: gatewayRotateAirplaneCoordinatesParamsType) => void;
+    readonly rotateCoordinates: (rotateAirplaneCoordinatesParams: gatewayRotateAirplaneCoordinatesParamsType) => void;
 }
 
-export function Rotate({ selectedIds, rotateCoordinates }: props) {
+export function Rotate({ rotateCoordinates }: props) {
+    const selectedIds = useAirplaneStore(state => state.selectedAirplanes);
     const [angle, setAngle] = useState(0);
     const [centerOfRotationX, setCenterOfRotationX] = useState(0);
     const [centerOfRotationY, setCenterOfRotationY] = useState(0);
