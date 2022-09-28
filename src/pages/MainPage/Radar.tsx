@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { CanvasRadarGateway } from '../../features/radar/gateway';
-import { useAirplaneStore } from './airplanesStore';
+import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 
 type props = {
     readonly dimensions: number;

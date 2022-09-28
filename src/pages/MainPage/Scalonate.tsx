@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { gatewayScalonateAirplaneCoordinatesParamsType } from '../../features/airplane/gateways';
-import { useAirplaneStore } from './airplanesStore';
+import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
+import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-type props = {
-    readonly scalonateCoordinates: (scalonateAirplaneCoordinatesParams: gatewayScalonateAirplaneCoordinatesParamsType) => void;
-}
-
-export function Scalonate({ scalonateCoordinates }: props) {
+export function Scalonate() {
+    const { scalonateCoordinates } = useAirplanes();
     const selectedIds = useAirplaneStore(state => state.selectedAirplanes);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);

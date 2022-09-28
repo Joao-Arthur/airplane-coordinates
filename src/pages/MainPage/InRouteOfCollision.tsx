@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { gatewayAirplanesInRouteOfCollisionParamsType } from '../../features/airplane/gateways';
+import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-type props = {
-    readonly getInRouteOfCollision: (airplanesInRouteOfCollisionParams: gatewayAirplanesInRouteOfCollisionParamsType) => void;
-}
-
-export function InRouteOfCollision({ getInRouteOfCollision }: props) {
+export function InRouteOfCollision() {
+    const { getInRouteOfCollision } = useAirplanes();
     const [maxTime, setMaxTime] = useState(0);
 
     function onClick() {

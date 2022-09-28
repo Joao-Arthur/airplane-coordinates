@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { gatewayTranslateAirplaneCoordinatesParamsType } from '../../features/airplane/gateways';
-import { useAirplaneStore } from './airplanesStore';
+import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
+import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-type props = {
-    readonly translateCoordinates: (translateAirplaneCoordinatesParams: gatewayTranslateAirplaneCoordinatesParamsType) => void;
-}
-
-export function Translate({ translateCoordinates }: props) {
+export function Translate() {
+    const { translateCoordinates } = useAirplanes();
     const selectedIds = useAirplaneStore(state => state.selectedAirplanes);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);

@@ -1,11 +1,14 @@
 import { StrictMode } from 'react';
 import './index.css';
+import { AirplaneProvider } from './integrations/airplane/AirplaneProvider';
 import { MainPage } from './pages/MainPage/MainPage';
 
 export function App() {
     return (
         <StrictMode>
-            <MainPage />
+            <AirplaneProvider>
+                <MainPage />
+            </AirplaneProvider>
         </StrictMode>
     );
 }

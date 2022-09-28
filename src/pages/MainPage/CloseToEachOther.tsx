@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { gatewayAirplanesCloseToEachOtherParamsType } from '../../features/airplane/gateways';
+import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-type props = {
-    readonly getCloseToEachOther: (airplanesCloseToEachOtherParams: gatewayAirplanesCloseToEachOtherParamsType) => void;
-}
-
-export function CloseToEachOther({ getCloseToEachOther }: props) {
+export function CloseToEachOther() {
+    const { getCloseToEachOther } = useAirplanes();
     const [maxDistance, setMaxDistance] = useState(0);
 
     function onClick() {

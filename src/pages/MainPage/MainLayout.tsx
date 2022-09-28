@@ -12,20 +12,10 @@ import { Report } from './Report';
 import { Rotate } from './Rotate';
 import { Scalonate } from './Scalonate';
 import { Translate } from './Translate';
-import { useAirplanes } from './useAirplanes';
 
 export function MainLayout() {
     const radarContainer = useRef<HTMLDivElement | null>(null);
     const [dimensions, setDimensions] = useState(0);
-    const {
-        add,
-        getCloseToAirport,
-        getCloseToEachOther,
-        getInRouteOfCollision,
-        rotateCoordinates,
-        scalonateCoordinates,
-        translateCoordinates,
-    } = useAirplanes();
 
     function resize() {
         setDimensions(
@@ -49,15 +39,15 @@ export function MainLayout() {
                     tabs={[
                         {
                             title: 'Adicionar',
-                            comp: <AddAirplane add={add} />
+                            comp: <AddAirplane />
                         },
                         {
                             title: 'Transformar',
                             comp: (
                                 <div>
-                                    <Translate translateCoordinates={translateCoordinates} />
-                                    <Scalonate scalonateCoordinates={scalonateCoordinates} />
-                                    <Rotate rotateCoordinates={rotateCoordinates} />
+                                    <Translate />
+                                    <Scalonate />
+                                    <Rotate />
                                 </div>
                             )
                         },
@@ -65,9 +55,9 @@ export function MainLayout() {
                             title: 'Rastrear',
                             comp: (
                                 <div>
-                                    <CloseToAirport getCloseToAirport={getCloseToAirport} />
-                                    <CloseToEachOther getCloseToEachOther={getCloseToEachOther} />
-                                    <InRouteOfCollision getInRouteOfCollision={getInRouteOfCollision} />
+                                    <CloseToAirport />
+                                    <CloseToEachOther />
+                                    <InRouteOfCollision />
                                 </div>
                             )
                         },

@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { useAirplaneStore } from './airplanesStore';
+import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 
 export function Report() {
     const reports = useAirplaneStore(state => state.reports);

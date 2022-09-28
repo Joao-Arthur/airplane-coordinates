@@ -19,7 +19,9 @@ export function MainPage() {
             style={{ height }}
             className='flex flex-col dark:bg-dark-light transition-colors duration-500 overflow-auto'
         >
-            <main className='flex h-full'><MainLayout /></main>
+            <main className='flex h-full'>
+                <MainLayout />
+            </main>
         </div>
     )
 }

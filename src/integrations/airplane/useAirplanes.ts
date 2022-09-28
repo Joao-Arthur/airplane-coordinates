@@ -15,7 +15,7 @@ import { messageType } from '../../features/logger/model';
 import { useAirplaneStore } from './airplanesStore';
 
 export function useAirplanes() {
-    const airplaneGateway = useRef(new AirplaneGateway());
+    const airplaneGateway = useRef((window as any).airplaneGateway as AirplaneGateway);
     const { setAirplanes, setReports } = useAirplaneStore(state => state);
 
     function add(addAirplaneParams: gatewayAddAirplaneParamsType) {

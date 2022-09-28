@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { gatewayAirplanesCloseToAirportParamsType } from '../../features/airplane/gateways';
+import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-type props = {
-    readonly getCloseToAirport: (airplanesCloseToAirportParams: gatewayAirplanesCloseToAirportParamsType) => void;
-}
-
-export function CloseToAirport({ getCloseToAirport }: props) {
+export function CloseToAirport() {
+    const { getCloseToAirport } = useAirplanes();
     const [maxDistance, setMaxDistance] = useState(0);
 
     function onClick() {

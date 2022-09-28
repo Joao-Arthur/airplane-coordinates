@@ -2,13 +2,10 @@ import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
-import { gatewayAddAirplaneParamsType } from '../../features/airplane/gateways';
+import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-type props = {
-    readonly add: (addAirplaneParams: gatewayAddAirplaneParamsType) => void;
-}
-
-export function AddAirplane({ add }: props) {
+export function AddAirplane() {
+    const { add } = useAirplanes();
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
     const [radius, setRadius] = useState(0);
