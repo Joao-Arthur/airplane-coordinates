@@ -17,12 +17,15 @@ export function AddAirplane() {
     function onClick() {
         add({
             airplaneParams: {
-                x,
-                y,
-                radius,
-                angle,
                 speed,
                 direction,
+                ...(coordinatesType === 'cartesian' ? {
+                    x,
+                    y,
+                } : {
+                    radius,
+                    angle,
+                })
             }
         });
     }

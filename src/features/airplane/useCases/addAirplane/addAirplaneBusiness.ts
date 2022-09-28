@@ -1,40 +1,24 @@
 import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { airplaneType } from '../../models';
+import { airplaneParamsType } from './addAirplaneParams';
 import { InvalidAirplaneError } from './InvalidAirplaneError';
 
-type paramsType = {
+type paramsType = airplaneParamsType & {
     readonly id: string;
-    readonly x?: number;
-    readonly y?: number;
-    readonly radius?: number;
-    readonly angle?: number;
-    readonly speed: number;
-    readonly direction: number;
 };
 
-export function addAirplaneBusiness({
-    id,
-    x,
-    y,
-    radius,
-    angle,
-    speed,
-    direction,
-}: paramsType): airplaneType {
-    if (typeof x === 'number' && typeof y === 'number')
-        return {
-            id,
-            x,
-            y,
-            speed,
-            direction,
-        };
-    if (typeof radius === 'number' && typeof angle === 'number')
-        return {
-            id,
-            ...cartesianPlane.fromPolar({ radius, angle }),
-            speed,
-            direction,
-        };
-    throw new InvalidAirplaneError();
+export function addAirplaneBusiness(params: paramsType): airplaneType {
+    const isCartesian = 'x' in params && 'y' in params;
+    const isPolar = 'radius' in params && 'angle' in params;
+    if (!isCartesian && !isPolar)
+        throw new InvalidAirplaneError();
+    return {
+        id: params.id,
+        speed: params.speed,
+        direction: params.direction,
+        ...(isCartesian
+            ? { x: params.x, y: params.y }
+            : cartesianPlane.fromPolar({ radius: params.radius, angle: params.angle })
+        ),
+    };
 }

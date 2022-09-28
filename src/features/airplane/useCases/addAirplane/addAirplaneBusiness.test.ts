@@ -35,7 +35,7 @@ describe('addAirplaneBusiness', () => {
 
     it('should return a airplane with no coordinates', () => {
         expect(() => addAirplaneBusiness(
-            { id: '1', speed: 100, direction: 100, }
+            { id: '1', speed: 100, direction: 100, } as any
         )).toThrowError(
             InvalidAirplaneError
         );
