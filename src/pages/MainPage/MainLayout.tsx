@@ -64,12 +64,12 @@ export function MainLayout() {
                     ]}
                 />
             </div>
-            <div className='flex flex-col w-1/4'>
-                <AirplanesTable />
-                <Report />
-            </div>
             <div className='flex flex-col w-2/4' ref={radarContainer}>
                 <Radar dimensions={dimensions} />
+            </div>
+            <div className='flex flex-col w-1/4 flex-0 h-full'>
+                <AirplanesTable />
+                <Report />
             </div>
         </>
     )

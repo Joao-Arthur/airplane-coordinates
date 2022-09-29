@@ -7,7 +7,7 @@ export function AirplanesTable() {
     const unselectAirplane = useAirplaneStore(state => state.unselectAirplane);
 
     return (
-        <div className='overflow-x-auto'>
+        <div className='overflow-x-auto h-1/2'>
             <table className='min-w-full text-sm divide-y-2 divide-gray-200'>
                 <thead>
                     <tr>

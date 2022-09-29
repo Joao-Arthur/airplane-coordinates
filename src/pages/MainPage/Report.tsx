@@ -5,7 +5,7 @@ export function Report() {
     const reports = useAirplaneStore(state => state.reports);
 
     return (
-        <div className='overflow-x-auto'>
+        <div className='overflow-x-auto h-1/2'>
             <table className='min-w-full text-sm divide-y-2 divide-gray-200'>
                 <tbody className='divide-y divide-gray-200'>
                     {reports.map(report => (
