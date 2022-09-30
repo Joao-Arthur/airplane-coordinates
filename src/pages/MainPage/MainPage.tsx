@@ -23,5 +23,5 @@ export function MainPage() {
                 <MainLayout />
             </main>
         </div>
-    )
+    );
 }

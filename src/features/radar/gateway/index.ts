@@ -1,1 +1,1 @@
-export { CanvasRadarGateway } from './CanvasRadarGateway'
+export { CanvasRadarGateway } from './CanvasRadarGateway';

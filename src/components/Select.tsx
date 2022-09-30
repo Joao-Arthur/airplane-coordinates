@@ -37,5 +37,5 @@ export function Select({ title, name, options, value, onChange }: props) {
                 ))}
             </select>
         </>
-    )
+    );
 }

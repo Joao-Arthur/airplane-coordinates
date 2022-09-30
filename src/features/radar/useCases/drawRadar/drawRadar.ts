@@ -1,15 +1,15 @@
-import { airplaneType } from "../../../airplane/models";
-import { dimensionType } from "../../models/dimension";
-import { drawContextType } from "../../ports/drawContext";
+import { airplaneType } from '../../../airplane/models';
+import { dimensionType } from '../../models/dimension';
+import { drawContextType } from '../../ports/drawContext';
 
 export function drawRadar(drawContext: drawContextType, { x, y, width, height }: dimensionType, airplanes: readonly airplaneType[]) {
     clearWindow(drawContext, { x, y, width, height });
     drawRadarPoints(drawContext, { x, y, width, height });
     drawCenter(drawContext, { x, y, width, height });
-    drawAirplanes(drawContext, { x, y, width, height }, airplanes)
+    drawAirplanes(drawContext, { x, y, width, height }, airplanes);
 }
 
-function clearWindow(drawContext: drawContextType, { x, y, width, height }: dimensionType,) {
+function clearWindow(drawContext: drawContextType, { x, y, width, height }: dimensionType) {
     drawContext.drawSquare({ x, y, width, height }, '#ffffff');
 }
 
@@ -45,8 +45,8 @@ function drawAirplanes(drawContext: drawContextType, { x, y, width, height }: di
                 x: halfNumberOfParts * widthSize + airplane.x * widthSize - dimension / 2,
                 y: halfNumberOfParts * heightSize + airplane.y * heightSize - dimension / 2,
                 width: dimension,
-                height: dimension
+                height: dimension,
             },
-            '#ff0000'
+            '#ff0000',
         );
 }

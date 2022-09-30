@@ -15,5 +15,5 @@ describe('LoggerImplementation', () => {
             { content: 'this is a warning message', type: 'warn' },
             { content: 'this is a error message', type: 'info' },
         ]);
-    })
-})
+    });
+});

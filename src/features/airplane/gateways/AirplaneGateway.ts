@@ -62,7 +62,7 @@ export class AirplaneGateway {
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
             uniqueIdentifier: this.uniqueIdentifier,
-            airplaneParams
+            airplaneParams,
         });
     }
 
@@ -70,15 +70,15 @@ export class AirplaneGateway {
         deleteAirplaneService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
-            id
-        })
+            id,
+        });
     }
 
     public getAirplanesCloseToAirport({ maxDistance }: gatewayAirplanesCloseToAirportParamsType) {
         airplanesCloseToAirportService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
-            maxDistance
+            maxDistance,
         });
     }
 
@@ -86,7 +86,7 @@ export class AirplaneGateway {
         airplanesCloseToEachOtherService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
-            maxDistance
+            maxDistance,
         });
     }
 
@@ -94,7 +94,7 @@ export class AirplaneGateway {
         airplanesInRouteOfCollisionService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
-            maxTime
+            maxTime,
         });
     }
 
@@ -110,7 +110,7 @@ export class AirplaneGateway {
             selectedIds,
             angle,
             centerOfRotationX,
-            centerOfRotationY
+            centerOfRotationY,
         });
     }
 
@@ -124,7 +124,7 @@ export class AirplaneGateway {
             airplaneRepository: this.airplaneRepository,
             selectedIds,
             x,
-            y
+            y,
         });
     }
 
@@ -138,7 +138,7 @@ export class AirplaneGateway {
             airplaneRepository: this.airplaneRepository,
             selectedIds,
             x,
-            y
+            y,
         });
     }
 

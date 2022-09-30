@@ -7,7 +7,7 @@ export class CanvasRadarGateway {
     public drawRadar(
         context: CanvasRenderingContext2D,
         dimension: dimensionType,
-        airplanes: readonly airplaneType[]
+        airplanes: readonly airplaneType[],
     ) {
         drawRadar(new CanvasContextImplementation(context), dimension, airplanes);
     }

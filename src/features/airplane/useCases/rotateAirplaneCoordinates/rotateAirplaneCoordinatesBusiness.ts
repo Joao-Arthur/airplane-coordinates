@@ -27,12 +27,12 @@ export function rotateAirplaneCoordinatesBusiness({
             ...pipe(
                 point => polarPlane.fromCartesian(point),
                 point => polarPlane.rotate({ point, angle }),
-                point => cartesianPlane.fromPolar(point)
-            )({ x: airplane.x, y: airplane.y })
+                point => cartesianPlane.fromPolar(point),
+            )({ x: airplane.x, y: airplane.y }),
         }))
         .map(airplane => ({
             ...airplane,
             x: airplane.x + centerOfRotationX,
             y: airplane.y + centerOfRotationY,
-        }))
+        }));
 }

@@ -8,7 +8,7 @@ import {
     gatewayAirplanesInRouteOfCollisionParamsType,
     gatewayRotateAirplaneCoordinatesParamsType,
     gatewayScalonateAirplaneCoordinatesParamsType,
-    gatewayTranslateAirplaneCoordinatesParamsType
+    gatewayTranslateAirplaneCoordinatesParamsType,
 } from '../../features/airplane/gateways';
 import { airplaneType } from '../../features/airplane/models';
 import { messageType } from '../../features/logger/model';

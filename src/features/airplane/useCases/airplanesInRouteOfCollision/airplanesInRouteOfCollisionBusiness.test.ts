@@ -5,7 +5,7 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
     it('should return the airplanes in route of collision', () => {
         expect(airplanesInRouteOfCollisionBusiness({
             airplanes: [],
-            maxTime: 1000
+            maxTime: 1000,
         })).toEqual([]);
-    })
-})
+    });
+});

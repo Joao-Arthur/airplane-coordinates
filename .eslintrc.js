@@ -6,7 +6,7 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:react/recommended',
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -18,7 +18,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'react/jsx-filename-extension': ['error', {
-            extensions: ['.tsx']
+            extensions: ['.tsx'],
         }],
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
@@ -43,8 +43,9 @@ module.exports = {
             'after',
             {
                 overrides: {
-                    '?': 'before', ':': 'before'
-                }
+                    '?': 'before',
+                    ':': 'before',
+                },
             },
         ],
         'no-implicit-globals': 'error',
@@ -55,21 +56,25 @@ module.exports = {
         'object-curly-newline': ['error', {
             'ObjectExpression': {
                 multiline: true,
-                consistent: true
+                consistent: true,
             },
             'ObjectPattern': {
-                'multiline': true
+                multiline: true,
             },
             'ImportDeclaration': {
-                multiline: false, consistent: true
+                multiline: false,
+                consistent: true,
             },
             'ExportDeclaration': {
-                'multiline': true, 'minProperties': 0
-            }
+                multiline: true,
+                minProperties: 0,
+            },
         }],
         indent: ['error', 4],
         'linebreak-style': ['error', 'unix'],
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
-    }
+        'eol-last': ['error', 'always'],
+        'comma-dangle': ['error', 'always-multiline'],
+    },
 };

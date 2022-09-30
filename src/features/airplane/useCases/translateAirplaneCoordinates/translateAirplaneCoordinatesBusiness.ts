@@ -12,7 +12,7 @@ export function translateAirplaneCoordinatesBusiness({ airplanes, x, y }: params
         ...airplane,
         ...cartesianPlane.translate({
             point: { x: airplane.x, y: airplane.y },
-            factor: { x, y }
-        })
-    }))
+            factor: { x, y },
+        }),
+    }));
 } 

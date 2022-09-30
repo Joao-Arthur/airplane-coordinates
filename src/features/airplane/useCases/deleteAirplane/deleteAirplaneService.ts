@@ -1,10 +1,10 @@
-import { deleteAirplaneBusiness } from "./deleteAirplaneBusiness";
-import { deleteAirplaneParamsType } from "./deleteAirplaneParams";
+import { deleteAirplaneBusiness } from './deleteAirplaneBusiness';
+import { deleteAirplaneParamsType } from './deleteAirplaneParams';
 
 export function deleteAirplaneService({
     logger,
     airplaneRepository,
-    id
+    id,
 }: deleteAirplaneParamsType) {
     const airplanes = airplaneRepository.retrieve();
     try {

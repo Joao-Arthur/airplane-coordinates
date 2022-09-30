@@ -20,5 +20,5 @@ describe('rotateAirplaneCoordinatesBusiness', () => {
             { id: '3', x: 18, y: 4, direction: 100, speed: 100 },
             { id: '4', x: 18, y: 11, direction: 100, speed: 100 },
         ]);
-    })
-})
+    });
+});

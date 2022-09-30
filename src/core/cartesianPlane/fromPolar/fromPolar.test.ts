@@ -14,27 +14,27 @@ describe('fromPolar', () => {
         expect(fromPolar(
             { radius: 1, angle: 45 }),
         ).toEqual(
-            { x: 0.7071067812, y: 0.7071067812 }
+            { x: 0.7071067812, y: 0.7071067812 },
         );
         expect(fromPolar(
             { radius: 1, angle: 135 }),
         ).toEqual(
-            { x: -0.7071067812, y: 0.7071067812 }
+            { x: -0.7071067812, y: 0.7071067812 },
         );
         expect(fromPolar(
             { radius: 1, angle: 225 }),
         ).toEqual(
-            { x: -0.7071067812, y: -0.7071067812 }
+            { x: -0.7071067812, y: -0.7071067812 },
         );
         expect(fromPolar(
             { radius: 1, angle: 315 }),
         ).toEqual(
-            { x: 0.7071067812, y: -0.7071067812 }
+            { x: 0.7071067812, y: -0.7071067812 },
         );
         expect(fromPolar(
             { radius: 1, angle: 405 }),
         ).toEqual(
-            { x: 0.7071067812, y: 0.7071067812 }
+            { x: 0.7071067812, y: 0.7071067812 },
         );
     });
 

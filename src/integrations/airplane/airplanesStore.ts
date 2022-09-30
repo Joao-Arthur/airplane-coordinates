@@ -20,4 +20,4 @@ export const useAirplaneStore = create<state>(set => ({
     unselectAirplane: (id: string) => set(({ selectedAirplanes }) => ({ selectedAirplanes: selectedAirplanes.filter(selected => selected !== id) })),
     reports: [],
     setReports: (reports: readonly messageType[]) => set(() => ({ reports })),
-}))
+}));

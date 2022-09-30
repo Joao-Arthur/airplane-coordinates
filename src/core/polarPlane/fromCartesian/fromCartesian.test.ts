@@ -12,29 +12,29 @@ describe('fromCartesian', () => {
 
     it('should transform the point inbetween the four axis', () => {
         expect(fromCartesian(
-            { x: 0.70710678118655, y: 0.70710678118655 }
+            { x: 0.70710678118655, y: 0.70710678118655 },
         )).toEqual(
             { radius: 1, angle: 45 },
         );
         expect(fromCartesian(
-            { x: -0.70710678118655, y: 0.70710678118655 }
+            { x: -0.70710678118655, y: 0.70710678118655 },
         )).toEqual(
-            { radius: 1, angle: 135 }
+            { radius: 1, angle: 135 },
         );
         expect(fromCartesian(
-            { x: -0.70710678118655, y: -0.70710678118655 }
+            { x: -0.70710678118655, y: -0.70710678118655 },
         )).toEqual(
-            { radius: 1, angle: 225 }
+            { radius: 1, angle: 225 },
         );
         expect(fromCartesian(
-            { x: 0.70710678118655, y: -0.70710678118655 }
+            { x: 0.70710678118655, y: -0.70710678118655 },
         )).toEqual(
-            { radius: 1, angle: 315 }
+            { radius: 1, angle: 315 },
         );
         expect(fromCartesian(
-            { x: 0.70710678118655, y: 0.70710678118655 }
+            { x: 0.70710678118655, y: 0.70710678118655 },
         )).toEqual(
-            { radius: 1, angle: 45 }
+            { radius: 1, angle: 45 },
         );
     });
 });

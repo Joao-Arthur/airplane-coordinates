@@ -12,7 +12,7 @@ export function addAirplaneService({
         const airplaneToSave = addAirplaneBusiness({
             ...airplaneParams,
             id: uniqueIdentifier(),
-            numberOfAirplanes
+            numberOfAirplanes,
         });
         airplaneRepository.add(airplaneToSave);
     } catch (error) {

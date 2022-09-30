@@ -25,8 +25,8 @@ export function AddAirplane() {
                 } : {
                     radius,
                     angle,
-                })
-            }
+                }),
+            },
         });
     }
 

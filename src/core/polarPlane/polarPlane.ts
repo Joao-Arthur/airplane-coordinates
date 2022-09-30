@@ -3,5 +3,5 @@ import { rotate } from './rotate';
 
 export const polarPlane = {
     fromCartesian,
-    rotate
+    rotate,
 } as const;

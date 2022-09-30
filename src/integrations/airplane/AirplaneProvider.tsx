@@ -1,6 +1,6 @@
-import { ReactNode, useRef } from "react";
-import { AirplaneGateway } from "../../features/airplane/gateways";
-import { AirplaneContext } from "./AirplaneContext";
+import { ReactNode, useRef } from 'react';
+import { AirplaneGateway } from '../../features/airplane/gateways';
+import { AirplaneContext } from './AirplaneContext';
 
 type props = {
     readonly children: ReactNode;

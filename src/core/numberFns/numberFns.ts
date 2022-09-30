@@ -5,5 +5,5 @@ import { fix } from './fix';
 export const numberFns = {
     toScale,
     normalizeZero,
-    fix
+    fix,
 } as const;

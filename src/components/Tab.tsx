@@ -12,8 +12,7 @@ type props = {
 
 export function Tab({ tabs }: props) {
     const [active, setActive] = useState(tabs[0].title);
-
-    const current = tabs.find(tab => tab.title === active)!.comp;
+    const current = tabs.find(tab => tab.title === active);
 
     return (
         <>
@@ -23,7 +22,7 @@ export function Tab({ tabs }: props) {
                         key={title}
                         className={classnames(
                             'p-4 -mb-px border-b text-cyan-500 cursor-pointer',
-                            title === active ? 'border-current' : 'border-transparent'
+                            title === active ? 'border-current' : 'border-transparent',
                         )}
                         onClick={() => setActive(title)}
                     >
@@ -31,7 +30,7 @@ export function Tab({ tabs }: props) {
                     </div>
                 ))}
             </div>
-            {current}
+            {current || null}
         </>
     );
 }

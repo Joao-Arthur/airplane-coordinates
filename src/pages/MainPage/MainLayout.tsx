@@ -22,7 +22,7 @@ export function MainLayout() {
             Math.min(
                 (radarContainer?.current?.clientWidth || 0) - 50,
                 (radarContainer?.current?.clientHeight || 0) - 50,
-            )
+            ),
         );
     }
 
@@ -39,7 +39,7 @@ export function MainLayout() {
                     tabs={[
                         {
                             title: 'Adicionar',
-                            comp: <AddAirplane />
+                            comp: <AddAirplane />,
                         },
                         {
                             title: 'Transformar',
@@ -49,7 +49,7 @@ export function MainLayout() {
                                     <Scalonate />
                                     <Rotate />
                                 </div>
-                            )
+                            ),
                         },
                         {
                             title: 'Rastrear',
@@ -59,7 +59,7 @@ export function MainLayout() {
                                     <CloseToEachOther />
                                     <InRouteOfCollision />
                                 </div>
-                            )
+                            ),
                         },
                     ]}
                 />
@@ -72,5 +72,5 @@ export function MainLayout() {
                 <Report />
             </div>
         </>
-    )
+    );
 }

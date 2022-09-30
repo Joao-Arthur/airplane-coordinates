@@ -21,7 +21,7 @@ export function rotateAirplaneCoordinatesService({
         airplanes,
         angle,
         centerOfRotationX,
-        centerOfRotationY
+        centerOfRotationY,
     });
     for (const airplane of updatedAirplanes)
         airplaneRepository.update(airplane);

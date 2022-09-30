@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 
 export function Report() {

@@ -1,4 +1,4 @@
-import { airplaneType } from "../../models";
+import { airplaneType } from '../../models';
 
 export class AirplaneNotFoundError extends Error {
     constructor(id: airplaneType['id']) {

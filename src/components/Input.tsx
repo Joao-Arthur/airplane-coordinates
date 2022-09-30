@@ -28,5 +28,5 @@ export function Input({ title, name, value, onChange }: props) {
                 onChange={handleChange}
             />
         </>
-    )
+    );
 }

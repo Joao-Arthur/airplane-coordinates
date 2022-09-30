@@ -7,5 +7,5 @@ export const cartesianPlane = {
     distance,
     fromPolar,
     scalonate,
-    translate
+    translate,
 } as const;
