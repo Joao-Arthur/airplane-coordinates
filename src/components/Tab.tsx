@@ -30,7 +30,7 @@ export function Tab({ tabs }: props) {
                     </div>
                 ))}
             </div>
-            {current || null}
+            {current ? current.comp : null}
         </>
     );
 }
