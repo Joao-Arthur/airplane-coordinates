@@ -7,8 +7,8 @@ export function addAirplaneService({
     airplaneRepository,
     airplaneParams,
 }: addAirplaneParamsType) {
+    const numberOfAirplanes = airplaneRepository.retrieve().length;
     try {
-        const numberOfAirplanes = airplaneRepository.retrieve().length;
         const airplaneToSave = addAirplaneBusiness({
             ...airplaneParams,
             id: uniqueIdentifier(),

@@ -9,11 +9,12 @@ export function airplanesCloseToEachOtherService({
     logger.info('Calculando aviões mais próximos entre sí');
     const airplanes = airplaneRepository.retrieve();
     const closeAirplanes = airplanesCloseToEachOtherBusiness({ airplanes, maxDistance });
-    if (closeAirplanes.length)
-        for (const airplane of closeAirplanes)
-            logger.info(
-                `Avião #${airplane.a} e #${airplane.b} a ${airplane.distance}m de distância entre si`,
-            );
-    else
+    if (!closeAirplanes.length) {
         logger.info('Nenhum avião encontrado nessa distância.');
+        return;
+    }
+    for (const airplane of closeAirplanes)
+        logger.info(
+            `Avião "${airplane.a}" e "${airplane.b}" a ${airplane.distance}m de distância entre si`,
+        );
 }
