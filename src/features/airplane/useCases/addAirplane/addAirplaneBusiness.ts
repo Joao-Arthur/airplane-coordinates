@@ -2,9 +2,11 @@ import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { airplaneType } from '../../models';
 import { airplaneParamsType } from './addAirplaneParams';
 import { InvalidAirplaneError } from './InvalidAirplaneError';
+import { MaxNumberOfAirplanesExceededError } from './MaxNumberOfAirplanesExceededError';
 
 type paramsType = airplaneParamsType & {
     readonly id: string;
+    readonly numberOfAirplanes: number;
 };
 
 export function addAirplaneBusiness(params: paramsType): airplaneType {
@@ -12,6 +14,8 @@ export function addAirplaneBusiness(params: paramsType): airplaneType {
     const isPolar = 'radius' in params && 'angle' in params;
     if (!isCartesian && !isPolar)
         throw new InvalidAirplaneError();
+    if (params.numberOfAirplanes + 1 > 10)
+        throw new MaxNumberOfAirplanesExceededError();
     return {
         id: params.id,
         speed: params.speed,

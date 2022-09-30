@@ -7,14 +7,14 @@ export function addAirplaneService({
     airplaneRepository,
     airplaneParams,
 }: addAirplaneParamsType) {
-    logger.info('Adicionando avião');
     try {
+        const numberOfAirplanes = airplaneRepository.retrieve().length;
         const airplaneToSave = addAirplaneBusiness({
             ...airplaneParams,
             id: uniqueIdentifier(),
+            numberOfAirplanes
         });
         airplaneRepository.add(airplaneToSave);
-        logger.success('Avião adicionado com sucesso');
     } catch (error) {
         if (error instanceof Error)
             logger.error(`Erro ao adicionar avião: ${error.message}`);
