@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useDidMount } from 'rooks';
 import {
     gatewayAddAirplaneParamsType,
+    gatewayDeleteAirplaneParamsType,
     gatewayAirplanesCloseToAirportParamsType,
     gatewayAirplanesCloseToEachOtherParamsType,
     gatewayAirplanesInRouteOfCollisionParamsType,
@@ -20,6 +21,10 @@ export function useAirplanes() {
 
     function add(addAirplaneParams: gatewayAddAirplaneParamsType) {
         return airplaneGateway.addAirplane(addAirplaneParams);
+    }
+
+    function deleteAiplane(deleteAirplaneParams: gatewayDeleteAirplaneParamsType) {
+        return airplaneGateway.deleteAirplane(deleteAirplaneParams);
     }
 
     function getCloseToAirport(airplanesCloseToAirportParams: gatewayAirplanesCloseToAirportParamsType) {
@@ -64,6 +69,7 @@ export function useAirplanes() {
 
     return {
         add,
+        deleteAiplane,
         getCloseToAirport,
         getCloseToEachOther,
         getInRouteOfCollision,

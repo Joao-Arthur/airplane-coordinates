@@ -8,12 +8,17 @@ import { addAirplaneService, airplaneParamsType } from '../useCases/addAirplane'
 import { airplanesCloseToAirportService } from '../useCases/airplanesCloseToAirport';
 import { airplanesCloseToEachOtherService } from '../useCases/airplanesCloseToEachOther';
 import { airplanesInRouteOfCollisionService } from '../useCases/airplanesInRouteOfCollision';
+import { deleteAirplaneService } from '../useCases/deleteAirplane';
 import { rotateAirplaneCoordinatesService } from '../useCases/rotateAirplaneCoordinates';
 import { scalonateAirplaneCoordinatesService } from '../useCases/scalonateAirplaneCoordinates';
 import { translateAirplaneCoordinatesService } from '../useCases/translateAirplaneCoordinates';
 
 export type gatewayAddAirplaneParamsType = {
     readonly airplaneParams: airplaneParamsType;
+};
+
+export type gatewayDeleteAirplaneParamsType = {
+    readonly id: airplaneType['id'];
 };
 
 export type gatewayAirplanesCloseToAirportParamsType = {
@@ -59,6 +64,14 @@ export class AirplaneGateway {
             uniqueIdentifier: this.uniqueIdentifier,
             airplaneParams
         });
+    }
+
+    public deleteAirplane({ id }: gatewayDeleteAirplaneParamsType) {
+        deleteAirplaneService({
+            logger: this.logger,
+            airplaneRepository: this.airplaneRepository,
+            id
+        })
     }
 
     public getAirplanesCloseToAirport({ maxDistance }: gatewayAirplanesCloseToAirportParamsType) {
