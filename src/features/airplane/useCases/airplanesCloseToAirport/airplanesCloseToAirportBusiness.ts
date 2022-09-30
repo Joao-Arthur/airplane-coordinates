@@ -7,7 +7,7 @@ type paramsType = {
 };
 
 type returnType = {
-    readonly id: string;
+    readonly id: airplaneType['id'];
     readonly distanceFromAirport: number;
 }[];
 

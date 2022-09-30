@@ -3,13 +3,13 @@ import { airplaneType } from '../models';
 import { airplaneRepositoryType } from '../ports/airplaneRepository';
 
 export class AirplaneRepositoryImplementation implements airplaneRepositoryType {
-    private readonly airplanesDatabase = new Map<string, airplaneType>();
+    private readonly airplanesDatabase = new Map<airplaneType['id'], airplaneType>();
 
     public add(airplane: airplaneType) {
         this.airplanesDatabase.set(airplane.id, airplane);
     }
 
-    public remove(id: string) {
+    public remove(id: airplaneType['id']) {
         this.airplanesDatabase.delete(id);
     }
 

@@ -12,7 +12,7 @@ export class AirplaneRepositoryImplementationProxy implements airplaneRepository
         this.dispatch();
     }
 
-    public remove(id: string) {
+    public remove(id: airplaneType['id']) {
         this.repository.remove(id);
         this.dispatch();
     }

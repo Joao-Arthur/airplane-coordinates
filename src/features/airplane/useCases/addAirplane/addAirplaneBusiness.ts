@@ -5,7 +5,7 @@ import { InvalidAirplaneError } from './InvalidAirplaneError';
 import { MaxNumberOfAirplanesExceededError } from './MaxNumberOfAirplanesExceededError';
 
 type paramsType = airplaneParamsType & {
-    readonly id: string;
+    readonly id: airplaneType['id'];
     readonly numberOfAirplanes: number;
 };
 
