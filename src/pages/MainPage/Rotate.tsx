@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
+import { Form } from '../../components/Form';
 import { Input } from '../../components/Input';
 import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
@@ -16,11 +17,11 @@ export function Rotate() {
     }
 
     return (
-        <>
+        <Form name='Rotacionar'>
             <Input title='Ângulo' name='angle' value={angle} onChange={setAngle} />
             <Input title='centro de rotação X' name='centerOfRotationX' value={centerOfRotationX} onChange={setCenterOfRotationX} />
             <Input title='centro de rotação Y' name='centerOfRotationY' value={centerOfRotationY} onChange={setCenterOfRotationY} />
-            <Button title='Rotacionar' onClick={onClick} />
-        </>
+            <Button title='Executar' onClick={onClick} />
+        </Form>
     );
 }

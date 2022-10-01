@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
+import { Form } from '../../components/Form';
 import { Input } from '../../components/Input';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
@@ -12,9 +13,9 @@ export function CloseToEachOther() {
     }
 
     return (
-        <>
+        <Form name='Aviões próximos entre si'>
             <Input title='Distancia mínima' name='maxDistance' value={maxDistance} onChange={setMaxDistance} />
-            <Button title='Aviões próximos entre si' onClick={onClick} />
-        </>
+            <Button title='Calcular' onClick={onClick} />
+        </Form>
     );
 }

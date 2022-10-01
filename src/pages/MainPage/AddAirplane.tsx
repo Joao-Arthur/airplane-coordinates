@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
+import { Form } from '../../components/Form';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
@@ -31,7 +32,7 @@ export function AddAirplane() {
     }
 
     return (
-        <>
+        <Form name='Adicionar'>
             <Select
                 title='Coordenadas'
                 name='coordinates'
@@ -56,6 +57,6 @@ export function AddAirplane() {
             <Input title='Velocidade' name='velocidade' value={speed} onChange={setSpeed} />
             <Input title='Direção' name='direcao' value={direction} onChange={setDirection} />
             <Button title='Adicionar' onClick={onClick} />
-        </>
+        </Form>
     );
 }

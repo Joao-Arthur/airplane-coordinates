@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 type tabType = {
     readonly title: string;
@@ -20,7 +20,7 @@ export function Tab({ tabs }: props) {
                 {tabs.map(({ title }) => (
                     <div
                         key={title}
-                        className={classnames(
+                        className={classNames(
                             'p-4 -mb-px border-b text-cyan-500 cursor-pointer',
                             title === active ? 'border-current' : 'border-transparent',
                         )}
