@@ -19,7 +19,7 @@ export function Select({ title, name, options, value, onChange }: props) {
     }
 
     return (
-        <>
+        <div className='p-2'>
             <label
                 className='block text-xs font-medium text-gray-500'
                 htmlFor={name}
@@ -36,6 +36,6 @@ export function Select({ title, name, options, value, onChange }: props) {
                     <option key={name} value={name}>{label}</option>
                 ))}
             </select>
-        </>
+        </div>
     );
 }

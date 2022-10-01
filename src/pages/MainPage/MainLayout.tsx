@@ -4,6 +4,7 @@ import { useDidMount } from 'rooks';
 import { Tab } from '../../components/Tab';
 import { numberFns } from '../../core/numberFns';
 import { AddAirplane } from './AddAirplane';
+import { DeleteAirplane } from './DeleteAirplane';
 import { AirplanesTable } from './AirplanesTable';
 import { CloseToAirport } from './CloseToAirport';
 import { CloseToEachOther } from './CloseToEachOther';
@@ -39,12 +40,17 @@ export function MainLayout() {
 
     return (
         <>
-            <div className='flex flex-col w-1/4 pl-1'>
+            <div className='flex flex-col w-1/3 pl-1'>
                 <Tab
                     tabs={[
                         {
-                            title: 'Adicionar',
-                            comp: <AddAirplane />,
+                            title: 'Listagem',
+                            comp: (
+                                <div>
+                                    <AddAirplane />
+                                    <DeleteAirplane />
+                                </div>
+                            ),
                         },
                         {
                             title: 'Transformar',
@@ -69,10 +75,10 @@ export function MainLayout() {
                     ]}
                 />
             </div>
-            <div className='flex flex-col w-2/4' ref={radarContainer}>
+            <div className='flex flex-col w-1/3' ref={radarContainer}>
                 <Radar dimensions={dimensions} />
             </div>
-            <div className='flex flex-col w-1/4 flex-0 h-full'>
+            <div className='flex flex-col w-1/3 flex-0 h-full'>
                 <AirplanesTable />
                 <Report />
             </div>

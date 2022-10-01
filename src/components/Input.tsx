@@ -13,7 +13,7 @@ export function Input({ title, name, value, onChange }: props) {
     }
 
     return (
-        <>
+        <div className='px-2 min-w-0 w-full'>
             <label
                 className='block text-xs font-medium text-gray-500'
                 htmlFor={name}
@@ -27,6 +27,6 @@ export function Input({ title, name, value, onChange }: props) {
                 value={value}
                 onChange={handleChange}
             />
-        </>
+        </div>
     );
 }

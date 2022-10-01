@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
+import { Group } from '../../components/Group';
 import { Input } from '../../components/Input';
 import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
@@ -17,8 +18,10 @@ export function Scalonate() {
 
     return (
         <Form name='Escalonar'>
-            <Input title='X' name='x' value={x} onChange={setX} />
-            <Input title='Y' name='y' value={y} onChange={setY} />
+            <Group>
+                <Input title='X' name='x' value={x} onChange={setX} />
+                <Input title='Y' name='y' value={y} onChange={setY} />
+            </Group>
             <Button title='Executar' onClick={onClick} />
         </Form>
     );

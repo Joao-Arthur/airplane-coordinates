@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
+import { Group } from '../../components/Group';
 import { Input } from '../../components/Input';
 import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
@@ -18,9 +19,11 @@ export function Rotate() {
 
     return (
         <Form name='Rotacionar'>
-            <Input title='Ângulo' name='angle' value={angle} onChange={setAngle} />
-            <Input title='centro de rotação X' name='centerOfRotationX' value={centerOfRotationX} onChange={setCenterOfRotationX} />
-            <Input title='centro de rotação Y' name='centerOfRotationY' value={centerOfRotationY} onChange={setCenterOfRotationY} />
+            <Group>
+                <Input title='Ângulo' name='angle' value={angle} onChange={setAngle} />
+                <Input title='X' name='centerOfRotationX' value={centerOfRotationX} onChange={setCenterOfRotationX} />
+                <Input title='Y' name='centerOfRotationY' value={centerOfRotationY} onChange={setCenterOfRotationY} />
+            </Group>
             <Button title='Executar' onClick={onClick} />
         </Form>
     );

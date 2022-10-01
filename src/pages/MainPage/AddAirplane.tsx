@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
+import { Group } from '../../components/Group';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
@@ -43,19 +44,21 @@ export function AddAirplane() {
                 value={coordinatesType}
                 onChange={newValue => setCoordinatesType(newValue as 'cartesian' | 'polar')}
             />
-            {coordinatesType === 'cartesian' ? (
-                <>
-                    <Input title='X' name='x' value={x} onChange={setX} />
-                    <Input title='Y' name='y' value={y} onChange={setY} />
-                </>
-            ) : (
-                <>
-                    <Input title='Raio' name='raio' value={radius} onChange={setRadius} />
-                    <Input title='Ângulo' name='angulo' value={angle} onChange={setAngle} />
-                </>
-            )}
-            <Input title='Velocidade' name='velocidade' value={speed} onChange={setSpeed} />
-            <Input title='Direção' name='direcao' value={direction} onChange={setDirection} />
+            <Group>
+                {coordinatesType === 'cartesian' ? (
+                    <>
+                        <Input title='X' name='x' value={x} onChange={setX} />
+                        <Input title='Y' name='y' value={y} onChange={setY} />
+                    </>
+                ) : (
+                    <>
+                        <Input title='Raio' name='raio' value={radius} onChange={setRadius} />
+                        <Input title='Ângulo' name='angulo' value={angle} onChange={setAngle} />
+                    </>
+                )}
+                <Input title='Velocidade' name='velocidade' value={speed} onChange={setSpeed} />
+                <Input title='Direção' name='direcao' value={direction} onChange={setDirection} />
+            </Group>
             <Button title='Adicionar' onClick={onClick} />
         </Form>
     );

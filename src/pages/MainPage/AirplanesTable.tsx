@@ -27,11 +27,11 @@ export function AirplanesTable() {
                                     type='checkbox'
                                     checked={selectedAirplanes.includes(airplane.id)}
                                     onChange={e => {
-                                        if (e.target.checked) 
+                                        if (e.target.checked)
                                             selectAirplane(airplane.id);
-                                        else 
+                                        else
                                             unselectAirplane(airplane.id);
-                                        
+
                                     }}
                                 />
                             </td>
