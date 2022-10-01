@@ -5,5 +5,5 @@ import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 export type deleteAirplaneParamsType = {
     readonly logger: loggerRepositoryType;
     readonly airplaneRepository: airplaneRepositoryType;
-    readonly id: airplaneType['id'];
+    readonly selectedIds: readonly airplaneType['id'][];
 };

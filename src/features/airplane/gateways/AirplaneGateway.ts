@@ -34,20 +34,20 @@ export type gatewayAirplanesInRouteOfCollisionParamsType = {
 };
 
 export type gatewayRotateAirplaneCoordinatesParamsType = {
-    readonly selectedIds: readonly string[];
+    readonly selectedIds: readonly airplaneType['id'][];
     readonly angle: number;
     readonly centerOfRotationX: number;
     readonly centerOfRotationY: number;
 };
 
 export type gatewayScalonateAirplaneCoordinatesParamsType = {
-    readonly selectedIds: readonly string[];
+    readonly selectedIds: readonly airplaneType['id'][];
     readonly x: number;
     readonly y: number;
 };
 
 export type gatewayTranslateAirplaneCoordinatesParamsType = {
-    readonly selectedIds: readonly string[];
+    readonly selectedIds: readonly airplaneType['id'][];
     readonly x: number;
     readonly y: number;
 };

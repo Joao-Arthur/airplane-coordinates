@@ -6,6 +6,7 @@ import { MaxNumberOfAirplanesExceededError } from './MaxNumberOfAirplanesExceede
 
 type paramsType = airplaneParamsType & {
     readonly id: airplaneType['id'];
+    readonly maxNumberOfAirplanes: number;
     readonly numberOfAirplanes: number;
 };
 
@@ -14,8 +15,8 @@ export function addAirplaneBusiness(params: paramsType): airplaneType {
     const isPolar = 'radius' in params && 'angle' in params;
     if (!isCartesian && !isPolar)
         throw new InvalidAirplaneError();
-    if (params.numberOfAirplanes + 1 > 10)
-        throw new MaxNumberOfAirplanesExceededError();
+    if (params.numberOfAirplanes + 1 > params.maxNumberOfAirplanes)
+        throw new MaxNumberOfAirplanesExceededError(params.maxNumberOfAirplanes);
     return {
         id: params.id,
         speed: params.speed,

@@ -78,7 +78,7 @@ export function MainLayout() {
             <div className='flex flex-col w-1/3' ref={radarContainer}>
                 <Radar dimensions={dimensions} />
             </div>
-            <div className='flex flex-col w-1/3 flex-0 h-full'>
+            <div className='flex flex-col w-1/3 h-full'>
                 <AirplanesTable />
                 <Report />
             </div>

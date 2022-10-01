@@ -4,14 +4,16 @@ import { deleteAirplaneParamsType } from './deleteAirplaneParams';
 export function deleteAirplaneService({
     logger,
     airplaneRepository,
-    id,
+    selectedIds,
 }: deleteAirplaneParamsType) {
     const airplanes = airplaneRepository.retrieve();
     try {
-        deleteAirplaneBusiness({ airplanes, airplaneToDelete: id });
-        airplaneRepository.remove(id);
+        for (const id of selectedIds) {
+            deleteAirplaneBusiness({ airplanes, airplaneToDelete: id });
+            airplaneRepository.remove(id);
+        }
     } catch (error) {
         if (error instanceof Error)
-            logger.error(`Erro ao remover avião: ${error.message}`);
+            logger.error(error.message);
     }
 }

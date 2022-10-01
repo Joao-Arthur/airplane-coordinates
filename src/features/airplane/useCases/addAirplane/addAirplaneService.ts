@@ -13,10 +13,11 @@ export function addAirplaneService({
             ...airplaneParams,
             id: uniqueIdentifier(),
             numberOfAirplanes,
+            maxNumberOfAirplanes: 10,
         });
         airplaneRepository.add(airplaneToSave);
     } catch (error) {
         if (error instanceof Error)
-            logger.error(`Erro ao adicionar avião: ${error.message}`);
+            logger.error(error.message);
     }
 }
