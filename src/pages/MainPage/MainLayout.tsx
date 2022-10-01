@@ -2,6 +2,7 @@
 import { useRef, useState } from 'react';
 import { useDidMount } from 'rooks';
 import { Tab } from '../../components/Tab';
+import { numberFns } from '../../core/numberFns';
 import { AddAirplane } from './AddAirplane';
 import { AirplanesTable } from './AirplanesTable';
 import { CloseToAirport } from './CloseToAirport';
@@ -18,11 +19,15 @@ export function MainLayout() {
     const [dimensions, setDimensions] = useState(0);
 
     function resize() {
+        const width = radarContainer?.current?.clientWidth || 0;
+        const height = radarContainer?.current?.clientHeight || 0;
+
         setDimensions(
-            Math.min(
-                (radarContainer?.current?.clientWidth || 0) - 50,
-                (radarContainer?.current?.clientHeight || 0) - 50,
-            ),
+            numberFns.between({
+                value: Math.min(width, height) - 50,
+                min: 0,
+                max: Number.POSITIVE_INFINITY,
+            }),
         );
     }
 
