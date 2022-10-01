@@ -8,7 +8,6 @@ export function scalonateAirplaneCoordinatesService({
     x,
     y,
 }: scalonateAirplaneCoordinatesParamsType) {
-    logger.info('Aplicando escalonamento de coordenadas');
     if (!selectedIds.length) {
         logger.warn('É necessário selecionar ao menos um avião!');
         return;

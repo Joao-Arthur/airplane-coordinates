@@ -9,7 +9,6 @@ export function rotateAirplaneCoordinatesService({
     centerOfRotationX,
     centerOfRotationY,
 }: rotateAirplaneCoordinatesParamsType) {
-    logger.info('Aplicando rotação de coordenadas');
     if (!selectedIds.length) {
         logger.warn('É necessário selecionar ao menos um avião!');
         return;

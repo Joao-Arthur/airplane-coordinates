@@ -6,7 +6,6 @@ export function airplanesCloseToEachOtherService({
     airplaneRepository,
     maxDistance,
 }: airplanesCloseToEachOtherParamsType) {
-    logger.info('Calculando aviões mais próximos entre sí');
     const airplanes = airplaneRepository.retrieve();
     const closeAirplanes = airplanesCloseToEachOtherBusiness({ airplanes, maxDistance });
     if (!closeAirplanes.length) {

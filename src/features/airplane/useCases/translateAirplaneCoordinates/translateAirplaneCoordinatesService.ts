@@ -8,7 +8,6 @@ export function translateAirplaneCoordinatesService({
     x,
     y,
 }: translateAirplaneCoordinatesParamsType) {
-    logger.info('Aplicando transformação de coordenadas');
     if (!selectedIds.length) {
         logger.warn('É necessário selecionar ao menos um avião!');
         return;

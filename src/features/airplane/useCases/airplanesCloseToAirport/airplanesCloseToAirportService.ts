@@ -6,7 +6,6 @@ export function airplanesCloseToAirportService({
     airplaneRepository,
     maxDistance,
 }: airplanesCloseToAirportParamsType) {
-    logger.info('Calculando aviões mais próximos do aeroporto');
     const airplanes = airplaneRepository.retrieve();
     const closeAirplanes = airplanesCloseToAirportBusiness({ airplanes, maxDistance });
     if (!closeAirplanes.length) {

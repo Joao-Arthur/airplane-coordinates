@@ -6,7 +6,6 @@ export function airplanesInRouteOfCollisionService({
     airplaneRepository,
     maxTime,
 }: airplanesInRouteOfCollisionParamsType) {
-    logger.info('Calculando aviões em rota de colisão');
     const airplanes = airplaneRepository.retrieve();
     const airplanesInRouteOfCollision = airplanesInRouteOfCollisionBusiness({ airplanes, maxTime });
     if (!airplanesInRouteOfCollision.length) {
