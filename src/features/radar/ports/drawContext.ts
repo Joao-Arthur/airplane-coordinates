@@ -1,6 +1,6 @@
-import { dimensionType } from '../models/dimension';
+import { squareType } from '../../../core/cartesianPlane/square';
 
 export type drawContextType = {
-    readonly drawSquare: (dimension: dimensionType, color: string) => void;
-    readonly drawCircle: (dimension: dimensionType, color: string) => void;
+    readonly drawSquare: (dimension: squareType, color: string) => void;
+    readonly drawCircle: (dimension: squareType, color: string) => void;
 }

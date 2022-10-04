@@ -1,8 +1,8 @@
 import { airplaneType } from '../../../airplane/models';
-import { dimensionType } from '../../models/dimension';
+import { dimensionType } from '../../../../core/cartesianPlane/dimension';
 import { drawContextType } from '../../ports/drawContext';
 
-export function drawAirplanes(drawContext: drawContextType, { x, y, width, height }: dimensionType, airplanes: readonly airplaneType[]) {
+export function drawAirplanes(drawContext: drawContextType, { width, height }: dimensionType, airplanes: readonly airplaneType[]) {
     const numberOfParts = 20;
     const widthSize = width / numberOfParts;
     const heightSize = height / numberOfParts;

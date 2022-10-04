@@ -1,6 +1,6 @@
-import { dimensionType } from '../../models/dimension';
+import { dimensionType } from '../../../../core/cartesianPlane/dimension';
 import { drawContextType } from '../../ports/drawContext';
 
-export function clearWindow(drawContext: drawContextType, { x, y, width, height }: dimensionType) {
-    drawContext.drawSquare({ x, y, width, height }, '#ffffff');
+export function clearWindow(drawContext: drawContextType, { width, height }: dimensionType) {
+    drawContext.drawSquare({ x: 0, y: 0, width, height }, '#ffffff');
 }

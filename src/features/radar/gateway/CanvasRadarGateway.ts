@@ -1,5 +1,5 @@
 import { airplaneType } from '../../airplane/models';
-import { dimensionType } from '../models/dimension';
+import { dimensionType } from '../../../core/cartesianPlane/dimension';
 import { CanvasContextImplementation } from '../adapters/CanvasContextImplementation';
 import { drawRadar } from '../useCases/drawRadar';
 

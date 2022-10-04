@@ -1,4 +1,4 @@
-import { dimensionType } from '../../models/dimension';
+import { dimensionType } from '../../../../core/cartesianPlane/dimension';
 import { drawContextType } from '../../ports/drawContext';
 
 const airportSize = 8;

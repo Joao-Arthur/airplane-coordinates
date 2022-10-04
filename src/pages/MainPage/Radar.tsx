@@ -16,7 +16,7 @@ export function Radar({ dimensions }: props) {
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        new CanvasRadarGateway().drawRadar(context, { x: 0, y: 0, width: dimensions, height: dimensions }, airplanes);
+        new CanvasRadarGateway().drawRadar(context, { width: dimensions, height: dimensions }, airplanes);
     }, [dimensions, airplanes]);
 
     return (

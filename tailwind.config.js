@@ -12,33 +12,33 @@ module.exports = {
                     light: ' #6ab7ff',
                     DEFAULT: '#1e88e5',
                     dark: '#005cb2',
-                    darker: '#003482'
+                    darker: '#003482',
                 },
                 block: 'rgba(0, 0, 0, 0.1)',
                 pastel: {
-                    gray: '#f5f5f5'
+                    gray: '#f5f5f5',
                 },
                 dark: {
                     light: '#191919',
-                    DEFAULT: '#0d0d0d'
-                }
+                    DEFAULT: '#0d0d0d',
+                },
             },
             flex: {
                 '0-auto': '0 0 auto',
-                0: '0 1 0%'
+                0: '0 1 0%',
             },
             margin: {
-                '-100': '-100%'
+                '-100': '-100%',
             },
             width: {
                 '1/10': '10%',
                 100: '400px',
-                120: '500px'
+                120: '500px',
             },
             maxWidth: {
-                '4/5': '80%'
-            }
-        }
+                '4/5': '80%',
+            },
+        },
     },
     variants: {
         extend: {
@@ -46,8 +46,8 @@ module.exports = {
             border: ['active'],
             borderColor: ['active'],
             textColor: ['active'],
-            fontSize: ['active']
-        }
+            fontSize: ['active'],
+        },
     },
-    plugins: [require('@tailwindcss/forms')]
+    plugins: [require('@tailwindcss/forms')],
 };
