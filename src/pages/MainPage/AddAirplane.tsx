@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
 import { Group } from '../../components/Group';
@@ -6,17 +6,32 @@ import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-export function AddAirplane() {
-    const { add } = useAirplanes();
-    const [x, setX] = useState(0);
-    const [y, setY] = useState(0);
-    const [radius, setRadius] = useState(0);
-    const [angle, setAngle] = useState(0);
-    const [speed, setSpeed] = useState(0);
-    const [direction, setDirection] = useState(0);
-    const [coordinatesType, setCoordinatesType] = useState<'cartesian' | 'polar'>('cartesian');
+type fieldsType = {
+    readonly x: number;
+    readonly y: number;
+    readonly radius: number;
+    readonly angle: number;
+    readonly speed: number;
+    readonly direction: number;
+    readonly coordinatesType: 'cartesian' | 'polar';
+}
 
-    function onClick() {
+export function AddAirplane() {
+    const { register, handleSubmit, watch } = useForm<fieldsType>({
+        defaultValues: {
+            x: 0,
+            y: 0,
+            radius: 0,
+            angle: 0,
+            speed: 0,
+            direction: 0,
+            coordinatesType: 'cartesian',
+        },
+    });
+
+    const { add } = useAirplanes();
+
+    function onHandleSubmit({ speed, direction, coordinatesType, x, y, radius, angle }: fieldsType) {
         add({
             airplaneParams: {
                 speed,
@@ -33,33 +48,31 @@ export function AddAirplane() {
     }
 
     return (
-        <Form name='Adicionar'>
+        <Form name='Adicionar' onSubmit={handleSubmit(onHandleSubmit)}>
             <Select
+                {...register('coordinatesType')}
                 title='Coordenadas'
-                name='coordinates'
                 options={[
                     { name: 'polar', label: 'Polares' },
                     { name: 'cartesian', label: 'Cartesianas' },
                 ]}
-                value={coordinatesType}
-                onChange={newValue => setCoordinatesType(newValue as 'cartesian' | 'polar')}
             />
             <Group>
-                {coordinatesType === 'cartesian' ? (
+                {watch('coordinatesType') === 'cartesian' ? (
                     <>
-                        <Input title='X' name='x' value={x} onChange={setX} />
-                        <Input title='Y' name='y' value={y} onChange={setY} />
+                        <Input {...register('x', { valueAsNumber: true, required: true })} title='X' key='x' />
+                        <Input  {...register('y', { valueAsNumber: true, required: true })} title='Y' key='y' />
                     </>
                 ) : (
                     <>
-                        <Input title='Raio' name='raio' value={radius} onChange={setRadius} />
-                        <Input title='Ângulo' name='angulo' value={angle} onChange={setAngle} />
+                        <Input {...register('radius', { valueAsNumber: true, required: true })} title='Raio' key='radius' />
+                        <Input {...register('angle', { valueAsNumber: true, required: true })} title='Ângulo' key='angle' />
                     </>
                 )}
-                <Input title='Velocidade' name='velocidade' value={speed} onChange={setSpeed} />
-                <Input title='Direção' name='direcao' value={direction} onChange={setDirection} />
+                <Input {...register('speed', { valueAsNumber: true, required: true })} title='Velocidade' />
+                <Input {...register('direction', { valueAsNumber: true, required: true })} title='Direção' />
             </Group>
-            <Button title='Adicionar' onClick={onClick} />
+            <Button title='Adicionar' />
         </Form>
     );
 }

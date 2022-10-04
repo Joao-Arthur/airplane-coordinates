@@ -1,21 +1,29 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
 import { Input } from '../../components/Input';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
-export function InRouteOfCollision() {
-    const { getInRouteOfCollision } = useAirplanes();
-    const [maxTime, setMaxTime] = useState(0);
+type fieldsType = {
+    readonly maxTime: number;
+}
 
-    function onClick() {
+export function InRouteOfCollision() {
+    const { register, handleSubmit } = useForm<fieldsType>({
+        defaultValues: {
+            maxTime: 0,
+        },
+    });
+    const { getInRouteOfCollision } = useAirplanes();
+
+    function onHandleSubmit({ maxTime }: fieldsType) {
         getInRouteOfCollision({ maxTime });
     }
 
     return (
-        <Form name='Aviões em rota de colisão'>
-            <Input title='Tempo mínimo' name='maxTime' value={maxTime} onChange={setMaxTime} />
-            <Button title='Calcular' onClick={onClick} />
+        <Form name='Aviões em rota de colisão' onSubmit={handleSubmit(onHandleSubmit)}>
+            <Input {...register('maxTime', { valueAsNumber: true, required: true })} title='Tempo mínimo' />
+            <Button title='Calcular' />
         </Form>
     );
 }

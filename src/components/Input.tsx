@@ -1,17 +1,18 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef } from 'react';
 
 type props = {
     readonly title: string;
     readonly name: string;
-    readonly value: number;
-    readonly onChange: (newValue: number) => void;
+    readonly onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    readonly onBlur: (e: FocusEvent<HTMLInputElement, Element>) => void;
+    readonly required?: boolean;
 }
 
-export function Input({ title, name, value, onChange }: props) {
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
-        onChange(Number(e.target.value));
-    }
+type refType = {
+    readonly forwardedRef: ForwardedRef<HTMLInputElement>
+};
 
+function InputComp({ title, name, forwardedRef, onChange, onBlur, required }: props & refType) {
     return (
         <div className='px-2 min-w-0 w-full'>
             <label
@@ -24,9 +25,18 @@ export function Input({ title, name, value, onChange }: props) {
                 className='w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded'
                 name={name}
                 type='number'
-                value={value}
-                onChange={handleChange}
+                ref={forwardedRef}
+                onChange={onChange}
+                onBlur={onBlur}
+                required={required}
             />
         </div>
     );
 }
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const Input = forwardRef<HTMLInputElement, props>((props, ref) => (
+    <InputComp {...props} forwardedRef={ref} />
+));
+
+Input.displayName = 'Input';

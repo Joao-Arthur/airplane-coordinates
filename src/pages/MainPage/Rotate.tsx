@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
 import { Group } from '../../components/Group';
@@ -6,25 +6,35 @@ import { Input } from '../../components/Input';
 import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
+type fieldsType = {
+    readonly angle: number;
+    readonly centerOfRotationX: number;
+    readonly centerOfRotationY: number;
+}
+
 export function Rotate() {
+    const { register, handleSubmit } = useForm<fieldsType>({
+        defaultValues: {
+            angle: 0,
+            centerOfRotationX: 0,
+            centerOfRotationY: 0,
+        },
+    });
     const { rotateCoordinates } = useAirplanes();
     const selectedIds = useAirplaneStore(state => state.selectedAirplanes);
-    const [angle, setAngle] = useState(0);
-    const [centerOfRotationX, setCenterOfRotationX] = useState(0);
-    const [centerOfRotationY, setCenterOfRotationY] = useState(0);
 
-    function onClick() {
+    function onHandleSubmit({ angle, centerOfRotationX, centerOfRotationY }: fieldsType) {
         rotateCoordinates({ selectedIds, angle, centerOfRotationX, centerOfRotationY });
     }
 
     return (
-        <Form name='Rotacionar'>
+        <Form name='Rotacionar' onSubmit={handleSubmit(onHandleSubmit)}>
             <Group>
-                <Input title='Ângulo' name='angle' value={angle} onChange={setAngle} />
-                <Input title='X' name='centerOfRotationX' value={centerOfRotationX} onChange={setCenterOfRotationX} />
-                <Input title='Y' name='centerOfRotationY' value={centerOfRotationY} onChange={setCenterOfRotationY} />
+                <Input {...register('angle', { valueAsNumber: true })} title='Ângulo' />
+                <Input {...register('centerOfRotationX', { valueAsNumber: true, required: true })} title='X' name='centerOfRotationX' />
+                <Input {...register('centerOfRotationY', { valueAsNumber: true, required: true })} title='Y' name='centerOfRotationY' />
             </Group>
-            <Button title='Executar' onClick={onClick} />
+            <Button title='Executar' />
         </Form>
     );
 }

@@ -4,13 +4,10 @@ import { ReactNode, FormEvent } from 'react';
 type props = {
     children: ReactNode;
     name: string;
+    onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-export function Form({ children, name }: props) {
-    function handleSubmit(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-    }
-
+export function Form({ children, name, onSubmit }: props) {
     return (
         <form
             className={classNames(
@@ -18,7 +15,7 @@ export function Form({ children, name }: props) {
                 'border-2 border-gray-300 border-solid p-2 ',
                 'my-8',
             )}
-            onSubmit={handleSubmit}
+            onSubmit={onSubmit}
         >
             <h1 className={classNames(
                 'font-medium px-2',

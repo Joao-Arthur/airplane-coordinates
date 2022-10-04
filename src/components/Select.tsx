@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef } from 'react';
 
 type optionType = {
     readonly name: string;
@@ -9,15 +9,16 @@ type props = {
     readonly title: string;
     readonly name: string;
     readonly options: readonly optionType[];
-    readonly value: string;
-    readonly onChange: (newValue: string) => void;
+    readonly onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+    readonly onBlur: (e: FocusEvent<HTMLSelectElement, Element>) => void;
+    readonly required?: boolean;
 }
 
-export function Select({ title, name, options, value, onChange }: props) {
-    function handleChange(e: ChangeEvent<HTMLSelectElement>) {
-        onChange(e.target.value);
-    }
+type refType = {
+    readonly forwardedRef: ForwardedRef<HTMLSelectElement>
+};
 
+function SelectComp({ title, name, options, forwardedRef, onChange, onBlur, required }: props & refType) {
     return (
         <div className='p-2'>
             <label
@@ -29,8 +30,10 @@ export function Select({ title, name, options, value, onChange }: props) {
             <select
                 className='w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded'
                 name={name}
-                value={value}
-                onChange={handleChange}
+                ref={forwardedRef}
+                onChange={onChange}
+                onBlur={onBlur}
+                required={required}
             >
                 {options.map(({ name, label }) => (
                     <option key={name} value={name}>{label}</option>
@@ -39,3 +42,10 @@ export function Select({ title, name, options, value, onChange }: props) {
         </div>
     );
 }
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const Select = forwardRef<HTMLSelectElement, props>((props, ref) => (
+    <SelectComp {...props} forwardedRef={ref} />
+));
+
+Select.displayName = 'Input';

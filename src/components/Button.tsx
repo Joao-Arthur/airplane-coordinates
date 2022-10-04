@@ -2,10 +2,9 @@ import classNames from 'classnames';
 
 type props = {
     readonly title: string;
-    readonly onClick: () => void;
 }
 
-export function Button({ title, onClick }: props) {
+export function Button({ title }: props) {
     return (
         <button
             className={
@@ -17,7 +16,6 @@ export function Button({ title, onClick }: props) {
                     'mt-4',
                 )
             }
-            onClick={onClick}
         >
             {title}
         </button>
