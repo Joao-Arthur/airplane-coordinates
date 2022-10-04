@@ -15,4 +15,12 @@ export class CanvasContextImplementation implements drawContextType {
         this.context.arc(x + width / 2, y + height / 2, width, 0, 2 * Math.PI);
         this.context.fill();
     }
+
+    public drawRing({ x, y, width, height }: squareType, color: string) {
+        this.context.fillStyle = color;
+        this.context.strokeStyle = color;
+        this.context.beginPath();
+        this.context.arc(x + width / 2, y + height / 2, width, 0, 2 * Math.PI);
+        this.context.stroke();
+    }
 }

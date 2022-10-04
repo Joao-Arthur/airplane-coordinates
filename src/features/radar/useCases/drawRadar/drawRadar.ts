@@ -5,6 +5,7 @@ import { clearWindow } from './clearRadar';
 import { drawAirplanes } from './drawAirplanes';
 import { drawAirport } from './drawAirport';
 import { drawRadarCartesianPoints } from './drawRadarCartesianPoints';
+import { drawRadarPolarPoints } from './drawRadarPolarPoints';
 import { radarContextType } from './radarContext';
 
 export function drawRadar(drawContext: drawContextType, dimensions: dimensionType, airplanes: readonly airplaneType[]) {
@@ -17,7 +18,14 @@ export function drawRadar(drawContext: drawContextType, dimensions: dimensionTyp
         },
     };
     clearWindow(context);
-    drawRadarCartesianPoints(context);
+    switch (context.settings.radarType) {
+        case 'cartesian':
+            drawRadarCartesianPoints(context);
+            break;
+        case 'polar':
+            drawRadarPolarPoints(context);
+            break;
+    }
     drawAirport(context);
     drawAirplanes(context, airplanes);
 }
