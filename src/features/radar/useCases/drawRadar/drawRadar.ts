@@ -5,11 +5,20 @@ import { clearWindow } from './clearRadar';
 import { drawAirplanes } from './drawAirplanes';
 import { drawAirport } from './drawAirport';
 import { drawRadarCartesianPoints } from './drawRadarCartesianPoints';
+import { radarContextType } from './radarContext';
 
-export function drawRadar(drawContext: drawContextType, dimension: dimensionType, airplanes: readonly airplaneType[]) {
-    clearWindow(drawContext, dimension);
-    drawRadarCartesianPoints(drawContext, dimension);
-    drawAirport(drawContext, dimension);
-    drawAirplanes(drawContext, dimension, airplanes);
+export function drawRadar(drawContext: drawContextType, dimensions: dimensionType, airplanes: readonly airplaneType[]) {
+    const context: radarContextType = {
+        drawContext,
+        dimensions,
+        settings: {
+            numberOfParts: 20,
+            radarType: 'cartesian',
+        },
+    };
+    clearWindow(context);
+    drawRadarCartesianPoints(context);
+    drawAirport(context);
+    drawAirplanes(context, airplanes);
 }
 

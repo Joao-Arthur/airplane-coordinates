@@ -1,10 +1,9 @@
 import { cartesianPlane } from '../../../../core/cartesianPlane';
-import { dimensionType } from '../../../../core/cartesianPlane/dimension';
-import { drawContextType } from '../../ports/drawContext';
+import { radarContextType } from './radarContext';
 
 const airportSize = 6;
 
-export function drawAirport(drawContext: drawContextType, { width, height }: dimensionType) {
+export function drawAirport({ drawContext, dimensions: { width, height } }: radarContextType) {
     const airportDimensions = cartesianPlane.pointToSquare(
         {
             point: {

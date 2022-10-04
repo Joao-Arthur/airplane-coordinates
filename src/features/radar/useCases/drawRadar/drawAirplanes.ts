@@ -1,13 +1,15 @@
 import { airplaneType } from '../../../airplane/models';
-import { dimensionType } from '../../../../core/cartesianPlane/dimension';
-import { drawContextType } from '../../ports/drawContext';
 import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { pipe } from 'ramda';
+import { radarContextType } from './radarContext';
 
-export function drawAirplanes(drawContext: drawContextType, dimensions: dimensionType, airplanes: readonly airplaneType[]) {
-    const numberOfParts = 20;
-    const airplaneSize = 6;
+const airplaneSize = 6;
 
+export function drawAirplanes({
+    drawContext,
+    dimensions,
+    settings: { numberOfParts },
+}: radarContextType, airplanes: readonly airplaneType[]) {
     for (const airplane of airplanes)
         pipe(
             position => cartesianPlane.relativeToAbsolute({
@@ -21,6 +23,6 @@ export function drawAirplanes(drawContext: drawContextType, dimensions: dimensio
                     size: airplaneSize,
                 },
             ),
-            airportDimensions => drawContext.drawSquare(airportDimensions, '#6260bd'),
+            airportDimensions => drawContext.drawSquare(airportDimensions, '#ff0000'),
         )({ x: airplane.x, y: airplane.y });
 }

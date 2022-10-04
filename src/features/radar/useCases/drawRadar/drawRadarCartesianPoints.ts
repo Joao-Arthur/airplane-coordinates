@@ -1,9 +1,11 @@
 import { arrayFns } from '../../../../core/arrayFns';
-import { dimensionType } from '../../../../core/cartesianPlane/dimension';
-import { drawContextType } from '../../ports/drawContext';
+import { radarContextType } from './radarContext';
 
-export function drawRadarCartesianPoints(drawContext: drawContextType, { width, height }: dimensionType) {
-    const numberOfParts = 20;
+export function drawRadarCartesianPoints({
+    drawContext,
+    dimensions: { width, height },
+    settings: { numberOfParts },
+}: radarContextType) {
     const halfNumberOfParts = numberOfParts / 2;
     const widthSize = width / numberOfParts;
     const heightSize = height / numberOfParts;
