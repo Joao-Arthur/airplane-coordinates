@@ -18,7 +18,7 @@ export type gatewayAddAirplaneParamsType = {
 };
 
 export type gatewayDeleteAirplaneParamsType = {
-    readonly id: airplaneType['id'];
+    readonly selectedIds: readonly airplaneType['id'][];
 };
 
 export type gatewayAirplanesCloseToAirportParamsType = {
@@ -66,11 +66,11 @@ export class AirplaneGateway {
         });
     }
 
-    public deleteAirplane({ id }: gatewayDeleteAirplaneParamsType) {
+    public deleteAirplanes({ selectedIds }: gatewayDeleteAirplaneParamsType) {
         deleteAirplaneService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
-            id,
+            selectedIds,
         });
     }
 

@@ -17,14 +17,16 @@ import { useAirplaneStore } from './airplanesStore';
 
 export function useAirplanes() {
     const { airplaneGateway } = useContext(AirplaneContext);
-    const { setAirplanes, setReports } = useAirplaneStore(state => state);
+    const { setAirplanes, setReports, unselectAirplane } = useAirplaneStore(state => state);
 
     function add(addAirplaneParams: gatewayAddAirplaneParamsType) {
         return airplaneGateway.addAirplane(addAirplaneParams);
     }
 
-    function deleteAiplane(deleteAirplaneParams: gatewayDeleteAirplaneParamsType) {
-        return airplaneGateway.deleteAirplane(deleteAirplaneParams);
+    function deleteAiplanes(deleteAirplaneParams: gatewayDeleteAirplaneParamsType) {
+        airplaneGateway.deleteAirplanes(deleteAirplaneParams);
+        for (const id of deleteAirplaneParams.selectedIds)
+            unselectAirplane(id);
     }
 
     function getCloseToAirport(airplanesCloseToAirportParams: gatewayAirplanesCloseToAirportParamsType) {
@@ -69,7 +71,7 @@ export function useAirplanes() {
 
     return {
         add,
-        deleteAiplane,
+        deleteAiplanes,
         getCloseToAirport,
         getCloseToEachOther,
         getInRouteOfCollision,

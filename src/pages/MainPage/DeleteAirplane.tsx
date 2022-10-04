@@ -4,12 +4,11 @@ import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 import { useAirplanes } from '../../integrations/airplane/useAirplanes';
 
 export function DeleteAirplane() {
-    const { deleteAiplane } = useAirplanes();
-    const { selectedAirplanes } = useAirplaneStore();
+    const { deleteAiplanes } = useAirplanes();
+    const selectedIds = useAirplaneStore(state => state.selectedAirplanes);
 
     function onClick() {
-        for (const id of selectedAirplanes)
-            deleteAiplane({ id });
+        deleteAiplanes({ selectedIds });
     }
 
     return (
