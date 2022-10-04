@@ -4,4 +4,5 @@ export type drawContextType = {
     readonly drawSquare: (dimension: squareType, color: string) => void;
     readonly drawCircle: (dimension: squareType, color: string) => void;
     readonly drawRing: (dimension: squareType, color: string) => void;
+    readonly drawImage: (square: squareType, url: string, angle: number) => void;
 }

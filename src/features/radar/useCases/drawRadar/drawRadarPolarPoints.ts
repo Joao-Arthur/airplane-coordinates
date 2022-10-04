@@ -36,9 +36,6 @@ export function drawRadarPolarPoints({
             width: 2,
             height,
         }, '#5c5c5c');
-
-
-
     }
 
     drawCircles();

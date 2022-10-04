@@ -3,7 +3,7 @@ import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { pipe } from 'ramda';
 import { radarContextType } from './radarContext';
 
-const airplaneSize = 6;
+const airplaneSize = 50;
 
 export function drawAirplanes({
     drawContext,
@@ -23,6 +23,6 @@ export function drawAirplanes({
                     size: airplaneSize,
                 },
             ),
-            airportDimensions => drawContext.drawSquare(airportDimensions, '#ff0000'),
+            airportDimensions => drawContext.drawImage(airportDimensions, '/airplane.png', airplane.direction),
         )({ x: airplane.x, y: airplane.y });
 }
