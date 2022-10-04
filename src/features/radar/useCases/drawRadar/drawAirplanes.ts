@@ -1,23 +1,26 @@
 import { airplaneType } from '../../../airplane/models';
 import { dimensionType } from '../../../../core/cartesianPlane/dimension';
 import { drawContextType } from '../../ports/drawContext';
+import { cartesianPlane } from '../../../../core/cartesianPlane';
+import { pipe } from 'ramda';
 
-export function drawAirplanes(drawContext: drawContextType, { width, height }: dimensionType, airplanes: readonly airplaneType[]) {
+export function drawAirplanes(drawContext: drawContextType, dimensions: dimensionType, airplanes: readonly airplaneType[]) {
     const numberOfParts = 20;
-    const widthSize = width / numberOfParts;
-    const heightSize = height / numberOfParts;
-    const halfNumberOfParts = numberOfParts / 2;
-
-    const dimension = 6;
+    const airplaneSize = 6;
 
     for (const airplane of airplanes)
-        drawContext.drawSquare(
-            {
-                x: halfNumberOfParts * widthSize + airplane.x * widthSize - dimension / 2,
-                y: halfNumberOfParts * heightSize + airplane.y * heightSize - dimension / 2,
-                width: dimension,
-                height: dimension,
-            },
-            '#ff0000',
-        );
+        pipe(
+            position => cartesianPlane.relativeToAbsolute({
+                dimensions,
+                position,
+                numberOfParts,
+            }),
+            point => cartesianPlane.pointToSquare(
+                {
+                    point,
+                    size: airplaneSize,
+                },
+            ),
+            airportDimensions => drawContext.drawSquare(airportDimensions, '#6260bd'),
+        )({ x: airplane.x, y: airplane.y });
 }
