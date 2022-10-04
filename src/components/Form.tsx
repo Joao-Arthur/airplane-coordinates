@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import { ReactNode, FormEvent } from 'react';
 
 type props = {
-    children: ReactNode;
-    name: string;
-    onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+    readonly children: ReactNode;
+    readonly name: string;
+    readonly onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 export function Form({ children, name, onSubmit }: props) {

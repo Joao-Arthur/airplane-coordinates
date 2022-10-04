@@ -1,9 +1,9 @@
 import { pipe } from 'ramda';
 
 type paramsType = {
-    value: number;
-    min: number;
-    max: number;
+    readonly value: number;
+    readonly min: number;
+    readonly max: number;
 }
 
 export function between({ value, min, max }: paramsType) {
