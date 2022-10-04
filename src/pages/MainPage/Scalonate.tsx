@@ -14,8 +14,8 @@ type fieldsType = {
 export function Scalonate() {
     const { register, handleSubmit } = useForm<fieldsType>({
         defaultValues: {
-            x: 0,
-            y: 0,
+            x: 1,
+            y: 1,
         },
     });
     const { scalonateCoordinates } = useAirplanes();

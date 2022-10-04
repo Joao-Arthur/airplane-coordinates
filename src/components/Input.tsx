@@ -25,6 +25,7 @@ function InputComp({ title, name, forwardedRef, onChange, onBlur, required }: pr
                 className='w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded'
                 name={name}
                 type='number'
+                step='0.01'
                 ref={forwardedRef}
                 onChange={onChange}
                 onBlur={onBlur}
