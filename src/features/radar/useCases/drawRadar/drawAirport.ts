@@ -1,8 +1,18 @@
+import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { dimensionType } from '../../../../core/cartesianPlane/dimension';
 import { drawContextType } from '../../ports/drawContext';
 
-const airportSize = 8;
+const airportSize = 6;
 
 export function drawAirport(drawContext: drawContextType, { width, height }: dimensionType) {
-    drawContext.drawCircle({ x: width / 2 - (airportSize / 2), y: height / 2 - (airportSize / 2), width: airportSize, height: airportSize }, '#6260bd');
+    const airportDimensions = cartesianPlane.pointToSquare(
+        {
+            point: {
+                x: width / 2,
+                y: height / 2,
+            },
+            size: airportSize,
+        },
+    );
+    drawContext.drawCircle(airportDimensions, '#6260bd');
 }
