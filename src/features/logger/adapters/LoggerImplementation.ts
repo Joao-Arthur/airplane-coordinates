@@ -25,6 +25,6 @@ export class LoggerImplementation implements loggerRepositoryType {
     }
 
     public retrieve() {
-        return mapFns.valueToArray(this.messagesDatabase);
+        return [...mapFns.valueToArray(this.messagesDatabase)].reverse();
     }
 }
