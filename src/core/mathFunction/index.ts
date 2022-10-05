@@ -1,0 +1,1 @@
+export { mathFunction } from './mathFunction';

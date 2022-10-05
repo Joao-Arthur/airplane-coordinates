@@ -1,0 +1,1 @@
+import { intersect } from './intersect';
