@@ -16,7 +16,6 @@ export function rotateAirplaneCoordinatesService({
     }
     const airplanes = airplaneRepository
         .retrieve()
-        .map(savedAirplaneToDTO)
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         const updatedAirplane = rotateAirplaneCoordinatesBusiness({
@@ -25,7 +24,7 @@ export function rotateAirplaneCoordinatesService({
             centerOfRotationX,
             centerOfRotationY,
         });
-        airplaneRepository.update(updatedAirplane);
+        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
     }
     logger.success('Rotação realizada com sucesso!');
 }

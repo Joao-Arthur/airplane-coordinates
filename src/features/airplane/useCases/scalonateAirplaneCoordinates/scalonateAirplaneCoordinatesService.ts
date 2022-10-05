@@ -15,7 +15,6 @@ export function scalonateAirplaneCoordinatesService({
     }
     const airplanes = airplaneRepository
         .retrieve()
-        .map(savedAirplaneToDTO)
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         const updatedAirplane = scalonateAirplaneCoordinatesBusiness({
@@ -23,7 +22,7 @@ export function scalonateAirplaneCoordinatesService({
             x,
             y,
         });
-        airplaneRepository.update(updatedAirplane);
+        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
     }
     logger.success('Escalonamento realizado com sucesso!');
 }
