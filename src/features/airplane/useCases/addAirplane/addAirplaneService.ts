@@ -9,12 +9,16 @@ export function addAirplaneService({
 }: addAirplaneParamsType) {
     const numberOfAirplanes = airplaneRepository.retrieve().length;
     try {
-        const airplaneToSave = addAirplaneBusiness({
+        addAirplaneBusiness({
             ...airplaneParams,
             id: uniqueIdentifier(),
             numberOfAirplanes,
             maxNumberOfAirplanes: 10,
         });
+        const airplaneToSave = {
+            ...airplaneParams,
+            id: uniqueIdentifier(),
+        };
         airplaneRepository.add(airplaneToSave);
     } catch (error) {
         if (error instanceof Error)

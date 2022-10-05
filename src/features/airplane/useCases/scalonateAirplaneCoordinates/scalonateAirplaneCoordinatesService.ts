@@ -1,3 +1,4 @@
+import { dtoToSavedAirplane } from '../dtoToSavedAirplane';
 import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { scalonateAirplaneCoordinatesBusiness } from './scalonateAirplaneCoordinatesBusiness';
 import { scalonateAirplaneCoordinatesParamsType } from './scalonateAirplaneCoordinatesParams';
@@ -18,7 +19,7 @@ export function scalonateAirplaneCoordinatesService({
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         const updatedAirplane = scalonateAirplaneCoordinatesBusiness({
-            airplane,
+            airplane: savedAirplaneToDTO(airplane),
             x,
             y,
         });

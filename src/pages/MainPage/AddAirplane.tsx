@@ -17,6 +17,7 @@ type fieldsType = {
 }
 
 export function AddAirplane() {
+    const { add } = useAirplanes();
     const { register, handleSubmit, watch } = useForm<fieldsType>({
         defaultValues: {
             x: 0,
@@ -29,17 +30,24 @@ export function AddAirplane() {
         },
     });
 
-    const { add } = useAirplanes();
-
-    function onHandleSubmit({ speed, direction, x, y, radius, angle }: fieldsType) {
+    function onHandleSubmit({ speed, direction, x, y, radius, angle, coordinatesType }: fieldsType) {
         add({
             airplaneParams: {
                 speed,
                 direction,
-                x,
-                y,
-                radius,
-                angle,
+                ...(coordinatesType === 'cartesian' ? {
+                    type: coordinatesType,
+                    x,
+                    y,
+                    radius: undefined,
+                    angle: undefined,
+                } : {
+                    type: coordinatesType,
+                    radius,
+                    angle,
+                    x: undefined,
+                    y: undefined,
+                }),
             },
         });
     }

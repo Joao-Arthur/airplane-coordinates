@@ -7,13 +7,13 @@ export function savedAirplaneToDTO(airplane: savedAirplaneType): airplaneType {
         speed: airplane.speed,
         direction: airplane.direction,
         ...(
-            (airplane.x && airplane.y)
+            (airplane.type === 'cartesian')
                 ? {
-                    x: airplane.x!,
-                    y: airplane.y!,
+                    x: airplane.x,
+                    y: airplane.y,
                 } : cartesianPlane.fromPolar({
-                    radius: airplane.radius!,
-                    angle: airplane.angle!,
+                    radius: airplane.radius,
+                    angle: airplane.angle,
                 })
         ),
     };

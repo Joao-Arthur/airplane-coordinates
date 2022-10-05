@@ -19,7 +19,7 @@ export function translateAirplaneCoordinatesService({
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         const updatedAirplane = translateAirplaneCoordinatesBusiness({
-            airplane,
+            airplane: savedAirplaneToDTO(airplane),
             x,
             y,
         });

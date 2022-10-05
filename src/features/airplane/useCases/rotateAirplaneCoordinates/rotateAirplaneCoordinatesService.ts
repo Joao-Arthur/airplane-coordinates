@@ -1,3 +1,4 @@
+import { dtoToSavedAirplane } from '../dtoToSavedAirplane';
 import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { rotateAirplaneCoordinatesBusiness } from './rotateAirplaneCoordinatesBusiness';
 import { rotateAirplaneCoordinatesParamsType } from './rotateAirplaneCoordinatesParams';
@@ -19,7 +20,7 @@ export function rotateAirplaneCoordinatesService({
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         const updatedAirplane = rotateAirplaneCoordinatesBusiness({
-            airplane,
+            airplane: savedAirplaneToDTO(airplane),
             angle,
             centerOfRotationX,
             centerOfRotationY,
