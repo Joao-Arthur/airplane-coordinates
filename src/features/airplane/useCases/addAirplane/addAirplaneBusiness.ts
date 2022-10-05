@@ -1,4 +1,3 @@
-import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { airplaneType } from '../../models';
 import { airplaneParamsType } from './addAirplaneParams';
 import { InvalidAirplaneError } from './InvalidAirplaneError';
@@ -21,9 +20,9 @@ export function addAirplaneBusiness(params: paramsType): airplaneType {
         id: params.id,
         speed: params.speed,
         direction: params.direction,
-        ...(isCartesian
-            ? { x: params.x, y: params.y }
-            : cartesianPlane.fromPolar({ radius: params.radius, angle: params.angle })
-        ),
+        x: params.x,
+        y: params.y,
+        radius: params.radius,
+        angle: params.angle,
     };
 }

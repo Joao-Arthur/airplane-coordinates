@@ -31,18 +31,15 @@ export function AddAirplane() {
 
     const { add } = useAirplanes();
 
-    function onHandleSubmit({ speed, direction, coordinatesType, x, y, radius, angle }: fieldsType) {
+    function onHandleSubmit({ speed, direction, x, y, radius, angle }: fieldsType) {
         add({
             airplaneParams: {
                 speed,
                 direction,
-                ...(coordinatesType === 'cartesian' ? {
-                    x,
-                    y,
-                } : {
-                    radius,
-                    angle,
-                }),
+                x,
+                y,
+                radius,
+                angle,
             },
         });
     }
