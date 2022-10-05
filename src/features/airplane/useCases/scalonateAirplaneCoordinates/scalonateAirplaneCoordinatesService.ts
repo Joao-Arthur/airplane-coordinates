@@ -17,8 +17,13 @@ export function scalonateAirplaneCoordinatesService({
         .retrieve()
         .map(standardize)
         .filter(({ id }) => selectedIds.includes(id));
-    const updatedAirplanes = scalonateAirplaneCoordinatesBusiness({ airplanes, x, y });
-    for (const airplane of updatedAirplanes)
-        airplaneRepository.update(airplane);
+    for (const airplane of airplanes) {
+        const updatedAirplane = scalonateAirplaneCoordinatesBusiness({
+            airplane,
+            x,
+            y,
+        });
+        airplaneRepository.update(updatedAirplane);
+    }
     logger.success('Escalonamento realizado com sucesso!');
 }

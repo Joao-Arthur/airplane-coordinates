@@ -17,8 +17,13 @@ export function translateAirplaneCoordinatesService({
         .retrieve()
         .map(standardize)
         .filter(({ id }) => selectedIds.includes(id));
-    const updatedAirplanes = translateAirplaneCoordinatesBusiness({ airplanes, x, y });
-    for (const airplane of updatedAirplanes)
-        airplaneRepository.update(airplane);
+    for (const airplane of airplanes) {
+        const updatedAirplane = translateAirplaneCoordinatesBusiness({
+            airplane,
+            x,
+            y,
+        });
+        airplaneRepository.update(updatedAirplane);
+    }
     logger.success('Transformação realizada com sucesso!');
 }

@@ -18,13 +18,14 @@ export function rotateAirplaneCoordinatesService({
         .retrieve()
         .map(standardize)
         .filter(({ id }) => selectedIds.includes(id));
-    const updatedAirplanes = rotateAirplaneCoordinatesBusiness({
-        airplanes,
-        angle,
-        centerOfRotationX,
-        centerOfRotationY,
-    });
-    for (const airplane of updatedAirplanes)
-        airplaneRepository.update(airplane);
+    for (const airplane of airplanes) {
+        const updatedAirplane = rotateAirplaneCoordinatesBusiness({
+            airplane,
+            angle,
+            centerOfRotationX,
+            centerOfRotationY,
+        });
+        airplaneRepository.update(updatedAirplane);
+    }
     logger.success('Rotação realizada com sucesso!');
 }

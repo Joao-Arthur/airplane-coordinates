@@ -11,7 +11,7 @@ type paramsType = airplaneParamsType & {
 
 export function addAirplaneBusiness(params: paramsType): savedAirplaneType {
     const isCartesian = params.x !== undefined && params.y !== undefined;
-    const isPolar = params.x !== undefined && params.angle !== undefined;
+    const isPolar = params.radius !== undefined && params.angle !== undefined;
 
     if (!isCartesian && !isPolar)
         throw new InvalidAirplaneError();

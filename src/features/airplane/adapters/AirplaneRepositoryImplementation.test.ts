@@ -25,8 +25,26 @@ describe('AirplaneRepositoryImplementation', () => {
             direction: 2,
         });
         expect(airplaneRepository.retrieve()).toEqual([
-            { id: '1', x: 1, y: 1, speed: 1, direction: 1 },
-            { id: '2', x: 2, y: 2, speed: 2, direction: 2 },
+            {
+                id: '1',
+                type: 'cartesian',
+                x: 1,
+                y: 1,
+                radius: undefined,
+                angle: undefined,
+                speed: 1,
+                direction: 1,
+            },
+            {
+                id: '2',
+                type: 'cartesian',
+                x: 2,
+                y: 2,
+                radius: undefined,
+                angle: undefined,
+                speed: 2,
+                direction: 2,
+            },
         ]);
     });
 
@@ -52,9 +70,18 @@ describe('AirplaneRepositoryImplementation', () => {
             speed: 10,
             direction: 10,
         });
-        expect(airplaneRepository.retrieve()).toEqual(
-            [{ id: '1', x: 10, y: 10, speed: 10, direction: 10 }],
-        );
+        expect(airplaneRepository.retrieve()).toEqual([
+            {
+                id: '1',
+                type: 'cartesian',
+                x: 10,
+                y: 10,
+                radius: undefined,
+                angle: undefined,
+                speed: 10,
+                direction: 10,
+            },
+        ]);
     });
 
     it('should delete the registers', () => {
