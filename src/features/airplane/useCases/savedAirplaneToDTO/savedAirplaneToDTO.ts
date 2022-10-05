@@ -1,7 +1,7 @@
 import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { airplaneType, savedAirplaneType } from '../../models';
 
-export function standardize(airplane: savedAirplaneType): airplaneType {
+export function savedAirplaneToDTO(airplane: savedAirplaneType): airplaneType {
     return {
         id: airplane.id,
         speed: airplane.speed,

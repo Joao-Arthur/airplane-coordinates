@@ -1,4 +1,4 @@
-import { standardize } from '../standardize';
+import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { deleteAirplaneBusiness } from './deleteAirplaneBusiness';
 import { deleteAirplaneParamsType } from './deleteAirplaneParams';
 
@@ -9,7 +9,7 @@ export function deleteAirplaneService({
 }: deleteAirplaneParamsType) {
     const airplanes = airplaneRepository
         .retrieve()
-        .map(standardize);
+        .map(savedAirplaneToDTO);
     if (!selectedIds.length) {
         logger.warn('É necessário selecionar ao menos um avião!');
         return;
