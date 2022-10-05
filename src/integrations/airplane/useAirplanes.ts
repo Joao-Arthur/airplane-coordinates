@@ -61,6 +61,10 @@ export function useAirplanes() {
         airplaneGateway.onRepositoryUpdated(callback);
     }
 
+    function clearLogs() {
+        airplaneGateway.clearLogs();
+    }
+
     useDidMount(() => {
         onLogUpdated(setReports);
     });
@@ -78,5 +82,6 @@ export function useAirplanes() {
         rotateCoordinates,
         scalonateCoordinates,
         translateCoordinates,
+        clearLogs,
     } as const;
 }

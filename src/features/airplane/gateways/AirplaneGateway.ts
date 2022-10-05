@@ -149,4 +149,8 @@ export class AirplaneGateway {
     public onRepositoryUpdated(callback: (airplanes: readonly airplaneType[]) => void) {
         this.airplaneRepository.addCallback(callback);
     }
+
+    public clearLogs() {
+        this.logger.clear();
+    }
 }

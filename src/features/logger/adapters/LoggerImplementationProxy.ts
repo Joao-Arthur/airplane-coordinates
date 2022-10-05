@@ -36,6 +36,11 @@ export class LoggerImplementationProxy implements loggerRepositoryType, dispatch
         return this.loggerImplementation.retrieve();
     }
 
+    public clear() {
+        this.loggerImplementation.clear();
+        this.dispatch();
+    }
+
     public dispatch() {
         const payload = this.retrieve();
         this.callbacks.forEach(cb => cb(payload));

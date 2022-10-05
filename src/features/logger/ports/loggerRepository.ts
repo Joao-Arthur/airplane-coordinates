@@ -6,4 +6,5 @@ export type loggerRepositoryType = {
     readonly warn: (message: string) => void;
     readonly error: (message: string) => void;
     readonly retrieve: () => readonly messageType[];
+    readonly clear: ()=> void;
 };
