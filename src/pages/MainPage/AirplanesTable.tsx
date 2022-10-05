@@ -38,12 +38,12 @@ export function AirplanesTable() {
                                 />
                             </td>
                             <td style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>{airplane.id}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.x?.toFixed(2)}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.y?.toFixed(2)}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.r?.toFixed(2)}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.angle?.toFixed(2)}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.speed.toFixed(2)}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.direction.toFixed(2)}</td>
+                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.x}</td>
+                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.y}</td>
+                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.r}</td>
+                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.angle}</td>
+                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.speed}</td>
+                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.direction}</td>
                         </tr>
                     ))}
                 </tbody>
