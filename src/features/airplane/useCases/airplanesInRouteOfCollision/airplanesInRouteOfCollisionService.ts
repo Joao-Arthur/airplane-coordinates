@@ -1,3 +1,4 @@
+import { standardize } from '../standardize';
 import { airplanesInRouteOfCollisionBusiness } from './airplanesInRouteOfCollisionBusiness';
 import { airplanesInRouteOfCollisionParamsType } from './airplanesInRouteOfCollisionParams';
 
@@ -6,7 +7,7 @@ export function airplanesInRouteOfCollisionService({
     airplaneRepository,
     maxTime,
 }: airplanesInRouteOfCollisionParamsType) {
-    const airplanes = airplaneRepository.retrieve();
+    const airplanes = airplaneRepository.retrieve().map(standardize);
     const airplanesInRouteOfCollision = airplanesInRouteOfCollisionBusiness({ airplanes, maxTime });
     if (!airplanesInRouteOfCollision.length) {
         logger.info('Nenhum avião em rota de colisão nesse tempo');
