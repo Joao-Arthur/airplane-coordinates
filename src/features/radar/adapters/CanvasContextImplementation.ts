@@ -1,4 +1,3 @@
-import { dimensionType } from '../../../core/cartesianPlane/dimension';
 import { squareType } from '../../../core/cartesianPlane/square';
 import { drawContextType } from '../ports/drawContext';
 
