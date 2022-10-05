@@ -1,3 +1,4 @@
+import { standardize } from '../standardize';
 import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
 import { translateAirplaneCoordinatesParamsType } from './translateAirplaneCoordinatesParams';
 
@@ -14,6 +15,7 @@ export function translateAirplaneCoordinatesService({
     }
     const airplanes = airplaneRepository
         .retrieve()
+        .map(standardize)
         .filter(({ id }) => selectedIds.includes(id));
     const updatedAirplanes = translateAirplaneCoordinatesBusiness({ airplanes, x, y });
     for (const airplane of updatedAirplanes)

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { standardize } from '../../features/airplane/useCases/standardize';
 import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
 import { useRadarStore } from '../../integrations/radar/radarStore';
 import { useRadar } from '../../integrations/radar/useRadar';
@@ -8,9 +9,10 @@ type props = {
 }
 
 export function Radar({ dimensions }: props) {
-    const { numberOfParts, radarView } = useRadarStore();
+    const radarSettings = useRadarStore();
     const { draw } = useRadar();
     const airplanes = useAirplaneStore(state => state.airplanes);
+    const airplanesToDraw = airplanes.map(standardize);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -19,8 +21,12 @@ export function Radar({ dimensions }: props) {
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        draw(context, { width: dimensions, height: dimensions }, airplanes, { numberOfParts, radarView });
-    }, [dimensions, airplanes, draw, numberOfParts, radarView]);
+        draw(
+            context, { width: dimensions, height: dimensions },
+            airplanesToDraw,
+            radarSettings,
+        );
+    }, [dimensions, airplanesToDraw, draw, radarSettings]);
 
     return (
         <div className='h-full flex justify-center items-center'>

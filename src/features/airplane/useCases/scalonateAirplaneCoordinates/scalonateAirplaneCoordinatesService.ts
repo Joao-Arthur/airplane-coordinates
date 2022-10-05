@@ -1,3 +1,4 @@
+import { standardize } from '../standardize';
 import { scalonateAirplaneCoordinatesBusiness } from './scalonateAirplaneCoordinatesBusiness';
 import { scalonateAirplaneCoordinatesParamsType } from './scalonateAirplaneCoordinatesParams';
 
@@ -14,6 +15,7 @@ export function scalonateAirplaneCoordinatesService({
     }
     const airplanes = airplaneRepository
         .retrieve()
+        .map(standardize)
         .filter(({ id }) => selectedIds.includes(id));
     const updatedAirplanes = scalonateAirplaneCoordinatesBusiness({ airplanes, x, y });
     for (const airplane of updatedAirplanes)

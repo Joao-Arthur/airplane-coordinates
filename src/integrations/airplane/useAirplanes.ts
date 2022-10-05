@@ -10,7 +10,7 @@ import {
     gatewayScalonateAirplaneCoordinatesParamsType,
     gatewayTranslateAirplaneCoordinatesParamsType,
 } from '../../features/airplane/gateways';
-import { airplaneType } from '../../features/airplane/models';
+import { savedAirplaneType } from '../../features/airplane/models';
 import { messageType } from '../../features/logger/model';
 import { AirplaneContext } from './AirplaneContext';
 import { useAirplaneStore } from './airplanesStore';
@@ -57,7 +57,7 @@ export function useAirplanes() {
         airplaneGateway.onLogUpdated(callback);
     }
 
-    function onRepositoryUpdated(callback: (airplanes: readonly airplaneType[]) => void) {
+    function onRepositoryUpdated(callback: (airplanes: readonly savedAirplaneType[]) => void) {
         airplaneGateway.onRepositoryUpdated(callback);
     }
 

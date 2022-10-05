@@ -7,7 +7,9 @@ export function airplanesCloseToAirportService({
     airplaneRepository,
     maxDistance,
 }: airplanesCloseToAirportParamsType) {
-    const airplanes = airplaneRepository.retrieve().map(standardize);
+    const airplanes = airplaneRepository
+        .retrieve()
+        .map(standardize);
     const closeAirplanes = airplanesCloseToAirportBusiness({ airplanes, maxDistance });
     if (!closeAirplanes.length) {
         logger.info('Nenhum avião encontrado nessa distância');

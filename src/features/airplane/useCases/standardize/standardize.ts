@@ -1,15 +1,7 @@
 import { cartesianPlane } from '../../../../core/cartesianPlane';
-import { airplaneType } from '../../models';
+import { airplaneType, savedAirplaneType } from '../../models';
 
-type returnType = {
-    readonly id: string;
-    readonly x: number;
-    readonly y: number;
-    readonly speed: number;
-    readonly direction: number;
-}
-
-export function standardize(airplane: airplaneType): returnType {
+export function standardize(airplane: savedAirplaneType): airplaneType {
     return {
         id: airplane.id,
         speed: airplane.speed,

@@ -1,3 +1,4 @@
+import { standardize } from '../standardize';
 import { rotateAirplaneCoordinatesBusiness } from './rotateAirplaneCoordinatesBusiness';
 import { rotateAirplaneCoordinatesParamsType } from './rotateAirplaneCoordinatesParams';
 
@@ -15,6 +16,7 @@ export function rotateAirplaneCoordinatesService({
     }
     const airplanes = airplaneRepository
         .retrieve()
+        .map(standardize)
         .filter(({ id }) => selectedIds.includes(id));
     const updatedAirplanes = rotateAirplaneCoordinatesBusiness({
         airplanes,

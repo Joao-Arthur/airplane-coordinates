@@ -10,6 +10,8 @@ describe('addAirplaneBusiness', () => {
                 id: '1',
                 x: 3,
                 y: 7,
+                angle: undefined,
+                radius: undefined,
                 speed: 100,
                 direction: 100,
                 numberOfAirplanes: 0,
@@ -21,6 +23,8 @@ describe('addAirplaneBusiness', () => {
                 id: '1',
                 x: 0,
                 y: 0,
+                angle: undefined,
+                radius: undefined,
                 speed: 100,
                 direction: 100,
                 numberOfAirplanes: 0,
@@ -33,6 +37,8 @@ describe('addAirplaneBusiness', () => {
         expect(
             addAirplaneBusiness({
                 id: '1',
+                x: undefined,
+                y: undefined,
                 radius: 1,
                 angle: 0,
                 speed: 100,
@@ -44,6 +50,8 @@ describe('addAirplaneBusiness', () => {
         expect(
             addAirplaneBusiness({
                 id: '1',
+                x: undefined,
+                y: undefined,
                 radius: 2,
                 angle: 180,
                 speed: 100,
@@ -55,8 +63,17 @@ describe('addAirplaneBusiness', () => {
     });
 
     it('should throw error with invalid airplane', () => {
-        expect(() => addAirplaneBusiness(
-            { id: '1', speed: 100, direction: 100 } as any,
+        expect(() => addAirplaneBusiness({
+            id: '1',
+            x: undefined,
+            y: undefined,
+            radius: undefined,
+            angle: undefined,
+            speed: 100,
+            direction: 100,
+            numberOfAirplanes: 1,
+            maxNumberOfAirplanes: 0,
+        },
         )).toThrowError(InvalidAirplaneError);
     });
 
@@ -65,6 +82,8 @@ describe('addAirplaneBusiness', () => {
             id: '1',
             x: 3,
             y: 7,
+            angle: undefined,
+            radius: undefined,
             speed: 100,
             direction: 100,
             numberOfAirplanes: 1,

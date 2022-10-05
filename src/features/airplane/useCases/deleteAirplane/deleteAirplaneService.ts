@@ -7,7 +7,9 @@ export function deleteAirplaneService({
     airplaneRepository,
     selectedIds,
 }: deleteAirplaneParamsType) {
-    const airplanes = airplaneRepository.retrieve().map(standardize);
+    const airplanes = airplaneRepository
+        .retrieve()
+        .map(standardize);
     if (!selectedIds.length) {
         logger.warn('É necessário selecionar ao menos um avião!');
         return;

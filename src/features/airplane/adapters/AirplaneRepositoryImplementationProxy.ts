@@ -1,23 +1,23 @@
-import { airplaneType } from '../models';
+import {  savedAirplaneType } from '../models';
 import { airplaneRepositoryType } from '../ports/airplaneRepository';
 import { dispatcherType } from '../../dispatcher';
 import { AirplaneRepositoryImplementation } from './AirplaneRepositoryImplementation';
 
 export class AirplaneRepositoryImplementationProxy implements airplaneRepositoryType, dispatcherType {
-    private callbacks: ((payload: readonly airplaneType[]) => void)[] = [];
+    private callbacks: ((payload: readonly savedAirplaneType[]) => void)[] = [];
     private readonly repository = new AirplaneRepositoryImplementation();
 
-    public add(airplane: airplaneType) {
+    public add(airplane: savedAirplaneType) {
         this.repository.add(airplane);
         this.dispatch();
     }
 
-    public remove(id: airplaneType['id']) {
+    public remove(id: savedAirplaneType['id']) {
         this.repository.remove(id);
         this.dispatch();
     }
 
-    public update(airplane: airplaneType) {
+    public update(airplane: savedAirplaneType) {
         this.repository.update(airplane);
         this.dispatch();
     }
@@ -31,7 +31,7 @@ export class AirplaneRepositoryImplementationProxy implements airplaneRepository
         this.callbacks.forEach(cb => cb(payload));
     }
 
-    public addCallback(callback: (payload: readonly airplaneType[]) => void) {
+    public addCallback(callback: (payload: readonly savedAirplaneType[]) => void) {
         this.callbacks = this.callbacks.concat(callback);
     }
 }

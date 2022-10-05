@@ -1,3 +1,4 @@
+import { standardize } from '../standardize';
 import { airplanesCloseToEachOtherBusiness } from './airplanesCloseToEachOtherBusiness';
 import { airplanesCloseToEachOtherParamsType } from './airplanesCloseToEachOtherParams';
 
@@ -6,7 +7,9 @@ export function airplanesCloseToEachOtherService({
     airplaneRepository,
     maxDistance,
 }: airplanesCloseToEachOtherParamsType) {
-    const airplanes = airplaneRepository.retrieve();
+    const airplanes = airplaneRepository
+        .retrieve()
+        .map(standardize);
     const closeAirplanes = airplanesCloseToEachOtherBusiness({ airplanes, maxDistance });
     if (!closeAirplanes.length) {
         logger.info('Nenhum avião encontrado nessa distância.');
