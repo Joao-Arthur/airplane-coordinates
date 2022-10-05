@@ -7,18 +7,21 @@ import { drawAirport } from './drawAirport';
 import { drawRadarCartesianPoints } from './drawRadarCartesianPoints';
 import { drawRadarPolarPoints } from './drawRadarPolarPoints';
 import { radarContextType } from './radarContext';
+import { radarSettingsType } from '../../models/radarSettings';
 
-export function drawRadar(drawContext: drawContextType, dimensions: dimensionType, airplanes: readonly airplaneType[]) {
+export function drawRadar(
+    drawContext: drawContextType,
+    dimensions: dimensionType,
+    airplanes: readonly airplaneType[],
+    settings: radarSettingsType,
+) {
     const context: radarContextType = {
         drawContext,
         dimensions,
-        settings: {
-            numberOfParts: 20,
-            radarType: 'cartesian',
-        },
+        settings,
     };
     clearWindow(context);
-    switch (context.settings.radarType) {
+    switch (context.settings.radarView) {
         case 'cartesian':
             drawRadarCartesianPoints(context);
             break;

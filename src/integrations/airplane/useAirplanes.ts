@@ -17,7 +17,7 @@ import { useAirplaneStore } from './airplanesStore';
 
 export function useAirplanes() {
     const { airplaneGateway } = useContext(AirplaneContext);
-    const { setAirplanes, setReports, unselectAirplane } = useAirplaneStore(state => state);
+    const { setAirplanes, setReports, unselectAirplane } = useAirplaneStore();
 
     function add(addAirplaneParams: gatewayAddAirplaneParamsType) {
         return airplaneGateway.addAirplane(addAirplaneParams);

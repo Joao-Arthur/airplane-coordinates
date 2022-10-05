@@ -14,6 +14,7 @@ import { Report } from './Report';
 import { Rotate } from './Rotate';
 import { Scalonate } from './Scalonate';
 import { Translate } from './Translate';
+import { Settings } from './Settings';
 
 export function MainLayout() {
     const radarContainer = useRef<HTMLDivElement | null>(null);
@@ -70,6 +71,12 @@ export function MainLayout() {
                                     <CloseToEachOther />
                                     <InRouteOfCollision />
                                 </div>
+                            ),
+                        },
+                        {
+                            title: 'Configurações',
+                            comp: (
+                                <Settings />
                             ),
                         },
                     ]}

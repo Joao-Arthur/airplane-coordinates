@@ -1,12 +1,15 @@
 import { useEffect, useRef } from 'react';
-import { CanvasRadarGateway } from '../../features/radar/gateway';
 import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
+import { useRadarStore } from '../../integrations/radar/radarStore';
+import { useRadar } from '../../integrations/radar/useRadar';
 
 type props = {
     readonly dimensions: number;
 }
 
 export function Radar({ dimensions }: props) {
+    const { numberOfParts, radarView } = useRadarStore();
+    const { draw } = useRadar();
     const airplanes = useAirplaneStore(state => state.airplanes);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -16,8 +19,8 @@ export function Radar({ dimensions }: props) {
         const context = canvasRef.current.getContext('2d');
         if (!context)
             return;
-        new CanvasRadarGateway().drawRadar(context, { width: dimensions, height: dimensions }, airplanes);
-    }, [dimensions, airplanes]);
+        draw(context, { width: dimensions, height: dimensions }, airplanes, { numberOfParts, radarView });
+    }, [dimensions, airplanes, draw, numberOfParts, radarView]);
 
     return (
         <div className='h-full flex justify-center items-center'>
