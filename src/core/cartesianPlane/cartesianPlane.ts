@@ -4,6 +4,7 @@ import { scalonate } from './scalonate';
 import { translate } from './translate';
 import { relativeToAbsolute } from './relativeToAbsolute';
 import { pointToSquare } from './pointToSquare';
+import { relativePoints } from './relativePoints';
 
 export const cartesianPlane = {
     distance,
@@ -12,4 +13,5 @@ export const cartesianPlane = {
     translate,
     relativeToAbsolute,
     pointToSquare,
+    relativePoints,
 } as const;
