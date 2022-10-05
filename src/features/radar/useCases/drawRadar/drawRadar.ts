@@ -1,13 +1,14 @@
 import { airplaneType } from '../../../airplane/models';
 import { dimensionType } from '../../../../core/cartesianPlane/dimension';
 import { drawContextType } from '../../ports/drawContext';
+import { radarSettingsType } from '../../models/radarSettings';
 import { clearWindow } from './clearRadar';
 import { drawAirplanes } from './drawAirplanes';
 import { drawAirport } from './drawAirport';
 import { drawRadarCartesianPoints } from './drawRadarCartesianPoints';
 import { drawRadarPolarPoints } from './drawRadarPolarPoints';
 import { radarContextType } from './radarContext';
-import { radarSettingsType } from '../../models/radarSettings';
+import { drawMainLines } from './drawMainLines';
 
 export function drawRadar(
     drawContext: drawContextType,
@@ -21,6 +22,7 @@ export function drawRadar(
         settings,
     };
     clearWindow(context);
+    drawMainLines(context);
     switch (context.settings.radarView) {
         case 'cartesian':
             drawRadarCartesianPoints(context);

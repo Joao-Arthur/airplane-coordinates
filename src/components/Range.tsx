@@ -6,15 +6,20 @@ type props = {
     readonly onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     readonly onBlur: (e: FocusEvent<HTMLInputElement, Element>) => void;
     readonly required?: boolean;
-    readonly min?: string | number;
-    readonly max?: string | number;
 }
 
 type refType = {
     readonly forwardedRef: ForwardedRef<HTMLInputElement>
 };
 
-function RangeComp({ title, name, forwardedRef, onChange, onBlur, required }: props & refType) {
+function RangeComp({
+    title,
+    name,
+    forwardedRef,
+    onChange,
+    onBlur,
+    required,
+}: props & refType) {
     return (
         <div className='px-2 min-w-0 w-full'>
             <label
@@ -27,7 +32,9 @@ function RangeComp({ title, name, forwardedRef, onChange, onBlur, required }: pr
                 className='w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded'
                 name={name}
                 type='range'
-                step='1'
+                step={1}
+                min={2}
+                max={50}
                 ref={forwardedRef}
                 onChange={onChange}
                 onBlur={onBlur}

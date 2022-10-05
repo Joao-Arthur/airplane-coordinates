@@ -1,5 +1,5 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
 import { Range } from '../../components/Range';
 import { Select } from '../../components/Select';
@@ -13,21 +13,26 @@ type fieldsType = {
 export function Settings() {
     const setNumberOfParts = useRadarStore(state => state.setNumberOfParts);
     const setRadarView = useRadarStore(state => state.setRadarView);
-    const { register, handleSubmit } = useForm<fieldsType>({
+    const { register, watch } = useForm<fieldsType>({
         defaultValues: {
             radarView: 'cartesian',
             numberOfParts: 20,
         },
     });
 
-    function onHandleSubmit({ numberOfParts, radarView }: fieldsType) {
-        setNumberOfParts(numberOfParts);
-        setRadarView(radarView);
-    }
+    useEffect(() => {
+        const subscription = watch(({ numberOfParts, radarView }) => {
+            if (numberOfParts)
+                setNumberOfParts(numberOfParts);
+            if (radarView)
+                setRadarView(radarView);
+        });
+        return () => subscription.unsubscribe();
+    }, [watch, setNumberOfParts, setRadarView]);
 
     return (
         <div>
-            <Form name='Configurações' onSubmit={handleSubmit(onHandleSubmit)}>
+            <Form name='Configurações' onSubmit={e => e.preventDefault()}>
                 <Select
                     {...register('radarView')}
                     title='Estilo do radar'
@@ -37,10 +42,9 @@ export function Settings() {
                     ]}
                 />
                 <Range
-                    {...register('numberOfParts', { min: 0, max: 100 })}
+                    {...register('numberOfParts', { valueAsNumber: true, min: 2, max: 50 })}
                     title='Número de partes'
                 />
-                <Button title='Aplicar' />
             </Form>
         </div>
     );

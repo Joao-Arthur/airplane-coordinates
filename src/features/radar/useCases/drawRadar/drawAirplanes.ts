@@ -17,12 +17,10 @@ export function drawAirplanes({
                 position,
                 numberOfParts,
             }),
-            point => cartesianPlane.pointToSquare(
-                {
-                    point,
-                    size: airplaneSize,
-                },
-            ),
+            point => cartesianPlane.pointToSquare({
+                point,
+                size: airplaneSize,
+            }),
             airportDimensions => drawContext.drawImage(airportDimensions, '/airplane.png', airplane.direction),
         )({ x: airplane.x, y: airplane.y });
 }

@@ -12,7 +12,14 @@ type refType = {
     readonly forwardedRef: ForwardedRef<HTMLInputElement>
 };
 
-function InputComp({ title, name, forwardedRef, onChange, onBlur, required }: props & refType) {
+function InputComp({
+    title,
+    name,
+    forwardedRef,
+    onChange,
+    onBlur,
+    required,
+}: props & refType) {
     return (
         <div className='px-2 min-w-0 w-full'>
             <label
@@ -25,7 +32,7 @@ function InputComp({ title, name, forwardedRef, onChange, onBlur, required }: pr
                 className='w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded'
                 name={name}
                 type='number'
-                step='0.01'
+                step={0.01}
                 ref={forwardedRef}
                 onChange={onChange}
                 onBlur={onBlur}
