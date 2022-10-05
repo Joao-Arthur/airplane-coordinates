@@ -31,7 +31,7 @@ export function Report() {
                     </tbody>
                 </table>
             </div>
-            <Button title='Limpar' onClick={onClick} />
+            {reports.length ? <Button title='Limpar' onClick={onClick} /> : null}
         </div>
     );
 }
