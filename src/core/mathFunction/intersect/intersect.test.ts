@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { intersect } from './intersect';
 
-describe('intersect', ()=> {
-    it('should intersect the functions', ()=> {
+describe('intersect', () => {
+    it('should intersect the functions', () => {
         expect(
             intersect({
                 fx: { a: 2, b: -8 },
@@ -16,5 +16,14 @@ describe('intersect', ()=> {
                 gx: { a: 3, b: 1 },
             }),
         ).toEqual({ a: 1, b: 4 });
+    });
+
+    it('should intersect the functions', () => {
+        expect(
+            intersect({
+                fx: { a: Number.POSITIVE_INFINITY, b: -8 },
+                gx: { a: -3, b: 2 },
+            }),
+        ).toEqual({ a: Number.POSITIVE_INFINITY, b: -10 });
     });
 });
