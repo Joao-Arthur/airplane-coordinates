@@ -1,1 +1,1 @@
-export { linearFunction } from './linearFunction';
+export { findRadix } from './findRadix';
