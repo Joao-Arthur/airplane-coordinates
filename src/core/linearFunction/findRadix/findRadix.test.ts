@@ -34,4 +34,12 @@ describe('findRadix', () => {
         expect(findRadix({ a: -0.25, b: 2 })).toEqual(8);
     });
 
+    it('should return the radix of infinite function', () => {
+        expect(findRadix({ a: Number.POSITIVE_INFINITY, b: -2 })).toEqual(-2);
+        expect(findRadix({ a: Number.POSITIVE_INFINITY, b: -1 })).toEqual(-1);
+        expect(findRadix({ a: Number.POSITIVE_INFINITY, b: 0 })).toEqual(0);
+        expect(findRadix({ a: Number.POSITIVE_INFINITY, b: 1 })).toEqual(1);
+        expect(findRadix({ a: Number.POSITIVE_INFINITY, b: 2 })).toEqual(2);
+    });
+
 });
