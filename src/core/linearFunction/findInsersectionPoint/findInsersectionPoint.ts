@@ -13,10 +13,9 @@ export function findInsersectionPoint({ fx, gx }: paramsType): cartesianPointTyp
     if (!Number.isFinite(fx.a) && !Number.isFinite(gx.a)) {
         if (fx.b === gx.b)
             return {
-                a: Number.POSITIVE_INFINITY,
-                b: fx.b,
+                x: fx.b,
+                y: Number.POSITIVE_INFINITY,
             };
-
         return undefined;
     }
     if (!Number.isFinite(fx.a))

@@ -31,10 +31,33 @@ describe('findInsersectionPoint', () => {
         })).toEqual(undefined);
     });
 
-    it('should return undefined when both are infinite and linear coefficient is not equal', () => {
+    it('should return the point when both are infinite and linear coefficient is equal', () => {
         expect(findInsersectionPoint({
             fx: { a: Number.POSITIVE_INFINITY, b: -10 },
-            gx: { a: Number.POSITIVE_INFINITY, b: 4 },
-        })).toEqual(undefined);
+            gx: { a: Number.POSITIVE_INFINITY, b: -10 },
+        })).toEqual({
+            x: -10,
+            y: Number.POSITIVE_INFINITY,
+        });
+    });
+
+    it('should return the point when fx is infinite', () => {
+        expect(findInsersectionPoint({
+            fx: { a: Number.POSITIVE_INFINITY, b: 5 },
+            gx: { a: 2, b: 2 },
+        })).toEqual({
+            x: 5,
+            y: 12,
+        });
+    });
+
+    it('should return the point when gx is infinite', () => {
+        expect(findInsersectionPoint({
+            fx: { a: 1, b: 3 },
+            gx: { a: Number.POSITIVE_INFINITY, b: -10 },
+        })).toEqual({
+            x: -10,
+            y: -7,
+        });
     });
 });
