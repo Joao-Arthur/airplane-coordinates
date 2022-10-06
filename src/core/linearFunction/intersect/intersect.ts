@@ -1,11 +1,11 @@
-import { cartesianFunctionType } from '../cartesianFunction';
+import { linearFunctionType } from '../types';
 
 type paramsType = {
-    readonly fx: cartesianFunctionType;
-    readonly gx: cartesianFunctionType;
+    readonly fx: linearFunctionType;
+    readonly gx: linearFunctionType;
 };
 
-export function intersect({ fx, gx }: paramsType): cartesianFunctionType {
+export function intersect({ fx, gx }: paramsType): linearFunctionType {
     return {
         a: fx.a - gx.a,
         b: fx.b - gx.b,

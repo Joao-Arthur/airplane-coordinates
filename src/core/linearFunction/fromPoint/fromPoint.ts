@@ -1,13 +1,13 @@
 import { cartesianPointType } from '../../cartesianPlane/cartesianPoint';
 import { numberFns } from '../../numberFns';
-import { cartesianFunctionType } from '../cartesianFunction';
+import { linearFunctionType } from '../types';
 
 type paramsType = {
     readonly point: cartesianPointType;
     readonly angle: number;
 };
 
-export function fromPoint({ point: { x, y }, angle }: paramsType): cartesianFunctionType {
+export function fromPoint({ point: { x, y }, angle }: paramsType): linearFunctionType {
     if ([90, 270].includes(angle % 360))
         return {
             a: Number.POSITIVE_INFINITY,

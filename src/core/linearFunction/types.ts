@@ -1,4 +1,4 @@
-export type cartesianFunctionType = {
+export type linearFunctionType = {
     readonly a: number;
     readonly b: number;
 };
