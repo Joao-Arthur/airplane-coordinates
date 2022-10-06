@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { BadFunctionError } from './BadFunctionError';
 import { execute } from './execute';
 
 describe('execute', () => {
@@ -28,13 +29,12 @@ describe('execute', () => {
         expect(execute({ a: 2, b: 1 }, 1)).toBe(3);
     });
 
-    it('should execute a infinite function', () => {
-        expect(execute({ a: Number.POSITIVE_INFINITY, b: -1 }, -1)).toBe(-1);
-        expect(execute({ a: Number.POSITIVE_INFINITY, b: -1 }, 0)).toBe(-1);
-        expect(execute({ a: Number.POSITIVE_INFINITY, b: -1 }, 1)).toBe(-1);
-
-        expect(execute({ a: Number.POSITIVE_INFINITY, b: 5 }, -1)).toBe(5);
-        expect(execute({ a: Number.POSITIVE_INFINITY, b: 5 }, 0)).toBe(5);
-        expect(execute({ a: Number.POSITIVE_INFINITY, b: 5 }, 1)).toBe(5);
+    it('should not execute a infinite function', () => {
+        expect(() => execute({ a: Number.POSITIVE_INFINITY, b: -1 }, -1)).toThrowError(BadFunctionError);
+        expect(() => execute({ a: Number.POSITIVE_INFINITY, b: -1 }, 0)).toThrowError(BadFunctionError);
+        expect(() => execute({ a: Number.POSITIVE_INFINITY, b: -1 }, 1)).toThrowError(BadFunctionError);
+        expect(() => execute({ a: Number.POSITIVE_INFINITY, b: 5 }, -1)).toThrowError(BadFunctionError);
+        expect(() => execute({ a: Number.POSITIVE_INFINITY, b: 5 }, 0)).toThrowError(BadFunctionError);
+        expect(() => execute({ a: Number.POSITIVE_INFINITY, b: 5 }, 1)).toThrowError(BadFunctionError);
     });
 });
