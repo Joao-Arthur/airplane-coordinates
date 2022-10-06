@@ -3,5 +3,5 @@ import { intersect } from './intersect';
 
 export const mathFunction = {
     fromPoint,
-    intersect
+    intersect,
 } as const;
