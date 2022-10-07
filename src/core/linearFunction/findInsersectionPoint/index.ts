@@ -1,1 +1,1 @@
-import { findInsersectionPoint } from './findInsersectionPoint';
+export { findInsersectionPoint } from './findInsersectionPoint';

@@ -7,16 +7,10 @@ type paramsType = {
     readonly maxDistance: number
 };
 
-type returnType = {
-    readonly a: string;
-    readonly b: string;
-    readonly distance: number;
-}[];
-
 export function airplanesCloseToEachOtherBusiness({
     airplanes,
     maxDistance,
-}: paramsType): returnType {
+}: paramsType) {
     return arrayFns
         .combination(airplanes.map(({ id }) => id))
         .map(([a, b]) => ({
@@ -28,7 +22,8 @@ export function airplanesCloseToEachOtherBusiness({
                 a: a.id,
                 b: b.id,
                 distance: cartesianPlane.distance(a, b),
-            }),
-        ).filter(({ distance }) => distance <= maxDistance)
+            } as const),
+        )
+        .filter(({ distance }) => distance <= maxDistance)
         .sort((a, b) => (a.distance > b.distance ? 1 : -1));
 }

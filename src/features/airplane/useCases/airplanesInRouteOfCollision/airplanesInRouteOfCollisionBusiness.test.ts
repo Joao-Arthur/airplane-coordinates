@@ -8,4 +8,11 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             maxTime: 1000,
         })).toEqual([]);
     });
+
+    it('should return the airplanes in route of collision', () => {
+        expect(airplanesInRouteOfCollisionBusiness({
+            airplanes: [],
+            maxTime: 10,
+        })).toEqual([]);
+    });
 });

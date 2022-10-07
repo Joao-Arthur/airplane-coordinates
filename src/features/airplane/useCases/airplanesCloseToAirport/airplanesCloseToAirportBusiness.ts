@@ -6,15 +6,10 @@ type paramsType = {
     readonly maxDistance: number
 };
 
-type returnType = {
-    readonly id: airplaneType['id'];
-    readonly distanceFromAirport: number;
-}[];
-
 export function airplanesCloseToAirportBusiness({
     airplanes,
     maxDistance,
-}: paramsType): returnType {
+}: paramsType) {
     return airplanes
         .map(({ id, x, y }) => ({
             id,
@@ -23,7 +18,7 @@ export function airplanesCloseToAirportBusiness({
                     { x, y },
                     { x: 0, y: 0 },
                 ),
-        }))
+        } as const))
         .filter(({ distanceFromAirport }) => distanceFromAirport <= maxDistance)
         .sort((a, b) => (a.distanceFromAirport > b.distanceFromAirport ? 1 : -1));
 }

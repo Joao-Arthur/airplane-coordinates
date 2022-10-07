@@ -1,9 +1,7 @@
 import { fromPoint } from './fromPoint';
-import { intersect } from './intersect';
-import { findRadix } from './findRadix';
+import { findInsersectionPoint } from './findInsersectionPoint';
 
 export const linearFunction = {
     fromPoint,
-    intersect,
-    findRadix,
+    findInsersectionPoint,
 } as const;
