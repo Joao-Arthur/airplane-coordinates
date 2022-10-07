@@ -1,0 +1,1 @@
+export { timeToPoint } from './timeToPoint';
