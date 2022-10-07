@@ -25,6 +25,10 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             {
                 a: '1',
                 b: '2',
+                collisionPoint: {
+                    x: 0,
+                    y: 2,
+                },
                 timeUntilCollision: 2.8284271247461903,
                 timeDifferenceToPoint: 0,
             },
@@ -54,6 +58,10 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             {
                 a: '1',
                 b: '2',
+                collisionPoint: {
+                    x: 0,
+                    y: 2,
+                },
                 timeUntilCollision: 1.4142135623730951,
                 timeDifferenceToPoint: 1.4142135623730951,
             },
@@ -81,9 +89,80 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             {
                 a: '1',
                 b: '2',
+                collisionPoint: {
+                    x: 0,
+                    y: 2,
+                },
                 timeUntilCollision: 0.7071067811865476,
                 timeDifferenceToPoint: 2.121320343559643,
             },
         ]);
     });
+
+
+    it('should return the difference when speed is not the same', () => {
+        expect(airplanesInRouteOfCollisionBusiness({
+            airplanes: [
+                {
+                    id: '1',
+                    x: -2,
+                    y: 0,
+                    direction: 45,
+                    speed: 1,
+                },
+                {
+                    id: '2',
+                    x: 2,
+                    y: 0,
+                    direction: 135,
+                    speed: 2,
+                },
+            ],
+            maxTime: 10,
+        })).toEqual([
+            {
+                a: '1',
+                b: '2',
+                collisionPoint: {
+                    x: 0,
+                    y: 2,
+                },
+                timeUntilCollision: 1.4142135623730951,
+                timeDifferenceToPoint: 1.4142135623730951,
+            },
+        ]);
+
+        expect(airplanesInRouteOfCollisionBusiness({
+            airplanes: [
+                {
+                    id: '1',
+                    x: -2,
+                    y: 2,
+                    direction: 0,
+                    speed: 2,
+                },
+                {
+                    id: '2',
+                    x: 2,
+                    y: 2,
+                    direction: 180,
+                    speed: 9,
+                },
+            ],
+            maxTime: 10,
+        })).toEqual([
+            {
+                a: '1',
+                b: '2',
+                collisionPoint: {
+                    x: 0,
+                    y: 2,
+                },
+                timeUntilCollision: 0.7071067811865476,
+                timeDifferenceToPoint: 2.121320343559643,
+            },
+        ]);
+    });
+
+
 });

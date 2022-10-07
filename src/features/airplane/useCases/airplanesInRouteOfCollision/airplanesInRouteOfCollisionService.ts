@@ -17,6 +17,6 @@ export function airplanesInRouteOfCollisionService({
     }
     for (const airplane of airplanesInRouteOfCollision)
         logger.info(
-            `Avião "${airplane.a}" e "${airplane.b}" vão passar a ${airplane.timeDifferenceToPoint}s de diferença no mesmo lugar daqui ${airplane.timeUntilCollision}s`,
+            `Avião "${airplane.a}" e "${airplane.b}" vão passar a ${airplane.timeDifferenceToPoint}s de diferença no ponto (${airplane.collisionPoint.y}, ${airplane.collisionPoint.y}) daqui ${airplane.timeUntilCollision}s`,
         );
 }

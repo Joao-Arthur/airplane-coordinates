@@ -31,11 +31,16 @@ export function airplanesInRouteOfCollisionBusiness({ airplanes, maxTime }: para
             const bTimeTo = mechanics.timeToPoint({ speed: b.speed, distance: bDistance });
             if (bTimeTo < 0)
                 return undefined;
+            const timeUntilCollision = Math.min(aTimeTo, bTimeTo);
+            const timeDifferenceToPoint = aTimeTo - bTimeTo;
+            if (timeDifferenceToPoint < 0)
+                return undefined;
             return {
                 a: a.id,
                 b: b.id,
-                timeUntilCollision: Math.min(aTimeTo, bTimeTo),
-                timeDifferenceToPoint: aTimeTo - bTimeTo,
+                timeUntilCollision,
+                collisionPoint: intersectionPoint,
+                timeDifferenceToPoint,
             } as const;
         })
         .filter(result => !!result)
