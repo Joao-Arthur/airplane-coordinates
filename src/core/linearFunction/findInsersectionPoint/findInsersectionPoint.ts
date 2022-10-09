@@ -1,6 +1,6 @@
 import { cartesianPointType } from '../../cartesianPlane/cartesianPoint';
 import { execute } from '../execute';
-import { findRadix } from '../findRadix';
+import { findRoot } from '../findRoot';
 import { intersect } from '../intersect';
 import { linearFunctionType } from '../types';
 
@@ -29,7 +29,7 @@ export function findInsersectionPoint({ fx, gx }: paramsType): cartesianPointTyp
             y: execute(fx, gx.b),
         };
     const intersectedFn = intersect({ fx, gx });
-    const fnRadix = findRadix(intersectedFn);
+    const fnRadix = findRoot(intersectedFn);
     const fy = execute(fx, fnRadix);
     return {
         x: fnRadix,
