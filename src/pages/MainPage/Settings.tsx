@@ -43,7 +43,7 @@ export function Settings() {
                 />
                 <Range
                     {...register('numberOfParts', { valueAsNumber: true, min: 2, max: 50 })}
-                    title='Número de partes'
+                    title='Zoom'
                 />
             </Form>
         </div>
