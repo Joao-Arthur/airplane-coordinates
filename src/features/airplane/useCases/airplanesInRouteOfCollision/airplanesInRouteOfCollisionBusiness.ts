@@ -17,9 +17,19 @@ export function airplanesInRouteOfCollisionBusiness({ airplanes, maxTime }: para
             b: airplanes.find(({ id }) => id === b) as airplaneType,
         }))
         .map(({ a, b }) => {
+            const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
+            const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.direction });
+
+            if (
+                fx.a === gx.a &&
+                fx.b === gx.b
+            ) {
+                //
+            }
+
             const intersectionPoint = linearFunction.findInsersectionPoint({
-                fx: linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction }),
-                gx: linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.direction }),
+                fx,
+                gx,
             });
             if (!intersectionPoint)
                 return undefined;
