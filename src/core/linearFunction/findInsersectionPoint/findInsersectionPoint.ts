@@ -31,9 +31,9 @@ export function findInsersectionPoint({ fx, gx }: paramsType): cartesianPointTyp
     const intersectedFn = intersect({ fx, gx });
     const fnRadix = findRoot(intersectedFn);
     const fy = execute(fx, fnRadix);
-    const gy = execute(gx, fnRadix);
-    if (fy !== gy)
-        throw new Error('divergent function');
+ //   const gy = execute(gx, fnRadix);
+ //   if (fy !== gy)
+ //       throw new Error('divergent function');
 
     return {
         x: fnRadix,
