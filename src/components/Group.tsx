@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 type props = {
-    readonly children: ReactNode[];
+    readonly children: readonly ReactNode[];
 }
 
 export function Group({ children }: props) {

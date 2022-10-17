@@ -14,6 +14,5 @@ export function collision({ a, b }: paramsType) {
     return linearFunction.findInsersectionPoint({
         fx: { a: a.speed, b: a.initialPoint },
         gx: { a: b.speed, b: b.initialPoint },
-    },
-    )?.y;
+    });
 }

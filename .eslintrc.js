@@ -54,18 +54,18 @@ module.exports = {
         curly: ['error', 'multi'],
         'nonblock-statement-body-position': ['error', 'below'],
         'object-curly-newline': ['error', {
-            'ObjectExpression': {
+            ObjectExpression: {
                 multiline: true,
                 consistent: true,
             },
-            'ObjectPattern': {
+            ObjectPattern: {
                 multiline: true,
             },
-            'ImportDeclaration': {
+            ImportDeclaration: {
                 multiline: false,
                 consistent: true,
             },
-            'ExportDeclaration': {
+            ExportDeclaration: {
                 multiline: true,
                 minProperties: 0,
             },
@@ -75,5 +75,6 @@ module.exports = {
         semi: ['error', 'always'],
         'eol-last': ['error', 'always'],
         'comma-dangle': ['error', 'always-multiline'],
+        'quote-props': ['error', 'as-needed'],
     },
 };
