@@ -1,4 +1,5 @@
 import { linearFunction } from '../../../../core/linearFunction';
+import { trigonometry } from '../../../../core/trigonometry';
 import { airplaneType } from '../../models';
 
 type paramsType = {
@@ -10,8 +11,8 @@ export function getCollisionType({ a, b }: paramsType) {
     if (a.x === b.x && a.y === b.y)
         return 'SAME_POSITION';
     if (
-        [90, 270].includes(a.direction % 360) &&
-        [90, 270].includes(b.direction % 360)
+        [90, 270].includes(trigonometry.fixAngle(a.direction)) &&
+        [90, 270].includes(trigonometry.fixAngle(b.direction))
     ) {
         if (a.x === b.x)
             return 'INFINITE_TANGENT_SAME_X';
