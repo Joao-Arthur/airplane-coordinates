@@ -30,7 +30,25 @@ describe('collision', () => {
         });
     });
 
-    it('should throw when collision does not happen', () => {
+    it('should calculate the collision with a fixed point', () => {
+        expect(collision({
+            a: { speed: 0, initialPoint: 2 },
+            b: { speed: 1, initialPoint: -8 },
+        })).toEqual({
+            x: 10,
+            y: 2,
+        });
+
+        expect(collision({
+            a: { speed: 0, initialPoint: 2 },
+            b: { speed: -1, initialPoint: 8 },
+        })).toEqual({
+            x: 6,
+            y: 2,
+        });
+    });
+
+    it('should return infinite when collision does not happen', () => {
         expect(collision({
             a: { speed: 1, initialPoint: -5 },
             b: { speed: 1, initialPoint: 5 },
