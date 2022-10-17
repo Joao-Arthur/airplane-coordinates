@@ -12,9 +12,7 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
     if ([90, 270].includes(a.direction)) {
         const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.direction });
         const pointB = linearFunction.execute(gx, a.x);
-
         const intersectionPoint = { x: a.x, y: pointB };
-
         const aDistance = cartesianPlane.distance({ x: a.x, y: a.y }, intersectionPoint);
         const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: aDistance });
         if (aTimeTo < 0)
@@ -37,8 +35,7 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
     } else {
         const gx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
         const pointA = linearFunction.execute(gx, b.x);
-        const intersectionPoint = { x: a.x, y: pointA };
-
+        const intersectionPoint = { x: b.x, y: pointA };
         const aDistance = cartesianPlane.distance({ x: a.x, y: a.y }, intersectionPoint);
         const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: aDistance });
         if (aTimeTo < 0)
@@ -59,10 +56,4 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
             timeDifferenceToPoint,
         } as const;
     }
-
-
-
-
-
-
 }

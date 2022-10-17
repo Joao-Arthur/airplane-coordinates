@@ -31,8 +31,8 @@ describe('collisionFromInfiniteTangentInOneAirplane', () => {
             timeDifferenceToPoint: 0,
         });
         expect(collisionFromInfiniteTangentInOneAirplane({
-            a: { id: '1', x: -2, y: -5, direction: 45, speed: 1 },
-            b: { id: '2', x: 18, y: 25, direction: 225, speed: 2 },
+            a: { id: '1', x: -2, y: -5, direction: 90, speed: 1 },
+            b: { id: '2', x: 8, y: 0, direction: 206.5650511770779, speed: 1 },
         })).toEqual({
             a: '1',
             b: '2',
