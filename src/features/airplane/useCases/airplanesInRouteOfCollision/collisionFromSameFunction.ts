@@ -1,7 +1,5 @@
-import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { linearFunction } from '../../../../core/linearFunction';
 import { mechanics } from '../../../../core/mechanics';
-import { polarPlane } from '../../../../core/polarPlane';
 import { airplaneType } from '../../models';
 
 type paramsType = {
@@ -24,41 +22,22 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
         point: { x: a.x, y: a.y },
         angle: a.direction,
     });
-    const distance = cartesianPlane.distance(
-        { x: a.x, y: a.y },
-        { x: b.x, y: b.y },
-    );
-    const polarPoint = polarPlane.fromCartesian({
-        x: b.x - a.x,
-        y: b.y - a.y,
-    });
-    //console.log(distance, polarPoint.angle);
-    const { x: absoluteCollisionPoint } = mechanics.collision({
-        a: { initialPoint: 0, speed: getSignInEachQuadrant(a.speed, a.direction) },
-        b: { initialPoint: distance, speed: getSignInEachQuadrant(b.speed, b.direction) },
-    });
-    const collisionPointX = absoluteCollisionPoint * Math.abs(Math.sin(a.direction * Math.PI / 180));
-    console.log(collisionPointX);
+    const coefficientA = Math.cos(a.direction * Math.PI / 180);
+    const coefficientB = Math.cos(a.direction * Math.PI / 180);
 
-    const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: collisionPointX });
-    if (aTimeTo < 0)
-        return undefined;
-    const bTimeTo = mechanics.timeToPoint({ speed: b.speed, distance: collisionPointX });
-    if (bTimeTo < 0)
-        return undefined;
-    const timeUntilCollision = Math.min(aTimeTo, bTimeTo);
-    const timeDifferenceToPoint = aTimeTo - bTimeTo;
-    if (timeDifferenceToPoint < 0)
-        return undefined;
+    const { x: timeUntilCollision, y: x } = mechanics.collision({
+        a: { initialPoint: a.x, speed: getSignInEachQuadrant(coefficientA * a.speed, a.direction) },
+        b: { initialPoint: b.x, speed: getSignInEachQuadrant(coefficientB * b.speed, b.direction) },
+    });
+
+    const y = linearFunction.execute(fx, x);
+
     return {
         a: a.id,
         b: b.id,
         timeUntilCollision,
-        collisionPoint: {
-            x: collisionPointX,
-            y: linearFunction.execute(fx, collisionPointX),
-        },
-        timeDifferenceToPoint,
+        collisionPoint: { x, y },
+        timeDifferenceToPoint: 0,
     } as const;
 
 }

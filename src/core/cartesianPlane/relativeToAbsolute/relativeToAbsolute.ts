@@ -16,5 +16,5 @@ export function relativeToAbsolute({ dimensions, position, numberOfParts }: para
     return {
         x: halfNumberOfParts * widthSize + position.x * widthSize,
         y: halfNumberOfParts * heightSize - position.y * heightSize,
-    };
+    } as const;
 }

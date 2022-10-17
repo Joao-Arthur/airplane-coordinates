@@ -31,5 +31,5 @@ export function rotateAirplaneCoordinatesBusiness({
                 y: point.y + centerOfRotationY,
             }),
         )({ x: airplane.x, y: airplane.y }),
-    };
+    } as const;
 }

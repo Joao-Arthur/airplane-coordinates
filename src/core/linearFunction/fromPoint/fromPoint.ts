@@ -15,5 +15,5 @@ export function fromPoint({ point: { x, y }, angle }: paramsType): linearFunctio
     return {
         a: numberFns.fix(angularCoefficient),
         b: numberFns.fix(linearCoefficient),
-    };
+    } as const;
 }

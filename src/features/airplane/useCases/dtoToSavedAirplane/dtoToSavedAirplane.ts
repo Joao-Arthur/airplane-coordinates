@@ -24,5 +24,5 @@ export function dtoToSavedAirplane(airplane: airplaneType, type: 'polar' | 'cart
                     }),
                 }
         ),
-    };
+    } as const;
 }

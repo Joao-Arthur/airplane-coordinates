@@ -16,5 +16,5 @@ export function savedAirplaneToDTO(airplane: savedAirplaneType): airplaneType {
                     angle: airplane.angle,
                 })
         ),
-    };
+    } as const;
 }

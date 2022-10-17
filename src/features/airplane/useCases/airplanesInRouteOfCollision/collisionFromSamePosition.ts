@@ -12,5 +12,5 @@ export function collisionFromSamePosition({ a, b }: paramsType) {
         timeUntilCollision: 0,
         collisionPoint: { x: a.x, y: a.y },
         timeDifferenceToPoint: 0,
-    };
+    } as const;
 }

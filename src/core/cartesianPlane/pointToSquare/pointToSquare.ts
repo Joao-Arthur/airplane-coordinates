@@ -12,5 +12,5 @@ export function pointToSquare({ point, size }: paramsType): squareType {
         y: point.y - size / 2,
         width: size,
         height: size,
-    };
+    } as const;
 }

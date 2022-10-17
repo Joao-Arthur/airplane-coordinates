@@ -9,5 +9,5 @@ export function intersect({ fx, gx }: paramsType): linearFunctionType {
     return {
         a: fx.a - gx.a,
         b: fx.b - gx.b,
-    };
+    } as const;
 }

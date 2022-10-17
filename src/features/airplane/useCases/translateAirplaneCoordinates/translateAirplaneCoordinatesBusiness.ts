@@ -14,5 +14,5 @@ export function translateAirplaneCoordinatesBusiness({ airplane, x, y }: paramsT
             point: { x: airplane.x, y: airplane.y },
             factor: { x, y },
         }),
-    };
+    } as const;
 } 

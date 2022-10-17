@@ -10,5 +10,5 @@ export function scalonate({ point, factor }: paramsType): cartesianPointType {
     return {
         x: numberFns.fix(point.x * factor.x),
         y: numberFns.fix(point.y * factor.y),
-    };
+    } as const;
 } 

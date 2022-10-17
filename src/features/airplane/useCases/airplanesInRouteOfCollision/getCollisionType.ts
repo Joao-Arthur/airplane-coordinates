@@ -1,8 +1,6 @@
 import { linearFunction } from '../../../../core/linearFunction';
 import { airplaneType } from '../../models';
 
-
-
 type paramsType = {
     a: airplaneType;
     b: airplaneType;
