@@ -2,86 +2,35 @@ import { describe, expect, it } from 'vitest';
 import { collisionFromInfiniteTangentBothAirplanes } from './collisionFromInfiniteTangentBothAirplanes';
 
 describe('collisionFromInfiniteTangentBothAirplanes', () => {
-    it('should return the same function', () => {
+    it('should return when there is no collision', () => {
         expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -2, y: 0, direction: 45, speed: 1 },
-            b: { id: '2', x: 2, y: 0, direction: 135, speed: 1 },
+            a: { id: '1', x: 2, y: 2, direction: 90, speed: 1 },
+            b: { id: '2', x: 2, y: -2, direction: 90, speed: 1 },
+        })).toEqual(undefined);
+    });
+
+    it('should calculate the collision for the airplanes in the infinite tangent angle', () => {
+        expect(collisionFromInfiniteTangentBothAirplanes({
+            a: { id: '1', x: 2, y: 2, direction: 90, speed: 1 },
+            b: { id: '2', x: 2, y: -2, direction: 90, speed: 2 },
         })).toEqual({
             a: '1',
             b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 2.8284271247461903,
+            collisionPoint: { x: 2, y: 6 },
+            timeUntilCollision: 4,
             timeDifferenceToPoint: 0,
         });
         expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -1, y: 1, direction: 45, speed: 2 },
-            b: { id: '2', x: 1, y: 3, direction: 45, speed: 1 },
+            a: { id: '1', x: -5, y: -10, direction: 90, speed: 1 },
+            b: { id: '2', x: -5, y: 20, direction: 270, speed: 2 },
         })).toEqual({
             a: '1',
             b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 2.8284271247461903,
+            collisionPoint: { x: -5, y: 0 },
+            timeUntilCollision: 10,
             timeDifferenceToPoint: 0,
         });
-        expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -2, y: 0, direction: 45, speed: 1 },
-            b: { id: '2', x: 2, y: 0, direction: 135, speed: 2 },
-        })).toEqual({
-            a: '1',
-            b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.4142135623730951,
-            timeDifferenceToPoint: 1.4142135623730951,
-        });
-        expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -2, y: 0, direction: 45, speed: 1 },
-            b: { id: '2', x: 2, y: 0, direction: 135, speed: 4 },
-        })).toEqual({
-            a: '1',
-            b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 0.7071067811865476,
-            timeDifferenceToPoint: 2.121320343559643,
-        });
-        expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -2, y: 0, direction: 45, speed: 1 },
-            b: { id: '2', x: 2, y: 0, direction: 135, speed: 2 },
-        })).toEqual({
-            a: '1',
-            b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.4142135623730951,
-            timeDifferenceToPoint: 1.4142135623730951,
-        });
-        expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -2, y: 2, direction: 0, speed: 2 },
-            b: { id: '2', x: 2, y: 2, direction: 180, speed: 9 },
-        })).toEqual({
-            a: '1',
-            b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 0.7071067811865476,
-            timeDifferenceToPoint: 2.121320343559643,
-        });
-        expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -2, y: 0, direction: 45, speed: 1 },
-            b: { id: '2', x: 2, y: 0, direction: 135, speed: 2 },
-        })).toEqual({
-            a: '1',
-            b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.4142135623730951,
-            timeDifferenceToPoint: 1.4142135623730951,
-        });
-        expect(collisionFromInfiniteTangentBothAirplanes({
-            a: { id: '1', x: -2, y: 2, direction: 0, speed: 2 },
-            b: { id: '2', x: 2, y: 2, direction: 180, speed: 9 },
-        })).toEqual({
-            a: '1',
-            b: '2',
-            collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 0.7071067811865476,
-            timeDifferenceToPoint: 2.121320343559643,
-        });
+
+
     });
 });

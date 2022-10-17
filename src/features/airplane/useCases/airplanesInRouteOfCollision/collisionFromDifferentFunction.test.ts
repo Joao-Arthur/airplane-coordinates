@@ -2,6 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { collisionFromDifferentFunction } from './collisionFromDifferentFunction';
 
 describe('collisionFromDifferentFunction', () => {
+    it('should return undefined when there is no collision', () => {
+        expect(collisionFromDifferentFunction({
+            a: { id: '1', x: 3, y: 5, direction: 45, speed: 1 },
+            b: { id: '2', x: 2, y: 0, direction: 135, speed: 2 },
+        })).toEqual(undefined);
+    });
+
     it('should return the difference when speed is not the same', () => {
         expect(collisionFromDifferentFunction({
             a: { id: '1', x: -2, y: 0, direction: 45, speed: 1 },
