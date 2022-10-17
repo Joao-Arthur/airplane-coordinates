@@ -9,7 +9,7 @@ type props = {
 }
 
 type refType = {
-    readonly forwardedRef: ForwardedRef<HTMLInputElement>
+    readonly forwardedRef: ForwardedRef<HTMLInputElement>;
 };
 
 function InputComp({

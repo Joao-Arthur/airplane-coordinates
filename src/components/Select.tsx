@@ -15,7 +15,7 @@ type props = {
 }
 
 type refType = {
-    readonly forwardedRef: ForwardedRef<HTMLSelectElement>
+    readonly forwardedRef: ForwardedRef<HTMLSelectElement>;
 };
 
 function SelectComp({ title, name, options, forwardedRef, onChange, onBlur, required }: props & refType) {
