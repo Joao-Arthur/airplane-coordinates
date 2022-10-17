@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { collisionFromInfiniteTangentBothAirplanes } from './collisionFromInfiniteTangentBothAirplanes';
 
 describe('collisionFromInfiniteTangentBothAirplanes', () => {
-    it('should return when there is no collision', () => {
+    it('should return undefined when there is no collision', () => {
         expect(collisionFromInfiniteTangentBothAirplanes({
             a: { id: '1', x: 2, y: 2, direction: 90, speed: 1 },
             b: { id: '2', x: 2, y: -2, direction: 90, speed: 1 },

@@ -1,0 +1,1 @@
+export { getValueInEachQuadrant } from './getValueInEachQuadrant';
