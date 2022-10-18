@@ -1,1 +1,1 @@
-mod cartesian_plane;
+pub mod cartesian_plane;
