@@ -6,8 +6,8 @@
         "test": "vitest run",
         "test:dev": "vitest watch",
         "test:cov": "vitest run --coverage",
-        "dev": "react-scripts start",
-        "build": "react-scripts build",
+        "dev": "vite --host",
+        "build": "tsc && vite build",
         "start": "vite preview",
         "lint": "eslint \"./src/**/*.{ts,tsx}\" --fix"
     },
@@ -15,7 +15,6 @@
         "defaults"
     ],
     "dependencies": {
-        "backend": "link:../backend/pkg",
         "classnames": "^2.3.2",
         "immer": "^9.0.15",
         "nanoid": "^4.0.0",
