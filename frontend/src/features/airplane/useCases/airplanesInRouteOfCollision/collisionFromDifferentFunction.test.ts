@@ -17,7 +17,7 @@ describe('collisionFromDifferentFunction', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 2.8284271247461903,
+            timeUntilCollision: 2.8284271247,
             timeDifferenceToPoint: 0,
         });
         expect(collisionFromDifferentFunction({
@@ -28,7 +28,7 @@ describe('collisionFromDifferentFunction', () => {
             b: '2',
             collisionPoint: { x: 0, y: 2.8562960135 },
             timeDifferenceToPoint: 0,
-            timeUntilCollision: 3.486893591255115,
+            timeUntilCollision: 3.4868935912,
         });
         expect(collisionFromDifferentFunction({
             a: { id: '1', x: -2, y: 0, direction: 65, speed: 1 },
@@ -38,7 +38,7 @@ describe('collisionFromDifferentFunction', () => {
             b: '2',
             collisionPoint: { x: 0, y: 4.289013841 },
             timeDifferenceToPoint: 0,
-            timeUntilCollision: 4.732403166287671,
+            timeUntilCollision: 4.7324031663,
         });
         expect(collisionFromDifferentFunction({
             a: { id: '1', x: -2, y: 0, direction: 25, speed: 1 },
@@ -48,7 +48,7 @@ describe('collisionFromDifferentFunction', () => {
             b: '2',
             collisionPoint: { x: 0, y: 0.9326153163 },
             timeDifferenceToPoint: 0,
-            timeUntilCollision: 2.206755837920759,
+            timeUntilCollision: 2.2067558379,
         });
     });
 
@@ -60,8 +60,8 @@ describe('collisionFromDifferentFunction', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.4142135623730951,
-            timeDifferenceToPoint: 1.4142135623730951,
+            timeUntilCollision: 1.8856180832,
+            timeDifferenceToPoint: 1.4142135624,
         });
         expect(collisionFromDifferentFunction({
             a: { id: '1', x: -2, y: 0, direction: 55, speed: 1 },
@@ -70,8 +70,8 @@ describe('collisionFromDifferentFunction', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 2.8562960135 },
-            timeDifferenceToPoint: 2.6151701934413363,
-            timeUntilCollision: 0.8717233978137787,
+            timeDifferenceToPoint: 2.6151701934,
+            timeUntilCollision: 1.3947574365,
         });
         expect(collisionFromDifferentFunction({
             a: { id: '1', x: -2, y: 0, direction: 65, speed: 1 },
@@ -80,8 +80,8 @@ describe('collisionFromDifferentFunction', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 4.289013841 },
-            timeDifferenceToPoint: 2.3662015831438357,
-            timeUntilCollision: 2.3662015831438357,
+            timeDifferenceToPoint: 2.3662015831,
+            timeUntilCollision: 3.1549354442,
         });
         expect(collisionFromDifferentFunction({
             a: { id: '1', x: -2, y: 0, direction: 25, speed: 1 },
@@ -90,8 +90,8 @@ describe('collisionFromDifferentFunction', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 0.9326153163 },
-            timeDifferenceToPoint: 1.1033779189603794,
-            timeUntilCollision: 1.1033779189603794,
+            timeDifferenceToPoint: 1.1033779190,
+            timeUntilCollision: 1.4711705586,
         });
     });
 });

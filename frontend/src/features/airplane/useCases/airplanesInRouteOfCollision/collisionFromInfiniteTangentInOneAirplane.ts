@@ -15,12 +15,8 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
         const intersectionPoint = { x: a.x, y: pointB };
         const aDistance = cartesianPlane.distance({ x: a.x, y: a.y }, intersectionPoint);
         const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: aDistance });
-        if (aTimeTo < 0)
-            return undefined;
         const bDistance = cartesianPlane.distance({ x: b.x, y: b.y }, intersectionPoint);
         const bTimeTo = mechanics.timeToPoint({ speed: b.speed, distance: bDistance });
-        if (bTimeTo < 0)
-            return undefined;
         const timeUntilCollision = Math.min(aTimeTo, bTimeTo);
         const timeDifferenceToPoint = aTimeTo - bTimeTo;
         if (timeDifferenceToPoint < 0)
@@ -38,12 +34,8 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
         const intersectionPoint = { x: b.x, y: pointA };
         const aDistance = cartesianPlane.distance({ x: a.x, y: a.y }, intersectionPoint);
         const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: aDistance });
-        if (aTimeTo < 0)
-            return undefined;
         const bDistance = cartesianPlane.distance({ x: b.x, y: b.y }, intersectionPoint);
         const bTimeTo = mechanics.timeToPoint({ speed: b.speed, distance: bDistance });
-        if (bTimeTo < 0)
-            return undefined;
         const timeUntilCollision = Math.min(aTimeTo, bTimeTo);
         const timeDifferenceToPoint = aTimeTo - bTimeTo;
         if (timeDifferenceToPoint < 0)

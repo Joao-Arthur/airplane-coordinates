@@ -17,7 +17,7 @@ describe('collisionFromSameFunction', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 3, y: 5 },
-            timeUntilCollision: 2.82842712474619,
+            timeUntilCollision: 2.8284271247,
             timeDifferenceToPoint: 0,
         });
 
@@ -28,7 +28,7 @@ describe('collisionFromSameFunction', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 5 },
-            timeUntilCollision: 1.414213562373095,
+            timeUntilCollision: 1.4142135624,
             timeDifferenceToPoint: 0,
         });
 
@@ -38,9 +38,9 @@ describe('collisionFromSameFunction', () => {
         })).toEqual({
             a: '1',
             b: '2',
-            collisionPoint: { x: - 1.2727272727272727, y: 2 },
+            collisionPoint: { x: -1.2727272727, y: 2 },
             timeDifferenceToPoint: 0,
-            timeUntilCollision: 0.36363636363636365,
+            timeUntilCollision: 0.3636363636,
         });
     });
 });

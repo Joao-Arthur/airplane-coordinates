@@ -5,34 +5,17 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
     it('should return the airplanes in route of collision in the same angle, but opposite directions', () => {
         expect(airplanesInRouteOfCollisionBusiness({
             airplanes: [
-                {
-                    id: '1',
-                    x: -2,
-                    y: 0,
-                    direction: 45,
-                    speed: 1,
-                },
-                {
-                    id: '2',
-                    x: 2,
-                    y: 0,
-                    direction: 135,
-                    speed: 1,
-                },
+                { id: '1', x: -2, y: 0, direction: 45, speed: 1 },
+                { id: '2', x: 2, y: 0, direction: 135, speed: 1 },
             ],
             maxTime: 1000,
-        })).toEqual([
-            {
-                a: '1',
-                b: '2',
-                collisionPoint: {
-                    x: 0,
-                    y: 2,
-                },
-                timeUntilCollision: 2.8284271247461903,
-                timeDifferenceToPoint: 0,
-            },
-        ]);
+        })).toEqual([{
+            a: '1',
+            b: '2',
+            collisionPoint: { x: 0, y: 2 },
+            timeUntilCollision: 2.8284271247,
+            timeDifferenceToPoint: 0,
+        }]);
     });
 
     //    it('should return the airplanes in route of collision in the same angle and direction', () => {

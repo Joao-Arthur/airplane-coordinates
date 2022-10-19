@@ -1,5 +1,7 @@
+import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { linearFunction } from '../../../../core/linearFunction';
 import { mechanics } from '../../../../core/mechanics';
+import { numberFns } from '../../../../core/numberFns';
 import { trigonometry } from '../../../../core/trigonometry';
 import { airplaneType } from '../../models';
 
@@ -9,12 +11,9 @@ type paramsType = {
 }
 
 export function collisionFromSameFunction({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({
-        point: { x: a.x, y: a.y },
-        angle: a.direction,
-    });
-    const coefficientA = Math.cos(a.direction * Math.PI / 180);
-    const coefficientB = Math.cos(b.direction * Math.PI / 180);
+    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
+    const coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));
+    const coefficientB = Math.abs(Math.cos(b.direction * Math.PI / 180));
 
     const { x: timeUntilCollision, y: x } = mechanics.collision({
         a: {
@@ -33,15 +32,25 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
         },
     });
     const y = linearFunction.execute(fx, x);
-
-    if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(y))
+    const intersectionPoint = { x, y };
+    if (timeUntilCollision < 0)
         return undefined;
+    if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(intersectionPoint.y))
+        return undefined;
+    const aDistance = cartesianPlane.distance({ x: a.x, y: a.y }, intersectionPoint);
+    const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: aDistance });
+    const bDistance = cartesianPlane.distance({ x: b.x, y: b.y }, intersectionPoint);
+    const bTimeTo = mechanics.timeToPoint({ speed: b.speed, distance: bDistance });
+    const timeDifferenceToPoint = aTimeTo - bTimeTo;
+
     return {
         a: a.id,
         b: b.id,
-        timeUntilCollision,
-        collisionPoint: { x, y },
-        timeDifferenceToPoint: 0,
+        timeUntilCollision: numberFns.fix(timeUntilCollision),
+        collisionPoint: {
+            x: numberFns.fix(intersectionPoint.x),
+            y: numberFns.fix(intersectionPoint.y),
+        },
+        timeDifferenceToPoint: numberFns.fix(timeDifferenceToPoint),
     } as const;
-
 }
