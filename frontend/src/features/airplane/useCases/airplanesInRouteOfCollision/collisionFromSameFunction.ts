@@ -14,7 +14,7 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
         angle: a.direction,
     });
     const coefficientA = Math.cos(a.direction * Math.PI / 180);
-    const coefficientB = Math.cos(a.direction * Math.PI / 180);
+    const coefficientB = Math.cos(b.direction * Math.PI / 180);
 
     const { x: timeUntilCollision, y: x } = mechanics.collision({
         a: {
