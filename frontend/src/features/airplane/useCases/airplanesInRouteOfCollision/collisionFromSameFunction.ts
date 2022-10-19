@@ -1,4 +1,3 @@
-import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { linearFunction } from '../../../../core/linearFunction';
 import { mechanics } from '../../../../core/mechanics';
 import { numberFns } from '../../../../core/numberFns';
@@ -12,10 +11,11 @@ type paramsType = {
 
 export function collisionFromSameFunction({ a, b }: paramsType) {
     const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
+
     const coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));
     const coefficientB = Math.abs(Math.cos(b.direction * Math.PI / 180));
 
-    const { x: timeUntilCollision, y: x } = mechanics.collision({
+    const { y: x } = mechanics.collision({
         a: {
             initialPoint: a.x,
             speed: trigonometry.getValueInEachQuadrant({
@@ -31,25 +31,44 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
             }),
         },
     });
+    if (!Number.isFinite(x))
+        return undefined;
     const y = linearFunction.execute(fx, x);
-    const intersectionPoint = { x, y };
-    if (timeUntilCollision < 0)
+
+    const { x: timeToCollisionA } = mechanics.collision({
+        a: { initialPoint: x, speed: 0 },
+        b: {
+            initialPoint: a.x,
+            speed: trigonometry.getValueInEachQuadrant({
+                value: coefficientA * a.speed,
+                angle: a.direction,
+            }),
+        },
+    });
+    if (timeToCollisionA < 0)
         return undefined;
-    if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(intersectionPoint.y))
+    const { x: timeToCollisionB } = mechanics.collision({
+        a: { initialPoint: x, speed: 0 },
+        b: {
+            initialPoint: b.x,
+            speed: trigonometry.getValueInEachQuadrant({
+                value: coefficientA * b.speed,
+                angle: b.direction,
+            }),
+        },
+    });
+    if (timeToCollisionB < 0)
         return undefined;
-    const aDistance = cartesianPlane.distance({ x: a.x, y: a.y }, intersectionPoint);
-    const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: aDistance });
-    const bDistance = cartesianPlane.distance({ x: b.x, y: b.y }, intersectionPoint);
-    const bTimeTo = mechanics.timeToPoint({ speed: b.speed, distance: bDistance });
-    const timeDifferenceToPoint = aTimeTo - bTimeTo;
+    const timeUntilCollision = Math.min(timeToCollisionA, timeToCollisionB);
+    const timeDifferenceToPoint = timeToCollisionA - timeToCollisionB;
 
     return {
         a: a.id,
         b: b.id,
         timeUntilCollision: numberFns.fix(timeUntilCollision),
         collisionPoint: {
-            x: numberFns.fix(intersectionPoint.x),
-            y: numberFns.fix(intersectionPoint.y),
+            x: numberFns.fix(x),
+            y: numberFns.fix(y),
         },
         timeDifferenceToPoint: numberFns.fix(timeDifferenceToPoint),
     } as const;
