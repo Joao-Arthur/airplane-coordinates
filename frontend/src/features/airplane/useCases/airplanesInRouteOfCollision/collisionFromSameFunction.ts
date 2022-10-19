@@ -19,14 +19,14 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
         a: {
             initialPoint: a.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * a.speed,
+                value: coefficientA,
                 angle: a.direction,
             }),
         },
         b: {
             initialPoint: b.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientB * b.speed,
+                value: coefficientB,
                 angle: b.direction,
             }),
         },
