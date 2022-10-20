@@ -23,7 +23,7 @@ export function InRouteOfCollision() {
     return (
         <Form name='Aviões em rota de colisão' onSubmit={handleSubmit(onHandleSubmit)}>
             <Input {...register('maxTime', { valueAsNumber: true, required: true })} title='Tempo mínimo' />
-            <Button title='Calcular' />
+            <Button>Calcular</Button>
         </Form>
     );
 }

@@ -23,7 +23,7 @@ export function CloseToAirport() {
     return (
         <Form name='Aviões próximos ao aeroporto' onSubmit={handleSubmit(onHandleSubmit)}>
             <Input {...register('maxDistance', { valueAsNumber: true, required: true })} title='Distancia mínima' />
-            <Button title='Calcular' />
+            <Button>Calcular</Button>
         </Form>
     );
 }

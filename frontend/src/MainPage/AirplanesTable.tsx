@@ -1,3 +1,5 @@
+import { BsFillEyeFill } from 'react-icons/bs';
+import { IconButton } from '../components/IconButton';
 import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
 
 export function AirplanesTable() {
@@ -12,13 +14,14 @@ export function AirplanesTable() {
                 <thead>
                     <tr>
                         <td className='invisible'>Seleção</td>
-                        <th style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Id</th>
-                        <th style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>X</th>
-                        <th style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Y</th>
-                        <th style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>R</th>
-                        <th style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>A</th>
-                        <th style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>V</th>
-                        <th style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>D</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Id</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>X</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Y</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>R</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>A</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>V</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>D</th>
+                        <th style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap' />
                     </tr>
                 </thead>
                 <tbody className='divide-y divide-gray-200'>
@@ -37,13 +40,16 @@ export function AirplanesTable() {
                                     }}
                                 />
                             </td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>{airplane.id}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.x}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.y}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.radius}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.angle}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.speed}</td>
-                            <td style={{ width: '14.28%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.direction}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>{airplane.id}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.x}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.y}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.radius}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.angle}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.speed}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.direction}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                                <IconButton><BsFillEyeFill /></IconButton>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

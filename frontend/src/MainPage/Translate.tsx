@@ -31,7 +31,7 @@ export function Translate() {
                 <Input {...register('x', { valueAsNumber: true, required: true })} title='X' />
                 <Input {...register('y', { valueAsNumber: true, required: true })} title='Y' />
             </Group>
-            <Button title='Executar' />
+            <Button>Executar</Button>
         </Form>
     );
 }

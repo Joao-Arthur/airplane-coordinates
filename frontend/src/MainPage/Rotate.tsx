@@ -34,7 +34,7 @@ export function Rotate() {
                 <Input {...register('centerOfRotationX', { valueAsNumber: true, required: true })} title='X' name='centerOfRotationX' />
                 <Input {...register('centerOfRotationY', { valueAsNumber: true, required: true })} title='Y' name='centerOfRotationY' />
             </Group>
-            <Button title='Executar' />
+            <Button>Executar</Button>
         </Form>
     );
 }

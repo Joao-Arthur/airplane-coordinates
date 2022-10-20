@@ -13,7 +13,7 @@ export function DeleteAirplane() {
 
     return (
         <Form name='Deletar' onSubmit={e => { e.preventDefault(); onClick(); }}>
-            <Button title='Deletar aviões selecionados' />
+            <Button>Deletar aviões selecionados</Button>
         </Form>
     );
 }

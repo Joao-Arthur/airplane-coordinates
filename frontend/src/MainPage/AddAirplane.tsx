@@ -77,7 +77,7 @@ export function AddAirplane() {
                 <Input {...register('speed', { valueAsNumber: true, required: true })} title='Velocidade' />
                 <Input {...register('direction', { valueAsNumber: true, required: true })} title='Direção' />
             </Group>
-            <Button title='Adicionar' />
+            <Button>Adicionar</Button>
         </Form>
     );
 }
