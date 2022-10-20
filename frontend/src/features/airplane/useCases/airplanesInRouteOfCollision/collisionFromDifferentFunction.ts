@@ -1,4 +1,3 @@
-import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { linearFunction } from '../../../../core/linearFunction';
 import { mechanics } from '../../../../core/mechanics';
 import { numberFns } from '../../../../core/numberFns';
@@ -22,7 +21,7 @@ export function collisionFromDifferentFunction({ a, b }: paramsType) {
     const coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));
     const coefficientB = Math.abs(Math.cos(b.direction * Math.PI / 180));
 
-    const { x: timeUntilCollision, y: x } = mechanics.collision({
+    const { y: x } = mechanics.collision({
         a: {
             initialPoint: a.x,
             speed: trigonometry.getValueInEachQuadrant({
@@ -39,15 +38,34 @@ export function collisionFromDifferentFunction({ a, b }: paramsType) {
         },
     });
     const y = linearFunction.execute(fx, x);
-    if (timeUntilCollision < 0)
+    if (!Number.isFinite(y))
         return undefined;
-    if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(y))
+    const { x: timeToCollisionA } = mechanics.collision({
+        a: { initialPoint: intersectionPoint.x, speed: 0 },
+        b: {
+            initialPoint: a.x,
+            speed: trigonometry.getValueInEachQuadrant({
+                value: coefficientA * a.speed,
+                angle: a.direction,
+            }),
+        },
+    });
+    if (timeToCollisionA < 0)
         return undefined;
-    const aDistance = cartesianPlane.distance({ x: a.x, y: a.y }, intersectionPoint);
-    const aTimeTo = mechanics.timeToPoint({ speed: a.speed, distance: aDistance });
-    const bDistance = cartesianPlane.distance({ x: b.x, y: b.y }, intersectionPoint);
-    const bTimeTo = mechanics.timeToPoint({ speed: b.speed, distance: bDistance });
-    const timeDifferenceToPoint = aTimeTo - bTimeTo;
+    const { x: timeToCollisionB } = mechanics.collision({
+        a: { initialPoint: intersectionPoint.x, speed: 0 },
+        b: {
+            initialPoint: b.x,
+            speed: trigonometry.getValueInEachQuadrant({
+                value: coefficientA * b.speed,
+                angle: b.direction,
+            }),
+        },
+    });
+    if (timeToCollisionB < 0)
+        return undefined;
+    const timeUntilCollision = Math.min(timeToCollisionA, timeToCollisionB);
+    const timeDifferenceToPoint = Math.abs(timeToCollisionA - timeToCollisionB);
 
     return {
         a: a.id,

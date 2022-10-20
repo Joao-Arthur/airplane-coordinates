@@ -11,7 +11,7 @@ type paramsType = {
 
 export function collisionFromSameFunction({ a, b }: paramsType) {
     const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
-    
+
     const coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));
     const coefficientB = Math.abs(Math.cos(b.direction * Math.PI / 180));
 

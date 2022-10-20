@@ -45,7 +45,7 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.8856180832,
+            timeUntilCollision: 1.4142135624,
             timeDifferenceToPoint: 1.4142135624,
         }]);
 
@@ -59,7 +59,7 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.1313708499,
+            timeUntilCollision: 0.7071067812,
             timeDifferenceToPoint: 2.1213203436,
         }]);
     });
@@ -75,7 +75,7 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.8856180832,
+            timeUntilCollision: 1.4142135624,
             timeDifferenceToPoint: 1.4142135624,
         }]);
 
@@ -105,7 +105,7 @@ describe('airplanesInRouteOfCollisionBusiness', () => {
             a: '1',
             b: '2',
             collisionPoint: { x: 0, y: 2 },
-            timeUntilCollision: 1.8856180832,
+            timeUntilCollision: 1.4142135624,
             timeDifferenceToPoint: 1.4142135624,
         }]);
 
