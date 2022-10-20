@@ -2,4 +2,4 @@
 
 ## TODO
 
-- fix 11º rotation 
+- more precise float point operations
