@@ -9,5 +9,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 wasm-bindgen = { version = "0.2.83", features = ["serde-serialize"] }
-serde = {version = "1.0.145", features = ["derive"] }
+serde = { version = "1.0.145", features = ["derive"] }
 serde-wasm-bindgen = "0.4"
+rust_decimal = { version = "1.26", features = ["maths"] }
+rust_decimal_macros = "1.26"
