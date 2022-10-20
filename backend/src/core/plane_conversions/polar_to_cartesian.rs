@@ -9,7 +9,7 @@ pub fn polar_to_cartesian(cartesian_point: PolarPoint) -> CartesianPoint {
 }
 
 #[cfg(test)]
-mod test_cartesian_point {
+mod test_polar_to_cartesian {
     use super::*;
 
     #[test]
