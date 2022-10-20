@@ -1,5 +1,5 @@
-use super::super::cartesian_plane::cartesian_point::CartesianPoint;
-use super::super::polar_plane::polar_point::PolarPoint;
+use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
+use crate::core::polar_plane::polar_point::PolarPoint;
 
 pub fn cartesian_to_polar(cartesian_point: CartesianPoint) -> PolarPoint {
     return PolarPoint {
