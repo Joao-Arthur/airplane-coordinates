@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import './index.css';
 import { AirplaneProvider } from './integrations/airplane/AirplaneProvider';
 import { RadarProvider } from './integrations/radar/RadarProvider';
-import { MainPage } from './pages/MainPage/MainPage';
+import { MainPage } from './MainPage';
 
 export function App() {
     return (

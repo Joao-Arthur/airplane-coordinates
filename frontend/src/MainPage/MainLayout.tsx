@@ -1,8 +1,8 @@
 
 import { useRef, useState } from 'react';
 import { useDidMount } from 'rooks';
-import { Tab } from '../../components/Tab';
-import { numberFns } from '../../core/numberFns';
+import { Tab } from '../components/Tab';
+import { numberFns } from '../core/numberFns';
 import { AddAirplane } from './AddAirplane';
 import { DeleteAirplane } from './DeleteAirplane';
 import { AirplanesTable } from './AirplanesTable';

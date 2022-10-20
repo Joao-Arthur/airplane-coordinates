@@ -1,4 +1,4 @@
-import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
+import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
 
 export function AirplanesTable() {
     const airplanes = useAirplaneStore(state => state.airplanes);

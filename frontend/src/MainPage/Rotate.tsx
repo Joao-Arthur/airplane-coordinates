@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
-import { Button } from '../../components/Button';
-import { Form } from '../../components/Form';
-import { Group } from '../../components/Group';
-import { Input } from '../../components/Input';
-import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
-import { useAirplanes } from '../../integrations/airplane/useAirplanes';
+import { Button } from '../components/Button';
+import { Form } from '../components/Form';
+import { Group } from '../components/Group';
+import { Input } from '../components/Input';
+import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
+import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 type fieldsType = {
     readonly angle: number;

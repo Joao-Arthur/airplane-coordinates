@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { nanoid } from 'nanoid';
-import { Button } from '../../components/Button';
-import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
-import { useAirplanes } from '../../integrations/airplane/useAirplanes';
+import { Button } from '../components/Button';
+import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
+import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 export function Report() {
     const reports = useAirplaneStore(state => state.reports);

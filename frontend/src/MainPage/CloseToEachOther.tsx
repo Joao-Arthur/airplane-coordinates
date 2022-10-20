@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { Button } from '../../components/Button';
-import { Form } from '../../components/Form';
-import { Input } from '../../components/Input';
-import { useAirplanes } from '../../integrations/airplane/useAirplanes';
+import { Button } from '../components/Button';
+import { Form } from '../components/Form';
+import { Input } from '../components/Input';
+import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 type fieldsType = {
     readonly maxDistance: number;

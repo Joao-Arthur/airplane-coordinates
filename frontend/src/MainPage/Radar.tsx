@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { savedAirplaneToDTO } from '../../features/airplane/useCases/savedAirplaneToDTO';
-import { useAirplaneStore } from '../../integrations/airplane/airplanesStore';
-import { useRadarStore } from '../../integrations/radar/radarStore';
-import { useRadar } from '../../integrations/radar/useRadar';
+import { savedAirplaneToDTO } from '../features/airplane/useCases/savedAirplaneToDTO';
+import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
+import { useRadarStore } from '../integrations/radar/radarStore';
+import { useRadar } from '../integrations/radar/useRadar';
 
 type props = {
     readonly dimensions: number;

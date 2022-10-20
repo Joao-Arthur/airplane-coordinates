@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Form } from '../../components/Form';
-import { Range } from '../../components/Range';
-import { Select } from '../../components/Select';
-import { useRadarStore } from '../../integrations/radar/radarStore';
+import { Form } from '../components/Form';
+import { Range } from '../components/Range';
+import { Select } from '../components/Select';
+import { useRadarStore } from '../integrations/radar/radarStore';
 
 type fieldsType = {
     readonly radarView: 'polar' | 'cartesian';
