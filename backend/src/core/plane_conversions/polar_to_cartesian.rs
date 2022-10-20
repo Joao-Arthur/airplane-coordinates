@@ -13,21 +13,58 @@ mod test_cartesian_point {
     use super::*;
 
     #[test]
-    fn expect_to_transform_polar_to_cartesian() {
+    fn expect_to_transform_polar_to_cartesian_on_the_four_axis() {
         assert_eq!(
-            polar_to_cartesian(PolarPoint { x: 4.0, y: 7.0 }),
-            CartesianPoint { x: 6.0, y: 4.0 }
-        );
-        assert_eq!(
-            polar_to_cartesian(PolarPoint { x: -1.0, y: 3.0 }),
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 0.0 }),
             CartesianPoint { x: 1.0, y: 0.0 }
         );
         assert_eq!(
-            polar_to_cartesian(PolarPoint { x: 4.0, y: 7.0 }),
-            CartesianPoint { x: 4.0, y: 7.0 }
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 90.0 }),
+            CartesianPoint { x: 0.0, y: 1.0 }
         );
         assert_eq!(
-            polar_to_cartesian(PolarPoint { x: -1.0, y: 3.0 }),
-            CartesianPoint { x: -1.0, y: 3.0 }
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 180.0 }),
+            CartesianPoint { x: -1.0, y: 0.0 }
         );
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 270.0 }),
+            CartesianPoint { x: 0.0, y: -1.0 }
+        );
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 360.0 }),
+            CartesianPoint { x: 1.0, y: 0.0 }
+        );
+    }
+
+    #[test]
+    fn expect_to_transform_polar_to_cartesian_inbetween_the_four_axis() {
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 45.0 }),
+            CartesianPoint { x: 0.7071067812, y: 0.7071067812 }
+        );
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 135.0 }),
+            CartesianPoint { x: -0.7071067812, y: 0.7071067812 }
+        );
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 225.0 }),
+            CartesianPoint { x: -0.7071067812, y: -0.7071067812 }
+        );
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 315.0 }),
+            CartesianPoint { x: 0.7071067812, y: -0.7071067812 }
+        );
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 1.0, a: 405.0 }),
+            CartesianPoint { x: 0.7071067812, y: 0.7071067812 }
+        );
+    }
+
+    #[test]
+    fn expect_to_transform_polar_to_cartesian_at_the_starting_point() {
+        assert_eq!(
+            polar_to_cartesian(PolarPoint { r: 0.0, a: 0.0 }),
+            CartesianPoint { x: 0.0, y: 0.0 }
+        );
+    }
 }
