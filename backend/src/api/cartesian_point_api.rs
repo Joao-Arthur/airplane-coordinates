@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
-pub struct SerializableCartesianPoint {
+pub struct CartesianPointAPI {
     pub x: String,
     pub y: String,
 }
