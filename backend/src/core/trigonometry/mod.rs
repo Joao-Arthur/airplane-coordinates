@@ -1,2 +1,2 @@
-pub mod rad_to_deg;
+pub mod deg_to_rad;
 pub mod simplify_angle;

@@ -6,7 +6,7 @@ pub struct CartesianPoint {
 
 impl PartialEq for CartesianPoint {
     fn eq(&self, other: &Self) -> bool {
-        return self.x == other.x && self.y == self.y
+        return self.x == other.x && self.y == self.y;
     }
 }
 
