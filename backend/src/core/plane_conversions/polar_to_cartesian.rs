@@ -14,7 +14,7 @@ mod test_polar_to_cartesian {
     use super::*;
 
     #[test]
-    fn expect_to_transform_polar_to_cartesian_on_the_four_axis() {
+    fn on_the_four_axis() {
         assert_eq!(
             polar_to_cartesian(PolarPoint { r: 1.0, a: 0.0 }),
             CartesianPoint {
@@ -53,7 +53,7 @@ mod test_polar_to_cartesian {
     }
 
     #[test]
-    fn expect_to_transform_polar_to_cartesian_inbetween_the_four_axis() {
+    fn inbetween_the_four_axis() {
         assert_eq!(
             polar_to_cartesian(PolarPoint { r: 1.0, a: 45.0 }),
             CartesianPoint {
@@ -92,7 +92,7 @@ mod test_polar_to_cartesian {
     }
 
     #[test]
-    fn expect_to_transform_polar_to_cartesian_at_the_starting_point() {
+    fn at_the_starting_point() {
         assert_eq!(
             polar_to_cartesian(PolarPoint { r: 0.0, a: 0.0 }),
             CartesianPoint { x: 0.0, y: 0.0 }

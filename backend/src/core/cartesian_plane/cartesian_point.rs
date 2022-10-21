@@ -37,7 +37,7 @@ mod test_cartesian_point {
     use super::*;
 
     #[test]
-    fn expect_to_sum_correctly() {
+    fn sum_correctly() {
         assert_eq!(
             CartesianPoint { x: 4.0, y: 7.0 } + CartesianPoint { x: 2.0, y: -3.0 },
             CartesianPoint { x: 6.0, y: 4.0 }
@@ -57,7 +57,7 @@ mod test_cartesian_point {
     }
 
     #[test]
-    fn expect_to_multiply_correctly() {
+    fn multiply_correctly() {
         assert_eq!(
             CartesianPoint { x: 4.0, y: 7.0 } * CartesianPoint { x: 2.0, y: -3.0 },
             CartesianPoint { x: 8.0, y: -21.0 }

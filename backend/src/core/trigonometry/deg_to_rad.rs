@@ -9,7 +9,7 @@ mod test_deg_to_rad {
     use super::*;
 
     #[test]
-    fn should_transform_deg_to_rad() {
+    fn transform_deg_to_rad() {
         assert_eq!(deg_to_rad(0.0), 0.0);
         assert_eq!(deg_to_rad(45.0), 0.7853981633974483);
         assert_eq!(deg_to_rad(90.0), 1.5707963267948966);
