@@ -351,7 +351,7 @@ mod test_precise_decimal {
     }
 
     #[test]
-    fn math_operations_sqrt() {
+    fn sqrt() {
         assert_eq!(
             PreciseDecimal::from_str("1").sqrt(),
             PreciseDecimal::from_str("1.0000000000000000000000000000")
@@ -375,7 +375,7 @@ mod test_precise_decimal {
     }
 
     #[test]
-    fn math_operations_square() {
+    fn square() {
         assert_eq!(
             PreciseDecimal::from_str("1").square(),
             PreciseDecimal::from_str("1")
@@ -398,15 +398,75 @@ mod test_precise_decimal {
         );
     }
 
-    //      fn cos(&self) -> PreciseDecimal {
-    //          let decimal = Decimal::from_str(self.value.as_str()).unwrap();
-    //
-    //          PreciseDecimal::from_string(decimal.cos().to_string())
-    //      }
-    //
-    //      fn sin(&self) -> PreciseDecimal {
-    //          let decimal = Decimal::from_str(self.value.as_str()).unwrap();
-    //
-    //          PreciseDecimal::from_string(decimal.sin().to_string())
-    //      }
+    #[test]
+    fn sin() {
+        assert_eq!(
+            PreciseDecimal::from_str("0").sin(),
+            PreciseDecimal::from_str("0")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("1").sin(),
+            PreciseDecimal::from_str("0.8414709848054038642624295038")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("2").sin(),
+            PreciseDecimal::from_str("0.9092974268256001903062739251")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("3").sin(),
+            PreciseDecimal::from_str("0.1411200080598672220992683907")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("4").sin(),
+            PreciseDecimal::from_str("-0.7568024952723602702785983780")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("5").sin(),
+            PreciseDecimal::from_str("-0.9589242746631378003461760450")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("6").sin(),
+            PreciseDecimal::from_str("-0.2794154981989258607202506132")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("7").sin(),
+            PreciseDecimal::from_str("0.6569865987166758570704634881")
+        );
+    }
+
+    #[test]
+    fn cos() {
+        assert_eq!(
+            PreciseDecimal::from_str("0").cos(),
+            PreciseDecimal::from_str("1")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("1").cos(),
+            PreciseDecimal::from_str("0.5403023058680302458227001515")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("2").cos(),
+            PreciseDecimal::from_str("-0.4161468365471396956896160433")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("3").cos(),
+            PreciseDecimal::from_str("-0.9899924966004454571360214443")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("4").cos(),
+            PreciseDecimal::from_str("-0.6536436208616620954476562566")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("5").cos(),
+            PreciseDecimal::from_str("0.2836621854632262496748600387")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("6").cos(),
+            PreciseDecimal::from_str("0.9601702866503654655107475412")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("7").cos(),
+            PreciseDecimal::from_str("0.7539022543049938919232610909")
+        );
+    }
 }
