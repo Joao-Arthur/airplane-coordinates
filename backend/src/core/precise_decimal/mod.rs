@@ -502,5 +502,25 @@ mod test_precise_decimal {
                 value: "0.6986723567253716276345786345".to_string()
             },
         );
+        assert_eq!(
+            PreciseDecimal {
+                value: "1".to_string()
+            } + PreciseDecimal {
+                value: "0.0000000000000000000000000001".to_string()
+            },
+            PreciseDecimal {
+                value: "1.0000000000000000000000000001".to_string()
+            },
+        );
+        assert_eq!(
+            PreciseDecimal {
+                value: "1.0000000000000000000000000001".to_string()
+            } - PreciseDecimal {
+                value: "0.0000000000000000000000000001".to_string()
+            },
+            PreciseDecimal {
+                value: "1.0000000000000000000000000000".to_string()
+            }
+        );
     }
 }
