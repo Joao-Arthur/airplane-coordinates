@@ -6,6 +6,10 @@ pub struct PreciseDecimal {
 }
 
 impl PreciseDecimal {
+    pub fn from_string(value: String) -> PreciseDecimal {
+        return PreciseDecimal { value };
+    }
+
     pub fn from_str(value: &str) -> PreciseDecimal {
         return PreciseDecimal {
             value: value.to_string(),
@@ -96,6 +100,12 @@ mod test_precise_decimal {
 
     #[test]
     fn from_values() {
+        assert_eq!(
+            PreciseDecimal::from_string(String::from("28.37185")),
+            PreciseDecimal {
+                value: "28.37185".to_string()
+            }
+        );
         assert_eq!(
             PreciseDecimal::from_str("-1046.438682"),
             PreciseDecimal {

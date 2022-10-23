@@ -1,10 +1,14 @@
-use super::polar_point::PolarPoint;
-use crate::core::trigonometry::normalize_angle::normalize_angle;
+use super::polar_point::NewPolarPoint;
+use crate::core::precise_decimal::PreciseDecimal;
+use crate::core::trigonometry::normalize_angle::new_normalize_angle;
 
-pub fn rotate(point: PolarPoint, angle: f64) -> PolarPoint {
-    return PolarPoint {
+pub fn rotate(point: NewPolarPoint, angle: &str) -> NewPolarPoint {
+    return NewPolarPoint {
         r: point.r,
-        a: normalize_angle(point.a + angle),
+        a: new_normalize_angle(
+            PreciseDecimal::from_string(point.a) + PreciseDecimal::from_str(angle),
+        )
+        .value,
     };
 }
 
@@ -15,28 +19,82 @@ mod test_rotate {
     #[test]
     fn expect_to_rotate() {
         assert_eq!(
-            rotate(PolarPoint { r: 1.0, a: 300.0 }, 50.0),
-            PolarPoint { r: 1.0, a: 350.0 }
+            rotate(
+                NewPolarPoint {
+                    r: "1".to_string(),
+                    a: "300".to_string()
+                },
+                "50"
+            ),
+            NewPolarPoint {
+                r: "1".to_string(),
+                a: "350".to_string()
+            }
         );
         assert_eq!(
-            rotate(PolarPoint { r: 1.0, a: 200.0 }, 50.0),
-            PolarPoint { r: 1.0, a: 250.0 }
+            rotate(
+                NewPolarPoint {
+                    r: "1".to_string(),
+                    a: "200".to_string()
+                },
+                "50"
+            ),
+            NewPolarPoint {
+                r: "1".to_string(),
+                a: "250".to_string()
+            }
         );
         assert_eq!(
-            rotate(PolarPoint { r: 1.0, a: 111.11 }, 11.40),
-            PolarPoint { r: 1.0, a: 122.51 }
+            rotate(
+                NewPolarPoint {
+                    r: "1".to_string(),
+                    a: "111.11".to_string()
+                },
+                "11.40"
+            ),
+            NewPolarPoint {
+                r: "1".to_string(),
+                a: "122.51".to_string()
+            }
         );
         assert_eq!(
-            rotate(PolarPoint { r: 1.0, a: 34.02 }, 19.04),
-            PolarPoint { r: 1.0, a: 53.06 }
+            rotate(
+                NewPolarPoint {
+                    r: "1".to_string(),
+                    a: "342".to_string()
+                },
+                "194"
+            ),
+            NewPolarPoint {
+                r: "1".to_string(),
+                a: "536".to_string()
+            }
         );
         assert_eq!(
-            rotate(PolarPoint { r: 1.0, a: 60.0 }, -120.0),
-            PolarPoint { r: 1.0, a: 300.0 }
+            rotate(
+                NewPolarPoint {
+                    r: "1".to_string(),
+                    a: "60".to_string()
+                },
+                "-120"
+            ),
+            NewPolarPoint {
+                r: "1".to_string(),
+                a: "300".to_string()
+            }
         );
         assert_eq!(
-            rotate(PolarPoint { r: 1.0, a: 60.0 }, -60.0),
-            PolarPoint { r: 1.0, a: 0.0 }
+            rotate(
+                NewPolarPoint {
+                    r: "1".to_string(),
+                    a: "60".to_string()
+                },
+                "-60"
+            ),
+            NewPolarPoint {
+                r: "1".to_string(),
+                a: "0".to_string()
+            }
         );
     }
 }
