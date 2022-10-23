@@ -1,5 +1,12 @@
+use crate::core::precise_decimal::PreciseDecimal;
+
 pub fn normalize_angle(angle: f64) -> f64 {
     return (angle % 360.0 + 360.0) % 360.0;
+}
+
+pub fn new_normalize_angle(angle: PreciseDecimal) -> PreciseDecimal {
+    return (angle % PreciseDecimal::from_int(360) + PreciseDecimal::from_int(360))
+        % PreciseDecimal::from_int(360);
 }
 
 #[cfg(test)]
@@ -8,23 +15,53 @@ mod test_normalize_angle {
 
     #[test]
     fn normalize_angles_smaller_than_0() {
-        assert_eq!(normalize_angle(-100.0), 260.0);
-        assert_eq!(normalize_angle(-1.0), 359.0);
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(-100)),
+            PreciseDecimal::from_int(260)
+        );
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(-1)),
+            PreciseDecimal::from_int(359)
+        );
     }
 
     #[test]
     fn normalize_angles_greater_than_360() {
-        assert_eq!(normalize_angle(360.0), 0.0);
-        assert_eq!(normalize_angle(720.0), 0.0);
-        assert_eq!(normalize_angle(405.0), 45.0);
-        assert_eq!(normalize_angle(765.0), 45.0);
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(360)),
+            PreciseDecimal::from_int(0)
+        );
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(720)),
+            PreciseDecimal::from_int(0)
+        );
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(405)),
+            PreciseDecimal::from_int(45)
+        );
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(765)),
+            PreciseDecimal::from_int(45),
+        );
     }
 
     #[test]
     fn keep_the_angles_in_range() {
-        assert_eq!(normalize_angle(0.0), 0.0);
-        assert_eq!(normalize_angle(10.0), 10.0);
-        assert_eq!(normalize_angle(90.0), 90.0);
-        assert_eq!(normalize_angle(111.11), 111.11000000000001);
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(0)),
+            PreciseDecimal::from_int(0)
+        );
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(10)),
+            PreciseDecimal::from_int(10)
+        );
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_int(90)),
+            PreciseDecimal::from_int(90),
+        );
+        assert_eq!(
+            new_normalize_angle(PreciseDecimal::from_str("111.11")),
+            PreciseDecimal::from_str("111.11")
+        );
     }
 }
