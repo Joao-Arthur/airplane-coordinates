@@ -5,6 +5,20 @@ pub struct PreciseDecimal {
     pub value: String,
 }
 
+impl PreciseDecimal {
+    pub fn from_str(value: &str) -> PreciseDecimal {
+        return PreciseDecimal {
+            value: value.to_string(),
+        };
+    }
+
+    pub fn from_int(value: isize) -> PreciseDecimal {
+        return PreciseDecimal {
+            value: value.to_string(),
+        };
+    }
+}
+
 impl PartialEq for PreciseDecimal {
     fn eq(&self, other: &Self) -> bool {
         return self.value == other.value;
@@ -79,6 +93,28 @@ impl std::ops::Rem<PreciseDecimal> for PreciseDecimal {
 #[cfg(test)]
 mod test_precise_decimal {
     use super::*;
+
+    #[test]
+    fn from_values() {
+        assert_eq!(
+            PreciseDecimal::from_str("-1046.438682"),
+            PreciseDecimal {
+                value: "-1046.438682".to_string()
+            }
+        );
+        assert_eq!(
+            PreciseDecimal::from_int(983),
+            PreciseDecimal {
+                value: "983".to_string()
+            }
+        );
+        assert_eq!(
+            PreciseDecimal::from_int(-4),
+            PreciseDecimal {
+                value: "-4".to_string()
+            }
+        );
+    }
 
     #[test]
     fn sum() {
