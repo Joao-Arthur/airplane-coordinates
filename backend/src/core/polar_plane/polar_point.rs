@@ -1,3 +1,5 @@
+use crate::core::precise_decimal::PreciseDecimal;
+
 #[derive(Debug)]
 pub struct PolarPoint {
     pub r: f64,
@@ -12,8 +14,8 @@ impl PartialEq for PolarPoint {
 
 #[derive(Debug)]
 pub struct NewPolarPoint {
-    pub r: String,
-    pub a: String,
+    pub r: PreciseDecimal,
+    pub a: PreciseDecimal,
 }
 
 impl PartialEq for NewPolarPoint {

@@ -4,6 +4,7 @@ use wasm_bindgen::{prelude::wasm_bindgen, JsValue};
 
 use crate::core::polar_plane::polar_point::NewPolarPoint;
 use crate::core::polar_plane::rotate::rotate as core_rotate;
+use crate::core::precise_decimal::PreciseDecimal;
 
 use super::cartesian_point_api::CartesianPointAPI;
 
@@ -21,15 +22,15 @@ pub fn rotate(val: JsValue) -> Result<JsValue, JsValue> {
 
     let return_value = core_rotate(
         NewPolarPoint {
-            r: args.point.x,
-            a: args.point.y,
+            r: PreciseDecimal::from_string(args.point.x),
+            a: PreciseDecimal::from_string(args.point.y),
         },
         args.angle.as_str(),
     );
 
     let serializable = CartesianPointAPI {
-        x: return_value.r.to_string(),
-        y: return_value.a.to_string(),
+        x: return_value.r.value,
+        y: return_value.a.value,
     };
 
     Ok(serde_wasm_bindgen::to_value(&serializable)?)

@@ -5,10 +5,7 @@ use crate::core::trigonometry::normalize_angle::new_normalize_angle;
 pub fn rotate(point: NewPolarPoint, angle: &str) -> NewPolarPoint {
     NewPolarPoint {
         r: point.r,
-        a: new_normalize_angle(
-            PreciseDecimal::from_string(point.a) + PreciseDecimal::from_str(angle),
-        )
-        .value,
+        a: new_normalize_angle(point.a + PreciseDecimal::from_str(angle)),
     }
 }
 
@@ -21,79 +18,79 @@ mod test_rotate {
         assert_eq!(
             rotate(
                 NewPolarPoint {
-                    r: "1".to_string(),
-                    a: "300".to_string()
+                    r: PreciseDecimal::from_str("1"),
+                    a: PreciseDecimal::from_str("300")
                 },
                 "50"
             ),
             NewPolarPoint {
-                r: "1".to_string(),
-                a: "350".to_string()
+                r: PreciseDecimal::from_str("1"),
+                a: PreciseDecimal::from_str("350")
             }
         );
         assert_eq!(
             rotate(
                 NewPolarPoint {
-                    r: "1".to_string(),
-                    a: "200".to_string()
+                    r: PreciseDecimal::from_str("1"),
+                    a: PreciseDecimal::from_str("200")
                 },
                 "50"
             ),
             NewPolarPoint {
-                r: "1".to_string(),
-                a: "250".to_string()
+                r: PreciseDecimal::from_str("1"),
+                a: PreciseDecimal::from_str("250")
             }
         );
         assert_eq!(
             rotate(
                 NewPolarPoint {
-                    r: "1".to_string(),
-                    a: "111.11".to_string()
+                    r: PreciseDecimal::from_str("1"),
+                    a: PreciseDecimal::from_str("111.11")
                 },
                 "11.40"
             ),
             NewPolarPoint {
-                r: "1".to_string(),
-                a: "122.51".to_string()
+                r: PreciseDecimal::from_str("1"),
+                a: PreciseDecimal::from_str("122.51")
             }
         );
         assert_eq!(
             rotate(
                 NewPolarPoint {
-                    r: "1".to_string(),
-                    a: "342".to_string()
+                    r: PreciseDecimal::from_str("1"),
+                    a: PreciseDecimal::from_str("342")
                 },
                 "194"
             ),
             NewPolarPoint {
-                r: "1".to_string(),
-                a: "536".to_string()
+                r: PreciseDecimal::from_str("1"),
+                a: PreciseDecimal::from_str("536")
             }
         );
         assert_eq!(
             rotate(
                 NewPolarPoint {
-                    r: "1".to_string(),
-                    a: "60".to_string()
+                    r: PreciseDecimal::from_str("1"),
+                    a: PreciseDecimal::from_str("60")
                 },
                 "-120"
             ),
             NewPolarPoint {
-                r: "1".to_string(),
-                a: "300".to_string()
+                r: PreciseDecimal::from_str("1"),
+                a: PreciseDecimal::from_str("300")
             }
         );
         assert_eq!(
             rotate(
                 NewPolarPoint {
-                    r: "1".to_string(),
-                    a: "60".to_string()
+                    r: PreciseDecimal::from_str("1"),
+                    a: PreciseDecimal::from_str("60")
                 },
                 "-60"
             ),
             NewPolarPoint {
-                r: "1".to_string(),
-                a: "0".to_string()
+                r: PreciseDecimal::from_str("1"),
+                a: PreciseDecimal::from_str("0")
             }
         );
     }
