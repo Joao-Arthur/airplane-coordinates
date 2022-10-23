@@ -6,7 +6,7 @@ pub struct PolarPoint {
 
 impl PartialEq for PolarPoint {
     fn eq(&self, other: &Self) -> bool {
-        return self.r == other.r && self.a == self.a;
+        self.r == other.r && self.a == self.a
     }
 }
 
@@ -18,6 +18,6 @@ pub struct NewPolarPoint {
 
 impl PartialEq for NewPolarPoint {
     fn eq(&self, other: &Self) -> bool {
-        return self.r == other.r && self.a == self.a;
+        self.r == other.r && self.a == self.a
     }
 }

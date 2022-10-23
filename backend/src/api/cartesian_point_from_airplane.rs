@@ -5,7 +5,7 @@ use crate::core::plane_conversions::polar_to_cartesian::polar_to_cartesian;
 use crate::core::polar_plane::polar_point::PolarPoint;
 
 pub fn cartesian_point_from_api(point: AirplanePoint) -> CartesianPoint {
-    return match point.plane {
+    match point.plane {
         Planes::CARTESIAN => CartesianPoint {
             x: point.a.parse().unwrap(),
             y: point.b.parse().unwrap(),
@@ -14,5 +14,5 @@ pub fn cartesian_point_from_api(point: AirplanePoint) -> CartesianPoint {
             r: point.a.parse::<f64>().unwrap(),
             a: point.b.parse::<f64>().unwrap(),
         }),
-    };
+    }
 }

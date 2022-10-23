@@ -4,10 +4,10 @@ use crate::core::trigonometry::deg_to_rad::deg_to_rad;
 use crate::core::trigonometry::normalize_angle::normalize_angle;
 
 pub fn cartesian_to_polar(cartesian_point: CartesianPoint) -> PolarPoint {
-    return PolarPoint {
+    PolarPoint {
         r: (cartesian_point.x.powi(2) + cartesian_point.y.powi(2)).sqrt(),
         a: normalize_angle(deg_to_rad(cartesian_point.y.atan2(cartesian_point.x))),
-    };
+    }
 }
 
 #[cfg(test)]

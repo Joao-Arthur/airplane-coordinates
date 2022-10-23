@@ -3,17 +3,17 @@ use crate::core::polar_plane::polar_point::PolarPoint;
 use crate::core::trigonometry::deg_to_rad::deg_to_rad;
 
 pub fn polar_to_cartesian(cartesian_point: PolarPoint) -> CartesianPoint {
-    return CartesianPoint {
+    CartesianPoint {
         x: cartesian_point.r * deg_to_rad(cartesian_point.a).cos(),
         y: cartesian_point.r * deg_to_rad(cartesian_point.a).sin(),
-    };
+    }
 }
 
 pub fn new_polar_to_cartesian(cartesian_point: PolarPoint) -> CartesianPoint {
-    return CartesianPoint {
+    CartesianPoint {
         x: cartesian_point.r * deg_to_rad(cartesian_point.a).cos(),
         y: cartesian_point.r * deg_to_rad(cartesian_point.a).sin(),
-    };
+    }
 }
 
 #[cfg(test)]

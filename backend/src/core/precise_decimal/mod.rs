@@ -9,41 +9,43 @@ pub struct PreciseDecimal {
 
 impl PreciseDecimal {
     pub fn from_string(value: String) -> PreciseDecimal {
-        return PreciseDecimal { value };
+        PreciseDecimal { value }
     }
 
     pub fn from_str(value: &str) -> PreciseDecimal {
-        return PreciseDecimal {
+        PreciseDecimal {
             value: value.to_string(),
-        };
+        }
     }
 
     pub fn from_int(value: isize) -> PreciseDecimal {
-        return PreciseDecimal {
+        PreciseDecimal {
             value: value.to_string(),
-        };
+        }
     }
 }
 
 impl MathOperations<PreciseDecimal> for PreciseDecimal {
     fn sqrt(&self) -> PreciseDecimal {
         let decimal = Decimal::from_str(self.value.as_str()).unwrap();
-        return PreciseDecimal {
+
+        PreciseDecimal {
             value: decimal.sqrt().unwrap().to_string(),
-        };
+        }
     }
 
     fn square(&self) -> PreciseDecimal {
         let decimal = Decimal::from_str(self.value.as_str()).unwrap();
-        return PreciseDecimal {
+
+        PreciseDecimal {
             value: decimal.powi(2).to_string(),
-        };
+        }
     }
 }
 
 impl PartialEq for PreciseDecimal {
     fn eq(&self, other: &Self) -> bool {
-        return self.value == other.value;
+        self.value == other.value
     }
 }
 
@@ -54,9 +56,9 @@ impl std::ops::Add<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        return PreciseDecimal {
+        PreciseDecimal {
             value: (self_decimal + other_decimal).to_string(),
-        };
+        }
     }
 }
 
@@ -67,9 +69,9 @@ impl std::ops::Sub<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        return PreciseDecimal {
+        PreciseDecimal {
             value: (self_decimal - other_decimal).to_string(),
-        };
+        }
     }
 }
 
@@ -80,9 +82,9 @@ impl std::ops::Mul<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        return PreciseDecimal {
+        PreciseDecimal {
             value: (self_decimal * other_decimal).to_string(),
-        };
+        }
     }
 }
 
@@ -93,9 +95,9 @@ impl std::ops::Div<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        return PreciseDecimal {
+        PreciseDecimal {
             value: (self_decimal / other_decimal).to_string(),
-        };
+        }
     }
 }
 
@@ -106,9 +108,9 @@ impl std::ops::Rem<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        return PreciseDecimal {
+        PreciseDecimal {
             value: (self_decimal % other_decimal).to_string(),
-        };
+        }
     }
 }
 

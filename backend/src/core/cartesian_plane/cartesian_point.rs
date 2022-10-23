@@ -8,7 +8,7 @@ pub struct CartesianPoint {
 
 impl PartialEq for CartesianPoint {
     fn eq(&self, other: &Self) -> bool {
-        return self.x == other.x && self.y == self.y;
+        self.x == other.x && self.y == self.y
     }
 }
 
@@ -16,10 +16,10 @@ impl std::ops::Add<CartesianPoint> for CartesianPoint {
     type Output = CartesianPoint;
 
     fn add(self, other: CartesianPoint) -> CartesianPoint {
-        return CartesianPoint {
+        CartesianPoint {
             x: self.x + other.x,
             y: self.y + other.y,
-        };
+        }
     }
 }
 
@@ -27,10 +27,10 @@ impl std::ops::Mul<CartesianPoint> for CartesianPoint {
     type Output = CartesianPoint;
 
     fn mul(self, other: CartesianPoint) -> CartesianPoint {
-        return CartesianPoint {
+        CartesianPoint {
             x: self.x * other.x,
             y: self.y * other.y,
-        };
+        }
     }
 }
 
@@ -42,7 +42,7 @@ pub struct NewCartesianPoint {
 
 impl PartialEq for NewCartesianPoint {
     fn eq(&self, other: &Self) -> bool {
-        return self.x == other.x && self.y == self.y;
+        self.x == other.x && self.y == self.y
     }
 }
 
@@ -50,10 +50,10 @@ impl std::ops::Add<NewCartesianPoint> for NewCartesianPoint {
     type Output = NewCartesianPoint;
 
     fn add(self, other: NewCartesianPoint) -> NewCartesianPoint {
-        return NewCartesianPoint {
+        NewCartesianPoint {
             x: self.x + other.x,
             y: self.y + other.y,
-        };
+        }
     }
 }
 
@@ -61,10 +61,10 @@ impl std::ops::Mul<NewCartesianPoint> for NewCartesianPoint {
     type Output = NewCartesianPoint;
 
     fn mul(self, other: NewCartesianPoint) -> NewCartesianPoint {
-        return NewCartesianPoint {
+        NewCartesianPoint {
             x: self.x * other.x,
             y: self.y * other.y,
-        };
+        }
     }
 }
 

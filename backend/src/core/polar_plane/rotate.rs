@@ -3,13 +3,13 @@ use crate::core::precise_decimal::PreciseDecimal;
 use crate::core::trigonometry::normalize_angle::new_normalize_angle;
 
 pub fn rotate(point: NewPolarPoint, angle: &str) -> NewPolarPoint {
-    return NewPolarPoint {
+    NewPolarPoint {
         r: point.r,
         a: new_normalize_angle(
             PreciseDecimal::from_string(point.a) + PreciseDecimal::from_str(angle),
         )
         .value,
-    };
+    }
 }
 
 #[cfg(test)]

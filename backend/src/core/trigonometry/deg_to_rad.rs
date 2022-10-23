@@ -1,14 +1,14 @@
 use crate::core::precise_decimal::PreciseDecimal;
 
 pub fn deg_to_rad(value: f64) -> f64 {
-    return value * std::f64::consts::PI / 180.0;
+    value * std::f64::consts::PI / 180.0
 }
 
 pub fn new_deg_to_rad(value: PreciseDecimal) -> PreciseDecimal {
     let half_circle = PreciseDecimal::from_int(180);
     let pi = PreciseDecimal::from_str(super::consts::PI);
 
-    return value * pi / half_circle;
+    value * pi / half_circle
 }
 
 #[cfg(test)]

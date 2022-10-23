@@ -5,7 +5,8 @@ use super::cartesian_point::NewCartesianPoint;
 pub fn distance(a: NewCartesianPoint, b: NewCartesianPoint) -> PreciseDecimal {
     let delta_x = a.x - b.x;
     let delta_y = a.y - b.y;
-    return (delta_x.square() + delta_y.square()).sqrt();
+
+    (delta_x.square() + delta_y.square()).sqrt()
 }
 
 #[cfg(test)]

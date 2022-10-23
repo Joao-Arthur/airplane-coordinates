@@ -1,12 +1,12 @@
 use crate::core::precise_decimal::PreciseDecimal;
 
 pub fn normalize_angle(angle: f64) -> f64 {
-    return (angle % 360.0 + 360.0) % 360.0;
+    (angle % 360.0 + 360.0) % 360.0
 }
 
 pub fn new_normalize_angle(angle: PreciseDecimal) -> PreciseDecimal {
-    return (angle % PreciseDecimal::from_int(360) + PreciseDecimal::from_int(360))
-        % PreciseDecimal::from_int(360);
+    (angle % PreciseDecimal::from_int(360) + PreciseDecimal::from_int(360))
+        % PreciseDecimal::from_int(360)
 }
 
 #[cfg(test)]
