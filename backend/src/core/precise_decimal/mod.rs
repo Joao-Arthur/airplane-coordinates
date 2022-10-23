@@ -29,18 +29,35 @@ impl MathOperations<PreciseDecimal> for PreciseDecimal {
     fn sqrt(&self) -> PreciseDecimal {
         let decimal = Decimal::from_str(self.value.as_str()).unwrap();
 
-        PreciseDecimal {
-            value: decimal.sqrt().unwrap().to_string(),
-        }
+        PreciseDecimal::from_string(decimal.sqrt().unwrap().to_string())
     }
 
     fn square(&self) -> PreciseDecimal {
         let decimal = Decimal::from_str(self.value.as_str()).unwrap();
 
-        PreciseDecimal {
-            value: decimal.powi(2).to_string(),
-        }
+        PreciseDecimal::from_string(decimal.powi(2).to_string())
     }
+
+    fn cos(&self) -> PreciseDecimal {
+        let decimal = Decimal::from_str(self.value.as_str()).unwrap();
+
+        PreciseDecimal::from_string(decimal.cos().to_string())
+    }
+
+    fn sin(&self) -> PreciseDecimal {
+        let decimal = Decimal::from_str(self.value.as_str()).unwrap();
+
+        PreciseDecimal::from_string(decimal.sin().to_string())
+    }
+
+    //  fn atan(&self, other: PreciseDecimal) -> PreciseDecimal {
+    //      let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
+    //      let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
+    //
+    //      PreciseDecimal {
+    //          value: self_decimal.(other_decimal).to_string(),
+    //      }
+    //  }
 }
 
 impl PartialEq for PreciseDecimal {
@@ -56,9 +73,7 @@ impl std::ops::Add<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        PreciseDecimal {
-            value: (self_decimal + other_decimal).to_string(),
-        }
+        PreciseDecimal::from_string((self_decimal + other_decimal).to_string())
     }
 }
 
@@ -69,9 +84,7 @@ impl std::ops::Sub<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        PreciseDecimal {
-            value: (self_decimal - other_decimal).to_string(),
-        }
+        PreciseDecimal::from_string((self_decimal - other_decimal).to_string())
     }
 }
 
@@ -82,9 +95,7 @@ impl std::ops::Mul<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        PreciseDecimal {
-            value: (self_decimal * other_decimal).to_string(),
-        }
+        PreciseDecimal::from_string((self_decimal * other_decimal).to_string())
     }
 }
 
@@ -95,9 +106,7 @@ impl std::ops::Div<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        PreciseDecimal {
-            value: (self_decimal / other_decimal).to_string(),
-        }
+        PreciseDecimal::from_string((self_decimal / other_decimal).to_string())
     }
 }
 
@@ -108,9 +117,7 @@ impl std::ops::Rem<PreciseDecimal> for PreciseDecimal {
         let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
         let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
 
-        PreciseDecimal {
-            value: (self_decimal % other_decimal).to_string(),
-        }
+        PreciseDecimal::from_string((self_decimal % other_decimal).to_string())
     }
 }
 
@@ -342,4 +349,64 @@ mod test_precise_decimal {
             PreciseDecimal::from_str("1.0000000000000000000000000000")
         );
     }
+
+    #[test]
+    fn math_operations_sqrt() {
+        assert_eq!(
+            PreciseDecimal::from_str("1").sqrt(),
+            PreciseDecimal::from_str("1.0000000000000000000000000000")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("2").sqrt(),
+            PreciseDecimal::from_str("1.4142135623730950488016887242")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("3").sqrt(),
+            PreciseDecimal::from_str("1.7320508075688772935274463415")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("4").sqrt(),
+            PreciseDecimal::from_str("2")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("8").sqrt(),
+            PreciseDecimal::from_str("2.8284271247461900976033774484")
+        );
+    }
+
+    #[test]
+    fn math_operations_square() {
+        assert_eq!(
+            PreciseDecimal::from_str("1").square(),
+            PreciseDecimal::from_str("1")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("1.4142135623730950488016887242").square(),
+            PreciseDecimal::from_str("2.0000000000000000000000000000")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("1.7320508075688772935274463415").square(),
+            PreciseDecimal::from_str("3.0000000000000000000000000000")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("2").square(),
+            PreciseDecimal::from_str("4")
+        );
+        assert_eq!(
+            PreciseDecimal::from_str("2.8284271247461900976033774484").square(),
+            PreciseDecimal::from_str("8.000000000000000000000000000")
+        );
+    }
+
+    //      fn cos(&self) -> PreciseDecimal {
+    //          let decimal = Decimal::from_str(self.value.as_str()).unwrap();
+    //
+    //          PreciseDecimal::from_string(decimal.cos().to_string())
+    //      }
+    //
+    //      fn sin(&self) -> PreciseDecimal {
+    //          let decimal = Decimal::from_str(self.value.as_str()).unwrap();
+    //
+    //          PreciseDecimal::from_string(decimal.sin().to_string())
+    //      }
 }
