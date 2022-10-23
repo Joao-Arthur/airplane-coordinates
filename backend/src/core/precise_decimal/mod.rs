@@ -63,6 +63,19 @@ impl std::ops::Div<PreciseDecimal> for PreciseDecimal {
     }
 }
 
+impl std::ops::Rem<PreciseDecimal> for PreciseDecimal {
+    type Output = PreciseDecimal;
+
+    fn rem(self, other: PreciseDecimal) -> PreciseDecimal {
+        let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
+        let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
+
+        return PreciseDecimal {
+            value: (self_decimal % other_decimal).to_string(),
+        };
+    }
+}
+
 #[cfg(test)]
 mod test_precise_decimal {
     use super::*;
@@ -400,6 +413,50 @@ mod test_precise_decimal {
             PreciseDecimal {
                 value: "0".to_string()
             },
+        );
+    }
+
+    #[test]
+    fn division_remainder() {
+        assert_eq!(
+            PreciseDecimal {
+                value: "-100.277".to_string()
+            } % PreciseDecimal {
+                value: "360".to_string()
+            },
+            PreciseDecimal {
+                value: "-100.277".to_string()
+            }
+        );
+        assert_eq!(
+            PreciseDecimal {
+                value: "360".to_string()
+            } % PreciseDecimal {
+                value: "360".to_string()
+            },
+            PreciseDecimal {
+                value: "0".to_string()
+            }
+        );
+        assert_eq!(
+            PreciseDecimal {
+                value: "720.111".to_string()
+            } % PreciseDecimal {
+                value: "360".to_string()
+            },
+            PreciseDecimal {
+                value: "0.111".to_string()
+            }
+        );
+        assert_eq!(
+            PreciseDecimal {
+                value: "0".to_string()
+            } % PreciseDecimal {
+                value: "360".to_string()
+            },
+            PreciseDecimal {
+                value: "0".to_string()
+            }
         );
     }
 
