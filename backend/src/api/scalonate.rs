@@ -13,6 +13,7 @@ struct ScalonateArguments {
     factor: CartesianPointAPI,
 }
 
+#[allow(dead_code)]
 #[wasm_bindgen]
 pub fn scalonate(val: JsValue) -> Result<JsValue, JsValue> {
     let args: ScalonateArguments = serde_wasm_bindgen::from_value(val)?;

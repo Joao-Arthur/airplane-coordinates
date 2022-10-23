@@ -13,6 +13,7 @@ struct TranslateArguments {
     factor: CartesianPointAPI,
 }
 
+#[allow(dead_code)]
 #[wasm_bindgen]
 pub fn translate(val: JsValue) -> Result<JsValue, JsValue> {
     let args: TranslateArguments = serde_wasm_bindgen::from_value(val)?;
