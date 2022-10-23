@@ -9,6 +9,13 @@ pub fn polar_to_cartesian(cartesian_point: PolarPoint) -> CartesianPoint {
     };
 }
 
+pub fn new_polar_to_cartesian(cartesian_point: PolarPoint) -> CartesianPoint {
+    return CartesianPoint {
+        x: cartesian_point.r * deg_to_rad(cartesian_point.a).cos(),
+        y: cartesian_point.r * deg_to_rad(cartesian_point.a).sin(),
+    };
+}
+
 #[cfg(test)]
 mod test_polar_to_cartesian {
     use super::*;

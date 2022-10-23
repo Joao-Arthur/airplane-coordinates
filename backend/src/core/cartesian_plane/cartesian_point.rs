@@ -1,3 +1,5 @@
+use crate::core::precise_decimal::PreciseDecimal;
+
 #[derive(Debug)]
 pub struct CartesianPoint {
     pub x: f64,
@@ -32,6 +34,40 @@ impl std::ops::Mul<CartesianPoint> for CartesianPoint {
     }
 }
 
+#[derive(Debug)]
+pub struct NewCartesianPoint {
+    pub x: PreciseDecimal,
+    pub y: PreciseDecimal,
+}
+
+impl PartialEq for NewCartesianPoint {
+    fn eq(&self, other: &Self) -> bool {
+        return self.x == other.x && self.y == self.y;
+    }
+}
+
+impl std::ops::Add<NewCartesianPoint> for NewCartesianPoint {
+    type Output = NewCartesianPoint;
+
+    fn add(self, other: NewCartesianPoint) -> NewCartesianPoint {
+        return NewCartesianPoint {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        };
+    }
+}
+
+impl std::ops::Mul<NewCartesianPoint> for NewCartesianPoint {
+    type Output = NewCartesianPoint;
+
+    fn mul(self, other: NewCartesianPoint) -> NewCartesianPoint {
+        return NewCartesianPoint {
+            x: self.x * other.x,
+            y: self.y * other.y,
+        };
+    }
+}
+
 #[cfg(test)]
 mod test_cartesian_point {
     use super::*;
@@ -39,40 +75,86 @@ mod test_cartesian_point {
     #[test]
     fn sum() {
         assert_eq!(
-            CartesianPoint { x: 4.0, y: 7.0 } + CartesianPoint { x: 2.0, y: -3.0 },
-            CartesianPoint { x: 6.0, y: 4.0 }
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(4),
+                y: PreciseDecimal::from_int(7)
+            } + NewCartesianPoint {
+                x: PreciseDecimal::from_int(2),
+                y: PreciseDecimal::from_int(-3)
+            },
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(6),
+                y: PreciseDecimal::from_int(4)
+            }
         );
         assert_eq!(
-            CartesianPoint { x: -1.0, y: 3.0 } + CartesianPoint { x: 2.0, y: -3.0 },
-            CartesianPoint { x: 1.0, y: 0.0 }
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(-1),
+                y: PreciseDecimal::from_int(3)
+            } + NewCartesianPoint {
+                x: PreciseDecimal::from_int(2),
+                y: PreciseDecimal::from_int(-3)
+            },
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(1),
+                y: PreciseDecimal::from_int(0)
+            }
         );
         assert_eq!(
-            CartesianPoint { x: 4.0, y: 7.0 } + CartesianPoint { x: 0.0, y: 0.0 },
-            CartesianPoint { x: 4.0, y: 7.0 }
-        );
-        assert_eq!(
-            CartesianPoint { x: -1.0, y: 3.0 } + CartesianPoint { x: 0.0, y: 0.0 },
-            CartesianPoint { x: -1.0, y: 3.0 }
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(4),
+                y: PreciseDecimal::from_int(7)
+            } + NewCartesianPoint {
+                x: PreciseDecimal::from_int(0),
+                y: PreciseDecimal::from_int(0)
+            },
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(4),
+                y: PreciseDecimal::from_int(7)
+            }
         );
     }
 
     #[test]
     fn multiply() {
         assert_eq!(
-            CartesianPoint { x: 4.0, y: 7.0 } * CartesianPoint { x: 2.0, y: -3.0 },
-            CartesianPoint { x: 8.0, y: -21.0 }
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(4),
+                y: PreciseDecimal::from_int(7)
+            } * NewCartesianPoint {
+                x: PreciseDecimal::from_int(2),
+                y: PreciseDecimal::from_int(-3)
+            },
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(8),
+                y: PreciseDecimal::from_int(-21)
+            }
         );
         assert_eq!(
-            CartesianPoint { x: -1.0, y: 3.0 } * CartesianPoint { x: 2.0, y: -3.0 },
-            CartesianPoint { x: -2.0, y: -9.0 }
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(-1),
+                y: PreciseDecimal::from_int(3)
+            } * NewCartesianPoint {
+                x: PreciseDecimal::from_int(2),
+                y: PreciseDecimal::from_int(-3)
+            },
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(-2),
+                y: PreciseDecimal::from_int(-9)
+            }
         );
         assert_eq!(
-            CartesianPoint { x: 4.0, y: 7.0 } * CartesianPoint { x: 0.0, y: 0.0 },
-            CartesianPoint { x: 0.0, y: 0.0 }
-        );
-        assert_eq!(
-            CartesianPoint { x: -1.0, y: 3.0 } * CartesianPoint { x: 0.0, y: 0.0 },
-            CartesianPoint { x: 0.0, y: 0.0 }
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(-1),
+                y: PreciseDecimal::from_int(3)
+            } * NewCartesianPoint {
+                x: PreciseDecimal::from_int(0),
+                y: PreciseDecimal::from_int(0)
+            },
+            NewCartesianPoint {
+                x: PreciseDecimal::from_int(0),
+                y: PreciseDecimal::from_int(0)
+            }
         );
     }
 }

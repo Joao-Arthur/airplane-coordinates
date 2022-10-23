@@ -1,9 +1,11 @@
-use super::cartesian_point::CartesianPoint;
+use crate::core::precise_decimal::PreciseDecimal;
 
-pub fn distance(a: CartesianPoint, b: CartesianPoint) -> f64 {
+use super::cartesian_point::NewCartesianPoint;
+
+pub fn distance(a: NewCartesianPoint, b: NewCartesianPoint) -> PreciseDecimal {
     let delta_x = a.x - b.x;
     let delta_y = a.y - b.y;
-    return (delta_x.powi(2) + delta_y.powi(2)).sqrt();
+    return (delta_x.square() + delta_y.square()).sqrt();
 }
 
 #[cfg(test)]
@@ -14,17 +16,29 @@ mod test_distance {
     fn in_the_same_point() {
         assert_eq!(
             distance(
-                CartesianPoint { x: 0.0, y: 0.0 },
-                CartesianPoint { x: 0.0, y: 0.0 },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(0),
+                    y: PreciseDecimal::from_int(0)
+                },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(0),
+                    y: PreciseDecimal::from_int(0)
+                },
             ),
-            0.0
+            PreciseDecimal::from_int(0)
         );
         assert_eq!(
             distance(
-                CartesianPoint { x: 1.0, y: 1.0 },
-                CartesianPoint { x: 1.0, y: 1.0 },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(1),
+                    y: PreciseDecimal::from_int(1)
+                },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(1),
+                    y: PreciseDecimal::from_int(1)
+                },
             ),
-            0.0
+            PreciseDecimal::from_int(0)
         );
     }
 
@@ -32,10 +46,16 @@ mod test_distance {
     fn in_the_x_axis() {
         assert_eq!(
             distance(
-                CartesianPoint { x: -10.0, y: 5.0 },
-                CartesianPoint { x: 20.0, y: 5.0 },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(-10),
+                    y: PreciseDecimal::from_int(5)
+                },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(20),
+                    y: PreciseDecimal::from_int(5)
+                },
             ),
-            30.0
+            PreciseDecimal::from_str("30.000000000000000000000000000")
         );
     }
 
@@ -43,10 +63,16 @@ mod test_distance {
     fn in_the_y_axis() {
         assert_eq!(
             distance(
-                CartesianPoint { x: 5.0, y: 10.0 },
-                CartesianPoint { x: 5.0, y: -20.0 },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(5),
+                    y: PreciseDecimal::from_int(10)
+                },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(5),
+                    y: PreciseDecimal::from_int(-20)
+                },
             ),
-            30.0
+            PreciseDecimal::from_str("30.000000000000000000000000000")
         );
     }
 
@@ -54,17 +80,29 @@ mod test_distance {
     fn in_the_x_and_y_axis() {
         assert_eq!(
             distance(
-                CartesianPoint { x: 0.0, y: 0.0 },
-                CartesianPoint { x: 1.0, y: 1.0 },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(0),
+                    y: PreciseDecimal::from_int(0)
+                },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(1),
+                    y: PreciseDecimal::from_int(1)
+                },
             ),
-            2f64.sqrt()
+            PreciseDecimal::from_str("1.4142135623730950488016887242")
         );
         assert_eq!(
             distance(
-                CartesianPoint { x: -1.0, y: -1.0 },
-                CartesianPoint { x: 1.0, y: 1.0 },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(-1),
+                    y: PreciseDecimal::from_int(-1)
+                },
+                NewCartesianPoint {
+                    x: PreciseDecimal::from_int(1),
+                    y: PreciseDecimal::from_int(1)
+                },
             ),
-            8f64.sqrt()
+            PreciseDecimal::from_str("2.8284271247461900976033774484")
         );
     }
 }
