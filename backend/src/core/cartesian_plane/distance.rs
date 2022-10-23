@@ -1,4 +1,4 @@
-use crate::core::precise_decimal::PreciseDecimal;
+use crate::core::{math::MathOperations, precise_decimal::PreciseDecimal};
 
 use super::cartesian_point::NewCartesianPoint;
 

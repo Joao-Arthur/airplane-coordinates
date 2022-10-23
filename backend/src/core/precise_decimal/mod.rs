@@ -1,5 +1,7 @@
 use rust_decimal::prelude::*;
 
+use super::math::MathOperations;
+
 #[derive(Debug)]
 pub struct PreciseDecimal {
     pub value: String,
@@ -21,16 +23,17 @@ impl PreciseDecimal {
             value: value.to_string(),
         };
     }
+}
 
-    //TODO put the math operations in a separate trait
-    pub fn sqrt(&self) -> PreciseDecimal {
+impl MathOperations<PreciseDecimal> for PreciseDecimal {
+    fn sqrt(&self) -> PreciseDecimal {
         let decimal = Decimal::from_str(self.value.as_str()).unwrap();
         return PreciseDecimal {
             value: decimal.sqrt().unwrap().to_string(),
         };
     }
 
-    pub fn square(&self) -> PreciseDecimal {
+    fn square(&self) -> PreciseDecimal {
         let decimal = Decimal::from_str(self.value.as_str()).unwrap();
         return PreciseDecimal {
             value: decimal.powi(2).to_string(),
