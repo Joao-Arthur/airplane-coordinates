@@ -402,4 +402,48 @@ mod test_precise_decimal {
             },
         );
     }
+
+    #[test]
+    fn precise_calculations() {
+        assert_eq!(
+            PreciseDecimal {
+                value: "0.1".to_string()
+            } + PreciseDecimal {
+                value: "0.2".to_string()
+            },
+            PreciseDecimal {
+                value: "0.3".to_string()
+            },
+        );
+        assert_eq!(
+            PreciseDecimal {
+                value: "0.1234567890123456789012345678901".to_string()
+            } + PreciseDecimal {
+                value: "0.1234321003123432100312343210036".to_string()
+            },
+            PreciseDecimal {
+                value: "0.2468888893246888889324688889".to_string()
+            },
+        );
+        assert_eq!(
+            PreciseDecimal {
+                value: "0.8937593473846237864238745".to_string()
+            } * PreciseDecimal {
+                value: "0.6986723567253716276345786345".to_string()
+            },
+            PreciseDecimal {
+                value: "0.6244449495825452115604125485".to_string()
+            },
+        );
+        assert_eq!(
+            PreciseDecimal {
+                value: "0.6244449495825452115604125485".to_string()
+            } / PreciseDecimal {
+                value: "0.8937593473846237864238745".to_string()
+            },
+            PreciseDecimal {
+                value: "0.6986723567253716276345786345".to_string()
+            },
+        );
+    }
 }
