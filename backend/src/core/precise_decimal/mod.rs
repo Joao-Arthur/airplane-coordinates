@@ -119,444 +119,197 @@ mod test_precise_decimal {
     #[test]
     fn sum() {
         assert_eq!(
-            PreciseDecimal {
-                value: "4".to_string()
-            } + PreciseDecimal {
-                value: "2".to_string()
-            },
-            PreciseDecimal {
-                value: "6".to_string()
-            }
+            PreciseDecimal::from_int(4) + PreciseDecimal::from_int(2),
+            PreciseDecimal::from_int(6)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-1".to_string()
-            } + PreciseDecimal {
-                value: "2".to_string()
-            },
-            PreciseDecimal {
-                value: "1".to_string()
-            }
+            PreciseDecimal::from_int(-1) + PreciseDecimal::from_int(2),
+            PreciseDecimal::from_int(1)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "4".to_string()
-            } + PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "4".to_string()
-            }
+            PreciseDecimal::from_int(4) + PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(4)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-1".to_string()
-            } + PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "-1".to_string()
-            }
+            PreciseDecimal::from_int(-1) + PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(-1)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "7".to_string()
-            } + PreciseDecimal {
-                value: "-3".to_string()
-            },
-            PreciseDecimal {
-                value: "4".to_string()
-            }
+            PreciseDecimal::from_int(7) + PreciseDecimal::from_int(-3),
+            PreciseDecimal::from_int(4)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "3".to_string()
-            } + PreciseDecimal {
-                value: "-3".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            }
+            PreciseDecimal::from_int(3) + PreciseDecimal::from_int(-3),
+            PreciseDecimal::from_int(0)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "7".to_string()
-            } + PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "7".to_string()
-            }
+            PreciseDecimal::from_int(7) + PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(7)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "3".to_string()
-            } + PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "3".to_string()
-            }
+            PreciseDecimal::from_int(3) + PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(3)
         );
     }
 
     #[test]
     fn subtract() {
         assert_eq!(
-            PreciseDecimal {
-                value: "6".to_string()
-            } - PreciseDecimal {
-                value: "4".to_string()
-            },
-            PreciseDecimal {
-                value: "2".to_string()
-            }
+            PreciseDecimal::from_int(6) - PreciseDecimal::from_int(4),
+            PreciseDecimal::from_int(2)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "1".to_string()
-            } - PreciseDecimal {
-                value: "-1".to_string()
-            },
-            PreciseDecimal {
-                value: "2".to_string()
-            },
+            PreciseDecimal::from_int(1) - PreciseDecimal::from_int(-1),
+            PreciseDecimal::from_int(2),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "4".to_string()
-            } - PreciseDecimal {
-                value: "4".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(4) - PreciseDecimal::from_int(4),
+            PreciseDecimal::from_int(0),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-1".to_string()
-            } - PreciseDecimal {
-                value: "-1".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(-1) - PreciseDecimal::from_int(-1),
+            PreciseDecimal::from_int(0),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "4".to_string()
-            } - PreciseDecimal {
-                value: "7".to_string()
-            },
-            PreciseDecimal {
-                value: "-3".to_string()
-            },
+            PreciseDecimal::from_int(4) - PreciseDecimal::from_int(7),
+            PreciseDecimal::from_int(-3),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0".to_string()
-            } - PreciseDecimal {
-                value: "3".to_string()
-            },
-            PreciseDecimal {
-                value: "-3".to_string()
-            },
+            PreciseDecimal::from_int(0) - PreciseDecimal::from_int(3),
+            PreciseDecimal::from_int(-3),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "7".to_string()
-            } - PreciseDecimal {
-                value: "7".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(7) - PreciseDecimal::from_int(7),
+            PreciseDecimal::from_int(0),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "3".to_string()
-            } - PreciseDecimal {
-                value: "3".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(3) - PreciseDecimal::from_int(3),
+            PreciseDecimal::from_int(0),
         );
     }
 
     #[test]
     fn multiply() {
         assert_eq!(
-            PreciseDecimal {
-                value: "4".to_string()
-            } * PreciseDecimal {
-                value: "2".to_string()
-            },
-            PreciseDecimal {
-                value: "8".to_string()
-            }
+            PreciseDecimal::from_int(4) * PreciseDecimal::from_int(2),
+            PreciseDecimal::from_int(8)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-1".to_string()
-            } * PreciseDecimal {
-                value: "2".to_string()
-            },
-            PreciseDecimal {
-                value: "-2".to_string()
-            }
+            PreciseDecimal::from_int(-1) * PreciseDecimal::from_int(2),
+            PreciseDecimal::from_int(-2)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "4".to_string()
-            } * PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            }
+            PreciseDecimal::from_int(4) * PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(0)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-1".to_string()
-            } * PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            }
+            PreciseDecimal::from_int(-1) * PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(0)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "7".to_string()
-            } * PreciseDecimal {
-                value: "-3".to_string()
-            },
-            PreciseDecimal {
-                value: "-21".to_string()
-            }
+            PreciseDecimal::from_int(7) * PreciseDecimal::from_int(-3),
+            PreciseDecimal::from_int(-21)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "3".to_string()
-            } * PreciseDecimal {
-                value: "-3".to_string()
-            },
-            PreciseDecimal {
-                value: "-9".to_string()
-            }
+            PreciseDecimal::from_int(3) * PreciseDecimal::from_int(-3),
+            PreciseDecimal::from_int(-9)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "7".to_string()
-            } * PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            }
+            PreciseDecimal::from_int(7) * PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(0)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "3".to_string()
-            } * PreciseDecimal {
-                value: "0".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            }
+            PreciseDecimal::from_int(3) * PreciseDecimal::from_int(0),
+            PreciseDecimal::from_int(0)
         );
     }
 
     #[test]
     fn divide() {
         assert_eq!(
-            PreciseDecimal {
-                value: "8".to_string()
-            } / PreciseDecimal {
-                value: "4".to_string()
-            },
-            PreciseDecimal {
-                value: "2".to_string()
-            },
+            PreciseDecimal::from_int(8) / PreciseDecimal::from_int(4),
+            PreciseDecimal::from_int(2),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-2".to_string()
-            } / PreciseDecimal {
-                value: "-1".to_string()
-            },
-            PreciseDecimal {
-                value: "2".to_string()
-            },
+            PreciseDecimal::from_int(-2) / PreciseDecimal::from_int(-1),
+            PreciseDecimal::from_int(2),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0".to_string()
-            } / PreciseDecimal {
-                value: "4".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(0) / PreciseDecimal::from_int(4),
+            PreciseDecimal::from_int(0),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0".to_string()
-            } / PreciseDecimal {
-                value: "-1".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(0) / PreciseDecimal::from_int(-1),
+            PreciseDecimal::from_int(0),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-21".to_string()
-            } / PreciseDecimal {
-                value: "7".to_string()
-            },
-            PreciseDecimal {
-                value: "-3".to_string()
-            },
+            PreciseDecimal::from_int(-21) / PreciseDecimal::from_int(7),
+            PreciseDecimal::from_int(-3),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "-9".to_string()
-            } / PreciseDecimal {
-                value: "3".to_string()
-            },
-            PreciseDecimal {
-                value: "-3".to_string()
-            },
+            PreciseDecimal::from_int(-9) / PreciseDecimal::from_int(3),
+            PreciseDecimal::from_int(-3),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0".to_string()
-            } / PreciseDecimal {
-                value: "7".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(0) / PreciseDecimal::from_int(7),
+            PreciseDecimal::from_int(0),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0".to_string()
-            } / PreciseDecimal {
-                value: "3".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            },
+            PreciseDecimal::from_int(0) / PreciseDecimal::from_int(3),
+            PreciseDecimal::from_int(0)
         );
     }
 
     #[test]
     fn division_remainder() {
         assert_eq!(
-            PreciseDecimal {
-                value: "-100.277".to_string()
-            } % PreciseDecimal {
-                value: "360".to_string()
-            },
-            PreciseDecimal {
-                value: "-100.277".to_string()
-            }
+            PreciseDecimal::from_str("-100.277") % PreciseDecimal::from_int(360),
+            PreciseDecimal::from_str("-100.277")
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "360".to_string()
-            } % PreciseDecimal {
-                value: "360".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            }
+            PreciseDecimal::from_int(360) % PreciseDecimal::from_int(360),
+            PreciseDecimal::from_int(0)
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "720.111".to_string()
-            } % PreciseDecimal {
-                value: "360".to_string()
-            },
-            PreciseDecimal {
-                value: "0.111".to_string()
-            }
+            PreciseDecimal::from_str("720.111") % PreciseDecimal::from_int(360),
+            PreciseDecimal::from_str("0.111")
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0".to_string()
-            } % PreciseDecimal {
-                value: "360".to_string()
-            },
-            PreciseDecimal {
-                value: "0".to_string()
-            }
+            PreciseDecimal::from_int(0) % PreciseDecimal::from_int(360),
+            PreciseDecimal::from_int(0)
         );
     }
 
     #[test]
     fn precise_calculations() {
         assert_eq!(
-            PreciseDecimal {
-                value: "0.1".to_string()
-            } + PreciseDecimal {
-                value: "0.2".to_string()
-            },
-            PreciseDecimal {
-                value: "0.3".to_string()
-            },
+            PreciseDecimal::from_str("0.1") + PreciseDecimal::from_str("0.2"),
+            PreciseDecimal::from_str("0.3"),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0.1234567890123456789012345678901".to_string()
-            } + PreciseDecimal {
-                value: "0.1234321003123432100312343210036".to_string()
-            },
-            PreciseDecimal {
-                value: "0.2468888893246888889324688889".to_string()
-            },
+            PreciseDecimal::from_str("0.1234567890123456789012345678901")
+                + PreciseDecimal::from_str("0.1234321003123432100312343210036"),
+            PreciseDecimal::from_str("0.2468888893246888889324688889"),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0.8937593473846237864238745".to_string()
-            } * PreciseDecimal {
-                value: "0.6986723567253716276345786345".to_string()
-            },
-            PreciseDecimal {
-                value: "0.6244449495825452115604125485".to_string()
-            },
+            PreciseDecimal::from_str("0.8937593473846237864238745")
+                * PreciseDecimal::from_str("0.6986723567253716276345786345"),
+            PreciseDecimal::from_str("0.6244449495825452115604125485"),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "0.6244449495825452115604125485".to_string()
-            } / PreciseDecimal {
-                value: "0.8937593473846237864238745".to_string()
-            },
-            PreciseDecimal {
-                value: "0.6986723567253716276345786345".to_string()
-            },
+            PreciseDecimal::from_str("0.6244449495825452115604125485")
+                / PreciseDecimal::from_str("0.8937593473846237864238745"),
+            PreciseDecimal::from_str("0.6986723567253716276345786345"),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "1".to_string()
-            } + PreciseDecimal {
-                value: "0.0000000000000000000000000001".to_string()
-            },
-            PreciseDecimal {
-                value: "1.0000000000000000000000000001".to_string()
-            },
+            PreciseDecimal::from_int(1)
+                + PreciseDecimal::from_str("0.0000000000000000000000000001"),
+            PreciseDecimal::from_str("1.0000000000000000000000000001"),
         );
         assert_eq!(
-            PreciseDecimal {
-                value: "1.0000000000000000000000000001".to_string()
-            } - PreciseDecimal {
-                value: "0.0000000000000000000000000001".to_string()
-            },
-            PreciseDecimal {
-                value: "1.0000000000000000000000000000".to_string()
-            }
+            PreciseDecimal::from_str("1.0000000000000000000000000001")
+                - PreciseDecimal::from_str("0.0000000000000000000000000001"),
+            PreciseDecimal::from_str("1.0000000000000000000000000000")
         );
     }
 }
