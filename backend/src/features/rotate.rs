@@ -4,13 +4,14 @@ use crate::core::plane::conversions::polar_to_cartesian::polar_to_cartesian;
 use crate::core::plane::plane::Plane;
 use crate::core::plane::plane_point::PlanePoint;
 use crate::core::plane::polar::rotate::rotate as core_rotate;
+use crate::core::precise_decimal::PreciseDecimal;
 
 pub fn rotate(point: PlanePoint, center_of_rotation: CartesianPoint, angle: String) -> PlanePoint {
     match point.plane_type {
         Plane::CARTESIAN => {
             let offset_point = point.to_cartesian() - center_of_rotation.clone();
             let point_as_polar = cartesian_to_polar(offset_point);
-            let rotated_point = core_rotate(point_as_polar, angle.as_str());
+            let rotated_point = core_rotate(point_as_polar, PreciseDecimal::from_string(angle));
             let point_as_cartesian = polar_to_cartesian(rotated_point);
             let unoffseted_point = point_as_cartesian + center_of_rotation;
 
@@ -19,7 +20,7 @@ pub fn rotate(point: PlanePoint, center_of_rotation: CartesianPoint, angle: Stri
         Plane::POLAR => {
             let offset_point = point.to_cartesian() - center_of_rotation.clone();
             let point_as_polar = cartesian_to_polar(offset_point);
-            let rotated_point = core_rotate(point_as_polar, angle.as_str());
+            let rotated_point = core_rotate(point_as_polar, PreciseDecimal::from_string(angle));
             let point_as_cartesian = polar_to_cartesian(rotated_point);
             let unoffseted_point = point_as_cartesian + center_of_rotation;
             let unoffseted_as_polar = cartesian_to_polar(unoffseted_point);

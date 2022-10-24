@@ -3,10 +3,10 @@ use crate::core::trigonometry::normalize_angle::normalize_angle;
 
 use super::polar_point::PolarPoint;
 
-pub fn rotate(point: PolarPoint, angle: &str) -> PolarPoint {
+pub fn rotate(point: PolarPoint, angle: PreciseDecimal) -> PolarPoint {
     PolarPoint {
         r: point.r,
-        a: normalize_angle(point.a + PreciseDecimal::from_str(angle)),
+        a: normalize_angle(point.a + angle),
     }
 }
 
@@ -22,7 +22,7 @@ mod test_rotate {
                     r: PreciseDecimal::from_str("1"),
                     a: PreciseDecimal::from_str("300")
                 },
-                "50"
+                PreciseDecimal::from_str("50")
             ),
             PolarPoint {
                 r: PreciseDecimal::from_str("1"),
@@ -35,7 +35,7 @@ mod test_rotate {
                     r: PreciseDecimal::from_str("1"),
                     a: PreciseDecimal::from_str("200")
                 },
-                "50"
+                PreciseDecimal::from_str("50")
             ),
             PolarPoint {
                 r: PreciseDecimal::from_str("1"),
@@ -48,7 +48,7 @@ mod test_rotate {
                     r: PreciseDecimal::from_str("1"),
                     a: PreciseDecimal::from_str("111.11")
                 },
-                "11.40"
+                PreciseDecimal::from_str("11.40")
             ),
             PolarPoint {
                 r: PreciseDecimal::from_str("1"),
@@ -61,7 +61,7 @@ mod test_rotate {
                     r: PreciseDecimal::from_str("1"),
                     a: PreciseDecimal::from_str("342")
                 },
-                "194"
+                PreciseDecimal::from_str("194")
             ),
             PolarPoint {
                 r: PreciseDecimal::from_str("1"),
@@ -74,7 +74,7 @@ mod test_rotate {
                     r: PreciseDecimal::from_str("1"),
                     a: PreciseDecimal::from_str("60")
                 },
-                "-120"
+                PreciseDecimal::from_str("-120")
             ),
             PolarPoint {
                 r: PreciseDecimal::from_str("1"),
@@ -87,7 +87,7 @@ mod test_rotate {
                     r: PreciseDecimal::from_str("1"),
                     a: PreciseDecimal::from_str("60")
                 },
-                "-60"
+                PreciseDecimal::from_str("-60")
             ),
             PolarPoint {
                 r: PreciseDecimal::from_str("1"),

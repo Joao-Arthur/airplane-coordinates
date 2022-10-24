@@ -1,3 +1,3 @@
-mod rotate;
-mod scalonate;
-mod translate;
+pub mod rotate;
+pub mod scalonate;
+pub mod translate;

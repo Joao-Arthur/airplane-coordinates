@@ -1,65 +1,53 @@
 use serde::{Deserialize, Serialize};
 
-use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
-use crate::core::plane::conversions::polar_to_cartesian::polar_to_cartesian;
-use crate::core::plane::polar::polar_point::PolarPoint;
-use crate::core::precise_decimal::PreciseDecimal;
+use crate::core::plane::plane_point::PlanePoint;
 
-use super::planes::Planes;
+use super::plane_api::PlaneAPI;
 
 #[derive(Serialize, Deserialize)]
 pub struct PlanePointAPI {
-    pub plane: Planes,
+    pub plane_type: PlaneAPI,
     pub a: String,
     pub b: String,
 }
 
 impl PlanePointAPI {
-    pub fn to_point(&self) -> CartesianPoint {
-        match self.plane {
-            Planes::CARTESIAN => CartesianPoint {
-                x: PreciseDecimal::from_string(self.a.clone()),
-                y: PreciseDecimal::from_string(self.b.clone()),
-            },
-            Planes::POLAR => polar_to_cartesian(PolarPoint {
-                r: PreciseDecimal::from_string(self.a.clone()),
-                a: PreciseDecimal::from_string(self.b.clone()),
-            }),
+    pub fn from_point(point: PlanePoint) -> PlanePointAPI {
+        PlanePointAPI {
+            plane_type: PlaneAPI::from_plane(point.plane_type),
+            a: point.a,
+            b: point.b,
+        }
+    }
+
+    pub fn to_point(&self) -> PlanePoint {
+        PlanePoint {
+            plane_type: self.plane_type.to_plane(),
+            a: self.a.clone(),
+            b: self.b.clone(),
         }
     }
 }
 
 #[cfg(test)]
 mod test_plane_point_api {
-    use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
-    use crate::core::precise_decimal::PreciseDecimal;
+    use crate::core::plane::plane::Plane;
 
     use super::*;
 
     #[test]
-    fn transform_to() {
+    fn to_point() {
         assert_eq!(
             PlanePointAPI {
-                plane: Planes::CARTESIAN,
+                plane_type: PlaneAPI::CARTESIAN,
                 a: "4.2948".to_string(),
                 b: "-1.6825".to_string(),
             }
             .to_point(),
-            CartesianPoint {
-                x: PreciseDecimal::from_str("4.2948"),
-                y: PreciseDecimal::from_str("-1.6825")
-            },
-        );
-        assert_eq!(
-            PlanePointAPI {
-                plane: Planes::POLAR,
-                a: "3".to_string(),
-                b: "270".to_string(),
-            }
-            .to_point(),
-            CartesianPoint {
-                x: PreciseDecimal::from_str("0.0000000000000000000000000003"),
-                y: PreciseDecimal::from_str("-3")
+            PlanePoint {
+                plane_type: Plane::CARTESIAN,
+                a: "4.2948".to_string(),
+                b: "-1.6825".to_string(),
             },
         );
     }
