@@ -1,8 +1,8 @@
 use crate::core::{math::MathOperations, precise_decimal::PreciseDecimal};
 
-use super::cartesian_point::NewCartesianPoint;
+use super::cartesian_point::CartesianPoint;
 
-pub fn distance(a: NewCartesianPoint, b: NewCartesianPoint) -> PreciseDecimal {
+pub fn distance(a: CartesianPoint, b: CartesianPoint) -> PreciseDecimal {
     let delta_x = a.x - b.x;
     let delta_y = a.y - b.y;
 
@@ -17,11 +17,11 @@ mod test_distance {
     fn in_the_same_point() {
         assert_eq!(
             distance(
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(0),
                     y: PreciseDecimal::from_int(0)
                 },
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(0),
                     y: PreciseDecimal::from_int(0)
                 },
@@ -30,11 +30,11 @@ mod test_distance {
         );
         assert_eq!(
             distance(
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(1),
                     y: PreciseDecimal::from_int(1)
                 },
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(1),
                     y: PreciseDecimal::from_int(1)
                 },
@@ -47,11 +47,11 @@ mod test_distance {
     fn in_the_x_axis() {
         assert_eq!(
             distance(
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(-10),
                     y: PreciseDecimal::from_int(5)
                 },
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(20),
                     y: PreciseDecimal::from_int(5)
                 },
@@ -64,11 +64,11 @@ mod test_distance {
     fn in_the_y_axis() {
         assert_eq!(
             distance(
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(5),
                     y: PreciseDecimal::from_int(10)
                 },
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(5),
                     y: PreciseDecimal::from_int(-20)
                 },
@@ -81,11 +81,11 @@ mod test_distance {
     fn in_the_x_and_y_axis() {
         assert_eq!(
             distance(
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(0),
                     y: PreciseDecimal::from_int(0)
                 },
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(1),
                     y: PreciseDecimal::from_int(1)
                 },
@@ -94,11 +94,11 @@ mod test_distance {
         );
         assert_eq!(
             distance(
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(-1),
                     y: PreciseDecimal::from_int(-1)
                 },
-                NewCartesianPoint {
+                CartesianPoint {
                     x: PreciseDecimal::from_int(1),
                     y: PreciseDecimal::from_int(1)
                 },

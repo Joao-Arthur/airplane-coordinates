@@ -1,14 +1,13 @@
-use crate::core::cartesian_plane::cartesian_point::NewCartesianPoint;
+use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
 use crate::core::math::MathOperations;
-use crate::core::polar_plane::polar_point::NewPolarPoint;
-use crate::core::trigonometry::deg_to_rad::new_deg_to_rad;
-use crate::core::trigonometry::normalize_angle::new_normalize_angle;
+use crate::core::polar_plane::polar_point::PolarPoint;
+use crate::core::trigonometry::deg_to_rad::deg_to_rad;
+use crate::core::trigonometry::normalize_angle::normalize_angle;
 
-pub fn polar_to_cartesian(cartesian_point: NewPolarPoint) -> NewCartesianPoint {
-    NewCartesianPoint {
-        x: cartesian_point.r.clone()
-            * new_deg_to_rad(new_normalize_angle(cartesian_point.a.clone())).cos(),
-        y: cartesian_point.r * new_deg_to_rad(new_normalize_angle(cartesian_point.a)).sin(),
+pub fn polar_to_cartesian(cartesian_point: PolarPoint) -> CartesianPoint {
+    CartesianPoint {
+        x: cartesian_point.r.clone() * deg_to_rad(normalize_angle(cartesian_point.a.clone())).cos(),
+        y: cartesian_point.r * deg_to_rad(normalize_angle(cartesian_point.a)).sin(),
     }
 }
 
@@ -20,51 +19,51 @@ mod test_polar_to_cartesian {
     #[test]
     fn on_the_four_axis() {
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(0)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_int(1),
                 y: PreciseDecimal::from_int(0)
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(90)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_str("-0.0000000000000000000000000001"),
                 y: PreciseDecimal::from_int(1)
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(180)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_int(-1),
                 y: PreciseDecimal::from_int(0)
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(270)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_str("0.0000000000000000000000000001"),
                 y: PreciseDecimal::from_int(-1)
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(360)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_int(1),
                 y: PreciseDecimal::from_int(0)
             }
@@ -74,51 +73,51 @@ mod test_polar_to_cartesian {
     #[test]
     fn inbetween_the_four_axis() {
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(45)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_str("0.7071067811865475244008443621"),
                 y: PreciseDecimal::from_str("0.7071067811865475244008443621")
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(135)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_str("-0.7071067811865475244008443621"),
                 y: PreciseDecimal::from_str("0.7071067811865475244008443621")
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(225)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_str("-0.7071067811865475244008443621"),
                 y: PreciseDecimal::from_str("-0.7071067811865475244008443621")
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(315)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_str("0.7071067811865475244008443621"),
                 y: PreciseDecimal::from_str("-0.7071067811865475244008443621")
             }
         );
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(1),
                 a: PreciseDecimal::from_int(405)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_str("0.7071067811865475244008443621"),
                 y: PreciseDecimal::from_str("0.7071067811865475244008443621")
             }
@@ -128,11 +127,11 @@ mod test_polar_to_cartesian {
     #[test]
     fn at_the_starting_point() {
         assert_eq!(
-            polar_to_cartesian(NewPolarPoint {
+            polar_to_cartesian(PolarPoint {
                 r: PreciseDecimal::from_int(0),
                 a: PreciseDecimal::from_int(0)
             }),
-            NewCartesianPoint {
+            CartesianPoint {
                 x: PreciseDecimal::from_int(0),
                 y: PreciseDecimal::from_int(0)
             }

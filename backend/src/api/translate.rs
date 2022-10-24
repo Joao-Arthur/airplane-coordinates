@@ -4,6 +4,7 @@ use wasm_bindgen::{prelude::wasm_bindgen, JsValue};
 
 use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
 use crate::core::cartesian_plane::translate::translate as core_translate;
+use crate::core::precise_decimal::PreciseDecimal;
 
 use super::cartesian_point_api::CartesianPointAPI;
 
@@ -20,18 +21,17 @@ pub fn translate(val: JsValue) -> Result<JsValue, JsValue> {
 
     let return_value = core_translate(
         CartesianPoint {
-            x: args.point.x.parse().unwrap(),
-            y: args.point.y.parse().unwrap(),
+            x: PreciseDecimal::from_string(args.point.x),
+            y: PreciseDecimal::from_string(args.point.y),
         },
         CartesianPoint {
-            x: args.factor.x.parse().unwrap(),
-            y: args.factor.y.parse().unwrap(),
+            x: PreciseDecimal::from_string(args.factor.x),
+            y: PreciseDecimal::from_string(args.factor.y),
         },
     );
-
     let serializable = CartesianPointAPI {
-        x: return_value.x.to_string(),
-        y: return_value.y.to_string(),
+        x: return_value.x.value,
+        y: return_value.y.value,
     };
 
     Ok(serde_wasm_bindgen::to_value(&serializable)?)

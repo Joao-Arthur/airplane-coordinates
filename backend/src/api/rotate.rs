@@ -2,7 +2,7 @@ use serde::Deserialize;
 use serde_wasm_bindgen;
 use wasm_bindgen::{prelude::wasm_bindgen, JsValue};
 
-use crate::core::polar_plane::polar_point::NewPolarPoint;
+use crate::core::polar_plane::polar_point::PolarPoint;
 use crate::core::polar_plane::rotate::rotate as core_rotate;
 use crate::core::precise_decimal::PreciseDecimal;
 
@@ -21,7 +21,7 @@ pub fn rotate(val: JsValue) -> Result<JsValue, JsValue> {
     let args: RotateArguments = serde_wasm_bindgen::from_value(val)?;
 
     let return_value = core_rotate(
-        NewPolarPoint {
+        PolarPoint {
             r: PreciseDecimal::from_string(args.point.x),
             a: PreciseDecimal::from_string(args.point.y),
         },

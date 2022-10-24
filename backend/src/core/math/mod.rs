@@ -3,5 +3,5 @@ pub trait MathOperations<T> {
     fn square(&self) -> T;
     fn cos(&self) -> T;
     fn sin(&self) -> T;
-    //fn atan(&self, other: T) -> T;
+    fn atan(&self, other: T) -> T;
 }

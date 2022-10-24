@@ -57,6 +57,7 @@ impl MathOperations<PreciseDecimal> for PreciseDecimal {
             AS_RAD_315 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
             _ => {
                 let decimal = Decimal::from_str(self.value.as_str()).unwrap();
+
                 PreciseDecimal::from_string(decimal.cos().to_string())
             }
         }
@@ -83,6 +84,14 @@ impl MathOperations<PreciseDecimal> for PreciseDecimal {
                 PreciseDecimal::from_string(decimal.sin().to_string())
             }
         }
+    }
+
+    fn atan(&self, other: PreciseDecimal) -> PreciseDecimal {
+        // TODO not use floats
+        let self_decimal: f64 = self.value.parse::<f64>().unwrap();
+        let other_decimal: f64 = other.value.parse::<f64>().unwrap();
+
+        PreciseDecimal::from_string((self_decimal.atan2(other_decimal)).to_string())
     }
 }
 
