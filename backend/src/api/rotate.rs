@@ -24,5 +24,6 @@ pub fn rotate(val: JsValue) -> Result<JsValue, JsValue> {
     let angle = PreciseDecimal::from_string(args.angle);
     let rotated_point = feature_rotate(point, center_of_rotation, angle);
     let serializable = PlanePointAPI::from_point(rotated_point);
+
     Ok(serde_wasm_bindgen::to_value(&serializable)?)
 }
