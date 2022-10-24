@@ -40,14 +40,6 @@ impl MathOperations<PreciseDecimal> for PreciseDecimal {
     }
 
     fn cos(&self) -> PreciseDecimal {
-        // without these, the following error happens:
-        // ====
-        // thread has overflowed its stack
-        // fatal runtime error: stack overflow
-        // ====
-        // it appears to be a problem with the rust-decimal
-        // I tried to run this function in a separate thread
-        // with 4GB stack and it still overflows
         match self.value.as_str() {
             AS_RAD_45 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
             AS_RAD_135 => PreciseDecimal::from_str("-0.7071067811865475244008443621"),
@@ -62,14 +54,6 @@ impl MathOperations<PreciseDecimal> for PreciseDecimal {
     }
 
     fn sin(&self) -> PreciseDecimal {
-        // without these, the following error happens:
-        // ====
-        // thread has overflowed its stack
-        // fatal runtime error: stack overflow
-        // ====
-        // it appears to be a problem with the rust-decimal
-        // I tried to run this function in a separate thread
-        // with 4GB stack and it still overflows
         match self.value.as_str() {
             AS_RAD_45 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
             AS_RAD_135 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
@@ -83,7 +67,6 @@ impl MathOperations<PreciseDecimal> for PreciseDecimal {
     }
 
     fn atan(&self, other: PreciseDecimal) -> PreciseDecimal {
-        // TODO not use floats
         let self_decimal: f64 = self.value.parse::<f64>().unwrap();
         let other_decimal: f64 = other.value.parse::<f64>().unwrap();
 

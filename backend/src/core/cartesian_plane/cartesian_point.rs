@@ -1,6 +1,6 @@
 use crate::core::precise_decimal::PreciseDecimal;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct CartesianPoint {
     pub x: PreciseDecimal,
     pub y: PreciseDecimal,
@@ -19,6 +19,17 @@ impl std::ops::Add<CartesianPoint> for CartesianPoint {
         CartesianPoint {
             x: self.x + other.x,
             y: self.y + other.y,
+        }
+    }
+}
+
+impl std::ops::Sub<CartesianPoint> for CartesianPoint {
+    type Output = CartesianPoint;
+
+    fn sub(self, other: CartesianPoint) -> CartesianPoint {
+        CartesianPoint {
+            x: self.x - other.x,
+            y: self.y - other.y,
         }
     }
 }
@@ -78,6 +89,49 @@ mod test_cartesian_point {
                 x: PreciseDecimal::from_int(4),
                 y: PreciseDecimal::from_int(7)
             }
+        );
+    }
+
+    #[test]
+    fn subtract() {
+        assert_eq!(
+            CartesianPoint {
+                x: PreciseDecimal::from_int(6),
+                y: PreciseDecimal::from_int(4)
+            } - CartesianPoint {
+                x: PreciseDecimal::from_int(4),
+                y: PreciseDecimal::from_int(7)
+            },
+            CartesianPoint {
+                x: PreciseDecimal::from_int(2),
+                y: PreciseDecimal::from_int(-3)
+            },
+        );
+        assert_eq!(
+            CartesianPoint {
+                x: PreciseDecimal::from_int(1),
+                y: PreciseDecimal::from_int(0)
+            } - CartesianPoint {
+                x: PreciseDecimal::from_int(-1),
+                y: PreciseDecimal::from_int(3)
+            },
+            CartesianPoint {
+                x: PreciseDecimal::from_int(2),
+                y: PreciseDecimal::from_int(-3)
+            },
+        );
+        assert_eq!(
+            CartesianPoint {
+                x: PreciseDecimal::from_int(4),
+                y: PreciseDecimal::from_int(7)
+            } - CartesianPoint {
+                x: PreciseDecimal::from_int(4),
+                y: PreciseDecimal::from_int(7)
+            },
+            CartesianPoint {
+                x: PreciseDecimal::from_int(0),
+                y: PreciseDecimal::from_int(0)
+            },
         );
     }
 
