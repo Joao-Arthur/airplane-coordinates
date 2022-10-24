@@ -20,10 +20,8 @@ struct RotateArguments {
 #[wasm_bindgen]
 pub fn rotate(val: JsValue) -> Result<JsValue, JsValue> {
     let args: RotateArguments = serde_wasm_bindgen::from_value(val)?;
-
     let point = args.point.to_point();
     let center_of_rotation = args.center_of_rotation.to_point();
-
     let offset_point = point - center_of_rotation.clone();
     let point_as_polar = cartesian_to_polar(offset_point);
     let rotated_point = core_rotate(point_as_polar, args.angle.as_str());
