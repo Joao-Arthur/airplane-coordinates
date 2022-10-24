@@ -1,6 +1,7 @@
-use super::polar_point::PolarPoint;
 use crate::core::precise_decimal::PreciseDecimal;
 use crate::core::trigonometry::normalize_angle::normalize_angle;
+
+use super::polar_point::PolarPoint;
 
 pub fn rotate(point: PolarPoint, angle: &str) -> PolarPoint {
     PolarPoint {
@@ -64,7 +65,7 @@ mod test_rotate {
             ),
             PolarPoint {
                 r: PreciseDecimal::from_str("1"),
-                a: PreciseDecimal::from_str("536")
+                a: PreciseDecimal::from_str("176")
             }
         );
         assert_eq!(

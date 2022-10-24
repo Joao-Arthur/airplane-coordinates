@@ -1,7 +1,7 @@
 mod custom_operations;
 mod standard_operations;
 
-#[derive(Debug, Clone)]
+#[derive(PartialEq, Debug, Clone)]
 pub struct PreciseDecimal {
     pub value: String,
 }
@@ -21,12 +21,6 @@ impl PreciseDecimal {
         PreciseDecimal {
             value: value.to_string(),
         }
-    }
-}
-
-impl PartialEq for PreciseDecimal {
-    fn eq(&self, other: &Self) -> bool {
-        self.value == other.value
     }
 }
 

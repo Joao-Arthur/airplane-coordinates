@@ -1,13 +1,14 @@
+use crate::core::math::MathOperations;
+use crate::core::trigonometry::normalize_angle::normalize_angle;
+use crate::core::trigonometry::rad_to_deg::rad_to_deg;
+
 use super::super::cartesian::cartesian_point::CartesianPoint;
 use super::super::polar::polar_point::PolarPoint;
-use crate::core::math::MathOperations;
-use crate::core::trigonometry::deg_to_rad::deg_to_rad;
-use crate::core::trigonometry::normalize_angle::normalize_angle;
 
 pub fn cartesian_to_polar(cartesian_point: CartesianPoint) -> PolarPoint {
     PolarPoint {
         r: (cartesian_point.x.square() + cartesian_point.y.square()).sqrt(),
-        a: normalize_angle(deg_to_rad(cartesian_point.y.atan(cartesian_point.x))),
+        a: normalize_angle(rad_to_deg(cartesian_point.y.atan(cartesian_point.x))),
     }
 }
 
@@ -36,7 +37,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(90)
+                a: PreciseDecimal::from_str("89.99999999999999889812643261")
             }
         );
         assert_eq!(
@@ -46,7 +47,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(180)
+                a: PreciseDecimal::from_str("179.9999999999999863370969626")
             }
         );
         assert_eq!(
@@ -56,7 +57,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(270)
+                a: PreciseDecimal::from_str("270.00000000000000110187356739")
             }
         );
         assert_eq!(
@@ -66,7 +67,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(360)
+                a: PreciseDecimal::from_str("0")
             }
         );
     }
@@ -80,7 +81,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(45)
+                a: PreciseDecimal::from_str("44.99999999999999944906321630")
             }
         );
         assert_eq!(
@@ -90,7 +91,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(135)
+                a: PreciseDecimal::from_str("135.00000000000000407676760022")
             }
         );
         assert_eq!(
@@ -100,7 +101,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(225)
+                a: PreciseDecimal::from_str("224.99999999999999592323239978")
             }
         );
         assert_eq!(
@@ -110,7 +111,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(315)
+                a: PreciseDecimal::from_str("315.00000000000000055093678370")
             }
         );
         assert_eq!(
@@ -120,7 +121,7 @@ mod test_cartesian_to_polar {
             }),
             PolarPoint {
                 r: PreciseDecimal::from_str("1.0000000000000000000000000000"),
-                a: PreciseDecimal::from_int(405)
+                a: PreciseDecimal::from_str("44.99999999999999944906321630")
             }
         );
     }

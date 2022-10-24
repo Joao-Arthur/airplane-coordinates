@@ -1,8 +1,10 @@
 use crate::core::precise_decimal::PreciseDecimal;
 
+use super::consts::PI;
+
 pub fn deg_to_rad(value: PreciseDecimal) -> PreciseDecimal {
     let half_circle = PreciseDecimal::from_int(180);
-    let pi = PreciseDecimal::from_str(super::consts::PI);
+    let pi = PreciseDecimal::from_str(PI);
 
     value * pi / half_circle
 }
@@ -12,7 +14,7 @@ mod test_deg_to_rad {
     use super::*;
 
     #[test]
-    fn transform_deg_to_rad() {
+    fn transform() {
         assert_eq!(
             deg_to_rad(PreciseDecimal::from_int(0)),
             PreciseDecimal::from_str("0")

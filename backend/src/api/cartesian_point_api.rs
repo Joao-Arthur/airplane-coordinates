@@ -3,16 +3,10 @@ use serde::{Deserialize, Serialize};
 use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
 use crate::core::precise_decimal::PreciseDecimal;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Debug, Serialize, Deserialize)]
 pub struct CartesianPointAPI {
     pub x: String,
     pub y: String,
-}
-
-impl PartialEq for CartesianPointAPI {
-    fn eq(&self, other: &Self) -> bool {
-        self.x == other.x && self.y == self.y
-    }
 }
 
 impl CartesianPointAPI {

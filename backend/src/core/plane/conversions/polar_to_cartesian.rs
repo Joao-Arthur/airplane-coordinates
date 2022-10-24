@@ -1,8 +1,9 @@
-use super::super::cartesian::cartesian_point::CartesianPoint;
-use super::super::polar::polar_point::PolarPoint;
 use crate::core::math::MathOperations;
 use crate::core::trigonometry::deg_to_rad::deg_to_rad;
 use crate::core::trigonometry::normalize_angle::normalize_angle;
+
+use super::super::cartesian::cartesian_point::CartesianPoint;
+use super::super::polar::polar_point::PolarPoint;
 
 pub fn polar_to_cartesian(cartesian_point: PolarPoint) -> CartesianPoint {
     CartesianPoint {

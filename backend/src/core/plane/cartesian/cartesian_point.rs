@@ -1,15 +1,9 @@
 use crate::core::precise_decimal::PreciseDecimal;
 
-#[derive(Debug, Clone)]
+#[derive(PartialEq, Debug, Clone)]
 pub struct CartesianPoint {
     pub x: PreciseDecimal,
     pub y: PreciseDecimal,
-}
-
-impl PartialEq for CartesianPoint {
-    fn eq(&self, other: &Self) -> bool {
-        self.x == other.x && self.y == self.y
-    }
 }
 
 impl std::ops::Add<CartesianPoint> for CartesianPoint {
