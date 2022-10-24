@@ -1,22 +1,15 @@
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
 use crate::core::precise_decimal::PreciseDecimal;
 
-#[derive(PartialEq, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Debug, Deserialize)]
 pub struct CartesianPointAPI {
     pub x: String,
     pub y: String,
 }
 
 impl CartesianPointAPI {
-    pub fn from_point(point: CartesianPoint) -> CartesianPointAPI {
-        CartesianPointAPI {
-            x: point.x.value,
-            y: point.y.value,
-        }
-    }
-
     pub fn to_point(&self) -> CartesianPoint {
         CartesianPoint {
             x: PreciseDecimal::from_string(self.x.clone()),
@@ -33,21 +26,7 @@ mod test_cartesian_point_api {
     use super::*;
 
     #[test]
-    fn get_from() {
-        assert_eq!(
-            CartesianPointAPI::from_point(CartesianPoint {
-                x: PreciseDecimal::from_str("4.2948"),
-                y: PreciseDecimal::from_str("-1.6825")
-            }),
-            CartesianPointAPI {
-                x: "4.2948".to_string(),
-                y: "-1.6825".to_string(),
-            }
-        );
-    }
-
-    #[test]
-    fn transform_to() {
+    fn to_point() {
         assert_eq!(
             CartesianPointAPI {
                 x: "4.2948".to_string(),

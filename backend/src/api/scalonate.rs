@@ -1,4 +1,4 @@
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 use serde_wasm_bindgen;
 use wasm_bindgen::{prelude::wasm_bindgen, JsValue};
 
@@ -7,7 +7,7 @@ use crate::features::scalonate::scalonate as feature_scalonate;
 use super::cartesian_point_api::CartesianPointAPI;
 use super::plane_point_api::PlanePointAPI;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Deserialize)]
 struct ScalonateArguments {
     point: PlanePointAPI,
     factor: CartesianPointAPI,

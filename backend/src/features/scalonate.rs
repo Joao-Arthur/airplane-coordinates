@@ -22,8 +22,8 @@ mod test_scalonate {
             scalonate(
                 PlanePoint {
                     plane_type: Plane::POLAR,
-                    a: "1".to_string(),
-                    b: "0".to_string()
+                    a: PreciseDecimal::from_int(1),
+                    b: PreciseDecimal::from_int(0),
                 },
                 CartesianPoint {
                     x: PreciseDecimal::from_int(-2),
@@ -32,16 +32,16 @@ mod test_scalonate {
             ),
             PlanePoint {
                 plane_type: Plane::POLAR,
-                a: "2".to_string(),
-                b: "179.9999999999999863370969626".to_string()
+                a: PreciseDecimal::from_int(2),
+                b: PreciseDecimal::from_str("179.9999999999999863370969626"),
             }
         );
         assert_eq!(
             scalonate(
                 PlanePoint {
                     plane_type: Plane::POLAR,
-                    a: "1".to_string(),
-                    b: "45".to_string()
+                    a: PreciseDecimal::from_int(1),
+                    b: PreciseDecimal::from_int(45),
                 },
                 CartesianPoint {
                     x: PreciseDecimal::from_int(2),
@@ -50,8 +50,8 @@ mod test_scalonate {
             ),
             PlanePoint {
                 plane_type: Plane::POLAR,
-                a: "2.0000000000000000000000000000".to_string(),
-                b: "44.99999999999999944906321630".to_string()
+                a: PreciseDecimal::from_str("2.0000000000000000000000000000"),
+                b: PreciseDecimal::from_str("44.99999999999999944906321630"),
             }
         );
     }
@@ -62,8 +62,8 @@ mod test_scalonate {
             scalonate(
                 PlanePoint {
                     plane_type: Plane::CARTESIAN,
-                    a: "5".to_string(),
-                    b: "-1".to_string(),
+                    a: PreciseDecimal::from_int(5),
+                    b: PreciseDecimal::from_int(-1),
                 },
                 CartesianPoint {
                     x: PreciseDecimal::from_int(-2),
@@ -72,8 +72,8 @@ mod test_scalonate {
             ),
             PlanePoint {
                 plane_type: Plane::CARTESIAN,
-                a: "-10".to_string(),
-                b: "-2".to_string(),
+                a: PreciseDecimal::from_int(-10),
+                b: PreciseDecimal::from_int(-2),
             }
         );
     }

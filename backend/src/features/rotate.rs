@@ -6,12 +6,16 @@ use crate::core::plane::plane_point::PlanePoint;
 use crate::core::plane::polar::rotate::rotate as core_rotate;
 use crate::core::precise_decimal::PreciseDecimal;
 
-pub fn rotate(point: PlanePoint, center_of_rotation: CartesianPoint, angle: String) -> PlanePoint {
+pub fn rotate(
+    point: PlanePoint,
+    center_of_rotation: CartesianPoint,
+    angle: PreciseDecimal,
+) -> PlanePoint {
     match point.plane_type {
         Plane::CARTESIAN => {
             let offset_point = point.to_cartesian() - center_of_rotation.clone();
             let point_as_polar = cartesian_to_polar(offset_point);
-            let rotated_point = core_rotate(point_as_polar, PreciseDecimal::from_string(angle));
+            let rotated_point = core_rotate(point_as_polar, angle);
             let point_as_cartesian = polar_to_cartesian(rotated_point);
             let unoffseted_point = point_as_cartesian + center_of_rotation;
 
@@ -20,7 +24,7 @@ pub fn rotate(point: PlanePoint, center_of_rotation: CartesianPoint, angle: Stri
         Plane::POLAR => {
             let offset_point = point.to_cartesian() - center_of_rotation.clone();
             let point_as_polar = cartesian_to_polar(offset_point);
-            let rotated_point = core_rotate(point_as_polar, PreciseDecimal::from_string(angle));
+            let rotated_point = core_rotate(point_as_polar, angle);
             let point_as_cartesian = polar_to_cartesian(rotated_point);
             let unoffseted_point = point_as_cartesian + center_of_rotation;
             let unoffseted_as_polar = cartesian_to_polar(unoffseted_point);
@@ -42,38 +46,38 @@ mod test_rotate {
             rotate(
                 PlanePoint {
                     plane_type: Plane::POLAR,
-                    a: "1.22".to_string(),
-                    b: "11.11".to_string()
+                    a: PreciseDecimal::from_str("1.22"),
+                    b: PreciseDecimal::from_str("11.11"),
                 },
                 CartesianPoint {
                     x: PreciseDecimal::from_int(0),
                     y: PreciseDecimal::from_int(0),
                 },
-                "50".to_string()
+                PreciseDecimal::from_str("50"),
             ),
             PlanePoint {
                 plane_type: Plane::POLAR,
-                a: "1.2199999999993856733934483557".to_string(),
-                b: "61.10999999998551537151064434".to_string()
+                a: PreciseDecimal::from_str("1.2199999999993856733934483557"),
+                b: PreciseDecimal::from_str("61.10999999998551537151064434"),
             }
         );
         assert_eq!(
             rotate(
                 PlanePoint {
                     plane_type: Plane::POLAR,
-                    a: "4".to_string(),
-                    b: "90".to_string()
+                    a: PreciseDecimal::from_int(4),
+                    b: PreciseDecimal::from_int(90)
                 },
                 CartesianPoint {
                     x: PreciseDecimal::from_int(4),
                     y: PreciseDecimal::from_int(4),
                 },
-                "90".to_string()
+                PreciseDecimal::from_int(90),
             ),
             PlanePoint {
                 plane_type: Plane::POLAR,
-                a: "3.999999999999999046149426467".to_string(),
-                b: "359.99999999999999999999999999".to_string()
+                a: PreciseDecimal::from_str("3.999999999999999046149426467"),
+                b: PreciseDecimal::from_str("359.99999999999999999999999999")
             }
         );
     }
@@ -84,19 +88,19 @@ mod test_rotate {
             rotate(
                 PlanePoint {
                     plane_type: Plane::CARTESIAN,
-                    a: "4".to_string(),
-                    b: "4".to_string(),
+                    a: PreciseDecimal::from_int(4),
+                    b: PreciseDecimal::from_int(4),
                 },
                 CartesianPoint {
                     x: PreciseDecimal::from_int(8),
                     y: PreciseDecimal::from_int(0),
                 },
-                "90".to_string()
+                PreciseDecimal::from_int(90),
             ),
             PlanePoint {
                 plane_type: Plane::CARTESIAN,
-                a: "4.0000000000391914755241257792".to_string(),
-                b: "-3.9999999993515959027994326119".to_string(),
+                a: PreciseDecimal::from_str("4.0000000000391914755241257792"),
+                b: PreciseDecimal::from_str("-3.9999999993515959027994326119"),
             }
         );
     }

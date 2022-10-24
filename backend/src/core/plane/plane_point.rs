@@ -9,20 +9,20 @@ use super::polar::polar_point::PolarPoint;
 #[derive(Debug, PartialEq)]
 pub struct PlanePoint {
     pub plane_type: Plane,
-    pub a: String,
-    pub b: String,
+    pub a: PreciseDecimal,
+    pub b: PreciseDecimal,
 }
 
 impl PlanePoint {
     pub fn to_cartesian(&self) -> CartesianPoint {
         match self.plane_type {
             Plane::CARTESIAN => CartesianPoint {
-                x: PreciseDecimal::from_string(self.a.clone()),
-                y: PreciseDecimal::from_string(self.b.clone()),
+                x: self.a.clone(),
+                y: self.b.clone(),
             },
             Plane::POLAR => polar_to_cartesian(PolarPoint {
-                r: PreciseDecimal::from_string(self.a.clone()),
-                a: PreciseDecimal::from_string(self.b.clone()),
+                r: self.a.clone(),
+                a: self.b.clone(),
             }),
         }
     }
@@ -30,12 +30,12 @@ impl PlanePoint {
     pub fn to_polar(&self) -> PolarPoint {
         match self.plane_type {
             Plane::CARTESIAN => cartesian_to_polar(CartesianPoint {
-                x: PreciseDecimal::from_string(self.a.clone()),
-                y: PreciseDecimal::from_string(self.b.clone()),
+                x: self.a.clone(),
+                y: self.b.clone(),
             }),
             Plane::POLAR => PolarPoint {
-                r: PreciseDecimal::from_string(self.a.clone()),
-                a: PreciseDecimal::from_string(self.b.clone()),
+                r: self.a.clone(),
+                a: self.b.clone(),
             },
         }
     }
@@ -43,16 +43,16 @@ impl PlanePoint {
     pub fn from_cartesian(point: CartesianPoint) -> PlanePoint {
         PlanePoint {
             plane_type: Plane::CARTESIAN,
-            a: point.x.value,
-            b: point.y.value,
+            a: point.x.clone(),
+            b: point.y.clone(),
         }
     }
 
     pub fn from_polar(point: PolarPoint) -> PlanePoint {
         PlanePoint {
             plane_type: Plane::POLAR,
-            a: point.r.value,
-            b: point.a.value,
+            a: point.r.clone(),
+            b: point.a.clone(),
         }
     }
 }
@@ -69,8 +69,8 @@ mod test_plane_point {
         assert_eq!(
             PlanePoint {
                 plane_type: Plane::CARTESIAN,
-                a: "4.2948".to_string(),
-                b: "-1.6825".to_string(),
+                a: PreciseDecimal::from_str("4.2948"),
+                b: PreciseDecimal::from_str("-1.6825"),
             }
             .to_cartesian(),
             CartesianPoint {
@@ -81,8 +81,8 @@ mod test_plane_point {
         assert_eq!(
             PlanePoint {
                 plane_type: Plane::POLAR,
-                a: "3".to_string(),
-                b: "270".to_string(),
+                a: PreciseDecimal::from_int(3),
+                b: PreciseDecimal::from_int(270),
             }
             .to_cartesian(),
             CartesianPoint {
@@ -97,8 +97,8 @@ mod test_plane_point {
         assert_eq!(
             PlanePoint {
                 plane_type: Plane::CARTESIAN,
-                a: "4.2948".to_string(),
-                b: "-1.6825".to_string(),
+                a: PreciseDecimal::from_str("4.2948"),
+                b: PreciseDecimal::from_str("-1.6825"),
             }
             .to_polar(),
             PolarPoint {
@@ -109,13 +109,13 @@ mod test_plane_point {
         assert_eq!(
             PlanePoint {
                 plane_type: Plane::POLAR,
-                a: "3".to_string(),
-                b: "270".to_string(),
+                a: PreciseDecimal::from_int(3),
+                b: PreciseDecimal::from_int(270),
             }
             .to_polar(),
             PolarPoint {
-                r: PreciseDecimal::from_str("3"),
-                a: PreciseDecimal::from_str("270")
+                r: PreciseDecimal::from_int(3),
+                a: PreciseDecimal::from_int(270)
             },
         );
     }
@@ -129,8 +129,8 @@ mod test_plane_point {
             }),
             PlanePoint {
                 plane_type: Plane::CARTESIAN,
-                a: "4.2948".to_string(),
-                b: "-1.6825".to_string(),
+                a: PreciseDecimal::from_str("4.2948"),
+                b: PreciseDecimal::from_str("-1.6825"),
             }
         );
     }
@@ -144,8 +144,8 @@ mod test_plane_point {
             }),
             PlanePoint {
                 plane_type: Plane::POLAR,
-                a: "4.612603743006762986208671845".to_string(),
-                b: "359.99348334930711180245669530".to_string()
+                a: PreciseDecimal::from_str("4.612603743006762986208671845"),
+                b: PreciseDecimal::from_str("359.99348334930711180245669530")
             }
         );
     }
