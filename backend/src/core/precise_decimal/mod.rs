@@ -1,8 +1,9 @@
 use rust_decimal::prelude::*;
 
-use super::math::MathOperations;
+use crate::core::math::MathOperations;
+use crate::core::trigonometry::consts::*;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct PreciseDecimal {
     pub value: String,
 }
@@ -39,25 +40,50 @@ impl MathOperations<PreciseDecimal> for PreciseDecimal {
     }
 
     fn cos(&self) -> PreciseDecimal {
-        let decimal = Decimal::from_str(self.value.as_str()).unwrap();
-
-        PreciseDecimal::from_string(decimal.cos().to_string())
+        /*
+            without these, the following error happens:
+            ====
+            thread has overflowed its stack
+            fatal runtime error: stack overflow
+            ====
+            it appears to be a problem with the rust-decimal
+            I tried to run this function in a separate thread
+            with 4GB stack and it still overflows
+        */
+        match self.value.as_str() {
+            AS_RAD_45 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
+            AS_RAD_135 => PreciseDecimal::from_str("-0.7071067811865475244008443621"),
+            AS_RAD_225 => PreciseDecimal::from_str("-0.7071067811865475244008443621"),
+            AS_RAD_315 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
+            _ => {
+                let decimal = Decimal::from_str(self.value.as_str()).unwrap();
+                PreciseDecimal::from_string(decimal.cos().to_string())
+            }
+        }
     }
 
     fn sin(&self) -> PreciseDecimal {
-        let decimal = Decimal::from_str(self.value.as_str()).unwrap();
-
-        PreciseDecimal::from_string(decimal.sin().to_string())
+        /*
+            without these, the following error happens:
+            ====
+            thread has overflowed its stack
+            fatal runtime error: stack overflow
+            ====
+            it appears to be a problem with the rust-decimal
+            I tried to run this function in a separate thread
+            with 4GB stack and it still overflows
+        */
+        match self.value.as_str() {
+            AS_RAD_45 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
+            AS_RAD_135 => PreciseDecimal::from_str("0.7071067811865475244008443621"),
+            AS_RAD_225 => PreciseDecimal::from_str("-0.7071067811865475244008443621"),
+            AS_RAD_315 => PreciseDecimal::from_str("-0.7071067811865475244008443621"),
+            _ => {
+                let decimal = Decimal::from_str(self.value.as_str()).unwrap();
+                PreciseDecimal::from_string(decimal.sin().to_string())
+            }
+        }
     }
-
-    //  fn atan(&self, other: PreciseDecimal) -> PreciseDecimal {
-    //      let self_decimal = Decimal::from_str(self.value.as_str()).unwrap();
-    //      let other_decimal = Decimal::from_str(other.value.as_str()).unwrap();
-    //
-    //      PreciseDecimal {
-    //          value: self_decimal.(other_decimal).to_string(),
-    //      }
-    //  }
 }
 
 impl PartialEq for PreciseDecimal {
