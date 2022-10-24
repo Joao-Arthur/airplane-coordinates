@@ -31,7 +31,7 @@ mod test_precise_decimal {
     #[test]
     fn from_values() {
         assert_eq!(
-            PreciseDecimal::from_string(String::from("28.37185")),
+            PreciseDecimal::from_string("28.37185".to_string()),
             PreciseDecimal {
                 value: "28.37185".to_string()
             }
