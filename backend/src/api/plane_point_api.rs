@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
-use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
-use crate::core::plane_conversions::polar_to_cartesian::polar_to_cartesian;
-use crate::core::polar_plane::polar_point::PolarPoint;
+use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
+use crate::core::plane::conversions::polar_to_cartesian::polar_to_cartesian;
+use crate::core::plane::polar::polar_point::PolarPoint;
 use crate::core::precise_decimal::PreciseDecimal;
 
 use super::planes::Planes;
@@ -31,7 +31,7 @@ impl PlanePointAPI {
 
 #[cfg(test)]
 mod test_plane_point_api {
-    use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
+    use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
     use crate::core::precise_decimal::PreciseDecimal;
 
     use super::*;

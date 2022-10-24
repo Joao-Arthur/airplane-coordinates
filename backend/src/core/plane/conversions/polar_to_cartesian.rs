@@ -1,6 +1,6 @@
-use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
+use super::super::cartesian::cartesian_point::CartesianPoint;
+use super::super::polar::polar_point::PolarPoint;
 use crate::core::math::MathOperations;
-use crate::core::polar_plane::polar_point::PolarPoint;
 use crate::core::trigonometry::deg_to_rad::deg_to_rad;
 use crate::core::trigonometry::normalize_angle::normalize_angle;
 

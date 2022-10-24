@@ -2,9 +2,9 @@ use serde::Deserialize;
 use serde_wasm_bindgen;
 use wasm_bindgen::{prelude::wasm_bindgen, JsValue};
 
-use crate::core::plane_conversions::cartesian_to_polar::cartesian_to_polar;
-use crate::core::plane_conversions::polar_to_cartesian::polar_to_cartesian;
-use crate::core::polar_plane::rotate::rotate as core_rotate;
+use crate::core::plane::conversions::cartesian_to_polar::cartesian_to_polar;
+use crate::core::plane::conversions::polar_to_cartesian::polar_to_cartesian;
+use crate::core::plane::polar::rotate::rotate as core_rotate;
 
 use super::cartesian_point_api::CartesianPointAPI;
 use super::plane_point_api::PlanePointAPI;

@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
+use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
 use crate::core::precise_decimal::PreciseDecimal;
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -33,7 +33,7 @@ impl CartesianPointAPI {
 
 #[cfg(test)]
 mod test_cartesian_point_api {
-    use crate::core::cartesian_plane::cartesian_point::CartesianPoint;
+    use crate::core::plane::cartesian::cartesian_point::CartesianPoint;
     use crate::core::precise_decimal::PreciseDecimal;
 
     use super::*;
