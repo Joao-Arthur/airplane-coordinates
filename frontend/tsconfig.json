@@ -7,7 +7,7 @@
             "esnext"
         ],
         "types": [
-            "vite/client",
+            "jest",
         ],
         "skipLibCheck": true,
         "esModuleInterop": true,
