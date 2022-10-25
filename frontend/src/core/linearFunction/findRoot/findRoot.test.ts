@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { findRoot } from './findRoot';
 
 describe('findRoot', () => {

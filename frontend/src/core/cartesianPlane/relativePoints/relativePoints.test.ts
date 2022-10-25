@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { relativePoints } from './relativePoints';
 
 describe('relativePoints', () => {

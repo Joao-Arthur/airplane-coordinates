@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { distance } from './distance';
 
 describe('distance', () => {

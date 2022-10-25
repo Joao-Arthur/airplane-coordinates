@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { collisionFromSameFunction } from './collisionFromSameFunction';
 
 describe('collisionFromSameFunction', () => {

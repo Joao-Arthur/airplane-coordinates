@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { intersect } from './intersect';
 
 describe('intersect', () => {

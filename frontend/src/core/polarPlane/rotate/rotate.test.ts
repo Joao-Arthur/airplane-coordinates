@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { rotate } from './rotate';
 
 describe('rotate', () => {
@@ -9,6 +8,5 @@ describe('rotate', () => {
         expect(rotate({ point: { radius: 1, angle: 34.02 }, angle: 19.04 })).toEqual({ radius: 1, angle: 53.06 });
         expect(rotate({ point: { radius: 1, angle: 60 }, angle: -120 })).toEqual({ radius: 1, angle: 300 });
         expect(rotate({ point: { radius: 1, angle: 60 }, angle: -60 })).toEqual({ radius: 1, angle: 0 });
-
     });
 });

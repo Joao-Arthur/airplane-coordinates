@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { getCollisionType } from './getCollisionType';
 
 describe('getCollisionType', () => {

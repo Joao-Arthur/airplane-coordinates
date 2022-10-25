@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { findInsersectionPoint } from './findInsersectionPoint';
 
 describe('findInsersectionPoint', () => {

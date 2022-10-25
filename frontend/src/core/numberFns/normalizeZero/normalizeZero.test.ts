@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { normalizeZero } from './normalizeZero';
 
 describe('normalizeZero', () => {

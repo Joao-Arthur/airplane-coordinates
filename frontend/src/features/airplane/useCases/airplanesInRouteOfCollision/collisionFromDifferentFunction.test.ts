@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { collisionFromDifferentFunction } from './collisionFromDifferentFunction';
 
 describe('collisionFromDifferentFunction', () => {

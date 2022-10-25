@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { addAirplaneBusiness } from './addAirplaneBusiness';
 import { MaxNumberOfAirplanesExceededError } from './MaxNumberOfAirplanesExceededError';
 

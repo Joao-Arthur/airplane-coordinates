@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { collisionFromInfiniteTangentBothAirplanes } from './collisionFromInfiniteTangentBothAirplanes';
 
 describe('collisionFromInfiniteTangentBothAirplanes', () => {

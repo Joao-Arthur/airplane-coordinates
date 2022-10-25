@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { airplanesCloseToEachOtherBusiness } from './airplanesCloseToEachOtherBusiness';
 
 describe('airplanesCloseToEachOtherBusiness', () => {
