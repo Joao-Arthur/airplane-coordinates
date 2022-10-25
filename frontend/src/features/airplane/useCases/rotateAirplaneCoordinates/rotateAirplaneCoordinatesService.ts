@@ -1,4 +1,3 @@
-import { dtoToSavedAirplane } from '../dtoToSavedAirplane';
 import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { rotateAirplaneCoordinatesBusiness } from './rotateAirplaneCoordinatesBusiness';
 import { rotateAirplaneCoordinatesParamsType } from './rotateAirplaneCoordinatesParams';
@@ -25,7 +24,7 @@ export function rotateAirplaneCoordinatesService({
             centerOfRotationX,
             centerOfRotationY,
         });
-        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
+        airplaneRepository.update(updatedAirplane);
     }
     logger.success('Rotação realizada com sucesso!');
 }

@@ -1,3 +1,4 @@
+import { planeType } from '../../../backend/models/planeType';
 import { backendToSaved } from './backendToSaved';
 
 describe('backendToSaved', () => {
@@ -5,7 +6,7 @@ describe('backendToSaved', () => {
         expect(backendToSaved({
             a: '2.01',
             b: '1.99',
-            plane_type: 'CARTESIAN',
+            plane_type: planeType.CARTESIAN,
         })).toEqual({
             a: '2.01',
             b: '1.99',
@@ -14,7 +15,7 @@ describe('backendToSaved', () => {
         expect(backendToSaved({
             a: '8937.2348627',
             b: '-2364238',
-            plane_type: 'POLAR',
+            plane_type: planeType.POLAR,
         })).toEqual({
             a: '8937.2348627',
             b: '-2364238',

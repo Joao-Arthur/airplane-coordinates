@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { rotateAirplaneCoordinatesBusiness } from './rotateAirplaneCoordinatesBusiness';
 
 describe('rotateAirplaneCoordinatesBusiness', () => {

@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { savedAirplaneToDTO } from './savedAirplaneToDTO';
 
 describe('savedAirplaneToDTO', () => {
@@ -6,10 +5,8 @@ describe('savedAirplaneToDTO', () => {
         expect(savedAirplaneToDTO({
             id: '1',
             type: 'polar',
-            x: undefined,
-            y: undefined,
-            radius: 10,
-            angle: 270,
+            a: '10',
+            b: '270',
             speed: 100,
             direction: 100,
         })).toEqual({
@@ -25,10 +22,8 @@ describe('savedAirplaneToDTO', () => {
         expect(savedAirplaneToDTO({
             id: '1',
             type: 'cartesian',
-            x: 4,
-            y: -5,
-            radius: undefined,
-            angle: undefined,
+            a: '4',
+            b: '-5',
             speed: 100,
             direction: 100,
         })).toEqual({
