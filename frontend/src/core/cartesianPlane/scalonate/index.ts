@@ -1,1 +1,0 @@
-export { scalonate } from './scalonate';
