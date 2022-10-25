@@ -6,10 +6,8 @@ describe('addAirplaneBusiness', () => {
         expect(() => addAirplaneBusiness({
             id: '1',
             type: 'cartesian',
-            x: 3,
-            y: 7,
-            angle: undefined,
-            radius: undefined,
+            a: '3',
+            b: '7',
             speed: 100,
             direction: 100,
             numberOfAirplanes: 1,

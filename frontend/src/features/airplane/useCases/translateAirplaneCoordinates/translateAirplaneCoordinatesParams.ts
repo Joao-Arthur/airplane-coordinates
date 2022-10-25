@@ -1,6 +1,6 @@
 import { loggerRepositoryType } from '../../../logger/ports/loggerRepository';
-import { airplaneType } from '../../models';
 import { airplaneRepositoryType } from '../../ports/airplaneRepository';
+import { airplaneType } from '../../models';
 
 export type translateAirplaneCoordinatesParamsType = {
     readonly logger: loggerRepositoryType;

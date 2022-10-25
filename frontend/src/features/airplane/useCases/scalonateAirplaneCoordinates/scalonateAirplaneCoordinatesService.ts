@@ -1,4 +1,3 @@
-import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { scalonateAirplaneCoordinatesBusiness } from './scalonateAirplaneCoordinatesBusiness';
 import { scalonateAirplaneCoordinatesParamsType } from './scalonateAirplaneCoordinatesParams';
 
@@ -17,12 +16,12 @@ export function scalonateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
-        const updatedAirplane = scalonateAirplaneCoordinatesBusiness({
-            airplane: savedAirplaneToDTO(airplane),
+        const newCoordinates = scalonateAirplaneCoordinatesBusiness({
+            coordinates: airplane,
             x,
             y,
         });
-        airplaneRepository.update(updatedAirplane);
+        airplaneRepository.update({ ...airplane, ...newCoordinates });
     }
     logger.success('Escalonamento realizado com sucesso!');
 }

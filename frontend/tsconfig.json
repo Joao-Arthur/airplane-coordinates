@@ -22,7 +22,11 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "jsx": "react-jsx"
+        "jsx": "react-jsx",
+        //because of react-scripts
+        "compilerOptions": {
+            "isolatedModules": false
+        },
     },
     "include": [
         "src"
