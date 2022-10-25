@@ -1,5 +1,5 @@
-import { planeType } from '../../../backend/planeType';
-import { translate } from '../../../backend/translate';
+import { planeType } from '../../../backend/models/planeType';
+import { translate } from '../../../backend/useCases/translate';
 import { dtoToSavedAirplane } from '../dtoToSavedAirplane/dtoToSavedAirplane';
 import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
