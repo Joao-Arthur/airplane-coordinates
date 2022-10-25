@@ -3,8 +3,7 @@ import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordin
 
 describe('translateAirplaneCoordinatesBusiness', () => {
     beforeAll(async () => {
-        console.log(init);
-        //await backend.init();
+        init();
     });
 
     it('should transform the airplane dimensions', () => {
