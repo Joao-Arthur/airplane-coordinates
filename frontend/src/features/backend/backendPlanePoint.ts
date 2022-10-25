@@ -1,7 +1,7 @@
 import { planeType } from './planeType';
 
 export type backendPlanePointType = {
-    plane: planeType;
+    plane_type: planeType;
     a: string;
     b: string;
 }

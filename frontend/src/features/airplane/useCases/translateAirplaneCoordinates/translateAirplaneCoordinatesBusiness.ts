@@ -1,18 +1,18 @@
 import { cartesianPlane } from '../../../../core/cartesianPlane';
-import { airplaneType } from '../../models';
+import { savedAirplaneType } from '../../models';
 
 type paramsType = {
-    readonly airplane: airplaneType;
+    readonly airplane: savedAirplaneType;
     readonly x: number;
     readonly y: number;
 }
 
-export function translateAirplaneCoordinatesBusiness({ airplane, x, y }: paramsType): airplaneType {
+export function translateAirplaneCoordinatesBusiness({ airplane, x, y }: paramsType): {
     return {
-        ...airplane,
-        ...cartesianPlane.translate({
-            point: { x: airplane.x, y: airplane.y },
-            factor: { x, y },
-        }),
-    } as const;
+    ...airplane,
+    ...cartesianPlane.translate({
+        point: { x: airplane.x, y: airplane.y },
+        factor: { x, y },
+    }),
+} as const;
 } 
