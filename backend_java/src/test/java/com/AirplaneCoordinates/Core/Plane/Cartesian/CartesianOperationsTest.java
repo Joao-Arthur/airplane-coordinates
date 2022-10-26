@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+
 public class CartesianOperationsTest {
     @Test
     public final void sum() {
@@ -109,6 +111,59 @@ public class CartesianOperationsTest {
                 CartesianPoint.from(-1,3)
             ),
             CartesianPoint.from(0, 0)
+        );
+    }
+    
+    @Test
+    public final void distance() {
+        assertEquals(
+            CartesianOperations.distance(
+                CartesianPoint.from(0, 0),
+                CartesianPoint.from(0, 0)
+            ),
+            PreciseDecimal.from(0)
+        );
+        assertEquals(
+            CartesianOperations.distance(
+                CartesianPoint.from(1, 1),
+                CartesianPoint.from(1, 1)
+            ),
+            PreciseDecimal.from(0)
+        );
+        assertEquals(
+            CartesianOperations.distance(
+                CartesianPoint.from(-10, 5),
+                CartesianPoint.from(20, 5)
+            ),
+            PreciseDecimal.from("30.0")
+        );
+        assertEquals(
+            CartesianOperations.distance(
+                CartesianPoint.from(5, 10),
+                CartesianPoint.from(5, -20)
+            ),
+            PreciseDecimal.from("30.0")
+        );
+        assertEquals(
+            CartesianOperations.distance(
+                CartesianPoint.from(5, 10),
+                CartesianPoint.from(5, -20)
+            ),
+            PreciseDecimal.from("30.0")
+        );
+        assertEquals(
+            CartesianOperations.distance(
+                CartesianPoint.from(0, 0),
+                CartesianPoint.from(1, 1)
+            ),
+            PreciseDecimal.from("1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641573")
+        );
+        assertEquals(
+            CartesianOperations.distance(
+                CartesianPoint.from(-1,-1),
+                CartesianPoint.from(1,1)
+            ),
+            PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145")
         );
     }
 }
