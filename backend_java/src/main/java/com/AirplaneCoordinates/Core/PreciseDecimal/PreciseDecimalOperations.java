@@ -55,7 +55,7 @@ public final class PreciseDecimalOperations {
         );
     }
 
-    public final PreciseDecimal atan(final PreciseDecimal a, final PreciseDecimal b) {
+    public static final PreciseDecimal atan(final PreciseDecimal a, final PreciseDecimal b) {
         final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
         
