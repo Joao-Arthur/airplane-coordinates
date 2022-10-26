@@ -277,7 +277,7 @@ public final class PreciseDecimalOperationsTest {
                 PreciseDecimal.from("0.6244449495825452115604125485"),
                 PreciseDecimal.from("0.8937593473846237864238745")
             ),
-            PreciseDecimal.from("0.6986723567253716276345786345")
+            PreciseDecimal.from("0.6986723567253716276345786344558560517332249999067102148534359217562859252534394065632348653940470129")
         );
         assertEquals(
             PreciseDecimalOperations.sum(
@@ -291,7 +291,7 @@ public final class PreciseDecimalOperationsTest {
                 PreciseDecimal.from("1.0000000000000000000000000001"),
                 PreciseDecimal.from("0.0000000000000000000000000001")
             ),
-            PreciseDecimal.from("1.0000000000000000000000000000")
+            PreciseDecimal.from("1")
         );
     }
 }

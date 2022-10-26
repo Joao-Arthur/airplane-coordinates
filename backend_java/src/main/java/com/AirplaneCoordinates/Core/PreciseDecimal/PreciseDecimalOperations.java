@@ -6,14 +6,14 @@ import java.math.RoundingMode;
 
 public final class PreciseDecimalOperations {
     private static final int PRECISION = 100;
-    private static final MathContext MATH_CONTEXT = new MathContext(PRECISION);
+    private static final MathContext MATH_CONTEXT = new MathContext(PRECISION, RoundingMode.HALF_EVEN);
 
     public static final PreciseDecimal sum(final PreciseDecimal a, final PreciseDecimal b) {
         final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.add(bValue).toString()
+            aValue.add(bValue).stripTrailingZeros().toPlainString()
         );
     }
     
@@ -22,7 +22,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.subtract(bValue).toString()
+            aValue.subtract(bValue).stripTrailingZeros().toPlainString()
         );
     }
 
@@ -31,7 +31,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.multiply(bValue).toString()
+            aValue.multiply(bValue).stripTrailingZeros().toPlainString()
         );
     }
 
@@ -40,7 +40,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.divide(bValue, RoundingMode.HALF_EVEN).toString()
+            aValue.divide(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
         );
     }
 
@@ -49,7 +49,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.remainder(bValue).toString()
+            aValue.remainder(bValue).stripTrailingZeros().toPlainString()
         );
     }
 }
