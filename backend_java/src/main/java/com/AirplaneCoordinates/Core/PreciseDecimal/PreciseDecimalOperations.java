@@ -15,7 +15,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.add(bValue).stripTrailingZeros().toPlainString()
+            aValue.add(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
         );
     }
     
@@ -24,7 +24,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.subtract(bValue).stripTrailingZeros().toPlainString()
+            aValue.subtract(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
         );
     }
 
@@ -33,7 +33,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.multiply(bValue).stripTrailingZeros().toPlainString()
+            aValue.multiply(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
         );
     }
 
@@ -51,7 +51,7 @@ public final class PreciseDecimalOperations {
         final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.remainder(bValue).stripTrailingZeros().toPlainString()
+            aValue.remainder(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
         );
     }
 

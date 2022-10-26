@@ -32,4 +32,11 @@ public final class CartesianPoint {
             PreciseDecimal.from(y)
         );
     }
+
+    public static final CartesianPoint from(final String x, final String y) {
+        return new CartesianPoint(
+            PreciseDecimal.from(x),
+            PreciseDecimal.from(y)
+        );
+    }
 }
