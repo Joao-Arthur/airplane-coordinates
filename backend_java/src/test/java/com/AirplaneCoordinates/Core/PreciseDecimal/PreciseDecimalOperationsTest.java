@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class PreciseDecimalOperationsTest {
+public final class PreciseDecimalOperationsTest {
     @Test
     public final void sum() {
         assertEquals(

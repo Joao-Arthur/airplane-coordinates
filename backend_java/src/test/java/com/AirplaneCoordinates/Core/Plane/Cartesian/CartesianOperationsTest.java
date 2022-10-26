@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public class CartesianOperationsTest {
+public final class CartesianOperationsTest {
     @Test
     public final void sum() {
         assertEquals(

@@ -22,7 +22,7 @@ public final class PreciseDecimal {
             return true;
         if (!(object instanceof PreciseDecimal))
             return false;
-        PreciseDecimal other = (PreciseDecimal)object;
+        PreciseDecimal other = (PreciseDecimal) object;
         return this.value.equals(other.value);
     }
 
@@ -34,6 +34,10 @@ public final class PreciseDecimal {
         return new PreciseDecimal(String.valueOf(value));
     }
 
+    public static final PreciseDecimal pi() {
+        return PreciseDecimal.from(BigDecimalMath.pi(MATH_CONTEXT).toString());
+    }
+    
     public final PreciseDecimal square() {
         final var valueAsBigDecimal = new BigDecimal(this.value, MATH_CONTEXT);
 

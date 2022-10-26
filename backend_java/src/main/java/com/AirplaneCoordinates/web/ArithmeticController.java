@@ -1,5 +1,5 @@
 package com.AirplaneCoordinates.web;
 
-public class ArithmeticController {
+public final class ArithmeticController {
 
 }

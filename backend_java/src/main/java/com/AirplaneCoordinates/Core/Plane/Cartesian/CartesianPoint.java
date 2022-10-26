@@ -20,7 +20,7 @@ public final class CartesianPoint {
             return true;
         if (!(object instanceof CartesianPoint))
             return false;
-        CartesianPoint other = (CartesianPoint)object;
+        CartesianPoint other = (CartesianPoint) object;
         return this.x.equals(other.x) && this.y.equals(other.y);
     }
 
