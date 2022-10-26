@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public class PolarPointTest {
+public final class PolarPointTest {
     @Test
     public final void rotate() {
         assertEquals(
