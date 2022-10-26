@@ -74,4 +74,76 @@ public final class PreciseDecimalTest {
             PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145").value
         );
     }
+
+    @Test
+    public final void sin() {
+        assertEquals(
+            PreciseDecimal.from(0).sin().value,
+            PreciseDecimal.from("0").value
+        );
+        assertEquals(
+            PreciseDecimal.from(1).sin().value,
+            PreciseDecimal.from("0.8414709848078965066525023216302989996225630607983710656727517099919104043912396689486397435430526959").value
+        );
+        assertEquals(
+            PreciseDecimal.from(2).sin().value,
+            PreciseDecimal.from("0.9092974268256816953960198659117448427022549714478902683789730115309673015407835446201266889249593803").value
+        );
+        assertEquals(
+            PreciseDecimal.from(3).sin().value,
+            PreciseDecimal.from("0.1411200080598672221007448028081102798469332642522655841518826412324220099670144719112821728534498638").value
+        );
+        assertEquals(
+            PreciseDecimal.from(4).sin().value,
+            PreciseDecimal.from("-0.7568024953079282513726390945118290941359128873364725714854167734013104936191794164235728105624227481").value
+        );
+        assertEquals(
+            PreciseDecimal.from(5).sin().value,
+            PreciseDecimal.from("-0.9589242746631384688931544061559939733524615439646017781316724542351025580865596030769959554295328666").value
+        );
+        assertEquals(
+            PreciseDecimal.from(6).sin().value,
+            PreciseDecimal.from("-0.2794154981989258728115554466118947596279948643182043184833513696533111540586443348546689384528422476").value
+        );
+        assertEquals(
+            PreciseDecimal.from(7).sin().value,
+            PreciseDecimal.from("0.6569865987187890903969990915936351779368700104974900746578543341892928371312270315099351216010552127").value
+        );
+    }
+
+    @Test
+    public final void cos() {
+        assertEquals(
+            PreciseDecimal.from(0).cos().value,
+            PreciseDecimal.from(1).value
+        );
+        assertEquals(
+            PreciseDecimal.from(1).cos().value,
+            PreciseDecimal.from("0.5403023058681397174009366074429766037323104206179222276700972553811003947744717645179518560871830893").value
+        );
+        assertEquals(
+            PreciseDecimal.from(2).cos().value,
+            PreciseDecimal.from("-0.4161468365471423869975682295007621897660007710755448907551499737819649361240791690745317778601691404").value
+        );
+        assertEquals(
+            PreciseDecimal.from(3).cos().value,
+            PreciseDecimal.from("-0.9899924966004454572715727947312613023936790966155883288140859329283291975131332204282944793556926022").value
+        );
+        assertEquals(
+            PreciseDecimal.from(4).cos().value,
+            PreciseDecimal.from("-0.6536436208636119146391681830977503814241335966462182470070102838527376558106033799012306456461788582").value
+        );
+        assertEquals(
+            PreciseDecimal.from(5).cos().value,
+            PreciseDecimal.from("0.2836621854632262644666391715135573083344225922522159449303590665861514567673827022861769816683445732").value
+        );
+        assertEquals(
+            PreciseDecimal.from(6).cos().value,
+            PreciseDecimal.from("0.9601702866503660205456522979229244054519376792110126981292864260535458585549931066464416113637612995").value
+        );
+        assertEquals(
+            PreciseDecimal.from(7).cos().value,
+            PreciseDecimal.from("0.7539022543433046381411975217191820122183133914601268395436138808138760267207174056254283910893024825").value
+        );
+    }
 }

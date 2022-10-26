@@ -14,8 +14,8 @@ public final class PlaneConversion {
     }
 
     public static final CartesianPoint polarToCartesian(final PolarPoint point) {
-        final var x = PreciseDecimalOperations.mul(point.r, Trigonometry.degToRad(Trigonometry.normalizeAngle(point.a)));//cos()
-        final var y = PreciseDecimalOperations.mul(point.r, Trigonometry.degToRad(Trigonometry.normalizeAngle(point.a)));//sin()
+        final var x = PreciseDecimalOperations.mul(point.r, Trigonometry.degToRad(Trigonometry.normalizeAngle(point.a)).cos());
+        final var y = PreciseDecimalOperations.mul(point.r, Trigonometry.degToRad(Trigonometry.normalizeAngle(point.a)).sin());
 
         return new CartesianPoint(x, y);
     }
