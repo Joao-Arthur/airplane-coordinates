@@ -57,8 +57,8 @@ public final class PreciseDecimalOperations {
 
     public static final PreciseDecimal atan(final PreciseDecimal a, final PreciseDecimal b) {
         if (
-            a == PreciseDecimal.from(0) &&
-            b == PreciseDecimal.from(0)
+            a.equals(PreciseDecimal.from(0)) &&
+            b.equals(PreciseDecimal.from(0))
         )
             return PreciseDecimal.from(0);
 
