@@ -48,4 +48,16 @@ public final class PreciseDecimal {
 
         return PreciseDecimal.from(BigDecimalMath.sqrt(valueAsBigDecimal, MATH_CONTEXT).stripTrailingZeros().toPlainString());
     }
+
+    public final PreciseDecimal sin() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, MATH_CONTEXT);
+
+        return PreciseDecimal.from(BigDecimalMath.sin(valueAsBigDecimal, MATH_CONTEXT).stripTrailingZeros().toPlainString());
+    }
+
+    public final PreciseDecimal cos() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, MATH_CONTEXT);
+
+        return PreciseDecimal.from(BigDecimalMath.cos(valueAsBigDecimal, MATH_CONTEXT).stripTrailingZeros().toPlainString());
+    }
 }

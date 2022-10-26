@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
+import ch.obermuhlner.math.big.BigDecimalMath;
+
 public final class PreciseDecimalOperations {
     private static final int PRECISION = 100;
     private static final MathContext MATH_CONTEXT = new MathContext(PRECISION, RoundingMode.HALF_EVEN);
@@ -51,5 +53,12 @@ public final class PreciseDecimalOperations {
         return new PreciseDecimal(
             aValue.remainder(bValue).stripTrailingZeros().toPlainString()
         );
+    }
+
+    public final PreciseDecimal atan(final PreciseDecimal a, final PreciseDecimal b) {
+        final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
+        
+        return PreciseDecimal.from(BigDecimalMath.atan2(aValue, bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString());
     }
 }
