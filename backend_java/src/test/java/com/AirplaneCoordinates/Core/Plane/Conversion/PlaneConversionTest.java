@@ -104,7 +104,7 @@ public final class PlaneConversionTest {
         );
         assertEquals(
             PlaneConversion.cartesianToPolar(CartesianPoint.from(1, 0)).value,
-            PolarPoint.from(1, 360).value
+            PolarPoint.from(1, 0).value
         );
         assertEquals(
             PlaneConversion.cartesianToPolar(
@@ -149,7 +149,7 @@ public final class PlaneConversionTest {
                     "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207865"
                 )
             ).value,
-            PolarPoint.from(1, 405).value
+            PolarPoint.from(1, 45).value
         );
         assertEquals(
             PlaneConversion.cartesianToPolar(CartesianPoint.from(0, 0)).value,

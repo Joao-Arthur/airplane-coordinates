@@ -8,7 +8,7 @@ import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
 public final class PlaneConversion {
     public static final PolarPoint cartesianToPolar(final CartesianPoint point) {
         final var r = PreciseDecimalOperations.sum(point.x.square(), point.y.square()).sqrt();
-        final var a = Trigonometry.normalizeAngle(Trigonometry.radToDeg(point.y));//atan
+        final var a = Trigonometry.normalizeAngle(Trigonometry.radToDeg(PreciseDecimalOperations.atan(point.y, point.x)));
 
         return new PolarPoint(r, a);
     }
