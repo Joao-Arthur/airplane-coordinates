@@ -1,30 +1,40 @@
 package com.AirplaneCoordinates.Core.Plane.Cartesian;
 
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalArithmeticOperations;
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 
 public final class CartesianOperations {
     public static final CartesianPoint sum(final CartesianPoint a, final CartesianPoint b) {
         return new CartesianPoint(
-            PreciseDecimalArithmeticOperations.sum(a.x, b.x),
-            PreciseDecimalArithmeticOperations.sum(a.y, b.y)
+            PreciseDecimalOperations.sum(a.x, b.x),
+            PreciseDecimalOperations.sum(a.y, b.y)
         );
     }
+
     public static final CartesianPoint sub(final CartesianPoint a, final CartesianPoint b) {
         return new CartesianPoint(
-            PreciseDecimalArithmeticOperations.sub(a.x, b.x),
-            PreciseDecimalArithmeticOperations.sub(a.y, b.y)
+            PreciseDecimalOperations.sub(a.x, b.x),
+            PreciseDecimalOperations.sub(a.y, b.y)
         );
     }
+
     public static final CartesianPoint mul(final CartesianPoint a, final CartesianPoint b) {
         return new CartesianPoint(
-           PreciseDecimalArithmeticOperations.mul(a.x, b.x),
-           PreciseDecimalArithmeticOperations.mul(a.y, b.y) 
+           PreciseDecimalOperations.mul(a.x, b.x),
+           PreciseDecimalOperations.mul(a.y, b.y) 
         );
     }
+
     public static final CartesianPoint div(final CartesianPoint a, final CartesianPoint b) {
         return new CartesianPoint(
-           PreciseDecimalArithmeticOperations.div(a.x, b.x),
-           PreciseDecimalArithmeticOperations.div(a.y, b.y) 
+           PreciseDecimalOperations.div(a.x, b.x),
+           PreciseDecimalOperations.div(a.y, b.y) 
         );
+    }
+
+    public static final PreciseDecimal distance(final CartesianPoint a, final CartesianPoint b) {
+        final var delta = CartesianOperations.sub(a, b);
+        
+        return PreciseDecimalOperations.sum(delta.x.square(), delta.y.square()).sqrt();
     }
 }

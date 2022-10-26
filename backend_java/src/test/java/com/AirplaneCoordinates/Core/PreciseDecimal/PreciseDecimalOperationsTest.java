@@ -4,294 +4,294 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class PreciseDecimalArithmeticOperationsTest {
+public class PreciseDecimalOperationsTest {
     @Test
     public final void sum() {
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from(4),
                 PreciseDecimal.from(2)
-            ).value,
-            PreciseDecimal.from(6).value
+            ),
+            PreciseDecimal.from(6)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from(-1),
                 PreciseDecimal.from(2)
-            ).value,
-            PreciseDecimal.from(1).value
+            ),
+            PreciseDecimal.from(1)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from(7),
                 PreciseDecimal.from(-3)
-            ).value,
-            PreciseDecimal.from(4).value
+            ),
+            PreciseDecimal.from(4)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from(3),
                 PreciseDecimal.from(-3)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from(7),
                 PreciseDecimal.from(0)
-            ).value,
-            PreciseDecimal.from(7).value
+            ),
+            PreciseDecimal.from(7)
         );
     }
 
     @Test
     public final void sub() {
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from(6),
                 PreciseDecimal.from(4)
-            ).value,
-            PreciseDecimal.from(2).value
+            ),
+            PreciseDecimal.from(2)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from(-1),
                 PreciseDecimal.from(1)
-            ).value,
-            PreciseDecimal.from(-2).value
+            ),
+            PreciseDecimal.from(-2)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from(4),
                 PreciseDecimal.from(4)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from(-1),
                 PreciseDecimal.from(-1)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from(0),
                 PreciseDecimal.from(3)
-            ).value,
-            PreciseDecimal.from(-3).value
+            ),
+            PreciseDecimal.from(-3)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from(7),
                 PreciseDecimal.from(7)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from(3),
                 PreciseDecimal.from(3)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
     }
 
     @Test
     public final void mul() {
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(4),
                 PreciseDecimal.from(2)
-            ).value,
-            PreciseDecimal.from(8).value
+            ),
+            PreciseDecimal.from(8)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(-1),
                  PreciseDecimal.from(2)
-            ).value,
-            PreciseDecimal.from(-2).value
+            ),
+            PreciseDecimal.from(-2)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(4),
                 PreciseDecimal.from(0)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(-1),
                 PreciseDecimal.from(0)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(7),
                 PreciseDecimal.from(-3)
-            ).value,
-            PreciseDecimal.from(-21).value
+            ),
+            PreciseDecimal.from(-21)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(3),
                 PreciseDecimal.from(-3)
-            ).value,
-            PreciseDecimal.from(-9).value
+            ),
+            PreciseDecimal.from(-9)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(7),
                 PreciseDecimal.from(0)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from(3),
                 PreciseDecimal.from(0)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
     }
 
     @Test
     public final void div() {
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(8),
                 PreciseDecimal.from(4)
-            ).value,
-            PreciseDecimal.from(2).value
+            ),
+            PreciseDecimal.from(2)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(-2),
                 PreciseDecimal.from(-1)
-            ).value,
-            PreciseDecimal.from(2).value
+            ),
+            PreciseDecimal.from(2)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(0),
                 PreciseDecimal.from(4)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(0),
                 PreciseDecimal.from(-1)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(-21),
                 PreciseDecimal.from(7)
-            ).value,
-            PreciseDecimal.from(-3).value
+            ),
+            PreciseDecimal.from(-3)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(-9),
                 PreciseDecimal.from(3)
-            ).value,
-            PreciseDecimal.from(-3).value
+            ),
+            PreciseDecimal.from(-3)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(0),
                 PreciseDecimal.from(7)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from(0),
                 PreciseDecimal.from(3)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
     }
 
     @Test
     public final void rem() {
         assertEquals(
-            PreciseDecimalArithmeticOperations.rem(
+            PreciseDecimalOperations.rem(
                 PreciseDecimal.from("-100.277"),
                 PreciseDecimal.from(360)
-            ).value,
-            PreciseDecimal.from("-100.277").value
+            ),
+            PreciseDecimal.from("-100.277")
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.rem(
+            PreciseDecimalOperations.rem(
                 PreciseDecimal.from(360),
                 PreciseDecimal.from(360)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.rem(
+            PreciseDecimalOperations.rem(
                 PreciseDecimal.from("720.111"),
                 PreciseDecimal.from(360)
-            ).value,
-            PreciseDecimal.from("0.111").value
+            ),
+            PreciseDecimal.from("0.111")
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.rem(
+            PreciseDecimalOperations.rem(
                 PreciseDecimal.from(0),
                 PreciseDecimal.from(360)
-            ).value,
-            PreciseDecimal.from(0).value
+            ),
+            PreciseDecimal.from(0)
         );
     }
 
     @Test
     public final void preciseCalculations() { 
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from("0.1"),
                 PreciseDecimal.from("0.2")
-            ).value,
-            PreciseDecimal.from("0.3").value
+            ),
+            PreciseDecimal.from("0.3")
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from("0.1234567890123456789012345678901"),
                 PreciseDecimal.from("0.1234321003123432100312343210036")
-            ).value,
-            PreciseDecimal.from("0.2468888893246888889324688888937").value
+            ),
+            PreciseDecimal.from("0.2468888893246888889324688888937")
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.mul(
+            PreciseDecimalOperations.mul(
                 PreciseDecimal.from("0.8937593473846237864238745"),
                 PreciseDecimal.from("0.6986723567253716276345786345")
-            ).value,
-            PreciseDecimal.from("0.62444494958254521156041254853945406639389341840937025").value
+            ),
+            PreciseDecimal.from("0.62444494958254521156041254853945406639389341840937025")
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.div(
+            PreciseDecimalOperations.div(
                 PreciseDecimal.from("0.6244449495825452115604125485"),
                 PreciseDecimal.from("0.8937593473846237864238745")
-            ).value,
-            PreciseDecimal.from("0.6986723567253716276345786345").value
+            ),
+            PreciseDecimal.from("0.6986723567253716276345786345")
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sum(
+            PreciseDecimalOperations.sum(
                 PreciseDecimal.from(1),
                 PreciseDecimal.from("0.0000000000000000000000000001")
-            ).value,
-            PreciseDecimal.from("1.0000000000000000000000000001").value
+            ),
+            PreciseDecimal.from("1.0000000000000000000000000001")
         );
         assertEquals(
-            PreciseDecimalArithmeticOperations.sub(
+            PreciseDecimalOperations.sub(
                 PreciseDecimal.from("1.0000000000000000000000000001"),
                 PreciseDecimal.from("0.0000000000000000000000000001")
-            ).value,
-            PreciseDecimal.from("1.0000000000000000000000000000").value
+            ),
+            PreciseDecimal.from("1.0000000000000000000000000000")
         );
     }
 }
