@@ -5,6 +5,7 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 public final class CartesianPoint {
     public final PreciseDecimal x;
     public final PreciseDecimal y;
+    public final String value;
 
     public CartesianPoint(
         final PreciseDecimal x,
@@ -12,6 +13,7 @@ public final class CartesianPoint {
     ) {
         this.x = x;
         this.y = y;
+        this.value = "(" + x.value + ", " + y.value + ")";
     }
 
     @Override

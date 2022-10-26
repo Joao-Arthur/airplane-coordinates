@@ -2,10 +2,12 @@ package com.AirplaneCoordinates.Core.Plane.Polar;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
+import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
 
 public final class PolarPoint {
     public final PreciseDecimal r;
     public final PreciseDecimal a;
+    public final String value;
 
     public PolarPoint(
         final PreciseDecimal r,
@@ -13,6 +15,7 @@ public final class PolarPoint {
     ) {
         this.r = r;
         this.a = a;
+        this.value = "(" + r.value + ", " + a.value + ")";
     }
 
     @Override
@@ -40,9 +43,12 @@ public final class PolarPoint {
     }
 
     public final PolarPoint rotate(final PreciseDecimal angle) {
+        final var angleSum = PreciseDecimalOperations.sum(this.a, angle);
+        final var normalizedAngle = Trigonometry.normalizeAngle(angleSum);
+
         return new PolarPoint(
             this.r,
-            PreciseDecimalOperations.sum(this.a, angle)
+            normalizedAngle
         );
     }
 }
