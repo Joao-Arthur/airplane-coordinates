@@ -2,13 +2,10 @@ package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class PreciseDecimalTest {
-
     @Test
-    @DisplayName("Should return the precise decimal from the values")
     public final void from() {
         assertEquals(
             new PreciseDecimal("28.37185").value,

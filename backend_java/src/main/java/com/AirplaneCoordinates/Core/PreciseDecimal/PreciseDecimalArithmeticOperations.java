@@ -2,6 +2,7 @@ package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 public final class PreciseDecimalArithmeticOperations {
     private static final int precision = 100;
@@ -30,7 +31,7 @@ public final class PreciseDecimalArithmeticOperations {
         final var bValue = new BigDecimal(b.value, mathContext);
 
         return new PreciseDecimal(
-            aValue.subtract(bValue).toString()
+            aValue.multiply(bValue).toString()
         );
     }
 
@@ -39,7 +40,16 @@ public final class PreciseDecimalArithmeticOperations {
         final var bValue = new BigDecimal(b.value, mathContext);
 
         return new PreciseDecimal(
-            aValue.subtract(bValue).toString()
+            aValue.divide(bValue, RoundingMode.HALF_EVEN).toString()
+        );
+    }
+
+    public static final PreciseDecimal rem(final PreciseDecimal a, final PreciseDecimal b) {
+        final var aValue = new BigDecimal(a.value, mathContext);
+        final var bValue = new BigDecimal(b.value, mathContext);
+
+        return new PreciseDecimal(
+            aValue.remainder(bValue).toString()
         );
     }
 }
