@@ -35,9 +35,19 @@ export function AddAirplane() {
             airplaneParams: {
                 speed,
                 direction,
-                type: coordinatesType,
-                a: coordinatesType === 'cartesian' ? String(x) : String(radius),
-                b: coordinatesType === 'cartesian' ? String(y) : String(angle),
+                ...(coordinatesType === 'cartesian' ? {
+                    type: coordinatesType,
+                    x,
+                    y,
+                    radius: undefined,
+                    angle: undefined,
+                } : {
+                    type: coordinatesType,
+                    radius,
+                    angle,
+                    x: undefined,
+                    y: undefined,
+                }),
             },
         });
     }

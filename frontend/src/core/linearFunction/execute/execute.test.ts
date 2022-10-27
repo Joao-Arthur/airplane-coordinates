@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { BadFunctionError } from './BadFunctionError';
 import { execute } from './execute';
 

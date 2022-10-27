@@ -1,23 +1,18 @@
-import { scalonate } from '../../../backend/useCases/scalonate';
-import { airplaneCoordinatesType } from '../../models/savedAirplane';
-import { backendToSaved } from '../backendToSaved';
-import { savedToBackend } from '../savedToBackend';
+import { cartesianPlane } from '../../../../core/cartesianPlane';
+import { airplaneType } from '../../models';
 
 type paramsType = {
-    readonly coordinates: airplaneCoordinatesType;
+    readonly airplane: airplaneType;
     readonly x: number;
     readonly y: number;
 }
 
-export function scalonateAirplaneCoordinatesBusiness({ coordinates, x, y }: paramsType): airplaneCoordinatesType {
-    const point = savedToBackend(coordinates);
-    const updatedPoint = scalonate({
-        point,
-        factor: {
-            x: String(x),
-            y: String(y),
-        },
-    });
-    const newValue = backendToSaved(updatedPoint);
-    return newValue;
+export function scalonateAirplaneCoordinatesBusiness({ airplane, x, y }: paramsType): airplaneType {
+    return {
+        ...airplane,
+        ...cartesianPlane.scalonate({
+            point: { x: airplane.x, y: airplane.y },
+            factor: { x, y },
+        }),
+    } as const;
 } 

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { toScale } from './toScale';
 
 describe('toScale', () => {

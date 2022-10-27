@@ -1,41 +1,30 @@
-//import init from 'backend';
-//import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
-//
-//describe('translateAirplaneCoordinatesBusiness', () => {
-//    beforeAll(async () => {
-//        init();
-//    });
-//
-//    it('should transform the airplane dimensions', () => {
-//        expect(translateAirplaneCoordinatesBusiness({
-//            coordinates: { type: 'cartesian', a: '4', b: '7' },
-//            x: 2,
-//            y: -3,
-//        })).toEqual({ type: 'cartesian', a: '6', b: '4' });
-//
-//        expect(translateAirplaneCoordinatesBusiness({
-//            coordinates: { type: 'cartesian', a: '-1', b: '3' },
-//            x: 2,
-//            y: -3,
-//        })).toEqual({ type: 'cartesian', a: '1', b: '0' });
-//
-//        expect(translateAirplaneCoordinatesBusiness({
-//            coordinates: { type: 'cartesian', a: '4', b: '7' },
-//            x: 0,
-//            y: 0,
-//        })).toEqual({ type: 'cartesian', a: '4', b: '7' });
-//
-//        expect(translateAirplaneCoordinatesBusiness({
-//            coordinates: { type: 'cartesian', a: '-1', b: '3' },
-//            x: 0,
-//            y: 0,
-//        })).toEqual({ type: 'cartesian', a: '-1', b: '3' });
-//    });
-//});
+import { describe, expect, it } from 'vitest';
+import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
 
-describe('nothing', () => {
-    it('should', () => {
-        expect(1 + 1).toBe(2);
+describe('translateAirplaneCoordinatesBusiness', () => {
+    it('should transform the airplane dimensions', () => {
+        expect(translateAirplaneCoordinatesBusiness({
+            airplane: { id: '1', x: 4, y: 7, speed: 0, direction: 0 },
+            x: 2,
+            y: -3,
+        })).toEqual({ id: '1', x: 6, y: 4, speed: 0, direction: 0 });
+
+        expect(translateAirplaneCoordinatesBusiness({
+            airplane: { id: '2', x: -1, y: 3, speed: 0, direction: 0 },
+            x: 2,
+            y: -3,
+        })).toEqual({ id: '2', x: 1, y: 0, speed: 0, direction: 0 });
+
+        expect(translateAirplaneCoordinatesBusiness({
+            airplane: { id: '1', x: 4, y: 7, speed: 0, direction: 0 },
+            x: 0,
+            y: 0,
+        })).toEqual({ id: '1', x: 4, y: 7, speed: 0, direction: 0 });
+
+        expect(translateAirplaneCoordinatesBusiness({
+            airplane: { id: '2', x: -1, y: 3, speed: 0, direction: 0 },
+            x: 0,
+            y: 0,
+        })).toEqual({ id: '2', x: -1, y: 3, speed: 0, direction: 0 });
     });
 });
-

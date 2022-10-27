@@ -1,3 +1,5 @@
+import { dtoToSavedAirplane } from '../dtoToSavedAirplane';
+import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { rotateAirplaneCoordinatesBusiness } from './rotateAirplaneCoordinatesBusiness';
 import { rotateAirplaneCoordinatesParamsType } from './rotateAirplaneCoordinatesParams';
 
@@ -17,15 +19,13 @@ export function rotateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
-        const newCoordinates = rotateAirplaneCoordinatesBusiness({
-            coordinates: airplane,
-            centerOfRotation: {
-                x: String(centerOfRotationX),
-                y: String(centerOfRotationY),
-            },
+        const updatedAirplane = rotateAirplaneCoordinatesBusiness({
+            airplane: savedAirplaneToDTO(airplane),
             angle,
+            centerOfRotationX,
+            centerOfRotationY,
         });
-        airplaneRepository.update({ ...airplane, ...newCoordinates });
+        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
     }
     logger.success('Rotação realizada com sucesso!');
 }

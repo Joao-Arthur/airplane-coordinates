@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { addAirplaneBusiness } from './addAirplaneBusiness';
 import { MaxNumberOfAirplanesExceededError } from './MaxNumberOfAirplanesExceededError';
 
@@ -6,8 +7,10 @@ describe('addAirplaneBusiness', () => {
         expect(() => addAirplaneBusiness({
             id: '1',
             type: 'cartesian',
-            a: '3',
-            b: '7',
+            x: 3,
+            y: 7,
+            angle: undefined,
+            radius: undefined,
             speed: 100,
             direction: 100,
             numberOfAirplanes: 1,

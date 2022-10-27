@@ -1,3 +1,5 @@
+import { dtoToSavedAirplane } from '../dtoToSavedAirplane/dtoToSavedAirplane';
+import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
 import { translateAirplaneCoordinatesParamsType } from './translateAirplaneCoordinatesParams';
 
@@ -16,12 +18,12 @@ export function translateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
-        const newCoordinates = translateAirplaneCoordinatesBusiness({
-            coordinates: airplane,
+        const updatedAirplane = translateAirplaneCoordinatesBusiness({
+            airplane: savedAirplaneToDTO(airplane),
             x,
             y,
         });
-        airplaneRepository.update({ ...airplane, ...newCoordinates });
+        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
     }
     logger.success('Transformação realizada com sucesso!');
 }

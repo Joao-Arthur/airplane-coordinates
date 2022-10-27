@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { fromPoint } from './fromPoint';
 
 describe('fromPoint', () => {

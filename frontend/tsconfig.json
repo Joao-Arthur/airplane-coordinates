@@ -7,7 +7,7 @@
             "esnext"
         ],
         "types": [
-            "jest",
+            "vite/client",
         ],
         "skipLibCheck": true,
         "esModuleInterop": true,
@@ -20,7 +20,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "isolatedModules": false,
+        "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx"
     },

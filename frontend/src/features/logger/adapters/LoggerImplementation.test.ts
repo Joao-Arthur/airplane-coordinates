@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { uniqueIdentifierBig } from '../../uniqueIdentifier/adapters/uniqueIdentifierBig';
 import { LoggerImplementation } from './LoggerImplementation';
 

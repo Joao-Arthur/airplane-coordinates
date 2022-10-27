@@ -1,28 +1,35 @@
-import { rotate } from '../../../backend/useCases/rotate';
-import { airplaneCoordinatesType } from '../../models/savedAirplane';
-import { backendToSaved } from '../backendToSaved';
-import { savedToBackend } from '../savedToBackend';
+import { pipe } from 'ramda';
+import { cartesianPlane } from '../../../../core/cartesianPlane';
+import { polarPlane } from '../../../../core/polarPlane';
+import { airplaneType } from '../../models';
 
 type paramsType = {
-    readonly coordinates: airplaneCoordinatesType;
-    readonly centerOfRotation: {
-        readonly x: string;
-        readonly y: string;
-    };
+    readonly airplane: airplaneType;
     readonly angle: number;
+    readonly centerOfRotationX: number;
+    readonly centerOfRotationY: number;
 }
 
 export function rotateAirplaneCoordinatesBusiness({
-    coordinates,
-    centerOfRotation,
+    airplane,
     angle,
-}: paramsType): airplaneCoordinatesType {
-    const point = savedToBackend(coordinates);
-    const updatedPoint = rotate({
-        point,
-        center_of_rotation: centerOfRotation,
-        angle: String(angle),
-    });
-    const newValue = backendToSaved(updatedPoint);
-    return newValue;
+    centerOfRotationX,
+    centerOfRotationY,
+}: paramsType): airplaneType {
+    return {
+        ...airplane,
+        ...pipe(
+            point => ({
+                x: point.x - centerOfRotationX,
+                y: point.y - centerOfRotationY,
+            }),
+            point => polarPlane.fromCartesian(point),
+            point => polarPlane.rotate({ point, angle }),
+            point => cartesianPlane.fromPolar(point),
+            point => ({
+                x: point.x + centerOfRotationX,
+                y: point.y + centerOfRotationY,
+            }),
+        )({ x: airplane.x, y: airplane.y }),
+    } as const;
 }

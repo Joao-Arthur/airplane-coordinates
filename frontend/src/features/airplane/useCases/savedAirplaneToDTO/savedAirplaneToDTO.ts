@@ -9,11 +9,11 @@ export function savedAirplaneToDTO(airplane: savedAirplaneType): airplaneType {
         ...(
             (airplane.type === 'cartesian')
                 ? {
-                    x: Number(airplane.a),
-                    y: Number(airplane.b),
+                    x: airplane.x,
+                    y: airplane.y,
                 } : cartesianPlane.fromPolar({
-                    radius: Number(airplane.a),
-                    angle: Number(airplane.b),
+                    radius: airplane.radius,
+                    angle: airplane.angle,
                 })
         ),
     } as const;
