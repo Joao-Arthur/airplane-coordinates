@@ -1,3 +1,5 @@
-public class Rotate {
+package com.AirplaneCoordinates.Features;
+
+public final class ScalonateTest {
     
 }

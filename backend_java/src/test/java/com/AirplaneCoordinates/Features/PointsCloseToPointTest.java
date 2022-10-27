@@ -1,3 +1,5 @@
-public class PointsClosetoPoint {
+package com.AirplaneCoordinates.Features;
+
+public final class PointsClosetoPoint {
     
 }

@@ -63,7 +63,7 @@ public final class PlanePoint {
                     new PolarPoint(a, b)
                 );
             default:
-                throw new RuntimeException();
+                throw new RuntimeException("planeType is required");
         }
     }
 
@@ -76,7 +76,7 @@ public final class PlanePoint {
             case POLAR:
                 return new PolarPoint(a, b);
             default:
-                throw new RuntimeException();
+                throw new RuntimeException("planeType is required");
         }
     }
 }
