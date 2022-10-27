@@ -3,6 +3,8 @@ package com.AirplaneCoordinates.Features;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
@@ -42,51 +44,58 @@ public final class TranslateTest {
         );
     }
 
-    @Test
-    public final void backAndForth1() {
-        final var pointAfterMove = Translate.execute(
-            PlanePoint.from(Plane.CARTESIAN, 5, -1),
-            CartesianPoint.from("0.1", "0.1")
+    @ParameterizedTest()
+	@CsvSource({
+        "5, -1, 0.1, 0.1",
+        "2.22, 3.33, 5,55, -5.55",
+        "5, 5, 0.5, 0.5"
+})
+    public final void backAndForthCartesian(
+        final String pointX,
+        final String pointY,
+        final String factorX,
+        final String factorY
+    ) {
+        final var pointBefore = PlanePoint.from(Plane.CARTESIAN, pointX, pointY);
+        final var factor = CartesianPoint.from(factorX, factorY);
+        final var movedPoint = Translate.execute(
+            pointBefore,
+            factor
         );
-        final var pointAfterMoveBack = Translate.execute(
-            pointAfterMove,
-            CartesianPoint.from("-0.1", "-0.1")
+        final var pointAfter = Translate.execute(
+            movedPoint,
+            factor.opposite()
         );
-        assertEquals(
-            pointAfterMoveBack.value,
-            PlanePoint.from(Plane.CARTESIAN, 5, -1).value
-        );
+        assertEquals(pointAfter.value, pointBefore.value);
     }
 
-    @Test
-    public final void backAndForth2() {
-        final var pointAfterMove = Translate.execute(
-            PlanePoint.from(Plane.CARTESIAN, "2.22", "3.33"),
-            CartesianPoint.from("5.55", "-5.55")
+    @ParameterizedTest()
+	@CsvSource({
+        //"5, 10, 0.1, 0.1",
+        //"2.22, 38, 5,55, -5.55",
+        //"5, 75, 0.5, 0.5",
+        //"7, 135, -2.22, 2.22",
+        "5, 0, 5.55, 0",
+        "2, 90, 0, 0.11",
+        "7.11, 180, 0, -0.28",
+        "3, 270, 0, -0.28"
+})
+    public final void backAndForthPolar(
+        final String pointX,
+        final String pointY,
+        final String factorX,
+        final String factorY
+    ) {
+        final var pointBefore = PlanePoint.from(Plane.POLAR, pointX, pointY);
+        final var factor = CartesianPoint.from(factorX, factorY);
+        final var movedPoint = Translate.execute(
+            pointBefore,
+            factor
         );
-        final var pointAfterMoveBack = Translate.execute(
-            pointAfterMove,
-            CartesianPoint.from("-5.55", "5.55")
+        final var pointAfter = Translate.execute(
+            movedPoint,
+            factor.opposite()
         );
-        assertEquals(
-            pointAfterMoveBack.value,
-            PlanePoint.from(Plane.CARTESIAN, "2.22", "3.33").value
-        );
-    }
-
-    @Test
-    public final void backAndForth3() {
-        final var pointAfterMove = Translate.execute(
-            PlanePoint.from(Plane.CARTESIAN, "5", "5"),
-            CartesianPoint.from("0.5", "0.5")
-        );
-        final var pointAfterMoveBack = Translate.execute(
-            pointAfterMove,
-            CartesianPoint.from("-0.5", "-0.5")
-        );
-        assertEquals(
-            pointAfterMoveBack.value,
-            PlanePoint.from(Plane.CARTESIAN, "5", "5").value
-        );
+        assertEquals(pointAfter.value, pointBefore.value);
     }
 }

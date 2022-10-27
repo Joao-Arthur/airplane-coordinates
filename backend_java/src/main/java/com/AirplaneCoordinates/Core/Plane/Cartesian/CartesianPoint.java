@@ -29,4 +29,11 @@ public final class CartesianPoint {
             PreciseDecimal.from(y)
         );
     }
+
+    public final CartesianPoint opposite() {
+        return new CartesianPoint(
+            this.x.opposite(),
+            this.y.opposite()
+        );
+    }
 }
