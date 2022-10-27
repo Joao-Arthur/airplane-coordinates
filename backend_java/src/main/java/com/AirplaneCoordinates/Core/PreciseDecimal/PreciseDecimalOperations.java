@@ -1,57 +1,62 @@
 package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
 public final class PreciseDecimalOperations {
-    private static final int PRECISION = 100;
-    private static final MathContext MATH_CONTEXT = new MathContext(PRECISION, RoundingMode.HALF_EVEN);
-
     public static final PreciseDecimal sum(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
+        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.add(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
+            PreciseDecimalHelper.bigDecimalToString(
+                aValue.add(bValue, PreciseDecimalConstants.MATH_CONTEXT)
+            )
         );
     }
     
     public static final PreciseDecimal sub(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
+        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.subtract(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
+            PreciseDecimalHelper.bigDecimalToString(
+                aValue.subtract(bValue, PreciseDecimalConstants.MATH_CONTEXT)
+            )
         );
     }
 
     public static final PreciseDecimal mul(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
+        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.multiply(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
+            PreciseDecimalHelper.bigDecimalToString(
+                aValue.multiply(bValue, PreciseDecimalConstants.MATH_CONTEXT)
+            )
         );
     }
 
     public static final PreciseDecimal div(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
+        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.divide(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
+            PreciseDecimalHelper.bigDecimalToString(
+                aValue.divide(bValue, PreciseDecimalConstants.MATH_CONTEXT)
+            )
         );
     }
 
     public static final PreciseDecimal rem(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
+        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
 
         return new PreciseDecimal(
-            aValue.remainder(bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString()
+            PreciseDecimalHelper.bigDecimalToString(
+                aValue.remainder(bValue, PreciseDecimalConstants.MATH_CONTEXT)
+            )
         );
     }
 
@@ -62,9 +67,13 @@ public final class PreciseDecimalOperations {
         )
             return PreciseDecimal.from(0);
 
-        final var aValue = new BigDecimal(a.value, MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, MATH_CONTEXT);
+        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
         
-        return PreciseDecimal.from(BigDecimalMath.atan2(aValue, bValue, MATH_CONTEXT).stripTrailingZeros().toPlainString());
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                BigDecimalMath.atan2(aValue, bValue, PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
     }
 }

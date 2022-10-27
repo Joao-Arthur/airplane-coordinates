@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Polar.PolarPoint;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
 public final class PlaneConversionTest {
     @Test
@@ -17,31 +16,19 @@ public final class PlaneConversionTest {
         );
         assertEquals(
             PlaneConversion.polarToCartesian(PolarPoint.from(1, 90)).value,
-            CartesianPoint.from(
-                "-0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008925923158962873287395684462014298936503822914355030584503253124672887066979806660820263610315112846",
-                "1"
-            ).value
+            CartesianPoint.from(0, 1).value
         );
         assertEquals(
             PlaneConversion.polarToCartesian(PolarPoint.from(1, 180)).value,
-            CartesianPoint.from(
-                "-1",
-                "-0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001785168730185325876330195087697043801180875908126664775654369943120098476233794486654297087559171119"
-            ).value
+            CartesianPoint.from(-1, 0).value
         );
         assertEquals(
             PlaneConversion.polarToCartesian(PolarPoint.from(1, 270)).value,
-            CartesianPoint.from(
-                "0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002677770460680870630367848597990798145006512910656987836884117554320577928487771481205784002962934467",
-                "-1"
-            ).value
+            CartesianPoint.from(0, -1).value
         );
         assertEquals(
             PlaneConversion.polarToCartesian(PolarPoint.from(1, 360)).value,
-            CartesianPoint.from(
-                "1",
-                "0"
-            ).value
+            CartesianPoint.from(1, 0).value
         );
         assertEquals(
             PlaneConversion.polarToCartesian(PolarPoint.from(1, 45)).value,
