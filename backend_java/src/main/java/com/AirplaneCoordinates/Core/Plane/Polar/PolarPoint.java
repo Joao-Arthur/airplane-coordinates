@@ -18,16 +18,6 @@ public final class PolarPoint {
         this.value = "(" + r.value + ", " + a.value + ")";
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (object == this)
-            return true;
-        if (!(object instanceof PolarPoint))
-            return false;
-        PolarPoint other = (PolarPoint) object;
-        return this.r.equals(other.r) && this.a.equals(other.a);
-    }
-
     public static final PolarPoint from(final int r, final int a) {
         return new PolarPoint(
             PreciseDecimal.from(r),
@@ -36,6 +26,13 @@ public final class PolarPoint {
     }
 
     public static final PolarPoint from(final int r, final String a) {
+        return new PolarPoint(
+            PreciseDecimal.from(r),
+            PreciseDecimal.from(a)
+        );
+    }
+
+    public static final PolarPoint from(final String r, final String a) {
         return new PolarPoint(
             PreciseDecimal.from(r),
             PreciseDecimal.from(a)

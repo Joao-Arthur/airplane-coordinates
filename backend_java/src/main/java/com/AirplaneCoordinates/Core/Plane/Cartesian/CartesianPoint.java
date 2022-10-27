@@ -16,16 +16,6 @@ public final class CartesianPoint {
         this.value = "(" + x.value + ", " + y.value + ")";
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (object == this)
-            return true;
-        if (!(object instanceof CartesianPoint))
-            return false;
-        CartesianPoint other = (CartesianPoint) object;
-        return this.x.equals(other.x) && this.y.equals(other.y);
-    }
-
     public static final CartesianPoint from(final int x, final int y) {
         return new CartesianPoint(
             PreciseDecimal.from(x),
