@@ -45,57 +45,34 @@ public final class TranslateTest {
     }
 
     @ParameterizedTest()
-	@CsvSource({
-        "5, -1, 0.1, 0.1",
-        "2.22, 3.33, 5,55, -5.55",
-        "5, 5, 0.5, 0.5"
-})
-    public final void backAndForthCartesian(
+    @CsvSource({
+        "CARTESIAN, 5, -1, 0.1, 0.1",
+        "CARTESIAN, 2.22, 3.33, 5,55, -5.55",
+        "CARTESIAN, 5, 5, 0.5, 0.5",
+        "CARTESIAN, 0.1, 0.1, 0.1, 0.1",
+        "CARTESIAN, -0.1, -0.1, -0.1, -0.1",
+        "CARTESIAN, 0, 0, 0, 0",
+        //"POLAR, 5, 10, 0.1, 0.1",
+        //"POLAR, 2.22, 38, 5,55, -5.55",
+        //"POLAR, 5, 75, 0.5, 0.5",
+        //"POLAR, 7, 135, -2.22, 2.22",
+        "POLAR, 0, 0, 0, 0",
+        "POLAR, 5, 0, 5.55, 0",
+        "POLAR, 2, 90, 0, 0.11",
+        "POLAR, 7.11, 180, 0, -0.28",
+        "POLAR, 3, 270, 0, -0.28"
+    })
+    public final void backAndForth(
+        final Plane plane,
         final String pointX,
         final String pointY,
         final String factorX,
         final String factorY
     ) {
-        final var pointBefore = PlanePoint.from(Plane.CARTESIAN, pointX, pointY);
+        final var pointBefore = PlanePoint.from(plane, pointX, pointY);
         final var factor = CartesianPoint.from(factorX, factorY);
-        final var movedPoint = Translate.execute(
-            pointBefore,
-            factor
-        );
-        final var pointAfter = Translate.execute(
-            movedPoint,
-            factor.opposite()
-        );
-        assertEquals(pointAfter.value, pointBefore.value);
-    }
-
-    @ParameterizedTest()
-	@CsvSource({
-        //"5, 10, 0.1, 0.1",
-        //"2.22, 38, 5,55, -5.55",
-        //"5, 75, 0.5, 0.5",
-        //"7, 135, -2.22, 2.22",
-        "5, 0, 5.55, 0",
-        "2, 90, 0, 0.11",
-        "7.11, 180, 0, -0.28",
-        "3, 270, 0, -0.28"
-})
-    public final void backAndForthPolar(
-        final String pointX,
-        final String pointY,
-        final String factorX,
-        final String factorY
-    ) {
-        final var pointBefore = PlanePoint.from(Plane.POLAR, pointX, pointY);
-        final var factor = CartesianPoint.from(factorX, factorY);
-        final var movedPoint = Translate.execute(
-            pointBefore,
-            factor
-        );
-        final var pointAfter = Translate.execute(
-            movedPoint,
-            factor.opposite()
-        );
+        final var movedPoint = Translate.execute(pointBefore, factor);
+        final var pointAfter = Translate.execute(movedPoint, factor.opposite());
         assertEquals(pointAfter.value, pointBefore.value);
     }
 }

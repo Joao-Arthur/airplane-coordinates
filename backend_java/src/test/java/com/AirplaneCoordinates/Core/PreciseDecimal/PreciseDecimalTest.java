@@ -58,8 +58,8 @@ public final class PreciseDecimalTest {
             PreciseDecimal.from("3.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001").value
         );
         assertEquals(
-            PreciseDecimal.from("2").square(),
-            PreciseDecimal.from("4")
+            PreciseDecimal.from(2).square(),
+            PreciseDecimal.from(4)
         );
         assertEquals(
             PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145").square().value,

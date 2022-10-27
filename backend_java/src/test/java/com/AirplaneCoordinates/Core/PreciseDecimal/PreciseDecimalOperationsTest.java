@@ -3,133 +3,106 @@ package com.AirplaneCoordinates.Core.PreciseDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public final class PreciseDecimalOperationsTest {
-    @Test
-    public final void sum() {
+    @ParameterizedTest()
+    @CsvSource({
+        "0, 0, 0",
+        "4, 2, 6",
+        "-1, 2, 1",
+        "7, -3, 4",
+        "3, -3, 0",
+        "7, 0, 7",
+        "-9.11, 0.11, -9",
+        "-3, 0, -3",
+        "-1.11, -1.11, -2.22",
+        "0.5, 2.5, 3",
+        "-1, -1.1, -2.1",
+        "2.2, 3.33, 5.53",
+    })
+    public final void sum(final String a, final String b, final String result) {
         assertEquals(
-            PreciseDecimalOperations.sum(PreciseDecimal.from(4), PreciseDecimal.from(2)).value,
-            PreciseDecimal.from(6).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sum(PreciseDecimal.from(-1), PreciseDecimal.from(2)).value,
-            PreciseDecimal.from(1).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sum(PreciseDecimal.from(7), PreciseDecimal.from(-3)).value,
-            PreciseDecimal.from(4).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sum(PreciseDecimal.from(3), PreciseDecimal.from(-3)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sum(PreciseDecimal.from(7), PreciseDecimal.from(0)).value,
-            PreciseDecimal.from(7).value
-        );
-    }
-
-    @Test
-    public final void sub() {
-        assertEquals(
-            PreciseDecimalOperations.sub(PreciseDecimal.from(6), PreciseDecimal.from(4)).value,
-            PreciseDecimal.from(2).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sub(PreciseDecimal.from(-1), PreciseDecimal.from(1)).value,
-            PreciseDecimal.from(-2).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sub(PreciseDecimal.from(4), PreciseDecimal.from(4)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sub(PreciseDecimal.from(-1), PreciseDecimal.from(-1)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sub(PreciseDecimal.from(0), PreciseDecimal.from(3)).value,
-            PreciseDecimal.from(-3).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sub(PreciseDecimal.from(7), PreciseDecimal.from(7)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.sub(PreciseDecimal.from(3), PreciseDecimal.from(3)).value,
-            PreciseDecimal.from(0).value
+            PreciseDecimalOperations.sum(
+                PreciseDecimal.from(a),
+                PreciseDecimal.from(b)
+            ).value,
+            PreciseDecimal.from(result).value
         );
     }
 
-    @Test
-    public final void mul() {
+    @ParameterizedTest()
+    @CsvSource({
+        "0, 0, 0",
+        "6, 4, 2",
+        "-1, 1, -2",
+        "4, 4, 0",
+        "-1, -1, 0",
+        "0, 3, -3",
+        "8.11, 0, 8.11",
+        "7, 7, 0",
+        "-4.44, -4.44, 0",
+        "2.22, 1.11, 1.11",
+        "-7.2, 0.2, -7.4",
+        "-0.35, -3.35, 3",
+    })
+    public final void sub(final String a, final String b, final String result) {
         assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(4), PreciseDecimal.from(2)).value,
-            PreciseDecimal.from(8).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(-1), PreciseDecimal.from(2)).value,
-            PreciseDecimal.from(-2).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(4), PreciseDecimal.from(0)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(-1), PreciseDecimal.from(0)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(7), PreciseDecimal.from(-3)).value,
-            PreciseDecimal.from(-21).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(3), PreciseDecimal.from(-3)).value,
-            PreciseDecimal.from(-9).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(7), PreciseDecimal.from(0)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.mul(PreciseDecimal.from(3), PreciseDecimal.from(0)).value,
-            PreciseDecimal.from(0).value
+            PreciseDecimalOperations.sub(
+                PreciseDecimal.from(a),
+                PreciseDecimal.from(b)
+            ).value,
+            PreciseDecimal.from(result).value
         );
     }
 
-    @Test
-    public final void div() {
+    @ParameterizedTest()
+    @CsvSource({
+        "0, 0, 0",
+        "4, 2, 8",
+        "-1, 2, -2",
+        "4, 0, 0",
+        "0, -1, 0",
+        "0, 7, 0",
+        "-3, 0, 0",
+        "1, 2, 2",
+        "0.3, 2, 0.6",
+        "1.2, -4, -4.8",
+        "-2.2, -2.2, 4.84",
+    })
+    public final void mul(final String a, final String b, final String result) {
         assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(8), PreciseDecimal.from(4)).value,
-            PreciseDecimal.from(2).value
+            PreciseDecimalOperations.mul(
+                PreciseDecimal.from(a),
+                PreciseDecimal.from(b)
+            ).value,
+            PreciseDecimal.from(result).value
         );
+    }
+
+    @ParameterizedTest()
+    @CsvSource({
+        "0, 4, 0",
+        "0, -1, 0",
+        "8, 4, 2",
+        "9, -3, -3",
+        "-21, 7, -3",
+        "-2, -1, 2",
+        "0, 0.4, 0",
+        "0, -1.3, 0",
+        "8, 0.5, 16",
+        "-10, 0.8, -12.5",
+        "4, -0.8, -5",
+        "-2, -0.1, 20",
+    })
+    public final void div(final String a, final String b, final String result) {
         assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(-2), PreciseDecimal.from(-1)).value,
-            PreciseDecimal.from(2).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(0), PreciseDecimal.from(4)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(0), PreciseDecimal.from(-1)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(-21), PreciseDecimal.from(7)).value,
-            PreciseDecimal.from(-3).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(-9), PreciseDecimal.from(3)).value,
-            PreciseDecimal.from(-3).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(0), PreciseDecimal.from(7)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.div(PreciseDecimal.from(0), PreciseDecimal.from(3)).value,
-            PreciseDecimal.from(0).value
+            PreciseDecimalOperations.div(
+                PreciseDecimal.from(a),
+                PreciseDecimal.from(b)
+            ).value,
+            PreciseDecimal.from(result).value
         );
     }
 
