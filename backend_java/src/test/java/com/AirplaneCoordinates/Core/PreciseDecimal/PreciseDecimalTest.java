@@ -26,6 +26,24 @@ public final class PreciseDecimalTest {
     }
 
     @Test
+    public final void opposite() {
+        assertEquals(PreciseDecimal.from(1).opposite().value, PreciseDecimal.from(-1).value);
+        assertEquals(PreciseDecimal.from(-2).opposite().value, PreciseDecimal.from(2).value);
+        assertEquals(PreciseDecimal.from("0.33").opposite().value, PreciseDecimal.from("-0.33").value);
+        assertEquals(PreciseDecimal.from("-2.22").opposite().value, PreciseDecimal.from("2.22").value);
+        assertEquals(PreciseDecimal.from("487.732").opposite().value, PreciseDecimal.from("-487.732").value);
+        assertEquals(PreciseDecimal.from("-8715.1347").opposite().value, PreciseDecimal.from("8715.1347").value);
+        assertEquals(
+            PreciseDecimal.from("1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641573").opposite().value,
+            PreciseDecimal.from("-1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641573").value
+        );
+        assertEquals(
+            PreciseDecimal.from("-983266465465.1092480947820932748923473854305686700340247236427845237842631093487230987520389571038972").opposite().value,
+            PreciseDecimal.from("983266465465.1092480947820932748923473854305686700340247236427845237842631093487230987520389571038972").value
+        );
+    }
+
+    @Test
     public final void square() {
         assertEquals(
             PreciseDecimal.from(1).square().value,
@@ -47,8 +65,6 @@ public final class PreciseDecimalTest {
             PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145").square().value,
             PreciseDecimal.from("7.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999997").value
         );
-
-
     }
 
     @Test

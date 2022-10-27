@@ -32,28 +32,54 @@ public final class PreciseDecimal {
     public static final PreciseDecimal pi() {
         return PreciseDecimal.from(BigDecimalMath.pi(PreciseDecimalConstants.MATH_CONTEXT).toString());
     }
-    
+
+    public final PreciseDecimal opposite() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                valueAsBigDecimal.negate(PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
+    }
+
     public final PreciseDecimal square() {
         final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
 
-        return PreciseDecimal.from(valueAsBigDecimal.multiply(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT).stripTrailingZeros().toPlainString());
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                valueAsBigDecimal.multiply(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
     }
 
     public final PreciseDecimal sqrt() {
         final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
 
-        return PreciseDecimal.from(BigDecimalMath.sqrt(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT).stripTrailingZeros().toPlainString());
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                BigDecimalMath.sqrt(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
     }
 
     public final PreciseDecimal sin() {
         final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
 
-        return PreciseDecimal.from(BigDecimalMath.sin(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT).stripTrailingZeros().toPlainString());
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                BigDecimalMath.sin(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
     }
 
     public final PreciseDecimal cos() {
         final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
 
-        return PreciseDecimal.from(BigDecimalMath.cos(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT).stripTrailingZeros().toPlainString());
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                BigDecimalMath.cos(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
     }
 }
