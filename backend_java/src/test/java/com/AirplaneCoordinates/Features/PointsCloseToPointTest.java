@@ -1,5 +1,5 @@
 package com.AirplaneCoordinates.Features;
 
-public final class PointsClosetoPoint {
+public final class PointsCloseToPointTest {
     
 }

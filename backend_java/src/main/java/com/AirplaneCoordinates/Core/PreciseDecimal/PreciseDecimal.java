@@ -1,7 +1,6 @@
 package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
