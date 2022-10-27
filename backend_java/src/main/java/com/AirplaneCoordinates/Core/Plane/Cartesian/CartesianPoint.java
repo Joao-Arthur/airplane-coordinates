@@ -36,4 +36,11 @@ public final class CartesianPoint {
             this.y.opposite()
         );
     }
+
+    public final CartesianPoint reverse() {
+        return new CartesianPoint(
+            this.x.reverse(),
+            this.y.reverse()
+        );
+    }
 }

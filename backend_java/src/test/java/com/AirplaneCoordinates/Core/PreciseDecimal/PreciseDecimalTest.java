@@ -66,6 +66,23 @@ public final class PreciseDecimalTest {
     @ParameterizedTest()
     @CsvSource({
         "1, 1",
+        "1.25, 0.8",
+        "2, 0.5",
+        "4, 0.25",
+        "5, 0.2",
+        "8, 0.125",
+        "10, 0.1",
+    })
+    public final void reverse(final String original, final String reversed) {
+        assertEquals(
+            PreciseDecimal.from(original).reverse().value,
+            PreciseDecimal.from(reversed).value
+        );
+    }
+
+    @ParameterizedTest()
+    @CsvSource({
+        "1, 1",
         "2, 4",
         "3, 9",
         "4, 16",

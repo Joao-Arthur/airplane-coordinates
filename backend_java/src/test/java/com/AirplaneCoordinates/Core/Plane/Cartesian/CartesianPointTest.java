@@ -12,4 +12,12 @@ public class CartesianPointTest {
             CartesianPoint.from(3, -2).value
         );
     }
+
+    @Test
+    public final void reverse() {
+        assertEquals(
+            CartesianPoint.from(2, 4).reverse().value,
+            CartesianPoint.from("0.5", "0.25").value
+        );
+    }
 }

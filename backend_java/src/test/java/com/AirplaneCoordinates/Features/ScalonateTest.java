@@ -45,6 +45,13 @@ public final class ScalonateTest {
                 "40.8933946491309056054825252598699177650239247701694879239436224278406825108096473833900705055539013"
             ).value
         );
+        assertEquals(
+            Scalonate.execute(
+                PlanePoint.from(Plane.POLAR, 6, 47),
+                CartesianPoint.from(0, 0)
+            ).value,
+            PlanePoint.from(Plane.POLAR, 0, 0).value
+        );
     }
 
     @Test
@@ -63,25 +70,35 @@ public final class ScalonateTest {
             ).value,
             PlanePoint.from(Plane.CARTESIAN, "-239500800", "-239500800").value
         );
+        assertEquals(
+            Scalonate.execute(
+                PlanePoint.from(Plane.CARTESIAN, 75, -7),
+                CartesianPoint.from(0, 0)
+            ).value,
+            PlanePoint.from(Plane.CARTESIAN, 0, 0).value
+        );
     }
 
-/*   @ParameterizedTest()
+    @ParameterizedTest()
     @CsvSource({
         "CARTESIAN, 5, -1, 0.1, 0.1",
-        "CARTESIAN, 2.22, 3.33, 5,55, -5.55",
+        "CARTESIAN, 2.22, 3.33, 5.55, -5.55",
+        "CARTESIAN, 2.22, 3.33, 5.5, -5.5",
         "CARTESIAN, 5, 5, 0.5, 0.5",
         "CARTESIAN, 0.1, 0.1, 0.1, 0.1",
         "CARTESIAN, -0.1, -0.1, -0.1, -0.1",
-        "CARTESIAN, 0, 0, 0, 0",
+        "CARTESIAN, 0, 0, 1, 1",
         //"POLAR, 5, 10, 0.1, 0.1",
-        //"POLAR, 2.22, 38, 5,55, -5.55",
-        //"POLAR, 5, 75, 0.5, 0.5",
-        //"POLAR, 7, 135, -2.22, 2.22",
-        "POLAR, 0, 0, 0, 0",
-        "POLAR, 5, 0, 5.55, 0",
-        "POLAR, 2, 90, 0, 0.11",
-        "POLAR, 7.11, 180, 0, -0.28",
-        "POLAR, 3, 270, 0, -0.28"
+        "POLAR, 5, 10, 0.4, 0.4",
+        "POLAR, 2.22, 38, 5.55, -5.55",
+        "POLAR, 5, 75, 0.5, 0.5",
+        "POLAR, 7, 135, -2.22, 2.22",
+        "POLAR, 0, 0, 1, 1",
+        //"POLAR, 5, 0, 5.55, -7",
+        "POLAR, 5, 0, 5.5, -7",
+        "POLAR, 2, 90, 0.11, 0.11",
+        "POLAR, 7.11, 180, -1, -0.28",
+        "POLAR, 3, 270, 1, -0.28"
     })
     public final void scalonateBackAndForth(
         final Plane plane,
@@ -93,7 +110,7 @@ public final class ScalonateTest {
         final var pointBefore = PlanePoint.from(plane, pointX, pointY);
         final var factor = CartesianPoint.from(factorX, factorY);
         final var movedPoint = Scalonate.execute(pointBefore, factor);
-        final var pointAfter = Translate.execute(movedPoint, factor.opposite());
+        final var pointAfter = Scalonate.execute(movedPoint, factor.reverse());
         assertEquals(pointAfter.value, pointBefore.value);
-    }*/
+    }
 }

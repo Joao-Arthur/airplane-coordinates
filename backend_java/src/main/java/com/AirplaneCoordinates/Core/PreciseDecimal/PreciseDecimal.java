@@ -43,6 +43,16 @@ public final class PreciseDecimal {
         );
     }
 
+    public final PreciseDecimal reverse() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                BigDecimal.ONE.divide(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
+    }
+
     public final PreciseDecimal square() {
         final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
 
