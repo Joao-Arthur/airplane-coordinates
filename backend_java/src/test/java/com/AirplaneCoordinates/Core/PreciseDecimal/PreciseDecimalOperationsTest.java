@@ -106,23 +106,27 @@ public final class PreciseDecimalOperationsTest {
         );
     }
 
-    @Test
-    public final void rem() {
+    @ParameterizedTest()
+    @CsvSource({
+        "-100.277, 360, -100.277",
+        "360, 360, 0",
+        "720.111, 360, 0.111",
+        "0, 360, 0",
+        "0, 2, 0",
+        "2.22, 1.11, 0",
+        "10, 2, 0",
+    })
+    public final void rem(
+        final String a,
+        final String b,
+        final String result
+    ) {
         assertEquals(
-            PreciseDecimalOperations.rem(PreciseDecimal.from("-100.277"), PreciseDecimal.from(360)).value,
-            PreciseDecimal.from("-100.277").value
-        );
-        assertEquals(
-            PreciseDecimalOperations.rem(PreciseDecimal.from(360), PreciseDecimal.from(360)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            PreciseDecimalOperations.rem(PreciseDecimal.from("720.111"), PreciseDecimal.from(360)).value,
-            PreciseDecimal.from("0.111").value
-        );
-        assertEquals(
-            PreciseDecimalOperations.rem(PreciseDecimal.from(0), PreciseDecimal.from(360)).value,
-            PreciseDecimal.from(0).value
+            PreciseDecimalOperations.rem(
+                PreciseDecimal.from(a),
+                PreciseDecimal.from(b)
+            ).value,
+            PreciseDecimal.from(result).value
         );
     }
 
@@ -176,29 +180,29 @@ public final class PreciseDecimalOperationsTest {
     public final void atan() {
         assertEquals(
             PreciseDecimalOperations.atan(
-                PreciseDecimal.from("1"),
-                PreciseDecimal.from("1")
+                PreciseDecimal.from(1),
+                PreciseDecimal.from(1)
             ).value,
             PreciseDecimal.from("0.785398163397448309615660845819875721049292349843776455243736148076954101571552249657008706335529267").value
         );
         assertEquals(
             PreciseDecimalOperations.atan(
-                PreciseDecimal.from("4"),
-                PreciseDecimal.from("2")
+                PreciseDecimal.from(4),
+                PreciseDecimal.from(2)
             ).value,
             PreciseDecimal.from("1.107148717794090503017065460178537040070047645401432646676539207433710338977362794013417128686170641").value
         );
         assertEquals(
             PreciseDecimalOperations.atan(
-                PreciseDecimal.from("8"),
-                PreciseDecimal.from("3")
+                PreciseDecimal.from(8),
+                PreciseDecimal.from(3)
             ).value,
             PreciseDecimal.from("1.212025656524324398835401627713290942321609043806637130847073429399205018921975170570753003401633161").value
         );
         assertEquals(
             PreciseDecimalOperations.atan(
-                PreciseDecimal.from("-8"),
-                PreciseDecimal.from("3")
+                PreciseDecimal.from(-8),
+                PreciseDecimal.from(3)
             ).value,
             PreciseDecimal.from("-1.212025656524324398835401627713290942321609043806637130847073429399205018921975170570753003401633161").value
         );

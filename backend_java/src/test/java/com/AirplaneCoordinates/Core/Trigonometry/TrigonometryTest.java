@@ -3,6 +3,8 @@ package com.AirplaneCoordinates.Core.Trigonometry;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
@@ -99,47 +101,27 @@ public final class TrigonometryTest {
         );
     }
 
-    @Test
-    public final void normalizeAngle() {
+    @ParameterizedTest()
+    @CsvSource({
+        "360, 0",
+        "405, 45",
+        "-100, 260",
+        "-1, 359",
+        "-111.11, 248.89",
+        "-0.1, 359.9",
+        "0, 0",
+        "765, 45",
+        "10, 10",
+        "90, 90",
+        "111.11, 111.11",
+    })
+    public final void normalizeAngle(
+        final String angle,
+        final String normalizedAngle
+    ) {
         assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(-100)).value,
-            PreciseDecimal.from(260).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(-1)).value,
-            PreciseDecimal.from(359).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(360)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(720)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(405)).value,
-            PreciseDecimal.from(45).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(765)).value,
-            PreciseDecimal.from(45).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(0)).value,
-            PreciseDecimal.from(0).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(10)).value,
-            PreciseDecimal.from(10).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from(90)).value,
-            PreciseDecimal.from(90).value
-        );
-        assertEquals(
-            Trigonometry.normalizeAngle(PreciseDecimal.from("111.11")).value,
-            PreciseDecimal.from("111.11").value
+            Trigonometry.normalizeAngle(PreciseDecimal.from(angle)).value,
+            PreciseDecimal.from(normalizedAngle).value
         );
     }
 }
