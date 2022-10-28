@@ -81,6 +81,17 @@ public final class ScalonateTest {
 
     @ParameterizedTest()
     @CsvSource({
+        "CARTESIAN, 5, 5, 2, 2",
+        "CARTESIAN, 5, 5, -2, -2",
+        "CARTESIAN, -5, 5, 2, 2",
+        "CARTESIAN, -5, 5, -2, -2",
+        "CARTESIAN, 5, -5, 2, 2",
+        "CARTESIAN, 5, -5, -2, -2",
+        "CARTESIAN, -5, 5, 2, 2",
+        "CARTESIAN, 5, 5, 1.5, 1.5",
+        "CARTESIAN, -5, 5, 1.5, 1.5",
+        "CARTESIAN, 5, -5, 1.5, 1.5",
+        "CARTESIAN, -5, 5, 1.5, 1.5",
         "CARTESIAN, 5, -1, 0.1, 0.1",
         "CARTESIAN, 2.22, 3.33, 5.55, -5.55",
         "CARTESIAN, 2.22, 3.33, 5.5, -5.5",
