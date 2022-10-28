@@ -63,7 +63,7 @@ public final class PreciseDecimalTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "1, 1",
         "1.25, 0.8",
@@ -80,7 +80,7 @@ public final class PreciseDecimalTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "1, 1",
         "2, 4",
@@ -100,7 +100,7 @@ public final class PreciseDecimalTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "1, 1",
         "4, 2",

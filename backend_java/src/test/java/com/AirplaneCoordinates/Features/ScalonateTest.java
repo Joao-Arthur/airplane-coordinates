@@ -79,7 +79,7 @@ public final class ScalonateTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "CARTESIAN, 5, 5, 2, 2",
         "CARTESIAN, 5, 5, -2, -2",

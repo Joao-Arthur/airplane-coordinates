@@ -80,7 +80,7 @@ public final class RotateTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         //Cartesian
         "CARTESIAN, 0, 0, 0, 0, 90",

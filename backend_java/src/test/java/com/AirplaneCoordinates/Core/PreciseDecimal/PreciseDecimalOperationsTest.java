@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public final class PreciseDecimalOperationsTest {
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "0, 0, 0",
         "4, 2, 6",
@@ -32,7 +32,7 @@ public final class PreciseDecimalOperationsTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "0, 0, 0",
         "6, 4, 2",
@@ -57,7 +57,7 @@ public final class PreciseDecimalOperationsTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "0, 0, 0",
         "4, 2, 8",
@@ -81,7 +81,7 @@ public final class PreciseDecimalOperationsTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "0, 4, 0",
         "0, -1, 0",
@@ -106,7 +106,7 @@ public final class PreciseDecimalOperationsTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "-100.277, 360, -100.277",
         "360, 360, 0",

@@ -44,7 +44,7 @@ public final class TranslateTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "CARTESIAN, 5, 5, 1, 1",
         "CARTESIAN, 5, 5, 1, -1",

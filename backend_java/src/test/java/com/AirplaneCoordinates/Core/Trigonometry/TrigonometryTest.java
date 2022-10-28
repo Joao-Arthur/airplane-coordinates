@@ -101,7 +101,7 @@ public final class TrigonometryTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest
     @CsvSource({
         "360, 0",
         "405, 45",
