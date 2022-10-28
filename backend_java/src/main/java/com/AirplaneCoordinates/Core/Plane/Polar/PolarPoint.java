@@ -48,4 +48,11 @@ public final class PolarPoint {
             normalizedAngle
         );
     }
+
+    public final PolarPoint round() {
+        return new PolarPoint(
+            this.r.round(),
+            this.a.round()
+        );
+    }
 }

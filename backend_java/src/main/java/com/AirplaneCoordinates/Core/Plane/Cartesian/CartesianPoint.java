@@ -43,4 +43,11 @@ public final class CartesianPoint {
             this.y.reverse()
         );
     }
+
+    public final CartesianPoint round() {
+        return new CartesianPoint(
+            this.x.round(),
+            this.y.round()
+        );
+    }
 }

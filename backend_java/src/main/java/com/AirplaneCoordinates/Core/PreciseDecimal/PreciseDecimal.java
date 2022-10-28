@@ -92,4 +92,14 @@ public final class PreciseDecimal {
             )
         );
     }
+
+    public final PreciseDecimal round() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                BigDecimalMath.round(valueAsBigDecimal, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT)
+            )
+        );
+    }
 }
