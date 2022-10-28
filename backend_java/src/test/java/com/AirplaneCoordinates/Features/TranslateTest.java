@@ -108,10 +108,10 @@ public final class TranslateTest {
     @Test
     @Disabled
     public final void backAndForthCartesian() {
-        for (float pointX = -10; pointX <= 10; pointX += 0.1) {
-            for (float pointY = -10; pointY <= 10; pointY += 0.1) {
-                for (float factorX = -10; factorX <= 10; factorX += 0.1) {
-                    for (float factorY = -10; factorY <= 10; factorY += 0.1) {
+        for (float pointX = -10f; pointX <= 10f; pointX += 0.1f) {
+            for (float pointY = -10f; pointY <= 10f; pointY += 0.1f) {
+                for (float factorX = -10f; factorX <= 10f; factorX += 0.1f) {
+                    for (float factorY = -10f; factorY <= 10f; factorY += 0.1f) {
                         final var pointBefore = PlanePoint.from(
                             Plane.CARTESIAN,
                             new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
