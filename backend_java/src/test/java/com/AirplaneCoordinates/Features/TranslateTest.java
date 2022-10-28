@@ -2,6 +2,9 @@ package com.AirplaneCoordinates.Features;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.math.BigDecimal;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -100,5 +103,39 @@ public final class TranslateTest {
         final var movedPoint = Translate.execute(pointBefore, factor);
         final var pointAfter = Translate.execute(movedPoint, factor.opposite());
         assertEquals(pointAfter.value, pointBefore.value);
+    }
+
+    @Test
+    @Disabled
+    public final void backAndForthCartesian() {
+        for (float pointX = -10; pointX <= 10; pointX += 0.1) {
+            for (float pointY = -10; pointY <= 10; pointY += 0.1) {
+                for (float factorX = -10; factorX <= 10; factorX += 0.1) {
+                    for (float factorY = -10; factorY <= 10; factorY += 0.1) {
+                        final var pointBefore = PlanePoint.from(
+                            Plane.CARTESIAN,
+                            new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
+                            new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                        );
+                        final var factor = CartesianPoint.from(
+                            String.valueOf(factorX),
+                            String.valueOf(factorY)
+                        );
+                        final var movedPoint = Translate.execute(
+                            pointBefore,
+                            factor
+                        );
+                        final var pointAfter = Translate.execute(
+                            movedPoint,
+                            factor.opposite()
+                        );
+                        assertEquals(
+                            pointAfter.value,
+                            pointBefore.value
+                        );
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,6 +2,9 @@ package com.AirplaneCoordinates.Features;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.math.BigDecimal;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -132,5 +135,77 @@ public final class ScalonateTest {
         final var movedPoint = Scalonate.execute(pointBefore, factor);
         final var pointAfter = Scalonate.execute(movedPoint, factor.reverse());
         assertEquals(pointAfter.value, pointBefore.value);
+    }
+
+    @Test
+    public final void backAndForthCartesian() {
+        final var valuesDouble = new Double[] {
+            -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0
+        };
+
+        for (int i = 0; i < valuesDouble.length; i++) {
+            for (int j = 0; j < valuesDouble.length; j++) {
+                for (int k = 0; k < valuesDouble.length; k++) {
+                    for (int l = 0; l < valuesDouble.length; l++) {
+                        final var pointBefore = PlanePoint.from(
+                            Plane.CARTESIAN,
+                            new BigDecimal(valuesDouble[i]).stripTrailingZeros().toPlainString(),
+                            new BigDecimal(valuesDouble[j]).stripTrailingZeros().toPlainString()
+                        );
+                        final var factor = CartesianPoint.from(
+                            String.valueOf(valuesDouble[k]),
+                            String.valueOf(valuesDouble[l])
+                        );
+                        final var movedPoint = Scalonate.execute(
+                            pointBefore,
+                            factor
+                        );
+                        final var pointAfter = Scalonate.execute(
+                            movedPoint,
+                            factor.reverse()
+                        );
+                        assertEquals(
+                            pointAfter.value,
+                            pointBefore.value
+                        );
+                    }
+                }
+            }
+        }
+
+        final var valuesIntValues = new Double[] {
+            -10.0, -9.5, -8.0, -5.0, -4.0, -2.5, -2.0, -1.0,
+            1.0, 2.0, 2.5, 4.0, 5.0, 8.0, 9.5, 10.0
+        };
+
+        for (int i = 0; i < valuesIntValues.length; i++) {
+            for (int j = 0; j < valuesIntValues.length; j++) {
+                for (int k = 0; k < valuesIntValues.length; k++) {
+                    for (int l = 0; l < valuesIntValues.length; l++) {
+                        final var pointBefore = PlanePoint.from(
+                            Plane.CARTESIAN,
+                            new BigDecimal(valuesIntValues[i]).stripTrailingZeros().toPlainString(),
+                            new BigDecimal(valuesIntValues[j]).stripTrailingZeros().toPlainString()
+                        );
+                        final var factor = CartesianPoint.from(
+                            String.valueOf(valuesIntValues[k]),
+                            String.valueOf(valuesIntValues[l])
+                        );
+                        final var movedPoint = Scalonate.execute(
+                            pointBefore,
+                            factor
+                        );
+                        final var pointAfter = Scalonate.execute(
+                            movedPoint,
+                            factor.reverse()
+                        );
+                        assertEquals(
+                            pointAfter.value,
+                            pointBefore.value
+                        );
+                    }
+                }
+            }
+        }
     }
 }
