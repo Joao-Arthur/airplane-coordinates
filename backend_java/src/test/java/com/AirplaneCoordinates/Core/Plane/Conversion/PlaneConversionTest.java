@@ -2,14 +2,9 @@ package com.AirplaneCoordinates.Core.Plane.Conversion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Polar.PolarPoint;
@@ -76,26 +71,6 @@ public final class PlaneConversionTest {
             ).value
         );
     }
-
-   // @ParameterizedTest
-   // @MethodSource("argumentsForPolarToCartesian")
-   // public final void polarToCartesianBackAndForth(final int angle) {
-   //     final var before = PolarPoint.from(1, angle);
-   //     final var transformed = PlaneConversion.polarToCartesian(before);
-   //     final var after = PlaneConversion.cartesianToPolar(transformed);
-//
-   //     assertEquals(
-   //         before.value,
-   //         after.value
-   //     );
-   // }
-
-  //  private static Stream<Arguments> argumentsForPolarToCartesian() {
-  //      final var angleList = new ArrayList<Arguments>();
-  //      for (int angle = 0; angle <= 360; angle++)
-  //          angleList.add(Arguments.of(angle));
-  //      return angleList.stream();
-  //  }
 
     @ParameterizedTest
     @CsvSource({
@@ -168,25 +143,4 @@ public final class PlaneConversionTest {
             PolarPoint.from(1, 45).value
         );
     }
-
-   // @ParameterizedTest
-   // @MethodSource("argumentsForCartesianToPolar")
-   // public final void cartesianToPolarBackAndForth(final int x, final int y) {
-   //     final var before = CartesianPoint.from(x, y);
-   //     final var transformed = PlaneConversion.cartesianToPolar(before);
-   //     final var after = PlaneConversion.polarToCartesian(transformed);
-//
-   //     assertEquals(
-   //         before.value,
-   //         after.value
-   //     );
-   // }
-//
-   // private static Stream<Arguments> argumentsForCartesianToPolar() {
-   //     final var angleList = new ArrayList<Arguments>();
-   //     for (int x = -10; x <= 10; x++)
-   //         for (int y = -10; y <= 10; y++)
-   //             angleList.add(Arguments.of(x, y));
-   //     return angleList.stream();
-   // }
 }

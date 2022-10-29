@@ -20,4 +20,15 @@ public class CartesianPointTest {
             CartesianPoint.from("0.5", "0.25").value
         );
     }
+
+    @Test
+    public final void round() {
+        assertEquals(
+            CartesianPoint.from(
+                "2.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999997",
+                "4.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000026"
+            ).round().value,
+            CartesianPoint.from(3, 4).value
+        );
+    }
 }

@@ -1,6 +1,7 @@
 package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
@@ -95,7 +96,7 @@ public final class PreciseDecimal {
 
     public final PreciseDecimal round() {
         final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT);
-        final var roundedValue = PreciseDecimalHelper.bigDecimalToString(
+        final var roundedValue = PreciseDecimalHelper.bigDecimalToRoundedString(
             BigDecimalMath.round(valueAsBigDecimal, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT)
         );
         // If the rounded value is integer
@@ -103,11 +104,10 @@ public final class PreciseDecimal {
             return PreciseDecimal.from(
                 roundedValue
             );
-        final var arr = roundedValue.split("\\.");
-        final var integerPart = arr[0];
-        final var decimalPart = arr[1];
-        // If the rounded value number of digits is less than the precision round
-        if((integerPart.length() + decimalPart.length()) >= PreciseDecimalConstants.ROUNDING_MATH_CONTEXT.getPrecision())
+        final var oldDecimalPart = this.value.split("\\.")[1];
+        final var newDecimalPart = roundedValue.split("\\.")[1];
+        // Conpare the old and new number of decimal digits
+        if(newDecimalPart.length() + 10 >= oldDecimalPart.length())
             return PreciseDecimal.from(
                 this.value
             );

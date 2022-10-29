@@ -44,7 +44,7 @@ public final class ScalonateTest {
             ).value,
             PlanePoint.from(
                 Plane.POLAR,
-                "66.14378277661476476254039384098151064275647957706125450920836148002672058075709069400982216186359",
+                "66.14378277661476476254039384098151064275647957706125450920836148002672058075709069400982216186359028",
                 "40.8933946491309056054825252598699177650239247701694879239436224278406825108096473833900705055539013"
             ).value
         );
@@ -139,6 +139,43 @@ public final class ScalonateTest {
 
     @Test
     @Disabled
+    public final void backAndForthCartesianSlow() {
+        final var valuesDouble = new Double[] {
+            -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0
+        };
+
+        for (float pointX = -10f; pointX <= 10f; pointX += 0.1f) {
+            for (float pointY = -10f; pointY <= 10f; pointY += 0.1f) {
+                for (int i = 0; i < valuesDouble.length; i++) {
+                    for (int j = 0; j < valuesDouble.length; j++) {
+                        final var pointBefore = PlanePoint.from(
+                            Plane.CARTESIAN,
+                            new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
+                            new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                        );
+                        final var factor = CartesianPoint.from(
+                            String.valueOf(valuesDouble[i]),
+                            String.valueOf(valuesDouble[j])
+                        );
+                        final var movedPoint = Scalonate.execute(
+                            pointBefore,
+                            factor
+                        );
+                        final var pointAfter = Scalonate.execute(
+                            movedPoint,
+                            factor.reverse()
+                        );
+                        assertEquals(
+                            pointAfter.value,
+                            pointBefore.value
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
     public final void backAndForthCartesian() {
         final var valuesDouble = new Double[] {
             -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0
@@ -174,8 +211,8 @@ public final class ScalonateTest {
             }
         }
 
-        for (float pointX = -10f; pointX <= 10f; pointX += 0.1f) {
-            for (float pointY = -10f; pointY <= 10f; pointY += 0.1f) {
+        for (float pointX = -1f; pointX <= 1f; pointX += 0.1f) {
+            for (float pointY = -1f; pointY <= 1f; pointY += 0.1f) {
                 for (int i = 0; i < valuesDouble.length; i++) {
                     for (int j = 0; j < valuesDouble.length; j++) {
                         final var pointBefore = PlanePoint.from(

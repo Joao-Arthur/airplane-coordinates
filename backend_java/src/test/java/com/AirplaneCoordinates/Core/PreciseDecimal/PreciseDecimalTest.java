@@ -322,5 +322,9 @@ public final class PreciseDecimalTest {
             PreciseDecimal.from("2.199999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999989").round().value,
             PreciseDecimal.from("2.2").value
         );
+        assertEquals(
+            PreciseDecimal.from("7.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004").round().value,
+            PreciseDecimal.from(7).value
+        );
     }
 }

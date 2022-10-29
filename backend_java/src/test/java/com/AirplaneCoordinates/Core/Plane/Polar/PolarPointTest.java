@@ -34,4 +34,15 @@ public final class PolarPointTest {
             PolarPoint.from(1, 0).value
         );
     }
+
+    @Test
+    public final void round() {
+        assertEquals(
+            PolarPoint.from(
+                "3.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000026",
+                "359.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999986"
+            ).round().value,
+            PolarPoint.from(3, 0).value
+        );
+    }
 }

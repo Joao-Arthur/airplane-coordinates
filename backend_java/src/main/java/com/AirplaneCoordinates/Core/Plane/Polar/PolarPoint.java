@@ -52,7 +52,7 @@ public final class PolarPoint {
     public final PolarPoint round() {
         return new PolarPoint(
             this.r.round(),
-            this.a.round()
+            Trigonometry.normalizeAngle(this.a.round())
         );
     }
 }

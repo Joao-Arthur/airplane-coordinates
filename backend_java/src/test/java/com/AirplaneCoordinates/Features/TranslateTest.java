@@ -107,7 +107,7 @@ public final class TranslateTest {
 
     @Test
     @Disabled
-    public final void backAndForthCartesian() {
+    public final void backAndForthCartesianSlow() {
         for (float pointX = -10f; pointX <= 10f; pointX += 0.1f) {
             for (float pointY = -10f; pointY <= 10f; pointY += 0.1f) {
                 for (float factorX = -10f; factorX <= 10f; factorX += 0.1f) {
@@ -116,6 +116,72 @@ public final class TranslateTest {
                             Plane.CARTESIAN,
                             new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
                             new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                        );
+                        final var factor = CartesianPoint.from(
+                            String.valueOf(factorX),
+                            String.valueOf(factorY)
+                        );
+                        final var movedPoint = Translate.execute(
+                            pointBefore,
+                            factor
+                        );
+                        final var pointAfter = Translate.execute(
+                            movedPoint,
+                            factor.opposite()
+                        );
+                        assertEquals(
+                            pointAfter.value,
+                            pointBefore.value
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    public final void backAndForthCartesian() {
+        for (float pointX = -1f; pointX <= 1f; pointX += 0.1f) {
+            for (float pointY = -1f; pointY <= 1f; pointY += 0.1f) {
+                for (float factorX = -1f; factorX <= 1f; factorX += 0.1f) {
+                    for (float factorY = -1f; factorY <= 1f; factorY += 0.1f) {
+                        final var pointBefore = PlanePoint.from(
+                            Plane.CARTESIAN,
+                            new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
+                            new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                        );
+                        final var factor = CartesianPoint.from(
+                            String.valueOf(factorX),
+                            String.valueOf(factorY)
+                        );
+                        final var movedPoint = Translate.execute(
+                            pointBefore,
+                            factor
+                        );
+                        final var pointAfter = Translate.execute(
+                            movedPoint,
+                            factor.opposite()
+                        );
+                        assertEquals(
+                            pointAfter.value,
+                            pointBefore.value
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    public final void backAndForthPolar() {
+        for(int r = 1; r <= 10; r++) {    
+            for (int a = 0; a < 360; a++) {
+                for (float factorX = -10f; factorX <= 10f; factorX += 1f) {
+                    for (float factorY = -10f; factorY <= 10f; factorY += 1f) {
+                        final var pointBefore = PlanePoint.from(
+                            Plane.POLAR,
+                            new BigDecimal(r).stripTrailingZeros().toPlainString(),
+                            new BigDecimal(a).stripTrailingZeros().toPlainString()
                         );
                         final var factor = CartesianPoint.from(
                             String.valueOf(factorX),
