@@ -82,7 +82,6 @@ public final class RotateTest {
 
     @ParameterizedTest
     @CsvSource({
-        //Cartesian
         "CARTESIAN, 0, 0, 0, 0, 90",
         "CARTESIAN, 5, 0, 0, 0, 90",
         "CARTESIAN, 0, 5, 0, 0, 90",
@@ -107,7 +106,6 @@ public final class RotateTest {
         "CARTESIAN, 3, 0, 0, 0, 11",
         "CARTESIAN, 4, 0, 0, 0, 11",
         "CARTESIAN, 5, 0, 0, 0, 11",
-        //Cartesian offseted
         "CARTESIAN, 2, 2, 2, 2, 90",
         "CARTESIAN, 4, 4, 4, 4, 90",
         "CARTESIAN, 2, 0, 2, 2, 90",
@@ -118,7 +116,6 @@ public final class RotateTest {
         "CARTESIAN, 8, 4, 4, 4, 90",
         "CARTESIAN, 4, 8, 4, 4, 90",
         "CARTESIAN, 0, 4, 4, 4, 90",
-        //Polar
         "POLAR, 0, 0, 0, 0, 90",
         "POLAR, 7, 0, 0, 0, 90",
         "POLAR, 7, 90, 0, 0, 90",
@@ -143,7 +140,6 @@ public final class RotateTest {
         "POLAR, 3, 0, 0, 0, 11",
         "POLAR, 4, 0, 0, 0, 11",
         "POLAR, 5, 0, 0, 0, 11",
-        //Polar offseted
         //"POLAR, 2, 45, 2, 2, 90",
         //"POLAR, 4, 45, 4, 4, 90",
         //"POLAR, 1, 10, 4, 4, 90",

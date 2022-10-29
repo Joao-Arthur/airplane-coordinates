@@ -95,11 +95,16 @@ public final class PreciseDecimal {
 
     public final PreciseDecimal round() {
         final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
+        final var roundedValue =  PreciseDecimalHelper.bigDecimalToString(
+            BigDecimalMath.round(valueAsBigDecimal, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT)
+        );
+        //Only rounds the values that can become integer
+        if (roundedValue.contains("."))
+            return PreciseDecimal.from(
+                this.value
+            ); 
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                BigDecimalMath.round(valueAsBigDecimal, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT)
-            )
+            roundedValue
         );
     }
 }

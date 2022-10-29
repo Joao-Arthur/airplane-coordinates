@@ -267,4 +267,44 @@ public final class PreciseDecimalTest {
             PreciseDecimal.from("0.7539022543433046381411975217191820122183133914601268395436138808138760267207174056254283910893024825").value
         );
     }
+
+    @Test
+    public final void round() {
+        assertEquals(
+            PreciseDecimal.from(7).round().value,
+            PreciseDecimal.from(7).value
+        );
+        assertEquals(
+            PreciseDecimal.from(0).round().value,
+            PreciseDecimal.from(0).value
+        );
+        assertEquals(
+            PreciseDecimal.from(-3).round().value,
+            PreciseDecimal.from(-3).value
+        );
+        assertEquals(
+            PreciseDecimal.from("3.17").round().value,
+            PreciseDecimal.from("3.17").value
+        );
+        assertEquals(
+            PreciseDecimal.from("-24.287494").round().value,
+            PreciseDecimal.from("-24.287494").value
+        );
+        assertEquals(
+            PreciseDecimal.from("234.2938623478634786234782364726317836192371983719382739824623785647562349875634987563249875263498752").round().value,
+            PreciseDecimal.from("234.2938623478634786234782364726317836192371983719382739824623785647562349875634987563249875263498752").value
+        );
+        assertEquals(
+            PreciseDecimal.from("111.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001").round().value,
+            PreciseDecimal.from(111).value
+        );
+        assertEquals(
+            PreciseDecimal.from("286.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999992").round().value,
+            PreciseDecimal.from(286).value
+        );
+        assertEquals(
+            PreciseDecimal.from("-779.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000031").round().value,
+            PreciseDecimal.from(-779).value
+        );
+    }
 }

@@ -7,15 +7,29 @@ import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
 
 public final class PlaneConversion {
     public static final PolarPoint cartesianToPolar(final CartesianPoint point) {
-        final var r = PreciseDecimalOperations.sum(point.x.square(), point.y.square()).sqrt();
-        final var a = Trigonometry.normalizeAngle(Trigonometry.radToDeg(PreciseDecimalOperations.atan(point.y, point.x)));
+        final var r = PreciseDecimalOperations.sum(
+            point.x.square(),
+            point.y.square()
+        ).sqrt();
+        final var a = Trigonometry.normalizeAngle(
+            Trigonometry.radToDeg(
+                PreciseDecimalOperations.atan(point.y, point.x)
+            )
+        );
 
         return new PolarPoint(r, a);
     }
 
     public static final CartesianPoint polarToCartesian(final PolarPoint point) {
-        final var x = PreciseDecimalOperations.mul(point.r, Trigonometry.degToRad(Trigonometry.normalizeAngle(point.a)).cos());
-        final var y = PreciseDecimalOperations.mul(point.r, Trigonometry.degToRad(Trigonometry.normalizeAngle(point.a)).sin());
+        final var radianValue = Trigonometry.degToRad(Trigonometry.normalizeAngle(point.a));
+        final var x = PreciseDecimalOperations.mul(
+            point.r,
+            radianValue.cos()
+        );
+        final var y = PreciseDecimalOperations.mul(
+            point.r,
+            radianValue.sin()
+        );
 
         return new CartesianPoint(x, y);
     }
