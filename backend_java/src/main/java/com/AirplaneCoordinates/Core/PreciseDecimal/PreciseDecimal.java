@@ -1,7 +1,6 @@
 package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
@@ -107,7 +106,7 @@ public final class PreciseDecimal {
         final var oldDecimalPart = this.value.split("\\.")[1];
         final var newDecimalPart = roundedValue.split("\\.")[1];
         // Conpare the old and new number of decimal digits
-        if(newDecimalPart.length() + 10 >= oldDecimalPart.length())
+        if (newDecimalPart.length() + 10 >= oldDecimalPart.length())
             return PreciseDecimal.from(
                 this.value
             );

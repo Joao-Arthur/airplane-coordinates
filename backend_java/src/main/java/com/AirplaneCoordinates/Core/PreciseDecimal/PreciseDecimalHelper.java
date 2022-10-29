@@ -10,7 +10,7 @@ public final class PreciseDecimalHelper {
         final var arr = plainValue.split("\\.");
         final var integerPart = arr[0];
         final var decimalPart = arr[1];
-        if(decimalPart.length() <= PreciseDecimalConstants.PRECISION)
+        if (decimalPart.length() <= PreciseDecimalConstants.PRECISION)
             return plainValue;
         final var finalValue =  integerPart + "." + decimalPart.substring(0, PreciseDecimalConstants.PRECISION);
         return new BigDecimal(finalValue).stripTrailingZeros().toPlainString();
@@ -23,7 +23,7 @@ public final class PreciseDecimalHelper {
         final var arr = plainValue.split("\\.");
         final var integerPart = arr[0];
         final var decimalPart = arr[1];
-        if(decimalPart.length() <= PreciseDecimalConstants.ROUNDING_PRECISION)
+        if (decimalPart.length() <= PreciseDecimalConstants.ROUNDING_PRECISION)
             return plainValue;
         final var finalValue =  integerPart + "." + decimalPart.substring(0, PreciseDecimalConstants.ROUNDING_PRECISION);
         return new BigDecimal(finalValue).stripTrailingZeros().toPlainString();
