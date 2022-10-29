@@ -306,5 +306,21 @@ public final class PreciseDecimalTest {
             PreciseDecimal.from("-779.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000031").round().value,
             PreciseDecimal.from(-779).value
         );
+        assertEquals(
+            PreciseDecimal.from("2.220000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000022").round().value,
+            PreciseDecimal.from("2.22").value
+        );
+        assertEquals(
+            PreciseDecimal.from("2.200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000022").round().value,
+            PreciseDecimal.from("2.2").value
+        );
+        assertEquals(
+            PreciseDecimal.from("2.219999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999994").round().value,
+            PreciseDecimal.from("2.22").value
+        );
+        assertEquals(
+            PreciseDecimal.from("2.199999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999989").round().value,
+            PreciseDecimal.from("2.2").value
+        );
     }
 }

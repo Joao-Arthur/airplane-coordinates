@@ -94,15 +94,23 @@ public final class PreciseDecimal {
     }
 
     public final PreciseDecimal round() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var roundedValue =  PreciseDecimalHelper.bigDecimalToString(
+        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT);
+        final var roundedValue = PreciseDecimalHelper.bigDecimalToString(
             BigDecimalMath.round(valueAsBigDecimal, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT)
         );
-        //Only rounds the values that can become integer
-        if (roundedValue.contains("."))
+        // If the rounded value is integer
+        if (!roundedValue.contains("."))
+            return PreciseDecimal.from(
+                roundedValue
+            );
+        final var arr = roundedValue.split("\\.");
+        final var integerPart = arr[0];
+        final var decimalPart = arr[1];
+        // If the rounded value number of digits is less than the precision round
+        if((integerPart.length() + decimalPart.length()) >= PreciseDecimalConstants.ROUNDING_MATH_CONTEXT.getPrecision())
             return PreciseDecimal.from(
                 this.value
-            ); 
+            );
         return PreciseDecimal.from(
             roundedValue
         );

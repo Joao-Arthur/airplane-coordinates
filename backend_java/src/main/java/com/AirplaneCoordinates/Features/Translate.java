@@ -13,7 +13,7 @@ public final class Translate {
                     CartesianOperations.sum(
                         point.toCartesian(),
                         factor
-                    )
+                    ).round()
                 );
             case POLAR:
                 return PlanePoint.fromPolar(
@@ -22,7 +22,7 @@ public final class Translate {
                             point.toCartesian(),
                             factor
                         )
-                    )
+                    ).round()
                 );
             default:
                 throw new RuntimeException("planeType is required");
