@@ -13,7 +13,7 @@ public final class Scalonate {
                     CartesianOperations.mul(
                         point.toCartesian(),
                         factor
-                    )
+                    ).round()
                 );
             case POLAR:
                 return PlanePoint.fromPolar(
@@ -22,7 +22,7 @@ public final class Scalonate {
                             point.toCartesian(),
                             factor
                         )
-                    )
+                    ).round()
                 );
             default:
                 throw new RuntimeException("planeType is required");

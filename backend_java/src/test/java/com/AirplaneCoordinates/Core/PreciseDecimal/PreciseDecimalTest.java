@@ -300,7 +300,7 @@ public final class PreciseDecimalTest {
         );
         assertEquals(
             PreciseDecimal.from("286.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999992").round().value,
-            PreciseDecimal.from(286).value
+            PreciseDecimal.from(287).value
         );
         assertEquals(
             PreciseDecimal.from("-779.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000031").round().value,
