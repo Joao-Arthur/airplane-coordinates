@@ -22,11 +22,11 @@ public final class Rotate {
     
         switch(point.planeType) {
             case CARTESIAN:
-                return PlanePoint.fromCartesian(unoffsetedPoint);
+                return PlanePoint.fromCartesian(unoffsetedPoint.round());
             case POLAR:
                 final var unoffsetedAsPolar = PlaneConversion.cartesianToPolar(unoffsetedPoint);
     
-                return PlanePoint.fromPolar(unoffsetedAsPolar);
+                return PlanePoint.fromPolar(unoffsetedAsPolar.round());
             default:
                 throw new RuntimeException("planeType is required"); 
         }

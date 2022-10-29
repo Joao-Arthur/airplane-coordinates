@@ -175,7 +175,7 @@ public final class TranslateTest {
     @Test
     @Disabled
     public final void backAndForthPolarSlow() {
-        for(int r = 1; r <= 10; r++) {    
+        for (int r = 1; r <= 10; r++) {    
             for (int a = 0; a < 360; a++) {
                 if (r == 1 && a == 90) continue;
                 for (float factorX = -10f; factorX <= 10f; factorX += 1f) {
@@ -209,7 +209,7 @@ public final class TranslateTest {
 
     @Test
     public final void backAndForthPolar() {
-        for(int r = 1; r <= 10; r += 2) {    
+        for (int r = 1; r <= 10; r += 2) {    
             for (int a = 0; a < 360; a += 10) {
                 if (a == 90) continue;
                 if (a == 270) continue;
