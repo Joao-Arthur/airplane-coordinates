@@ -1,4 +1,4 @@
-package com.AirplaneCoordinates.web;
+package com.AirplaneCoordinates.Web;
 
 public final class ArithmeticController {
 
