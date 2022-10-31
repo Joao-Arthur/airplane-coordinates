@@ -1,5 +1,6 @@
 package com.AirplaneCoordinates.Core.Plane.Polar;
 
+import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
@@ -47,6 +48,20 @@ public final class PolarPoint {
             r,
             a
         );
+    }
+
+    public final CartesianPoint toCartesian() {
+        final var radianValue = Trigonometry.degToRad(Trigonometry.normalizeAngle(this.a));
+        final var x = PreciseDecimalOperations.mul(
+            this.r,
+            radianValue.cos()
+        );
+        final var y = PreciseDecimalOperations.mul(
+            this.r,
+            radianValue.sin()
+        );
+
+        return CartesianPoint.from(x, y);
     }
 
     public final PolarPoint rotate(final PreciseDecimal angle) {

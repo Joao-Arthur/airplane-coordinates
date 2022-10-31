@@ -2,7 +2,6 @@ package com.AirplaneCoordinates.Features;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianOperations;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
-import com.AirplaneCoordinates.Core.Plane.Conversion.PlaneConversion;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
 public final class Translate {
@@ -17,12 +16,10 @@ public final class Translate {
                 );
             case POLAR:
                 return PlanePoint.fromPolar(
-                    PlaneConversion.cartesianToPolar(
-                        CartesianOperations.sum(
-                            point.toCartesian(),
-                            factor
-                        )
-                    ).round()
+                    CartesianOperations.sum(
+                        point.toCartesian(),
+                        factor
+                    ).toPolar().round()
                 );
             default:
                 throw new RuntimeException("planeType is required");

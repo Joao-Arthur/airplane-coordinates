@@ -1,7 +1,6 @@
 package com.AirplaneCoordinates.Core.Plane.Generic;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
-import com.AirplaneCoordinates.Core.Plane.Conversion.PlaneConversion;
 import com.AirplaneCoordinates.Core.Plane.Polar.PolarPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
@@ -70,9 +69,7 @@ public final class PlanePoint {
             case CARTESIAN:
                 return CartesianPoint.from(a, b);
             case POLAR:
-                return PlaneConversion.polarToCartesian(
-                    PolarPoint.from(a, b)
-                );
+                return PolarPoint.from(a, b).toCartesian();
             default:
                 throw new RuntimeException("planeType is required");
         }
@@ -81,9 +78,7 @@ public final class PlanePoint {
     public final PolarPoint toPolar() {
         switch (this.planeType) {
             case CARTESIAN:
-                return PlaneConversion.cartesianToPolar(
-                    CartesianPoint.from(a, b)
-                );
+                return CartesianPoint.from(a, b).toPolar();
             case POLAR:
                 return PolarPoint.from(a, b);
             default:
