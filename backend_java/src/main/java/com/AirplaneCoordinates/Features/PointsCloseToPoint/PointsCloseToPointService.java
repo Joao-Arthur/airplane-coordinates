@@ -10,16 +10,19 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 import com.AirplaneCoordinates.Features.PlanePointWithId;
 
 public final class PointsCloseToPointService {
-    public final List<PointCloseToPointDTO> execute(
+    public static final List<PointCloseToPointDTO> execute(
         final List<PlanePointWithId> points,
         final PreciseDecimal maxDistance
     ) {
         return points
             .stream()
             .map(point ->
-                new PointCloseToPointDTO(
+                PointCloseToPointDTO.from(
                     point.id,
-                    CartesianOperations.distance(point.getPoint().toCartesian(),CartesianPoint.from(0, 0))
+                    CartesianOperations.distance(
+                        point.getPoint().toCartesian(),
+                        CartesianPoint.from(0, 0)
+                    )
                 )
             )
             .filter(point ->

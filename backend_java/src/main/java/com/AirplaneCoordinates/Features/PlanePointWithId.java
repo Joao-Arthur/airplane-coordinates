@@ -11,7 +11,7 @@ public class PlanePointWithId {
     public final PreciseDecimal b;
     public final String value;
 
-    public PlanePointWithId(
+    private PlanePointWithId(
         final String id,
         final Plane planeType,
         final PreciseDecimal a,
@@ -30,5 +30,33 @@ public class PlanePointWithId {
             this.a,
             this.b
         );
-    } 
+    }
+    
+    public static final PlanePointWithId from(
+        final String id,
+        final Plane planeType,
+        final PreciseDecimal a,
+        final PreciseDecimal b
+    ) {
+        return new PlanePointWithId(
+            id,
+            planeType,
+            a,
+            b
+        );
+    }
+
+    public static final PlanePointWithId from(
+        final String id,
+        final Plane planeType,
+        final int a,
+        final int b
+    ) {
+        return new PlanePointWithId(
+            id,
+            planeType,
+            PreciseDecimal.from(a),
+            PreciseDecimal.from(b)
+        );
+    }
 }
