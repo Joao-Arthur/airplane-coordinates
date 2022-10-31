@@ -7,7 +7,7 @@ public final class CartesianPoint {
     public final PreciseDecimal y;
     public final String value;
 
-    public CartesianPoint(
+    private CartesianPoint(
         final PreciseDecimal x,
         final PreciseDecimal y
     ) {
@@ -27,6 +27,13 @@ public final class CartesianPoint {
         return new CartesianPoint(
             PreciseDecimal.from(x),
             PreciseDecimal.from(y)
+        );
+    }
+
+    public static final CartesianPoint from(final PreciseDecimal x, final PreciseDecimal y) {
+        return new CartesianPoint(
+            x,
+            y
         );
     }
 

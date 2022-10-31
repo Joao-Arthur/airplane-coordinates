@@ -17,7 +17,7 @@ public final class PlaneConversion {
             )
         );
 
-        return new PolarPoint(r, a);
+        return PolarPoint.from(r, a);
     }
 
     public static final CartesianPoint polarToCartesian(final PolarPoint point) {
@@ -31,6 +31,6 @@ public final class PlaneConversion {
             radianValue.sin()
         );
 
-        return new CartesianPoint(x, y);
+        return CartesianPoint.from(x, y);
     }
 }

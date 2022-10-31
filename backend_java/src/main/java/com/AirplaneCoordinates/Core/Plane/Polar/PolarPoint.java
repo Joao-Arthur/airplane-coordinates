@@ -9,7 +9,7 @@ public final class PolarPoint {
     public final PreciseDecimal a;
     public final String value;
 
-    public PolarPoint(
+    private PolarPoint(
         final PreciseDecimal r,
         final PreciseDecimal a
     ) {
@@ -36,6 +36,13 @@ public final class PolarPoint {
         return new PolarPoint(
             PreciseDecimal.from(r),
             PreciseDecimal.from(a)
+        );
+    }
+
+    public static final PolarPoint from(final PreciseDecimal r, final PreciseDecimal a) {
+        return new PolarPoint(
+            r,
+            a
         );
     }
 

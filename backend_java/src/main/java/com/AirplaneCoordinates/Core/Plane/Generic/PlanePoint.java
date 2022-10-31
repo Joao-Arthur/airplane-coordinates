@@ -38,6 +38,14 @@ public final class PlanePoint {
         );
     }
 
+    public static final PlanePoint from(final Plane plane, final PreciseDecimal a, final PreciseDecimal b) {
+        return new PlanePoint(
+            plane,
+            a,
+            b
+        );
+    }
+
     public static final PlanePoint from(final Plane plane, final int a, final int b) {
         return new PlanePoint(
             plane,
@@ -57,10 +65,10 @@ public final class PlanePoint {
     public final CartesianPoint toCartesian() {
         switch (this.planeType) {
             case CARTESIAN:
-                return new CartesianPoint(a, b);
+                return CartesianPoint.from(a, b);
             case POLAR:
                 return PlaneConversion.polarToCartesian(
-                    new PolarPoint(a, b)
+                    PolarPoint.from(a, b)
                 );
             default:
                 throw new RuntimeException("planeType is required");
@@ -71,10 +79,10 @@ public final class PlanePoint {
         switch (this.planeType) {
             case CARTESIAN:
                 return PlaneConversion.cartesianToPolar(
-                    new CartesianPoint(a, b)
+                    CartesianPoint.from(a, b)
                 );
             case POLAR:
-                return new PolarPoint(a, b);
+                return PolarPoint.from(a, b);
             default:
                 throw new RuntimeException("planeType is required");
         }
