@@ -16,6 +16,11 @@ public final class CartesianPoint {
         this.value = "(" + x.value + ", " + y.value + ")";
     }
 
+    @Override
+    public final String toString() {
+        return "(" + x.value + ", " + y.value + ")";
+    }
+
     public static final CartesianPoint from(final int x, final int y) {
         return new CartesianPoint(
             PreciseDecimal.from(x),

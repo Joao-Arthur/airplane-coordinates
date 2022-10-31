@@ -12,6 +12,11 @@ public final class PreciseDecimal {
     }
 
     @Override
+    public final String toString() {
+        return value;
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (object == this)
             return true;

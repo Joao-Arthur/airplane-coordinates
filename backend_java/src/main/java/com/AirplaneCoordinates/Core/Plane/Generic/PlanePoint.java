@@ -22,6 +22,11 @@ public final class PlanePoint {
         this.value = planeType + ": (" + a.value + ", " + b.value + ")";
     }
 
+    @Override
+    public final String toString() {
+        return planeType + ": (" + a.value + ", " + b.value + ")";
+    }
+
     public static final PlanePoint fromCartesian(final CartesianPoint point) {
         return new PlanePoint(
             Plane.CARTESIAN,

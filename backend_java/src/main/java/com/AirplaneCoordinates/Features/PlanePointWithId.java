@@ -24,6 +24,11 @@ public class PlanePointWithId {
         this.value = "#" + id + " | " + planeType + ": (" + a.value + ", " + b.value + ")";
     }
 
+    @Override
+    public final String toString() {
+        return "#" + id + " | " + planeType + ": (" + a.value + ", " + b.value + ")";
+    }
+
     public final PlanePoint getPoint() {
         return PlanePoint.from(
             this.planeType,

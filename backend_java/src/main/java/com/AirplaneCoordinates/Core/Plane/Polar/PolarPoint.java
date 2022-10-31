@@ -18,6 +18,11 @@ public final class PolarPoint {
         this.value = "(" + r.value + ", " + a.value + ")";
     }
 
+    @Override
+    public final String toString() {
+        return "(" + r.value + ", " + a.value + ")";
+    }
+
     public static final PolarPoint from(final int r, final int a) {
         return new PolarPoint(
             PreciseDecimal.from(r),

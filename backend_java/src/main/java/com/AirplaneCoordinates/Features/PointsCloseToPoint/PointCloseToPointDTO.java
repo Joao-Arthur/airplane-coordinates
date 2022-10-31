@@ -14,6 +14,11 @@ public class PointCloseToPointDTO {
         this.distanceFromPoint = distanceFromPoint;
     }
 
+    @Override
+    public final String toString() {
+        return "{ id: " + id + " , distanceFromPoint " + distanceFromPoint + " }";
+    }
+
     public static final PointCloseToPointDTO from(
         final String id,
         final PreciseDecimal distanceFromPoint
