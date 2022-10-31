@@ -2,7 +2,7 @@ package com.AirplaneCoordinates.Features.PointsCloseToPoint;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public class PointCloseToPointDTO {
+public final class PointCloseToPointDTO {
     public final String id;
     public final PreciseDecimal distanceFromPoint;
 
@@ -16,7 +16,7 @@ public class PointCloseToPointDTO {
 
     @Override
     public final String toString() {
-        return "{ id: " + id + " , distanceFromPoint: " + distanceFromPoint + " }";
+        return "{ id: " + id + ", distanceFromPoint: " + distanceFromPoint + " }";
     }
 
     public static final PointCloseToPointDTO from(
@@ -32,6 +32,16 @@ public class PointCloseToPointDTO {
     public static final PointCloseToPointDTO from(
         final String id,
         final String distanceFromPoint
+    ) {
+        return new PointCloseToPointDTO(
+            id,
+            PreciseDecimal.from(distanceFromPoint)
+        );
+    }
+
+    public static final PointCloseToPointDTO from(
+        final String id,
+        final int distanceFromPoint
     ) {
         return new PointCloseToPointDTO(
             id,

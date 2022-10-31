@@ -4,7 +4,7 @@ import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public class PlanePointWithId {
+public final class PlanePointWithId {
     public final String id;
     public final Plane planeType;
     public final PreciseDecimal a;

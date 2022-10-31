@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import com.AirplaneCoordinates.Core.Plane.Polar.PolarPoint;
 
-public class CartesianPointTest {
+public final class CartesianPointTest {
     @ParameterizedTest
     @CsvSource({
         "0, 0, 0, 0",
