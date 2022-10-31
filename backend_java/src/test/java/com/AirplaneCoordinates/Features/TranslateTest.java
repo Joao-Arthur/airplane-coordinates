@@ -20,19 +20,19 @@ public final class TranslateTest {
             Translate.execute(
                 PlanePoint.from(Plane.POLAR, 1, 0),
                 CartesianPoint.from(-2, 0)
-            ).value,
-            PlanePoint.from(Plane.POLAR, 1, 180).value
+            ).toString(),
+            PlanePoint.from(Plane.POLAR, 1, 180).toString()
         );
         assertEquals(
             Translate.execute(
                 PlanePoint.from(Plane.POLAR, 1, 45),
                 CartesianPoint.from(1, 1)
-            ).value,
+            ).toString(),
             PlanePoint.from(
                 Plane.POLAR,
                 "2.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641572",
                 "45"
-            ).value
+            ).toString()
         );
     }
 
@@ -42,8 +42,8 @@ public final class TranslateTest {
             Translate.execute(
                 PlanePoint.from(Plane.CARTESIAN, 5, -1),
                 CartesianPoint.from(-2, 2)
-            ).value,
-            PlanePoint.from(Plane.CARTESIAN, 3, 1).value
+            ).toString(),
+            PlanePoint.from(Plane.CARTESIAN, 3, 1).toString()
         );
     }
 
@@ -102,7 +102,7 @@ public final class TranslateTest {
         final var factor = CartesianPoint.from(factorX, factorY);
         final var movedPoint = Translate.execute(pointBefore, factor);
         final var pointAfter = Translate.execute(movedPoint, factor.opposite());
-        assertEquals(pointAfter.value, pointBefore.value);
+        assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
     @Test
@@ -130,8 +130,8 @@ public final class TranslateTest {
                             factor.opposite()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }
@@ -163,8 +163,8 @@ public final class TranslateTest {
                             factor.opposite()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }
@@ -198,8 +198,8 @@ public final class TranslateTest {
                             factor.opposite()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }
@@ -233,8 +233,8 @@ public final class TranslateTest {
                             factor.opposite()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }

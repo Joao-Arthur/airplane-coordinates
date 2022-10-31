@@ -7,7 +7,6 @@ import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
 public final class PolarPoint {
     public final PreciseDecimal r;
     public final PreciseDecimal a;
-    public final String value;
 
     private PolarPoint(
         final PreciseDecimal r,
@@ -15,7 +14,6 @@ public final class PolarPoint {
     ) {
         this.r = r;
         this.a = a;
-        this.value = "(" + r.value + ", " + a.value + ")";
     }
 
     @Override

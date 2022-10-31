@@ -28,47 +28,47 @@ public final class PlaneConversionTest {
         assertEquals(
             PlaneConversion.polarToCartesian(
                 PolarPoint.from(r, a)
-            ).value,
-            CartesianPoint.from(x, y).value
+            ).toString(),
+            CartesianPoint.from(x, y).toString()
         );
     }
 
     @Test
     public final void polarToCartesian() {
         assertEquals(
-            PlaneConversion.polarToCartesian(PolarPoint.from(1, 45)).value,
+            PlaneConversion.polarToCartesian(PolarPoint.from(1, 45)).toString(),
             CartesianPoint.from(
                 "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207862",
                 "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207865"
-            ).value
+            ).toString()
         );
         assertEquals(
-            PlaneConversion.polarToCartesian(PolarPoint.from(1, 135)).value,
+            PlaneConversion.polarToCartesian(PolarPoint.from(1, 135)).toString(),
             CartesianPoint.from(
                 "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864",
                 "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864"
-            ).value
+            ).toString()
         );
         assertEquals(
-            PlaneConversion.polarToCartesian(PolarPoint.from(1, 225)).value,
+            PlaneConversion.polarToCartesian(PolarPoint.from(1, 225)).toString(),
             CartesianPoint.from(
                 "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864",
                 "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864"
-            ).value
+            ).toString()
         );
         assertEquals(
-            PlaneConversion.polarToCartesian(PolarPoint.from(1, 315)).value,
+            PlaneConversion.polarToCartesian(PolarPoint.from(1, 315)).toString(),
             CartesianPoint.from(
                 "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864",
                 "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207863"
-            ).value
+            ).toString()
         );
         assertEquals(
-            PlaneConversion.polarToCartesian(PolarPoint.from(1, 405)).value,
+            PlaneConversion.polarToCartesian(PolarPoint.from(1, 405)).toString(),
             CartesianPoint.from(
                 "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207862",
                 "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207865"
-            ).value
+            ).toString()
         );
     }
 
@@ -90,8 +90,8 @@ public final class PlaneConversionTest {
         assertEquals(
             PlaneConversion.cartesianToPolar(
                 CartesianPoint.from(x, y)
-            ).value,
-            PolarPoint.from(r, a).value
+            ).toString(),
+            PolarPoint.from(r, a).toString()
         );
     }
 
@@ -103,8 +103,8 @@ public final class PlaneConversionTest {
                     "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207862",
                     "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207865"
                 )
-            ).value,
-            PolarPoint.from(1, 45).value
+            ).toString(),
+            PolarPoint.from(1, 45).toString()
         );
         assertEquals(
             PlaneConversion.cartesianToPolar(
@@ -112,8 +112,8 @@ public final class PlaneConversionTest {
                     "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864",
                     "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864"
                 )
-            ).value,
-           PolarPoint.from(1, 135).value
+            ).toString(),
+           PolarPoint.from(1, 135).toString()
         );
         assertEquals(
             PlaneConversion.cartesianToPolar(
@@ -121,8 +121,8 @@ public final class PlaneConversionTest {
                     "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864",
                     "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864"
                 )
-            ).value,
-            PolarPoint.from(1, 225).value
+            ).toString(),
+            PolarPoint.from(1, 225).toString()
         );
         assertEquals(
             PlaneConversion.cartesianToPolar(
@@ -130,8 +130,8 @@ public final class PlaneConversionTest {
                     "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207864",
                     "-0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207863"
                 )
-            ).value,
-            PolarPoint.from(1, 315).value
+            ).toString(),
+            PolarPoint.from(1, 315).toString()
         );
         assertEquals(
             PlaneConversion.cartesianToPolar(
@@ -139,8 +139,8 @@ public final class PlaneConversionTest {
                     "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207862",
                     "0.7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207865"
                 )
-            ).value,
-            PolarPoint.from(1, 45).value
+            ).toString(),
+            PolarPoint.from(1, 45).toString()
         );
     }
 }

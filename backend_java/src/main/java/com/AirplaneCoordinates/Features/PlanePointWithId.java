@@ -9,7 +9,6 @@ public class PlanePointWithId {
     public final Plane planeType;
     public final PreciseDecimal a;
     public final PreciseDecimal b;
-    public final String value;
 
     private PlanePointWithId(
         final String id,
@@ -21,12 +20,16 @@ public class PlanePointWithId {
         this.planeType = planeType;
         this.a = a;
         this.b = b;
-        this.value = "#" + id + " | " + planeType + ": (" + a.value + ", " + b.value + ")";
     }
 
     @Override
     public final String toString() {
-        return "#" + id + " | " + planeType + ": (" + a.value + ", " + b.value + ")";
+        return "{ " +
+            "id: " + id + ", " +
+            "planeType: " + planeType + ", " +
+            "a: " + a.value + ", " +
+            "b: " + b.value +
+        " }";
     }
 
     public final PlanePoint getPoint() {

@@ -20,40 +20,40 @@ public final class ScalonateTest {
             Scalonate.execute(
                 PlanePoint.from(Plane.POLAR, 1, 0),
                 CartesianPoint.from(-2, 0)
-            ).value,
-            PlanePoint.from(Plane.POLAR, 2, 180).value
+            ).toString(),
+            PlanePoint.from(Plane.POLAR, 2, 180).toString()
         );
         assertEquals(
             Scalonate.execute(
                 PlanePoint.from(Plane.POLAR, 1, 45),
                 CartesianPoint.from(2, 2)
-            ).value,
-            PlanePoint.from(Plane.POLAR, 2, 45).value
+            ).toString(),
+            PlanePoint.from(Plane.POLAR, 2, 45).toString()
         );
         assertEquals(
             Scalonate.execute(
                 PlanePoint.from(Plane.POLAR, 100, 60),
                 CartesianPoint.from("0.5", "0.5")
-            ).value,
-            PlanePoint.from(Plane.POLAR, 50, 60).value
+            ).toString(),
+            PlanePoint.from(Plane.POLAR, 50, 60).toString()
         );
         assertEquals(
             Scalonate.execute(
                 PlanePoint.from(Plane.POLAR, 100, 60),
                 CartesianPoint.from("1", "0.5")
-            ).value,
+            ).toString(),
             PlanePoint.from(
                 Plane.POLAR,
                 "66.14378277661476476254039384098151064275647957706125450920836148002672058075709069400982216186359028",
                 "40.8933946491309056054825252598699177650239247701694879239436224278406825108096473833900705055539013"
-            ).value
+            ).toString()
         );
         assertEquals(
             Scalonate.execute(
                 PlanePoint.from(Plane.POLAR, 6, 47),
                 CartesianPoint.from(0, 0)
-            ).value,
-            PlanePoint.from(Plane.POLAR, 0, 0).value
+            ).toString(),
+            PlanePoint.from(Plane.POLAR, 0, 0).toString()
         );
     }
 
@@ -63,22 +63,22 @@ public final class ScalonateTest {
             Scalonate.execute(
                 PlanePoint.from(Plane.CARTESIAN, 5, -1),
                 CartesianPoint.from(-2, 2)
-            ).value,
-            PlanePoint.from(Plane.CARTESIAN, -10, -2).value
+            ).toString(),
+            PlanePoint.from(Plane.CARTESIAN, -10, -2).toString()
         );
         assertEquals(
             Scalonate.execute(
                 PlanePoint.from(Plane.CARTESIAN, 479001600, -479001600),
                 CartesianPoint.from("-0.5", "0.5")
-            ).value,
-            PlanePoint.from(Plane.CARTESIAN, "-239500800", "-239500800").value
+            ).toString(),
+            PlanePoint.from(Plane.CARTESIAN, "-239500800", "-239500800").toString()
         );
         assertEquals(
             Scalonate.execute(
                 PlanePoint.from(Plane.CARTESIAN, 75, -7),
                 CartesianPoint.from(0, 0)
-            ).value,
-            PlanePoint.from(Plane.CARTESIAN, 0, 0).value
+            ).toString(),
+            PlanePoint.from(Plane.CARTESIAN, 0, 0).toString()
         );
     }
 
@@ -134,7 +134,7 @@ public final class ScalonateTest {
         final var factor = CartesianPoint.from(factorX, factorY);
         final var movedPoint = Scalonate.execute(pointBefore, factor);
         final var pointAfter = Scalonate.execute(movedPoint, factor.reverse());
-        assertEquals(pointAfter.value, pointBefore.value);
+        assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
     @Test
@@ -166,8 +166,8 @@ public final class ScalonateTest {
                             factor.reverse()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }
@@ -203,8 +203,8 @@ public final class ScalonateTest {
                             factor.reverse()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }
@@ -233,8 +233,8 @@ public final class ScalonateTest {
                             factor.reverse()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }
@@ -268,8 +268,8 @@ public final class ScalonateTest {
                             factor.reverse()
                         );
                         assertEquals(
-                            pointAfter.value,
-                            pointBefore.value
+                            pointAfter.toString(),
+                            pointBefore.toString()
                         );
                     }
                 }

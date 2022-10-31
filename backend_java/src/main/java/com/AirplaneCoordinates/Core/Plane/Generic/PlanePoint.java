@@ -9,7 +9,6 @@ public final class PlanePoint {
     public final Plane planeType;
     public final PreciseDecimal a;
     public final PreciseDecimal b;
-    public final String value;
 
     private PlanePoint(
         final Plane planeType,
@@ -19,12 +18,11 @@ public final class PlanePoint {
         this.planeType = planeType;
         this.a = a;
         this.b = b;
-        this.value = planeType + ": (" + a.value + ", " + b.value + ")";
     }
 
     @Override
     public final String toString() {
-        return planeType + ": (" + a.value + ", " + b.value + ")";
+        return "(" + planeType + ", " + a.value + ", " + b.value + ")";
     }
 
     public static final PlanePoint fromCartesian(final CartesianPoint point) {
