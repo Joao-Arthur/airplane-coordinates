@@ -8,7 +8,7 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
 public final class RadianTest {
     @Test
-    public final void radToDeg() {
+    public final void toDeg() {
         assertEquals(
             Radian.from(
                 PreciseDecimal.from("0.7853981633974483096156608458198757210492923498437764552437361480769541015715522496570087063355292672")
