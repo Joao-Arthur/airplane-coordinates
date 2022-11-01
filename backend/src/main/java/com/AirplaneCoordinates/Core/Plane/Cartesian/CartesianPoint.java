@@ -3,7 +3,7 @@ package com.AirplaneCoordinates.Core.Plane.Cartesian;
 import com.AirplaneCoordinates.Core.Plane.Polar.PolarPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
-import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
+import com.AirplaneCoordinates.Core.Trigonometry.Radian;
 
 public final class CartesianPoint {
     public final PreciseDecimal x;
@@ -51,11 +51,10 @@ public final class CartesianPoint {
             this.x.square(),
             this.y.square()
         ).sqrt();
-        final var a = Trigonometry.normalizeAngle(
-            Trigonometry.radToDeg(
-                PreciseDecimalOperations.atan(this.y, this.x)
-            )
-        );
+        final var a = Radian
+            .from(PreciseDecimalOperations.atan(this.y, this.x))
+            .toDeg()
+            .normalized();
 
         return PolarPoint.from(r, a);
     }

@@ -4,7 +4,7 @@ import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianOperations;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
+import com.AirplaneCoordinates.Core.Trigonometry.Degree;
 
 public final class Rotate {
     public static PlanePoint execute(
@@ -12,7 +12,7 @@ public final class Rotate {
         final CartesianPoint centerOfRotation,
         final PreciseDecimal angle
     ) {
-        final var angleValue = Trigonometry.normalizeAngle(angle);
+        final var angleValue = Degree.from(angle).normalized();
         final var offsetPoint = CartesianOperations.sub(point.toCartesian(), centerOfRotation);
         final var pointAsPolar = offsetPoint.toPolar();
         final var rotatedPoint = pointAsPolar.rotate(angleValue);

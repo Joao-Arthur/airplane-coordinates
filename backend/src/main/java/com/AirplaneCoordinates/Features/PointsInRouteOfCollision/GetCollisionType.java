@@ -1,11 +1,9 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
-import com.AirplaneCoordinates.Core.Trigonometry.Trigonometry;
+import com.AirplaneCoordinates.Core.Trigonometry.Degree;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class GetCollisionType {
-
     private final PlanePointWithVector pointA;
     private final PlanePointWithVector pointB;
     
@@ -24,16 +22,16 @@ public final class GetCollisionType {
         )
             return CollisionType.SAME_POSITION;
         if (
-            Trigonometry.isInfiniteTangentAngle(Trigonometry.normalizeAngle(this.pointA.direction)) &&
-            Trigonometry.isInfiniteTangentAngle(Trigonometry.normalizeAngle(this.pointB.direction))
+            Degree.from(this.pointA.direction).isInfiniteTangent() &&
+            Degree.from(this.pointB.direction).isInfiniteTangent()
         ) {
             if (this.pointA.point.toCartesian().x.equals(this.pointB.point.toCartesian().x))
                 return CollisionType.INFINITE_TANGENT_SAME_X;
             return CollisionType.PARALLEL_LINES;
         }
         if (
-            Trigonometry.isInfiniteTangentAngle(Trigonometry.normalizeAngle(this.pointA.direction)) ||
-            Trigonometry.isInfiniteTangentAngle(Trigonometry.normalizeAngle(this.pointB.direction))
+            Degree.from(this.pointA.direction).isInfiniteTangent() ||
+            Degree.from(this.pointB.direction).isInfiniteTangent()
         )
             return CollisionType.INFINITE_TANGENT_IN_ONE_AIRPLANE;
     //    final var fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
@@ -44,5 +42,4 @@ public final class GetCollisionType {
     //        return CollisionType.PARALLEL_LINES;
         return CollisionType.DIFFERENT_FUNCTIONS;
     }
-    
 }

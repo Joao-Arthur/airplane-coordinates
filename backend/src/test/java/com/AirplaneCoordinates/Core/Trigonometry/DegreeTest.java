@@ -100,7 +100,7 @@ public final class DegreeTest {
         final String normalizedAngle
     ) {
         assertEquals(
-            Degree.from(PreciseDecimal.from(angle)).normalize().toString(),
+            Degree.from(PreciseDecimal.from(angle)).normalized().toString(),
             PreciseDecimal.from(normalizedAngle).toString()
         );
     }

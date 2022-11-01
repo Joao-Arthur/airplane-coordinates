@@ -19,7 +19,7 @@ public final class Degree {
         return new Degree(value);
     }
     
-    public final PreciseDecimal normalize() {
+    public final PreciseDecimal normalized() {
         final var fullCircle = PreciseDecimal.from(360);
 
         final var val1 = PreciseDecimalOperations.rem(this.value, fullCircle);
@@ -31,8 +31,8 @@ public final class Degree {
 
     public final boolean isInfiniteTangent() {
         return (
-            PreciseDecimal.from(90).equals(this.normalize()) ||
-            PreciseDecimal.from(270).equals(this.normalize())
+            PreciseDecimal.from(90).equals(this.normalized()) ||
+            PreciseDecimal.from(270).equals(this.normalized())
         );
     }
 
@@ -40,7 +40,7 @@ public final class Degree {
         final var halfCircle = PreciseDecimal.from(180);
         final var pi = PreciseDecimal.pi();
 
-        final var val1 = PreciseDecimalOperations.mul(this.normalize(), pi);
+        final var val1 = PreciseDecimalOperations.mul(this.normalized(), pi);
         final var val2 = PreciseDecimalOperations.div(val1, halfCircle);
 
         return Radian.from(val2);
