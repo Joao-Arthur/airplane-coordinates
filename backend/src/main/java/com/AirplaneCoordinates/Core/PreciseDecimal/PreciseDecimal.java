@@ -35,7 +35,42 @@ public final class PreciseDecimal {
     }
 
     public static final PreciseDecimal pi() {
-        return PreciseDecimal.from(BigDecimalMath.pi(PreciseDecimalConstants.MATH_CONTEXT).toString());
+        return PreciseDecimal.from(
+            BigDecimalMath.pi(PreciseDecimalConstants.MATH_CONTEXT).toString()
+        );
+    }
+
+    public static final PreciseDecimal halfPi() {
+        final var bigDecimal2 = new BigDecimal(
+            2,
+            PreciseDecimalConstants.MATH_CONTEXT
+        );
+
+        return PreciseDecimal.from(
+            BigDecimalMath
+                .pi(PreciseDecimalConstants.MATH_CONTEXT)
+                .divide(bigDecimal2)
+                .toString()
+        );
+    }
+
+    public static final PreciseDecimal threeQuartsPi() {
+        final var bigDecimal2 = new BigDecimal(
+            2,
+            PreciseDecimalConstants.MATH_CONTEXT
+        );
+        final var bigDecimal3 = new BigDecimal(
+            3,
+            PreciseDecimalConstants.MATH_CONTEXT
+        );
+
+        return PreciseDecimal.from(
+            BigDecimalMath
+                .pi(PreciseDecimalConstants.MATH_CONTEXT)
+                .divide(bigDecimal2)
+                .multiply(bigDecimal3)
+                .toString()
+        );
     }
 
     public final PreciseDecimal opposite() {
@@ -94,6 +129,16 @@ public final class PreciseDecimal {
         return PreciseDecimal.from(
             PreciseDecimalHelper.bigDecimalToString(
                 BigDecimalMath.cos(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
+            )
+        );
+    }
+
+    public final PreciseDecimal tan() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return PreciseDecimal.from(
+            PreciseDecimalHelper.bigDecimalToString(
+                BigDecimalMath.tan(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
             )
         );
     }
