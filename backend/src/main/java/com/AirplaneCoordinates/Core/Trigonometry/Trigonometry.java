@@ -33,4 +33,11 @@ public final class Trigonometry {
 
         return val3;
     }
+
+    public static final boolean isInfiniteTangentAngle(final PreciseDecimal deg) {
+        return (
+            PreciseDecimal.from(90).equals(deg) ||
+            PreciseDecimal.from(270).equals(deg)
+        );
+    }
 }

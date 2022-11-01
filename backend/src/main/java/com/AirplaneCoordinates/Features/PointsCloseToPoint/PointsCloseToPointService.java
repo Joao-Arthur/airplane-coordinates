@@ -20,7 +20,7 @@ public final class PointsCloseToPointService {
                 PointCloseToPointDTO.from(
                     point.id,
                     CartesianOperations.distance(
-                        point.getPoint().toCartesian(),
+                        point.point.toCartesian(),
                         CartesianPoint.from(0, 0)
                     )
                 )

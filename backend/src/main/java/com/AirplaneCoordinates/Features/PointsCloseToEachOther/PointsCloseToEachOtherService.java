@@ -31,8 +31,8 @@ public final class PointsCloseToEachOtherService {
                     point.a.id,
                     point.b.id,
                     CartesianOperations.distance(
-                        point.a.getPoint().toCartesian(),
-                        point.b.getPoint().toCartesian()
+                        point.a.point.toCartesian(),
+                        point.b.point.toCartesian()
                     )
                 )
             )

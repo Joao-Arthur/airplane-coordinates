@@ -30,10 +30,6 @@ public final class PlanePointWithId {
         " }";
     }
 
-    public final PlanePoint getPoint() {
-        return this.point;
-    }
-    
     public static final PlanePointWithId from(
         final String id,
         final Plane planeType,
