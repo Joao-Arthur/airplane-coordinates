@@ -16,7 +16,10 @@ public final class PointCloseToPointDTO {
 
     @Override
     public final String toString() {
-        return "{ id: " + id + ", distanceFromPoint: " + distanceFromPoint + " }";
+        return "{ " +
+            "id: " + this.id + ", " +
+            "distanceFromPoint: " + this.distanceFromPoint + 
+        " }";
     }
 
     public static final PointCloseToPointDTO from(

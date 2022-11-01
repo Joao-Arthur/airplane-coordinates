@@ -19,7 +19,7 @@ public final class PolarPoint {
 
     @Override
     public final String toString() {
-        return "(" + r.value + ", " + a.value + ")";
+        return "(" + this.r.value + ", " + this.a.value + ")";
     }
 
     public static final PolarPoint from(final int r, final int a) {
@@ -43,7 +43,10 @@ public final class PolarPoint {
         );
     }
 
-    public static final PolarPoint from(final PreciseDecimal r, final PreciseDecimal a) {
+    public static final PolarPoint from(
+        final PreciseDecimal r,
+        final PreciseDecimal a
+    ) {
         return new PolarPoint(
             r,
             a

@@ -13,7 +13,7 @@ public final class PreciseDecimal {
 
     @Override
     public final String toString() {
-        return value;
+        return this.value;
     }
 
     @Override

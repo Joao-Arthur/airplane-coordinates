@@ -19,7 +19,11 @@ public final class PointCloseToEachOtherDTO {
 
     @Override
     public final String toString() {
-        return "{ a: " + a + ", b: " + b + ", distanceFromPoint: " + distanceFromPoint + " }";
+        return "{ " +
+            "a: " + this.a + ", " +
+            "b: " + this.b + ", " +
+            "distanceFromPoint: " + this.distanceFromPoint +
+        " }";
     }
 
     public static final PointCloseToEachOtherDTO from(

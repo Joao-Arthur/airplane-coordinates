@@ -19,7 +19,7 @@ public final class CartesianPoint {
 
     @Override
     public final String toString() {
-        return "(" + x.value + ", " + y.value + ")";
+        return "(" + this.x.value + ", " + this.y.value + ")";
     }
 
     public static final CartesianPoint from(final int x, final int y) {
@@ -36,7 +36,10 @@ public final class CartesianPoint {
         );
     }
 
-    public static final CartesianPoint from(final PreciseDecimal x, final PreciseDecimal y) {
+    public static final CartesianPoint from(
+        final PreciseDecimal x,
+        final PreciseDecimal y
+    ) {
         return new CartesianPoint(
             x,
             y

@@ -6,9 +6,7 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
 public final class PlanePointWithId {
     public final String id;
-    public final Plane planeType;
-    public final PreciseDecimal a;
-    public final PreciseDecimal b;
+    public final PlanePoint point;
 
     private PlanePointWithId(
         final String id,
@@ -17,27 +15,23 @@ public final class PlanePointWithId {
         final PreciseDecimal b
     ) {
         this.id = id;
-        this.planeType = planeType;
-        this.a = a;
-        this.b = b;
+        this.point = PlanePoint.from(
+            planeType,
+            a,
+            b
+        );
     }
 
     @Override
     public final String toString() {
         return "{ " +
-            "id: " + id + ", " +
-            "planeType: " + planeType + ", " +
-            "a: " + a.value + ", " +
-            "b: " + b.value +
+            "id: " + this.id + ", " +
+            "point: " + this.point.toString() +
         " }";
     }
 
     public final PlanePoint getPoint() {
-        return PlanePoint.from(
-            this.planeType,
-            this.a,
-            this.b
-        );
+        return this.point;
     }
     
     public static final PlanePointWithId from(
