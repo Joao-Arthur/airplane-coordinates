@@ -10,6 +10,11 @@ public final class Degree {
         this.value = value;
     }
 
+    @Override
+    public final String toString() {
+        return this.value.value;
+    }
+
     public static Degree from(final PreciseDecimal value) {
         return new Degree(value);
     }
@@ -24,6 +29,13 @@ public final class Degree {
         return Degree.from(val3);
     }
 
+    public final boolean isInfiniteTangent() {
+        return (
+            PreciseDecimal.from(90).equals(this.value) ||
+            PreciseDecimal.from(270).equals(this.value)
+        );
+    }
+
     public final Radian toRad() {
         final var halfCircle = PreciseDecimal.from(180);
         final var pi = PreciseDecimal.pi();
@@ -32,12 +44,5 @@ public final class Degree {
         final var val2 = PreciseDecimalOperations.div(val1, halfCircle);
 
         return Radian.from(val2);
-    }
-    
-    public final boolean isInfiniteTangent() {
-        return (
-            PreciseDecimal.from(90).equals(this.value) ||
-            PreciseDecimal.from(270).equals(this.value)
-        );
     }
 }

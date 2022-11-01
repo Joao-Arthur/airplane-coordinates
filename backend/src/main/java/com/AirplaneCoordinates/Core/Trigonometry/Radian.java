@@ -10,6 +10,11 @@ public final class Radian {
         this.value = value;
     }
 
+    @Override
+    public final String toString() {
+        return this.value.value;
+    }
+
     public static Radian from(final PreciseDecimal value) {
         return new Radian(value);
     }
