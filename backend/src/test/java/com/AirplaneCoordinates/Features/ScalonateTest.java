@@ -123,6 +123,7 @@ public final class ScalonateTest {
         "POLAR, 7.11, 180, -1, -0.28",
         "POLAR, 3, 270, 1, -0.28"
     })
+    //@Disabled
     public final void scalonateBackAndForth(
         final Plane plane,
         final String pointX,
@@ -176,6 +177,7 @@ public final class ScalonateTest {
     }
 
     @Test
+    //@Disabled
     public final void backAndForthCartesian() {
         final var valuesDouble = new Double[] {
             -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0

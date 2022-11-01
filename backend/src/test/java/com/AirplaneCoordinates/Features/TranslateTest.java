@@ -140,6 +140,7 @@ public final class TranslateTest {
     }
 
     @Test
+    //@Disabled
     public final void backAndForthCartesian() {
         for (float pointX = -1f; pointX <= 1f; pointX += 0.1f) {
             for (float pointY = -1f; pointY <= 1f; pointY += 0.1f) {
@@ -208,6 +209,7 @@ public final class TranslateTest {
     }
 
     @Test
+    //@Disabled
     public final void backAndForthPolar() {
         for (int r = 1; r <= 10; r += 2) {    
             for (int a = 0; a < 360; a += 10) {

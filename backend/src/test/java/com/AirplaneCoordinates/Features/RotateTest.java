@@ -159,6 +159,7 @@ public final class RotateTest {
         "POLAR, 4, 0, 4, 4, 90",
         "POLAR, 4, 90, 4, 4, 90",
     })
+    //@Disabled
     public final void rotateBackAndForth(
         final Plane plane,
         final String pointA,
@@ -197,6 +198,7 @@ public final class RotateTest {
     }
 
     @Test
+    //@Disabled
     public final void rotateBackAndForthCartesian() {
         for (int pointX = 0; pointX < 10; pointX += 2) {
             for (int pointY = 0; pointY < 10; pointY += 2) {
@@ -238,6 +240,7 @@ public final class RotateTest {
     }
 
     @Test
+    //@Disabled
     public final void rotateBackAndForthPolar() {
         for (int pointR = 0; pointR < 10; pointR += 2) {
             for (int pointA = 0; pointA < 10; pointA += 2) {
