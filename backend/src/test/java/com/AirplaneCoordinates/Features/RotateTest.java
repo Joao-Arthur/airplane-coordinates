@@ -3,6 +3,7 @@ package com.AirplaneCoordinates.Features;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -159,7 +160,7 @@ public final class RotateTest {
         "POLAR, 4, 0, 4, 4, 90",
         "POLAR, 4, 90, 4, 4, 90",
     })
-    //@Disabled
+    @Tag("moderate")
     public final void rotateBackAndForth(
         final Plane plane,
         final String pointA,
@@ -177,7 +178,7 @@ public final class RotateTest {
     }
 
     @Test
-    @Disabled
+    @Tag("slow")
     public final void rotateBackAndForthCartesianSlow() {
         for (int pointX = 0; pointX < 10; pointX++) {
             for (int pointY = 0; pointY < 10; pointY ++) {
@@ -198,7 +199,7 @@ public final class RotateTest {
     }
 
     @Test
-    //@Disabled
+    @Tag("moderate")
     public final void rotateBackAndForthCartesian() {
         for (int pointX = 0; pointX < 10; pointX += 2) {
             for (int pointY = 0; pointY < 10; pointY += 2) {
@@ -219,7 +220,7 @@ public final class RotateTest {
     }
 
     @Test
-    @Disabled
+    @Tag("slow")
     public final void rotateBackAndForthPolarSlow() {
         for (int pointR = 0; pointR < 10; pointR++) {
             for (int pointA = 0; pointA < 10; pointA ++) {
@@ -240,7 +241,7 @@ public final class RotateTest {
     }
 
     @Test
-    //@Disabled
+    @Tag("moderate")
     public final void rotateBackAndForthPolar() {
         for (int pointR = 0; pointR < 10; pointR += 2) {
             for (int pointA = 0; pointA < 10; pointA += 2) {

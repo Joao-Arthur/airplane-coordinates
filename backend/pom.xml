@@ -34,6 +34,27 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>slow</id>
+            <properties>
+                <groups>slow</groups>
+            </properties>
+        </profile>
+        <profile>
+            <id>moderate</id>
+            <properties>
+                <groups>moderate</groups>
+            </properties>
+        </profile>
+        <profile>
+            <id>fast</id>
+            <properties>
+                <excludedGroups>slow | moderate</excludedGroups>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>

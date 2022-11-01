@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -123,7 +124,7 @@ public final class ScalonateTest {
         "POLAR, 7.11, 180, -1, -0.28",
         "POLAR, 3, 270, 1, -0.28"
     })
-    //@Disabled
+    @Tag("moderate")
     public final void scalonateBackAndForth(
         final Plane plane,
         final String pointX,
@@ -139,7 +140,7 @@ public final class ScalonateTest {
     }
 
     @Test
-    @Disabled
+    @Tag("slow")
     public final void backAndForthCartesianSlow() {
         final var valuesDouble = new Double[] {
             -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0
@@ -177,7 +178,7 @@ public final class ScalonateTest {
     }
 
     @Test
-    //@Disabled
+    @Tag("moderate")
     public final void backAndForthCartesian() {
         final var valuesDouble = new Double[] {
             -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0

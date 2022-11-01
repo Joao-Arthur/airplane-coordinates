@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -106,7 +107,7 @@ public final class TranslateTest {
     }
 
     @Test
-    @Disabled
+    @Tag("slow")
     public final void backAndForthCartesianSlow() {
         for (float pointX = -10f; pointX <= 10f; pointX += 0.1f) {
             for (float pointY = -10f; pointY <= 10f; pointY += 0.1f) {
@@ -140,7 +141,7 @@ public final class TranslateTest {
     }
 
     @Test
-    //@Disabled
+    @Tag("moderate")
     public final void backAndForthCartesian() {
         for (float pointX = -1f; pointX <= 1f; pointX += 0.1f) {
             for (float pointY = -1f; pointY <= 1f; pointY += 0.1f) {
@@ -174,7 +175,7 @@ public final class TranslateTest {
     }
 
     @Test
-    @Disabled
+    @Tag("slow")
     public final void backAndForthPolarSlow() {
         for (int r = 1; r <= 10; r++) {    
             for (int a = 0; a < 360; a++) {
@@ -209,7 +210,7 @@ public final class TranslateTest {
     }
 
     @Test
-    //@Disabled
+    @Tag("moderate")
     public final void backAndForthPolar() {
         for (int r = 1; r <= 10; r += 2) {    
             for (int a = 0; a < 360; a += 10) {
