@@ -75,4 +75,25 @@ public final class LinearFunction {
 
         return val2;
     }
+
+    public static final LinearFunction intersect(
+        final LinearFunction fx,
+        final LinearFunction gx
+    ) {
+        return LinearFunction.from(
+            PreciseDecimalOperations.sub(fx.a, gx.a),
+            PreciseDecimalOperations.sub(fx.b, gx.b)
+        );
+    }
+
+    public static final CartesianPoint intersectionPoint(
+        final LinearFunction fx,
+        final LinearFunction gx
+    ) {
+        final var intersectedFn = LinearFunction.intersect(fx, gx );
+        final var root = intersectedFn.root();
+        final var fy = fx.execute(root);
+
+        return CartesianPoint.from(root, fy);
+    }
 }
