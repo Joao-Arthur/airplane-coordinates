@@ -19,7 +19,9 @@ public final class LinearFunction {
 
     @Override
     public final String toString() {
-        return "y = " + this.a.format() + "x " + this.b.format();
+        return "y = " +
+            this.a.format() + "x " +
+            (this.b.equals(PreciseDecimal.from(0)) ? "+0" : this.b.format());
     }
 
     public static final LinearFunction from(

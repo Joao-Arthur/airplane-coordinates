@@ -17,6 +17,21 @@ public final class LinearFunctionTest {
             ).toString(),
             "y = -5x +7.26"
         );
+        assertEquals(
+            LinearFunction.from(
+                PreciseDecimal.from("2"),
+                PreciseDecimal.from("-1.11")
+            ).toString(),
+            "y = +2x -1.11"
+        );
+
+        assertEquals(
+            LinearFunction.from(
+                PreciseDecimal.from("0"),
+                PreciseDecimal.from("0")
+            ).toString(),
+            "y = 0x +0"
+        );
     }
 
     @Test
@@ -25,77 +40,77 @@ public final class LinearFunctionTest {
             LinearFunction.from(
                 CartesianPoint.from(1, 1),
                 PreciseDecimal.from(45)
-            ),
+            ).toString(),
             LinearFunction.from(1,0).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(0, 0),
                 PreciseDecimal.from(45)
-            ),
+            ).toString(),
             LinearFunction.from(1,0).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(-1, -1),
                 PreciseDecimal.from(45)
-            ),
+            ).toString(),
             LinearFunction.from(1,0).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(-1, 1),
                 PreciseDecimal.from(135)
-            ),
+            ).toString(),
             LinearFunction.from(-1,0).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(0, 0),
                 PreciseDecimal.from(135)
-            ),
+            ).toString(),
             LinearFunction.from(-1,0).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(1, -1),
                 PreciseDecimal.from(135)
-            ),
+            ).toString(),
             LinearFunction.from(-1,0).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(-1, 1),
                 PreciseDecimal.from(0)
-            ),
+            ).toString(),
             LinearFunction.from(0, 1).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(0, 0),
                 PreciseDecimal.from(0)
-            ),
+            ).toString(),
             LinearFunction.from(0, 0).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(1, -1),
                 PreciseDecimal.from(0)
-            ),
+            ).toString(),
             LinearFunction.from(0, -1).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(2, 0),
                 PreciseDecimal.from(45)
-            ),
+            ).toString(),
             LinearFunction.from(1, -2).toString()
         );
         assertEquals(
             LinearFunction.from(
                 CartesianPoint.from(2, 4),
                 PreciseDecimal.from(45)
-            ),
+            ).toString(),
             LinearFunction.from(1, 2).toString()
         );
     }
