@@ -68,4 +68,11 @@ public final class LinearFunction {
     public final PreciseDecimal root() {
         return PreciseDecimalOperations.div(this.b.opposite(), this.a);
     }
+
+    public final PreciseDecimal execute(final PreciseDecimal x) {
+        final var val1 = PreciseDecimalOperations.mul(this.a, x);
+        final var val2 = PreciseDecimalOperations.sum(val1, this.b);
+
+        return val2;
+    }
 }

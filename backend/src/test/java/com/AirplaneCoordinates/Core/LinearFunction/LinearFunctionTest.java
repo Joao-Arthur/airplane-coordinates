@@ -198,4 +198,80 @@ public final class LinearFunctionTest {
             PreciseDecimal.from(8).toString()
         );
     }
+
+    @Test
+    public final void execute() {
+        assertEquals(
+            LinearFunction.from(1, -1).execute(PreciseDecimal.from(-1)),
+            PreciseDecimal.from(-2)
+        );
+        assertEquals(
+            LinearFunction.from(1, -1).execute(PreciseDecimal.from(0)),
+            PreciseDecimal.from(-1)
+        );
+        assertEquals(
+            LinearFunction.from(1, -1).execute(PreciseDecimal.from(1)),
+            PreciseDecimal.from(0)
+        );
+        assertEquals(
+            LinearFunction.from(1, 0).execute(PreciseDecimal.from(-1)),
+            PreciseDecimal.from(-1)
+        );
+        assertEquals(
+            LinearFunction.from(1, 0).execute(PreciseDecimal.from(0)),
+            PreciseDecimal.from(0)
+        );
+        assertEquals(
+            LinearFunction.from(1, 0).execute(PreciseDecimal.from(1)),
+            PreciseDecimal.from(1)
+        );
+        assertEquals(
+            LinearFunction.from(1, 1).execute(PreciseDecimal.from(-1)),
+            PreciseDecimal.from(0)
+        );
+        assertEquals(
+            LinearFunction.from(1, 1).execute(PreciseDecimal.from(0)),
+            PreciseDecimal.from(1)
+        );
+        assertEquals(
+            LinearFunction.from(1, 1).execute(PreciseDecimal.from(1)),
+            PreciseDecimal.from(2)
+        );
+        assertEquals(
+            LinearFunction.from(2, -1).execute(PreciseDecimal.from(-1)),
+            PreciseDecimal.from(-3)
+        );
+        assertEquals(
+            LinearFunction.from(2, -1).execute(PreciseDecimal.from(0)),
+            PreciseDecimal.from(-1)
+        );
+        assertEquals(
+            LinearFunction.from(2, -1).execute(PreciseDecimal.from(1)),
+            PreciseDecimal.from(1)
+        );
+        assertEquals(
+            LinearFunction.from(2, 0).execute(PreciseDecimal.from(-1)),
+            PreciseDecimal.from(-2)
+        );
+        assertEquals(
+            LinearFunction.from(2, 0).execute(PreciseDecimal.from(0)),
+            PreciseDecimal.from(0)
+        );
+        assertEquals(
+            LinearFunction.from(2, 0).execute(PreciseDecimal.from(1)),
+            PreciseDecimal.from(2)
+        );
+        assertEquals(
+            LinearFunction.from(2, 1).execute(PreciseDecimal.from(-1)),
+            PreciseDecimal.from(-1)
+        );
+        assertEquals(
+            LinearFunction.from(2, 1).execute(PreciseDecimal.from(0)),
+            PreciseDecimal.from(1)
+        );
+        assertEquals(
+            LinearFunction.from(2, 1).execute(PreciseDecimal.from(1)),
+            PreciseDecimal.from(3)
+        );
+    }
 }
