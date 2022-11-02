@@ -1,60 +1,29 @@
 package com.AirplaneCoordinates.Features;
 
+import com.AirplaneCoordinates.Core.Mechanics.Vector;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
 public final class PlanePointWithVector {
     public final String id;
     public final PlanePoint point;
-    public final PreciseDecimal direction;
-    public final PreciseDecimal speed;
+    public final Vector vector;
 
-    private PlanePointWithVector(
+    public PlanePointWithVector(
         final String id,
         final PlanePoint point,
-        final PreciseDecimal direction,
-        final PreciseDecimal speed
+        final Vector vector
     ) {
         this.id = id;
         this.point = point;
-        this.direction = direction;
-        this.speed = speed;
+        this.vector = vector;
     }
 
     @Override
     public final String toString() {
         return "{ " +
             "id: " + this.id + ", " +
-            "point: " + this.point.toString() +
-            "vector:" + "(" + this.direction + ", " + this.speed + ")" +
+            "point: " + this.point.toString() + ", " +
+            "vector: " + this.vector.toString() +
         " }";
-    }
-    
-    public static final PlanePointWithVector from(
-        final String id,
-        final PlanePoint point,
-        final PreciseDecimal direction,
-        final PreciseDecimal speed
-    ) {
-        return new PlanePointWithVector(
-            id,
-            point,
-            direction,
-            speed
-        );
-    }
-
-    public static final PlanePointWithVector from(
-        final String id,
-        final PlanePoint planeType,
-        final int direction,
-        final int speed
-    ) {
-        return new PlanePointWithVector(
-            id,
-            planeType,
-            PreciseDecimal.from(direction),
-            PreciseDecimal.from(speed)
-        );
     }
 }

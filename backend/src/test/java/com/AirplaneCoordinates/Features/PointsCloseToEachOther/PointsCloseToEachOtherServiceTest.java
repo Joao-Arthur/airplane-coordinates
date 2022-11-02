@@ -8,6 +8,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
+import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Features.PlanePointWithId;
 
@@ -15,10 +16,10 @@ public final class PointsCloseToEachOtherServiceTest {
     @Test
     public final void pointsCloseToPoint() {
         final var points = new ArrayList<PlanePointWithId>();
-        points.add(PlanePointWithId.from( "1", Plane.CARTESIAN, 10, 10));
-        points.add(PlanePointWithId.from( "2", Plane.CARTESIAN, 10, 20));
-        points.add(PlanePointWithId.from( "3", Plane.CARTESIAN, 0, 20));
-        points.add(PlanePointWithId.from( "4", Plane.CARTESIAN, 2, 22));
+        points.add(PlanePointWithId.from("1", PlanePoint.from(Plane.CARTESIAN, 10, 10)));
+        points.add(PlanePointWithId.from("2", PlanePoint.from(Plane.CARTESIAN, 10, 20)));
+        points.add(PlanePointWithId.from("3", PlanePoint.from(Plane.CARTESIAN, 0, 20)));
+        points.add(PlanePointWithId.from("4", PlanePoint.from(Plane.CARTESIAN, 2, 22)));
 
         final var actualResult = PointsCloseToEachOtherService.execute(points, PreciseDecimal.from(10));
 

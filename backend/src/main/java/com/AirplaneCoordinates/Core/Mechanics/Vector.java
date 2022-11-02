@@ -6,7 +6,7 @@ public final class Vector {
     public final PreciseDecimal direction;
     public final PreciseDecimal speed;
 
-    public Vector (
+    private Vector(
         final PreciseDecimal direction,
         final PreciseDecimal speed
     ) {
@@ -16,6 +16,33 @@ public final class Vector {
 
     @Override
     public final String toString() {
-        return  "(" + this.direction + ", " + this.speed + ")";
+        return  "(" + this.direction + "º, " + this.speed + "km/h)";
+    }
+
+    public static final Vector from(
+        final PreciseDecimal direction,
+        final PreciseDecimal speed
+    ) {
+        return new Vector(direction, speed);
+    }
+
+    public static final Vector from(
+        final int direction,
+        final int speed
+    ) {
+        return new Vector(
+            PreciseDecimal.from(direction),
+            PreciseDecimal.from(speed)
+        );
+    }
+
+    public static final Vector from(
+        final String direction,
+        final String speed
+    ) {
+        return new Vector(
+            PreciseDecimal.from(direction),
+            PreciseDecimal.from(speed)
+        );
     }
 }

@@ -9,6 +9,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 import com.AirplaneCoordinates.Core.Plane.Polar.PolarPoint;
 
 public final class CartesianPointTest {
+    @Test
+    public final void toStringTest() {
+        assertEquals(
+            CartesianPoint.from(2, 8).toString(),
+            "(2, 8)"
+        );
+    }
+
     @ParameterizedTest
     @CsvSource({
         "0, 0, 0, 0",

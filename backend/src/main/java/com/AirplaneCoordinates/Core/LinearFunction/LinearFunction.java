@@ -19,7 +19,7 @@ public final class LinearFunction {
 
     @Override
     public final String toString() {
-        return "y = " + this.a + " * x " + this.b;
+        return "y = " + this.a.format() + "x " + this.b.format();
     }
 
     public static final LinearFunction from(

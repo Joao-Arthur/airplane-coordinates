@@ -383,4 +383,28 @@ public final class PreciseDecimalTest {
             PreciseDecimal.from(7).toString()
         );
     }
+
+    @Test
+    public final void format() {
+        assertEquals(
+            PreciseDecimal.from("1.38").format(),
+            "+1.38"
+        );
+        assertEquals(
+            PreciseDecimal.from("-0.6").format(),
+            "-0.6"
+        );
+        assertEquals(
+            PreciseDecimal.from("0.0000000000000000000000000000").format(),
+            "0"
+        );
+    }
+
+    @Test
+    public final void toStringTest() {
+        assertEquals(
+            PreciseDecimal.from("3.8909").toString(),
+            "3.8909"
+        );
+    }
 }

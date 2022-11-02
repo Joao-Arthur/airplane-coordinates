@@ -164,4 +164,31 @@ public final class PreciseDecimal {
             roundedValue
         );
     }
+
+    private final String sign() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        switch(valueAsBigDecimal.signum()) {
+            case 1:
+                return "+";
+            case 0: 
+                return "";
+            case -1:
+                return "-";
+            default:
+                throw new RuntimeException("invalid signum");
+        }
+    }
+
+    private final String abs() {
+        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return PreciseDecimalHelper.bigDecimalToString(
+            valueAsBigDecimal.abs(PreciseDecimalConstants.MATH_CONTEXT)
+        );
+    }
+
+    public final String format() {
+        return this.sign() + this.abs();
+    }
 }

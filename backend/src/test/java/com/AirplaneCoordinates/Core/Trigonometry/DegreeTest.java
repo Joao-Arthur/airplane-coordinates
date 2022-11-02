@@ -10,6 +10,16 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
 public final class DegreeTest {
     @Test
+    public final void toStringTest() {
+        assertEquals(
+            Degree.from(
+                PreciseDecimal.from("6.05")
+            ).toString(),
+            "6.05"
+        );
+    }
+
+    @Test
     public final void toRad() {
         assertEquals(
             Degree.from(PreciseDecimal.from(0)).toRad().toString(),

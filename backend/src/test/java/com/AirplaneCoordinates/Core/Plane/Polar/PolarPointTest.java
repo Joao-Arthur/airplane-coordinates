@@ -10,6 +10,14 @@ import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
 public final class PolarPointTest {
+    @Test
+    public final void toStringTest() {
+        assertEquals(
+            PolarPoint.from(4, 0).toString(),
+            "(4, 0)"
+        );
+    }
+
     @ParameterizedTest
     @CsvSource({
         "0, 0, 0, 0",

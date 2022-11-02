@@ -8,6 +8,16 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
 public final class RadianTest {
     @Test
+    public final void toStringTest() {
+        assertEquals(
+            Radian.from(
+                PreciseDecimal.from("-347")
+            ).toString(),
+            "-347"
+        );
+    }
+
+    @Test
     public final void toDeg() {
         assertEquals(
             Radian.from(

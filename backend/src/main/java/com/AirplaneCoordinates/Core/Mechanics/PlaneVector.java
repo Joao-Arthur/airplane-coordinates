@@ -6,7 +6,7 @@ public final class PlaneVector {
     public final PlanePoint point;
     public final Vector vector;
 
-    private PlaneVector(
+    public PlaneVector(
         final PlanePoint point,
         final Vector vector
     ) {
@@ -20,12 +20,5 @@ public final class PlaneVector {
             "point: " + this.point.toString() + ", " +
             "vector: " + this.vector.toString() +
         " }";
-    }
-
-    public static final PlaneVector from(
-        final PlanePoint point,
-        final Vector vector
-    ) {
-        return new PlaneVector(point, vector);
     }
 }
