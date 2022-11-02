@@ -42,6 +42,16 @@ public final class LinearFunction {
     }
 
     public static final LinearFunction from(
+        final String a,
+        final String b
+    ) {
+        return new LinearFunction(
+            PreciseDecimal.from(a),
+            PreciseDecimal.from(b)
+        );
+    }
+
+    public static final LinearFunction from(
         final CartesianPoint point,
         final PreciseDecimal angle
     ) {
@@ -53,5 +63,9 @@ public final class LinearFunction {
             angularCoefficient,
             linearCoefficient
         );
+    }
+
+    public final PreciseDecimal root() {
+        return PreciseDecimalOperations.div(this.b.opposite(), this.a);
     }
 }
