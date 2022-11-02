@@ -3,6 +3,8 @@ package com.AirplaneCoordinates.Core.LinearFunction;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
@@ -34,244 +36,105 @@ public final class LinearFunctionTest {
         );
     }
 
-    @Test
-    public final void from() {
+    @ParameterizedTest
+    @CsvSource({
+        "1, 1, 45, 1,0",
+        "0, 0, 45, 1,0",
+        "-1, -1, 45, 1,0",
+        "-1, 1, 135, -1,0",
+        "0, 0, 135, -1,0",
+        "1, -1, 135, -1,0",
+        "-1, 1, 0, 0, 1",
+        "0, 0, 0, 0, 0",
+        "1, -1, 0, 0, -1",
+        "2, 0, 45, 1, -2",
+        "2, 4, 45, 1, 2",
+    })
+    public final void from(
+        final int x,
+        final int y,
+        final int deg,
+        final int a,
+        final int b
+    ) {
         assertEquals(
             LinearFunction.from(
-                CartesianPoint.from(1, 1),
-                PreciseDecimal.from(45)
+                CartesianPoint.from(x, y),
+                PreciseDecimal.from(deg)
             ).toString(),
-            LinearFunction.from(1,0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(0, 0),
-                PreciseDecimal.from(45)
-            ).toString(),
-            LinearFunction.from(1,0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(-1, -1),
-                PreciseDecimal.from(45)
-            ).toString(),
-            LinearFunction.from(1,0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(-1, 1),
-                PreciseDecimal.from(135)
-            ).toString(),
-            LinearFunction.from(-1,0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(0, 0),
-                PreciseDecimal.from(135)
-            ).toString(),
-            LinearFunction.from(-1,0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(1, -1),
-                PreciseDecimal.from(135)
-            ).toString(),
-            LinearFunction.from(-1,0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(-1, 1),
-                PreciseDecimal.from(0)
-            ).toString(),
-            LinearFunction.from(0, 1).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(0, 0),
-                PreciseDecimal.from(0)
-            ).toString(),
-            LinearFunction.from(0, 0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(1, -1),
-                PreciseDecimal.from(0)
-            ).toString(),
-            LinearFunction.from(0, -1).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(2, 0),
-                PreciseDecimal.from(45)
-            ).toString(),
-            LinearFunction.from(1, -2).toString()
-        );
-        assertEquals(
-            LinearFunction.from(
-                CartesianPoint.from(2, 4),
-                PreciseDecimal.from(45)
-            ).toString(),
-            LinearFunction.from(1, 2).toString()
+            LinearFunction.from(a, b).toString()
         );
     }
 
-    @Test
-    public final void root() {
+    @ParameterizedTest
+    @CsvSource({
+        "1, -2, 2",
+        "1, -1, 1",
+        "1, 0, 0",
+        "1, 1, -1",
+        "1, 2, -2",
+        "2, -2, 1",
+        "2, -1, 0.5",
+        "2, 0, 0",
+        "2, 1, -0.5",
+        "2, 2, -1",
+        "0.5, -2, 4",
+        "0.5, -1, 2",
+        "0.5, 0, 0",
+        "0.5, 1, -2",
+        "0.5, 2, -4",
+        "-0.25, -2, -8",
+        "-0.25, -1, -4",
+        "-0.25, 0, 0",
+        "-0.25, 1, 4",
+        "-0.25, 2, 8",
+    })
+    public final void root(
+        final String a,
+        final String b,
+        final String x
+    ) {
         assertEquals(
-            LinearFunction.from(1, -2).root().toString(),
-            PreciseDecimal.from(2).toString()
-        );
-        assertEquals(
-            LinearFunction.from(1, -1).root().toString(),
-            PreciseDecimal.from(1).toString()
-        );
-        assertEquals(
-            LinearFunction.from(1, 0).root().toString(),
-            PreciseDecimal.from(0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(1, 1).root().toString(),
-            PreciseDecimal.from(-1).toString()
-        );
-        assertEquals(
-            LinearFunction.from(1, 2).root().toString(),
-            PreciseDecimal.from(-2).toString()
-        );
-        assertEquals(
-            LinearFunction.from(2, -2).root().toString(),
-            PreciseDecimal.from(1).toString()
-        );
-        assertEquals(
-            LinearFunction.from(2, -1).root().toString(),
-            PreciseDecimal.from("0.5").toString()
-        );
-        assertEquals(
-            LinearFunction.from(2, 0).root().toString(),
-            PreciseDecimal.from(0).toString()
-        );
-        assertEquals(
-            LinearFunction.from(2, 1).root().toString(),
-            PreciseDecimal.from("-0.5").toString()
-        );
-        assertEquals(
-            LinearFunction.from(2, 2).root().toString(),
-            PreciseDecimal.from(-1).toString()
-        );
-        assertEquals(
-            LinearFunction.from("0.5", "-2").root().toString(),
-            PreciseDecimal.from(4).toString()
-        );
-        assertEquals(
-            LinearFunction.from("0.5", "-1").root().toString(),
-            PreciseDecimal.from(2).toString()
-        );
-        assertEquals(
-            LinearFunction.from("0.5", "0").root().toString(),
-            PreciseDecimal.from(0).toString()
-        );
-        assertEquals(
-            LinearFunction.from("0.5", "1").root().toString(),
-            PreciseDecimal.from(-2).toString()
-        );
-        assertEquals(
-            LinearFunction.from("0.5", "2").root().toString(),
-            PreciseDecimal.from(-4).toString()
-        );
-        assertEquals(
-            LinearFunction.from("-0.25", "-2").root().toString(),
-            PreciseDecimal.from(-8).toString()
-        );
-        assertEquals(
-            LinearFunction.from("-0.25", "-1").root().toString(),
-            PreciseDecimal.from(-4).toString()
-        );
-        assertEquals(
-            LinearFunction.from("-0.25", "0").root().toString(),
-            PreciseDecimal.from(0).toString()
-        );
-        assertEquals(
-            LinearFunction.from("-0.25", "1").root().toString(),
-            PreciseDecimal.from(4).toString()
-        );
-        assertEquals(
-            LinearFunction.from("-0.25", "2").root().toString(),
-            PreciseDecimal.from(8).toString()
+            LinearFunction.from(a, b).root().toString(),
+            PreciseDecimal.from(x).toString()
         );
     }
 
-    @Test
-    public final void execute() {
+    @ParameterizedTest
+    @CsvSource({
+        "1, -1, -1, -2",
+        "1, -1, 0, -1",
+        "1, -1, 1, 0",
+        "1, 0, -1, -1",
+        "1, 0, 0, 0",
+        "1, 0, 1, 1",
+        "1, 1, -1, 0",
+        "1, 1, 0, 1",
+        "1, 1, 1, 2",
+        "1, 1, -1, 0",
+        "1, 1, 0, 1",
+        "1, 1, 1, 2",
+        "2, -1, -1, -3",
+        "2, -1, 0, -1",
+        "2, -1, 1, 1",
+        "2, 0, -1, -2",
+        "2, 0, 0, 0",
+        "2, 0, 1, 2",
+        "2, 1, -1, -1",
+        "2, 1, 0, 1",
+        "2, 1, 1, 3",
+    })
+    public final void execute(
+        final int a,
+        final int b,
+        final int x,
+        final int y
+    ) {
         assertEquals(
-            LinearFunction.from(1, -1).execute(PreciseDecimal.from(-1)),
-            PreciseDecimal.from(-2)
-        );
-        assertEquals(
-            LinearFunction.from(1, -1).execute(PreciseDecimal.from(0)),
-            PreciseDecimal.from(-1)
-        );
-        assertEquals(
-            LinearFunction.from(1, -1).execute(PreciseDecimal.from(1)),
-            PreciseDecimal.from(0)
-        );
-        assertEquals(
-            LinearFunction.from(1, 0).execute(PreciseDecimal.from(-1)),
-            PreciseDecimal.from(-1)
-        );
-        assertEquals(
-            LinearFunction.from(1, 0).execute(PreciseDecimal.from(0)),
-            PreciseDecimal.from(0)
-        );
-        assertEquals(
-            LinearFunction.from(1, 0).execute(PreciseDecimal.from(1)),
-            PreciseDecimal.from(1)
-        );
-        assertEquals(
-            LinearFunction.from(1, 1).execute(PreciseDecimal.from(-1)),
-            PreciseDecimal.from(0)
-        );
-        assertEquals(
-            LinearFunction.from(1, 1).execute(PreciseDecimal.from(0)),
-            PreciseDecimal.from(1)
-        );
-        assertEquals(
-            LinearFunction.from(1, 1).execute(PreciseDecimal.from(1)),
-            PreciseDecimal.from(2)
-        );
-        assertEquals(
-            LinearFunction.from(2, -1).execute(PreciseDecimal.from(-1)),
-            PreciseDecimal.from(-3)
-        );
-        assertEquals(
-            LinearFunction.from(2, -1).execute(PreciseDecimal.from(0)),
-            PreciseDecimal.from(-1)
-        );
-        assertEquals(
-            LinearFunction.from(2, -1).execute(PreciseDecimal.from(1)),
-            PreciseDecimal.from(1)
-        );
-        assertEquals(
-            LinearFunction.from(2, 0).execute(PreciseDecimal.from(-1)),
-            PreciseDecimal.from(-2)
-        );
-        assertEquals(
-            LinearFunction.from(2, 0).execute(PreciseDecimal.from(0)),
-            PreciseDecimal.from(0)
-        );
-        assertEquals(
-            LinearFunction.from(2, 0).execute(PreciseDecimal.from(1)),
-            PreciseDecimal.from(2)
-        );
-        assertEquals(
-            LinearFunction.from(2, 1).execute(PreciseDecimal.from(-1)),
-            PreciseDecimal.from(-1)
-        );
-        assertEquals(
-            LinearFunction.from(2, 1).execute(PreciseDecimal.from(0)),
-            PreciseDecimal.from(1)
-        );
-        assertEquals(
-            LinearFunction.from(2, 1).execute(PreciseDecimal.from(1)),
-            PreciseDecimal.from(3)
+            LinearFunction.from(a, b)
+                .execute(PreciseDecimal.from(x))
+                .toString(),
+            PreciseDecimal.from(y).toString()
         );
     }
 }
