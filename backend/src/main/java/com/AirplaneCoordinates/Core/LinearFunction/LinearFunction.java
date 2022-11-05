@@ -6,8 +6,8 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 import com.AirplaneCoordinates.Core.Trigonometry.Degree;
 
 public final class LinearFunction {
-    private final PreciseDecimal a;
-    private final PreciseDecimal b;
+    public final PreciseDecimal a;
+    public final PreciseDecimal b;
     
     private LinearFunction(
         final PreciseDecimal a,
