@@ -21,6 +21,12 @@ public final class RadianTest {
     public final void toDeg() {
         assertEquals(
             Radian.from(
+                PreciseDecimal.from("0.5")
+            ).toDeg().toString(),
+            PreciseDecimal.from("28.64788975654116043839907740705258516620273623328216077458012193060142357416077631622048449792555547").toString()
+        );
+        assertEquals(
+            Radian.from(
                 PreciseDecimal.from("0.7853981633974483096156608458198757210492923498437764552437361480769541015715522496570087063355292672")
             ).toDeg().toString(),
             PreciseDecimal.from("45.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001").toString()

@@ -187,6 +187,13 @@ public final class PreciseDecimalOperationsTest {
         );
         assertEquals(
             PreciseDecimalOperations.atan(
+                PreciseDecimal.from(3),
+                PreciseDecimal.from(1)
+            ).toString(),
+            PreciseDecimal.from("1.24904577239825442582991707728109012307782940412989671905466923679715196573729395495760899032041716").toString()
+        );
+        assertEquals(
+            PreciseDecimalOperations.atan(
                 PreciseDecimal.from(4),
                 PreciseDecimal.from(2)
             ).toString(),
