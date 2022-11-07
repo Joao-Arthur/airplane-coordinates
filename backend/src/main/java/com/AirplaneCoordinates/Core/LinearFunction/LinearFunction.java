@@ -58,10 +58,10 @@ public final class LinearFunction {
         final var angularCoefficient = Degree.from(angle).toRad().value.tan();
         final var expected = PreciseDecimalOperations.mul(angularCoefficient, point.x);
         final var linearCoefficient = PreciseDecimalOperations.sub(point.y, expected);
-    
+
         return new LinearFunction(
-            angularCoefficient,
-            linearCoefficient
+            angularCoefficient.round(),
+            linearCoefficient.round()
         );
     }
 

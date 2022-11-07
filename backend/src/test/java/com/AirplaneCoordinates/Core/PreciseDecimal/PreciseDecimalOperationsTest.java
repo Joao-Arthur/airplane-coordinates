@@ -208,6 +208,13 @@ public final class PreciseDecimalOperationsTest {
         );
         assertEquals(
             PreciseDecimalOperations.atan(
+                PreciseDecimal.from(1),
+                PreciseDecimal.from(2)
+            ).toString(),
+            PreciseDecimal.from("0.4636476090008061162142562314612144020285370542861202638109330887201978641657417053006002839848878926").toString()
+        );
+        assertEquals(
+            PreciseDecimalOperations.atan(
                 PreciseDecimal.from(-8),
                 PreciseDecimal.from(3)
             ).toString(),

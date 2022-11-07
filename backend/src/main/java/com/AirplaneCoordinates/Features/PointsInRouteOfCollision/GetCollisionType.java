@@ -17,16 +17,18 @@ public final class GetCollisionType {
     }
 
     public final CollisionType getCollisionType() {
+        final var cartesianA = this.pointA.point.toCartesian();
+        final var cartesianB = this.pointB.point.toCartesian();
         if (
-            this.pointA.point.a.equals(this.pointA.point.a) &&
-            this.pointB.point.b.equals(this.pointB.point.b)
+            cartesianA.x.equals(cartesianB.x) &&
+            cartesianA.y.equals(cartesianB.y)
         )
             return CollisionType.SAME_POSITION;
         if (
             Degree.from(this.pointA.vector.direction).isInfiniteTangent() &&
             Degree.from(this.pointB.vector.direction).isInfiniteTangent()
         ) {
-            if (this.pointA.point.toCartesian().x.equals(this.pointB.point.toCartesian().x))
+            if (cartesianA.x.equals(cartesianB.x))
                 return CollisionType.INFINITE_TANGENT_SAME_X;
             return CollisionType.PARALLEL_LINES;
         }
@@ -36,11 +38,11 @@ public final class GetCollisionType {
         )
             return CollisionType.INFINITE_TANGENT_IN_ONE_AIRPLANE;
         final var fx = LinearFunction.from(
-            this.pointA.point.toCartesian(),
+            cartesianA,
             this.pointA.vector.direction
         );
         final var gx = LinearFunction.from(
-            this.pointB.point.toCartesian(),
+            cartesianB,
             this.pointB.vector.direction
         );
         if (fx.a.equals(gx.a) && fx.b.equals(gx.b))

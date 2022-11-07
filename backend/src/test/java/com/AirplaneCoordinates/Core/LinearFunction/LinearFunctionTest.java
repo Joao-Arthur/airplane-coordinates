@@ -66,6 +66,24 @@ public final class LinearFunctionTest {
         );
     }
 
+    @Test
+    public final void fromEdgeCases() {
+        assertEquals(
+            LinearFunction.from(
+                CartesianPoint.from(2, 1),
+                PreciseDecimal.from("26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472")
+            ).toString(),
+            LinearFunction.from("0.5", "0").toString()
+        );
+        assertEquals(
+            LinearFunction.from(
+                CartesianPoint.from(4, 2),
+                PreciseDecimal.from("206.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472")
+            ).toString(),
+            LinearFunction.from("0.5", "0").toString()
+        );
+    }
+
     @ParameterizedTest
     @CsvSource({
         "1, -2, 2",
