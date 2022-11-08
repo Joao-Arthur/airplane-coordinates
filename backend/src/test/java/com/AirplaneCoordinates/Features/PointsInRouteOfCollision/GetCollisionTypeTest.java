@@ -279,7 +279,7 @@ public class GetCollisionTypeTest {
                     Vector.from(153, 4)
                 )
             ).getCollisionType(),
-            CollisionType.INFINITE_TANGENT_IN_ONE_AIRPLANE
+            CollisionType.INFINITE_TANGENT_IN_ONE_POINT
         );
         assertEquals(
             new GetCollisionType(
@@ -294,7 +294,7 @@ public class GetCollisionTypeTest {
                     Vector.from(90, 6)
                 )
             ).getCollisionType(),
-            CollisionType.INFINITE_TANGENT_IN_ONE_AIRPLANE
+            CollisionType.INFINITE_TANGENT_IN_ONE_POINT
         );
     }
 }

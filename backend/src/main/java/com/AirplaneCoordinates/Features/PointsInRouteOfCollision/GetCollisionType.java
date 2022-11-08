@@ -36,7 +36,7 @@ public final class GetCollisionType {
             Degree.from(this.pointA.vector.direction).isInfiniteTangent() ||
             Degree.from(this.pointB.vector.direction).isInfiniteTangent()
         )
-            return CollisionType.INFINITE_TANGENT_IN_ONE_AIRPLANE;
+            return CollisionType.INFINITE_TANGENT_IN_ONE_POINT;
         final var fx = LinearFunction.from(
             cartesianA,
             this.pointA.vector.direction
