@@ -138,4 +138,163 @@ public class GetCollisionTypeTest {
             CollisionType.DIFFERENT_FUNCTIONS
         );
     }
+
+    @Test
+    public final void getCollisionTypeParallelLines() {
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 2, 1),
+                    Vector.from(
+                        "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
+                        "4"
+                    )
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 4, 3),
+                    Vector.from(
+                        "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
+                        "0.5"
+                    )
+                )
+            ).getCollisionType(),
+            CollisionType.PARALLEL_LINES
+        );
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 1, 3),
+                    Vector.from(
+                        "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
+                        "1"
+                    )
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 3, 5),
+                    Vector.from(
+                        "206.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
+                        "7"
+                    )
+                )
+            ).getCollisionType(),
+            CollisionType.PARALLEL_LINES
+        );
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, -1, 2),
+                    Vector.from(360, 5)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 1, -2),
+                    Vector.from(180, 3)
+                )
+            ).getCollisionType(),
+            CollisionType.PARALLEL_LINES
+        );
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, -1, 2),
+                    Vector.from(90, 7)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 1, -2),
+                    Vector.from(90, 4)
+                )
+            ).getCollisionType(),
+            CollisionType.PARALLEL_LINES
+        );
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, -1, 2),
+                    Vector.from(90, 7)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 1, -2),
+                    Vector.from(270, 4)
+                )
+            ).getCollisionType(),
+            CollisionType.PARALLEL_LINES
+        );
+    }
+
+    @Test
+    public final void getCollisionTypeInfiniteTangents() {
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 4, 2),
+                    Vector.from(270, 2)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 4, 7),
+                    Vector.from(270, 9)
+                )
+            ).getCollisionType(),
+            CollisionType.INFINITE_TANGENT_SAME_X
+        );
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, -2, 5),
+                    Vector.from(90, 5)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, -2, 4),
+                    Vector.from(270, 7)
+                )
+            ).getCollisionType(),
+            CollisionType.INFINITE_TANGENT_SAME_X
+        );
+    }
+
+    @Test
+    public final void getCollisionTypeInfiniteTangent() {
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, -3, 5),
+                    Vector.from(270, 1)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 4, -3),
+                    Vector.from(153, 4)
+                )
+            ).getCollisionType(),
+            CollisionType.INFINITE_TANGENT_IN_ONE_AIRPLANE
+        );
+        assertEquals(
+            new GetCollisionType(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 1, 2),
+                    Vector.from(76, 5)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 4, 4),
+                    Vector.from(90, 6)
+                )
+            ).getCollisionType(),
+            CollisionType.INFINITE_TANGENT_IN_ONE_AIRPLANE
+        );
+    }
 }
