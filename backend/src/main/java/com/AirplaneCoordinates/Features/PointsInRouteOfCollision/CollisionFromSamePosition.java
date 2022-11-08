@@ -12,3 +12,5 @@ export function collisionFromSamePosition({ a, b }: paramsType) {
         timeDifferenceToPoint: 0,
     };
 }
+
+public class CollisionFromSamePosition implements PointsCollision
