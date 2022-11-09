@@ -1,4 +1,4 @@
-
+package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 type paramsType = {
     readonly a: airplaneType;
