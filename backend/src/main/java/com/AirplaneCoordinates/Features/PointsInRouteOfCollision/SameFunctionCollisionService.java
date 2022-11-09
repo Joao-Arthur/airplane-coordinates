@@ -1,11 +1,21 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-type paramsType = {
-    readonly a: airplaneType;
-    readonly b: airplaneType;
-}
+import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
-export function collisionFromSameFunction({ a, b }: paramsType) {
+public final class SameFunctionCollisionService implements CollisionPointService {
+    private final PlanePointWithVector pointA;
+    private final PlanePointWithVector pointB;
+    
+    public SameFunctionCollisionService(
+        final PlanePointWithVector pointA,
+        final PlanePointWithVector pointB
+    ) {
+        this.pointA = pointA;
+        this.pointB = pointB;
+    }
+
+    public final CollisionDTO getCollisionPoint() {
+        /*
     const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
 
     const coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));
@@ -68,4 +78,8 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
         },
         timeDifferenceToPoint: numberFns.fix(timeDifferenceToPoint),
     } as const;
+         */
+
+        return null;
+    }
 }

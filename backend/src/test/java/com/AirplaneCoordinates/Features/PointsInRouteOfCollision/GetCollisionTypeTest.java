@@ -9,7 +9,7 @@ import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
-public class GetCollisionTypeTest {
+public final class GetCollisionTypeTest {
     @Test
     public final void getCollisionTypeSamePoint() {
         assertEquals(

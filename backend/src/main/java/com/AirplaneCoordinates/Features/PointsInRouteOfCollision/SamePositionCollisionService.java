@@ -1,10 +1,9 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
-
-
-public class SamePositionCollisionService implements CollisionPointService {
+public final class SamePositionCollisionService implements CollisionPointService {
     private final PlanePointWithVector pointA;
     private final PlanePointWithVector pointB;
     
@@ -16,26 +15,13 @@ public class SamePositionCollisionService implements CollisionPointService {
         this.pointB = pointB;
     }
 
-    public CollisionDTO getCollisionPoint() {
-        /*
-
-        type paramsType = {
-            readonly a: airplaneType;
-            readonly b: airplaneType;
-        }
-        
-        export function collisionFromSamePosition({ a, b }: paramsType) {
-            return {
-                a: a.id,
-                b: b.id,
-                timeUntilCollision: 0,
-                collisionPoint: { x: a.x, y: a.y },
-                timeDifferenceToPoint: 0,
-            };
-        }
-
-        */
-
-        return null;
+    public final CollisionDTO getCollisionPoint() {
+        return new CollisionDTOBuilder()
+            .setA(this.pointA.id)
+            .setB(this.pointB.id)
+            .setTimeUntilCollision(PreciseDecimal.from(0))
+            .setCollisionPoint(this.pointA.point.toCartesian())
+            .setTimeDifferenceToPoint(PreciseDecimal.from(0))
+            .build();
     }
 }

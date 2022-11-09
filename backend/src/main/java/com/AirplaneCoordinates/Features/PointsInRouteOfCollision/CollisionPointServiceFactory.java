@@ -28,6 +28,8 @@ public final class CollisionPointServiceFactory {
                 return new SameFunctionCollisionService(this.pointA, this.pointB);
             case DIFFERENT_FUNCTIONS:
                 return new DifferentFunctionsCollisionService(this.pointA, this.pointB);
+            default:
+                throw new RuntimeException("invalid CollisionType");
         }
     }
 }

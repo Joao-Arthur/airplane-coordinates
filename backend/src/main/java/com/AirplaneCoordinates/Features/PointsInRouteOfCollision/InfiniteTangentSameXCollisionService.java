@@ -1,22 +1,49 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-type paramsType = {
-    readonly a: airplaneType;
-    readonly b: airplaneType;
-}
+import com.AirplaneCoordinates.Core.Mechanics.LinearPoint;
+import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
-export function collisionFromInfiniteTangentBothAirplanes({ a, b }: paramsType) {
-    const { x: timeUntilCollision, y } = mechanics.collision({
-        a: { initialPoint: a.y, speed: a.direction === 90 ? a.speed : -a.speed },
-        b: { initialPoint: b.y, speed: b.direction === 90 ? b.speed : -b.speed },
-    });
-    if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(y))
-        return undefined;
-    return {
-        a: a.id,
-        b: b.id,
-        timeUntilCollision,
-        collisionPoint: { x: a.x, y },
-        timeDifferenceToPoint: 0,
-    } as const;
+public final class InfiniteTangentSameXCollisionService implements CollisionPointService {
+    private final PlanePointWithVector pointA;
+    private final PlanePointWithVector pointB;
+    
+    public InfiniteTangentSameXCollisionService(
+        final PlanePointWithVector pointA,
+        final PlanePointWithVector pointB
+    ) {
+        this.pointA = pointA;
+        this.pointB = pointB;
+    }
+
+    public final CollisionDTO getCollisionPoint() {
+        final var collisionPoint = LinearPoint.collisionPoint(
+            LinearPoint.from(
+                this.pointA.point.toCartesian().y,
+                this.pointA.vector.direction.equals(PreciseDecimal.from(90))
+                    ? this.pointA.vector.speed
+                    : this.pointA.vector.speed.opposite()
+            ),
+            LinearPoint.from(
+                this.pointB.point.toCartesian().y,
+                this.pointB.vector.direction.equals(PreciseDecimal.from(90))
+                    ? this.pointB.vector.speed
+                    : this.pointB.vector.speed.opposite()
+            )
+        );
+
+        return new CollisionDTOBuilder()
+            .setA(this.pointA.id)
+            .setB(this.pointB.id)
+            .setTimeUntilCollision(collisionPoint.x)
+            .setCollisionPoint(
+                CartesianPoint.from(
+                    this.pointA.point.toCartesian().x,
+                    collisionPoint.y
+                )
+            )
+            .setTimeDifferenceToPoint(PreciseDecimal.from(0))
+            .build();
+    }
 }

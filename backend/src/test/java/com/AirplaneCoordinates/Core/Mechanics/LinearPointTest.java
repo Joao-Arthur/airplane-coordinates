@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public class LinearPointTest {
+public final class LinearPointTest {
     @Test
     public final void toStringTest() {
         assertEquals(
