@@ -5,10 +5,17 @@ import java.math.BigDecimal;
 import ch.obermuhlner.math.big.BigDecimalMath;
 
 public final class PreciseDecimal implements ComparisionOperations<PreciseDecimal> {
+    private static final int PRECISION = 100;
+    private static final int ROUNDING_PRECISION = PRECISION -6;
+    private static final MathContext MATH_CONTEXT = new MathContext(PRECISION, RoundingMode.HALF_EVEN);
+    private static final MathContext ROUNDING_MATH_CONTEXT = new MathContext(ROUNDING_PRECISION, RoundingMode.HALF_EVEN);
+
     public final String value;
+    private final BigDecimal bigDecimalValue;
 
     public PreciseDecimal(final String value) {
         this.value = value;
+        this.bigDecimalValue = new BigDecimal(this.value, PreciseDecimal.MATH_CONTEXT);
     }
 
     @Override
@@ -34,21 +41,47 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
         return new PreciseDecimal(String.valueOf(value));
     }
 
+    private static final PreciseDecimal from(final BigDecimal value) {
+        final var plainValue = value.stripTrailingZeros().toPlainString();
+        if (!plainValue.contains("."))
+            return plainValue;
+        final var arr = plainValue.split("\\.");
+        final var integerPart = arr[0];
+        final var decimalPart = arr[1];
+        if (decimalPart.length() <= PreciseDecimal.PRECISION)
+            return plainValue;
+        final var finalValue = integerPart + "." + decimalPart.substring(0, PreciseDecimal.PRECISION);
+        return new PreciseDecimal(new BigDecimal(finalValue).stripTrailingZeros().toPlainString());
+    }
+
+    private static final String bigDecimalToRoundedString(final BigDecimal value) {
+        final var plainValue = value.stripTrailingZeros().toPlainString();
+        if (!plainValue.contains("."))
+            return plainValue;
+        final var arr = plainValue.split("\\.");
+        final var integerPart = arr[0];
+        final var decimalPart = arr[1];
+        if (decimalPart.length() <= PreciseDecimal.ROUNDING_PRECISION)
+            return plainValue;
+        final var finalValue = integerPart + "." + decimalPart.substring(0, PreciseDecimal.ROUNDING_PRECISION);
+        return new BigDecimal(finalValue).stripTrailingZeros().toPlainString();
+    }
+
     public static final PreciseDecimal pi() {
         return PreciseDecimal.from(
-            BigDecimalMath.pi(PreciseDecimalConstants.MATH_CONTEXT).toString()
+            BigDecimalMath.pi(PreciseDecimal.MATH_CONTEXT).toString()
         );
     }
 
     public static final PreciseDecimal halfPi() {
         final var bigDecimal2 = new BigDecimal(
             2,
-            PreciseDecimalConstants.MATH_CONTEXT
+            PreciseDecimal.MATH_CONTEXT
         );
 
         return PreciseDecimal.from(
             BigDecimalMath
-                .pi(PreciseDecimalConstants.MATH_CONTEXT)
+                .pi(PreciseDecimal.MATH_CONTEXT)
                 .divide(bigDecimal2)
                 .toString()
         );
@@ -57,16 +90,16 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
     public static final PreciseDecimal threeQuartsPi() {
         final var bigDecimal2 = new BigDecimal(
             2,
-            PreciseDecimalConstants.MATH_CONTEXT
+            PreciseDecimal.MATH_CONTEXT
         );
         final var bigDecimal3 = new BigDecimal(
             3,
-            PreciseDecimalConstants.MATH_CONTEXT
+            PreciseDecimal.MATH_CONTEXT
         );
 
         return PreciseDecimal.from(
             BigDecimalMath
-                .pi(PreciseDecimalConstants.MATH_CONTEXT)
+                .pi(PreciseDecimal.MATH_CONTEXT)
                 .divide(bigDecimal2)
                 .multiply(bigDecimal3)
                 .toString()
@@ -74,79 +107,51 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
     }
 
     public final PreciseDecimal opposite() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                valueAsBigDecimal.negate(PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            this.bigDecimalValue.negate(PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final PreciseDecimal reverse() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                BigDecimal.ONE.divide(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            BigDecimal.ONE.divide(this.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final PreciseDecimal square() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                valueAsBigDecimal.multiply(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            this.bigDecimalValue.multiply(this.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final PreciseDecimal sqrt() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                BigDecimalMath.sqrt(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            BigDecimalMath.sqrt(this.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final PreciseDecimal sin() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                BigDecimalMath.sin(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            BigDecimalMath.sin(this.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final PreciseDecimal cos() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                BigDecimalMath.cos(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            BigDecimalMath.cos(this.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final PreciseDecimal tan() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                BigDecimalMath.tan(valueAsBigDecimal, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            BigDecimalMath.tan(this.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final PreciseDecimal round() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT);
-        final var roundedValue = PreciseDecimalHelper.bigDecimalToRoundedString(
-            BigDecimalMath.round(valueAsBigDecimal, PreciseDecimalConstants.ROUNDING_MATH_CONTEXT)
+        final var this.bigDecimalValue = new BigDecimal(this.value, PreciseDecimal.ROUNDING_MATH_CONTEXT);
+        final var roundedValue = PreciseDecimal.bigDecimalToRoundedString(
+            BigDecimalMath.round(this.bigDecimalValue, PreciseDecimal.ROUNDING_MATH_CONTEXT)
         );
         // If the rounded value is integer
         if (!roundedValue.contains("."))
@@ -166,9 +171,7 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
     }
 
     private final String sign() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        switch(valueAsBigDecimal.signum()) {
+        switch(this.bigDecimalValue.signum()) {
             case 1:
                 return "+";
             case 0: 
@@ -180,98 +183,59 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
         }
     }
 
-    private final String abs() {
-        final var valueAsBigDecimal = new BigDecimal(this.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return PreciseDecimalHelper.bigDecimalToString(
-            valueAsBigDecimal.abs(PreciseDecimalConstants.MATH_CONTEXT)
+    public final PreciseDecimal abs() {
+        return PreciseDecimal.from(
+            this.bigDecimalValue.abs(PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public final String format() {
-        return this.sign() + this.abs();
+        return this.sign() + this.abs().value;
     }
 
     public final boolean greaterThan(final PreciseDecimal other) {
-        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return thisValue.compareTo(otherValue) == 1;
+        return this.bigDecimalValue.compareTo(other.bigDecimalValue) == 1;
     }
 
     public final boolean greaterOrEquals(final PreciseDecimal other) {
-        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return thisValue.compareTo(otherValue) > -1;
+        return this.bigDecimalValue.compareTo(other.bigDecimalValue) > -1;
     }
 
     public final boolean smallerThan(final PreciseDecimal other) {
-        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return thisValue.compareTo(otherValue) == -1;
+        return this.bigDecimalValue.compareTo(other.bigDecimalValue) == -1;
     }
 
     public final boolean smallerOrEquals(final PreciseDecimal other) {
-        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return thisValue.compareTo(otherValue) < 1;
+        return this.bigDecimalValue.compareTo(other.bigDecimalValue) < 1;
     }
 
     public static final PreciseDecimal sum(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return new PreciseDecimal(
-            PreciseDecimalHelper.bigDecimalToString(
-                aValue.add(bValue, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+        return PreciseDecimal.from(
+            a.bigDecimalValue.add(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
     
     public static final PreciseDecimal sub(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return new PreciseDecimal(
-            PreciseDecimalHelper.bigDecimalToString(
-                aValue.subtract(bValue, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+        return PreciseDecimal.from(
+            a.bigDecimalValue.subtract(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public static final PreciseDecimal mul(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return new PreciseDecimal(
-            PreciseDecimalHelper.bigDecimalToString(
-                aValue.multiply(bValue, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+        return PreciseDecimal.from(
+            a.bigDecimalValue.multiply(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public static final PreciseDecimal div(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return new PreciseDecimal(
-            PreciseDecimalHelper.bigDecimalToString(
-                aValue.divide(bValue, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+        return PreciseDecimal.from(
+            a.bigDecimalValue.divide(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public static final PreciseDecimal rem(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return new PreciseDecimal(
-            PreciseDecimalHelper.bigDecimalToString(
-                aValue.remainder(bValue, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+        return PreciseDecimal.from(
+            a.bigDecimalValue.remainder(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
@@ -281,21 +245,12 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
             b.equals(PreciseDecimal.from(0))
         )
             return PreciseDecimal.from(0);
-
-        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-        
         return PreciseDecimal.from(
-            PreciseDecimalHelper.bigDecimalToString(
-                BigDecimalMath.atan2(aValue, bValue, PreciseDecimalConstants.MATH_CONTEXT)
-            )
+            BigDecimalMath.atan2(aValue, b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
     public static final int compare(final PreciseDecimal a, final PreciseDecimal b) {
-        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
-        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
-
-        return aValue.compareTo(bValue);
+        return a.bigDecimalValue.compareTo(b.bigDecimalValue);
     }
 }
