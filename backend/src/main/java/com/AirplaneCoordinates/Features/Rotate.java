@@ -7,7 +7,7 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class Rotate {
-    public static PlanePoint execute(
+    public static final PlanePoint execute(
         final PlanePoint point,
         final CartesianPoint centerOfRotation,
         final PreciseDecimal angle

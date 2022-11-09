@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
-public final class PreciseDecimal {
+public final class PreciseDecimal implements ComparisionOperations<PreciseDecimal> {
     public final String value;
 
     public PreciseDecimal(final String value) {
@@ -190,5 +190,33 @@ public final class PreciseDecimal {
 
     public final String format() {
         return this.sign() + this.abs();
+    }
+
+    public final boolean greaterThan(final PreciseDecimal other) {
+        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return thisValue.compareTo(otherValue) == 1;
+    }
+
+    public final boolean greaterOrEquals(final PreciseDecimal other) {
+        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return thisValue.compareTo(otherValue) > -1;
+    }
+
+    public final boolean smallerThan(final PreciseDecimal other) {
+        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return thisValue.compareTo(otherValue) == -1;
+    }
+
+    public final boolean smallerOrEquals(final PreciseDecimal other) {
+        final var thisValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var otherValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return thisValue.compareTo(otherValue) < 1;
     }
 }

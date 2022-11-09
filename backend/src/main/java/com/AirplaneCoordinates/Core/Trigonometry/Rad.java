@@ -15,7 +15,7 @@ public final class Rad {
         return this.value.value;
     }
 
-    public static Rad from(final PreciseDecimal value) {
+    public static final Rad from(final PreciseDecimal value) {
         return new Rad(value);
     }
 

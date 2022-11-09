@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public final class AirplaneCoordinatesApplication {
-	public static void main(String[] args) {
+	public static final void main(String[] args) {
 		SpringApplication.run(AirplaneCoordinatesApplication.class, args);
 	}
 }

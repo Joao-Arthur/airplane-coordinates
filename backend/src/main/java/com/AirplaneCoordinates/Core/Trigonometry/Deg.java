@@ -15,7 +15,7 @@ public final class Deg {
         return this.value.value;
     }
 
-    public static Deg from(final PreciseDecimal value) {
+    public static final Deg from(final PreciseDecimal value) {
         return new Deg(value);
     }
     
