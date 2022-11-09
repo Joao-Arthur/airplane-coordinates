@@ -16,7 +16,7 @@ public class SamePositionCollisionService implements CollisionPointService {
         this.pointB = pointB;
     }
 
-    public PointsCollisionDTO getCollisionPoint() {
+    public CollisionDTO getCollisionPoint() {
         /*
 
         type paramsType = {

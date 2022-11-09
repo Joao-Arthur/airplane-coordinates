@@ -1,3 +1,3 @@
 public interface CollisionPointService {
-    public PointsCollisionDTO getCollisionPoint();
+    public CollisionDTO getCollisionPoint();
 }

@@ -3,14 +3,14 @@ package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public final class PointsCollisionDTO {
+public final class CollisionDTO {
     public final String a;
     public final String b;
     public final PreciseDecimal timeUntilCollision;
     public final CartesianPoint collisionPoint;
     public final PreciseDecimal timeDifferenceToPoint;
 
-    public PointsCollisionDTO(
+    public CollisionDTO(
         final String a,
         final String b,
         final PreciseDecimal timeUntilCollision,
