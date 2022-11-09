@@ -2,7 +2,6 @@ package com.AirplaneCoordinates.Core.LinearFunction;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class LinearFunction {
@@ -56,8 +55,8 @@ public final class LinearFunction {
         final PreciseDecimal angle
     ) {
         final var angularCoefficient = Deg.from(angle).toRad().value.tan();
-        final var expected = PreciseDecimalOperations.mul(angularCoefficient, point.x);
-        final var linearCoefficient = PreciseDecimalOperations.sub(point.y, expected);
+        final var expected = PreciseDecimal.mul(angularCoefficient, point.x);
+        final var linearCoefficient = PreciseDecimal.sub(point.y, expected);
 
         return new LinearFunction(
             angularCoefficient.round(),
@@ -66,12 +65,12 @@ public final class LinearFunction {
     }
 
     public final PreciseDecimal root() {
-        return PreciseDecimalOperations.div(this.b.opposite(), this.a);
+        return PreciseDecimal.div(this.b.opposite(), this.a);
     }
 
     public final PreciseDecimal execute(final PreciseDecimal x) {
-        final var val1 = PreciseDecimalOperations.mul(this.a, x);
-        final var val2 = PreciseDecimalOperations.sum(val1, this.b);
+        final var val1 = PreciseDecimal.mul(this.a, x);
+        final var val2 = PreciseDecimal.sum(val1, this.b);
 
         return val2;
     }
@@ -81,8 +80,8 @@ public final class LinearFunction {
         final LinearFunction gx
     ) {
         return LinearFunction.from(
-            PreciseDecimalOperations.sub(fx.a, gx.a),
-            PreciseDecimalOperations.sub(fx.b, gx.b)
+            PreciseDecimal.sub(fx.a, gx.a),
+            PreciseDecimal.sub(fx.b, gx.b)
         );
     }
 

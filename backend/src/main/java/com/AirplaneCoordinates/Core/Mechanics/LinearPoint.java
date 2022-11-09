@@ -3,7 +3,6 @@ package com.AirplaneCoordinates.Core.Mechanics;
 import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 
 public final class LinearPoint {
     public final PreciseDecimal initialPoint;
@@ -60,8 +59,8 @@ public final class LinearPoint {
     }
 
     public final PreciseDecimal timeTo(final PreciseDecimal point) {
-        return PreciseDecimalOperations.div(
-            PreciseDecimalOperations.sub(point, this.initialPoint),
+        return PreciseDecimal.div(
+            PreciseDecimal.sub(point, this.initialPoint),
             this.speed
         );
     }

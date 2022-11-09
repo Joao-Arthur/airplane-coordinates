@@ -2,7 +2,6 @@ package com.AirplaneCoordinates.Core.Plane.Polar;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class PolarPoint {
@@ -55,11 +54,11 @@ public final class PolarPoint {
 
     public final CartesianPoint toCartesian() {
         final var radValue = Deg.from(this.a).toRad().value;
-        final var x = PreciseDecimalOperations.mul(
+        final var x = PreciseDecimal.mul(
             this.r,
             radValue.cos()
         );
-        final var y = PreciseDecimalOperations.mul(
+        final var y = PreciseDecimal.mul(
             this.r,
             radValue.sin()
         );
@@ -68,7 +67,7 @@ public final class PolarPoint {
     }
 
     public final PolarPoint rotate(final PreciseDecimal angle) {
-        final var angleSum = PreciseDecimalOperations.sum(this.a, angle);
+        final var angleSum = PreciseDecimal.sum(this.a, angle);
         final var normalizedAngle = Deg.from(angleSum).normalized();
 
         return new PolarPoint(

@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianOperations;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 import com.AirplaneCoordinates.Features.PlanePointWithId;
 
 public final class PointsCloseToEachOtherService {
@@ -40,7 +39,7 @@ public final class PointsCloseToEachOtherService {
                 point.distanceFromPoint.smallerOrEquals(maxDistance)
             )
             .sorted((a, b) ->
-                PreciseDecimalOperations.compare(a.distanceFromPoint, b.distanceFromPoint)
+                PreciseDecimal.compare(a.distanceFromPoint, b.distanceFromPoint)
             )
             .collect(Collectors.toList());
     }

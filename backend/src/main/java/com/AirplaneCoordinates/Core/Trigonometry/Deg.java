@@ -1,7 +1,6 @@
 package com.AirplaneCoordinates.Core.Trigonometry;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 
 public final class Deg {
     public final PreciseDecimal value; 
@@ -22,9 +21,9 @@ public final class Deg {
     public final PreciseDecimal normalized() {
         final var fullCircle = PreciseDecimal.from(360);
 
-        final var val1 = PreciseDecimalOperations.rem(this.value, fullCircle);
-        final var val2 = PreciseDecimalOperations.sum(val1, fullCircle);
-        final var val3 = PreciseDecimalOperations.rem(val2, fullCircle);
+        final var val1 = PreciseDecimal.rem(this.value, fullCircle);
+        final var val2 = PreciseDecimal.sum(val1, fullCircle);
+        final var val3 = PreciseDecimal.rem(val2, fullCircle);
         
         return val3;
     }
@@ -40,8 +39,8 @@ public final class Deg {
         final var halfCircle = PreciseDecimal.from(180);
         final var pi = PreciseDecimal.pi();
 
-        final var val1 = PreciseDecimalOperations.mul(this.normalized(), pi);
-        final var val2 = PreciseDecimalOperations.div(val1, halfCircle);
+        final var val1 = PreciseDecimal.mul(this.normalized(), pi);
+        final var val2 = PreciseDecimal.div(val1, halfCircle);
 
         return Rad.from(val2);
     }
