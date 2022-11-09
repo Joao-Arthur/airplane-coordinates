@@ -26,10 +26,10 @@ public final class PointsCloseToPointService {
                 )
             )
             .filter(point ->
-                PreciseDecimalOperations.smallerOrEquals(point.distanceFromPoint, maxDistance)
+                point.distanceFromPoint.smallerOrEquals(maxDistance)
             )
             .sorted((a, b) ->
-                PreciseDecimalOperations.greater(a.distanceFromPoint, b.distanceFromPoint) ? 1 : -1
+                PreciseDecimalOperations.compare(a.distanceFromPoint, b.distanceFromPoint)
             )
             .collect(Collectors.toList());
     }
