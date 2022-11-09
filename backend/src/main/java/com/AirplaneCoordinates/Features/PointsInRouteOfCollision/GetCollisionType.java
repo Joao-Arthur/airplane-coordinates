@@ -1,7 +1,7 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
-import com.AirplaneCoordinates.Core.Trigonometry.Degree;
+import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class GetCollisionType {
@@ -25,16 +25,16 @@ public final class GetCollisionType {
         )
             return CollisionType.SAME_POSITION;
         if (
-            Degree.from(this.pointA.vector.direction).isInfiniteTangent() &&
-            Degree.from(this.pointB.vector.direction).isInfiniteTangent()
+            Deg.from(this.pointA.vector.direction).isInfiniteTangent() &&
+            Deg.from(this.pointB.vector.direction).isInfiniteTangent()
         ) {
             if (cartesianA.x.equals(cartesianB.x))
                 return CollisionType.INFINITE_TANGENT_SAME_X;
             return CollisionType.PARALLEL_LINES;
         }
         if (
-            Degree.from(this.pointA.vector.direction).isInfiniteTangent() ||
-            Degree.from(this.pointB.vector.direction).isInfiniteTangent()
+            Deg.from(this.pointA.vector.direction).isInfiniteTangent() ||
+            Deg.from(this.pointB.vector.direction).isInfiniteTangent()
         )
             return CollisionType.INFINITE_TANGENT_IN_ONE_POINT;
         final var fx = LinearFunction.from(

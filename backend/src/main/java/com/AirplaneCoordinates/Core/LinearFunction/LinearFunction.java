@@ -3,7 +3,7 @@ package com.AirplaneCoordinates.Core.LinearFunction;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
-import com.AirplaneCoordinates.Core.Trigonometry.Degree;
+import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class LinearFunction {
     public final PreciseDecimal a;
@@ -55,7 +55,7 @@ public final class LinearFunction {
         final CartesianPoint point,
         final PreciseDecimal angle
     ) {
-        final var angularCoefficient = Degree.from(angle).toRad().value.tan();
+        final var angularCoefficient = Deg.from(angle).toRad().value.tan();
         final var expected = PreciseDecimalOperations.mul(angularCoefficient, point.x);
         final var linearCoefficient = PreciseDecimalOperations.sub(point.y, expected);
 

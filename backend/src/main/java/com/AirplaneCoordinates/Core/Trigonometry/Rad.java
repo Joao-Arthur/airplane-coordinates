@@ -3,10 +3,10 @@ package com.AirplaneCoordinates.Core.Trigonometry;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimalOperations;
 
-public final class Radian {
+public final class Rad {
     public final PreciseDecimal value; 
 
-    private Radian(final PreciseDecimal value) {
+    private Rad(final PreciseDecimal value) {
         this.value = value;
     }
 
@@ -15,17 +15,17 @@ public final class Radian {
         return this.value.value;
     }
 
-    public static Radian from(final PreciseDecimal value) {
-        return new Radian(value);
+    public static Rad from(final PreciseDecimal value) {
+        return new Rad(value);
     }
 
-    public final Degree toDeg() {
+    public final Deg toDeg() {
         final var halfCircle = PreciseDecimal.from(180);
         final var pi = PreciseDecimal.pi();
 
         final var val1 = PreciseDecimalOperations.mul(this.value, halfCircle);
         final var val2 = PreciseDecimalOperations.div(val1, pi);
 
-        return Degree.from(val2);
+        return Deg.from(val2);
     }   
 }

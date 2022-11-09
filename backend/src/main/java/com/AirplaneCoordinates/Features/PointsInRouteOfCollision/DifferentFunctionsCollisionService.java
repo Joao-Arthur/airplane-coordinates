@@ -2,7 +2,7 @@ package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 import com.AirplaneCoordinates.Core.LinearFunction;
-import com.AirplaneCoordinates.Core.Trigonometry;
+import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class DifferentFunctionsCollisionService implements CollisionPointService {
     private final PlanePointWithVector pointA;
@@ -27,11 +27,13 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
         );
         final var intersectionPoint = LinearFunction
             .intersect(fx, gx);
-        final var coefficientA = new Degree(this.pointA.vector.direction)
+        final var coefficientA = new Deg(this.pointA.vector.direction)
             .toRad()
+            .value
             .cos();
-        final var coefficientB = new Degree(this.pointB.vector.direction)
+        final var coefficientB = new Deg(this.pointB.vector.direction)
             .toRad()
+            .value
             .cos();
 
         final var { y: x } = mechanics.collision({
