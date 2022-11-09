@@ -223,6 +223,31 @@ public final class PreciseDecimalOperationsTest {
     }
 
     @Test
+    public final void smaller() {
+        assertEquals(
+            PreciseDecimalOperations.smaller(
+                PreciseDecimal.from(1),
+                PreciseDecimal.from(0)
+            ),
+            true
+        );
+        assertEquals(
+            PreciseDecimalOperations.smaller(
+                PreciseDecimal.from("3.33332"),
+                PreciseDecimal.from("3.33332")
+            ),
+            false
+        );
+        assertEquals(
+            PreciseDecimalOperations.smaller(
+                PreciseDecimal.from("5.5555554"),
+                PreciseDecimal.from("5.5555555")
+            ),
+            false
+        );
+    }
+
+    @Test
     public final void smallerOrEquals() {
         assertEquals(
             PreciseDecimalOperations.smallerOrEquals(

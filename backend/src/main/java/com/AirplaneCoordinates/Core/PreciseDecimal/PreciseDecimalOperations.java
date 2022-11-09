@@ -77,6 +77,13 @@ public final class PreciseDecimalOperations {
         );
     }
 
+    public static final boolean smaller(final PreciseDecimal a, final PreciseDecimal b) {
+        final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
+        final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
+
+        return aValue.compareTo(bValue) == -1;
+    }
+
     public static final boolean smallerOrEquals(final PreciseDecimal a, final PreciseDecimal b) {
         final var aValue = new BigDecimal(a.value, PreciseDecimalConstants.MATH_CONTEXT);
         final var bValue = new BigDecimal(b.value, PreciseDecimalConstants.MATH_CONTEXT);
