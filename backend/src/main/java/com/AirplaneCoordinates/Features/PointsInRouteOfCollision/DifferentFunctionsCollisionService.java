@@ -2,6 +2,8 @@ package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
+import com.AirplaneCoordinates.Core.Mechanics.LinearPoint;
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class DifferentFunctionsCollisionService implements CollisionPointService {
@@ -17,7 +19,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
     }
 
     public final CollisionDTO getCollisionPoint() {
-        /*final var fx = LinearFunction.from(
+        final var fx = LinearFunction.from(
             this.pointA.point.toCartesian(),
             this.pointA.vector.direction
         );
@@ -27,66 +29,66 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
         );
         final var intersectionPoint = LinearFunction
             .intersect(fx, gx);
-        final var coefficientA = new Deg(this.pointA.vector.direction)
+        final var coefficientA = Deg
+            .from(this.pointA.vector.direction)
             .toRad()
             .value
             .cos();
-        final var coefficientB = new Deg(this.pointB.vector.direction)
+        final var coefficientB = Deg
+            .from(this.pointB.vector.direction)
             .toRad()
             .value
             .cos();
-
-        final var { y: x } = mechanics.collision({
-            a: {
-                initialPoint: a.x,
-                speed: coefficientA * a.speed
-                    value: ,
-                    angle: a.direction,
-                }),
-            },
-            b: {
-                initialPoint: b.x,
-                speed: 
-                    value: coefficientB * b.speed,
-                    angle: b.direction,
-                }),
-            },
-        });
-        final var y = linearFunction.execute(fx, x);
-        if (!Number.isFinite(y))
+        final var intersectionPoint = LinearPoint.collisionPoint(
+            LinearPoint.from(
+                this.pointA.point.toCartesian().x,
+                PreciseDecimal.mul(coefficientA, this.pointA.vector.speed)
+            ),
+            LinearPoint.from(
+                this.pointB.point.toCartesian().x,
+                PreciseDecimal.mul(coefficientB, this.pointB.vector.speed)
+            )
+        );
+        final var y = fx.execute(intersectionPoint.x);
+        final var collisionA = LinearPoint.collisionPoint(
+            LinearPoint.from(
+                intersectionPoint.x,
+                PreciseDecimal.from(0)
+            ),
+            LinearPoint.from(
+                this.pointA.point.toCartesian().x,
+                PreciseDecimal.mul(coefficientA, this.pointA.vector.speed)
+            )
+        );
+        if (collisionA.x.smallerThan(PreciseDecimal.from(0)))
             return null;
-        final var { x: timeToCollisionA } = mechanics.collision({
-            a: { initialPoint: intersectionPoint.x, speed: 0 },
-            b: {
-                initialPoint: a.x,
-                speed: coefficientA * a.speed
-            },
-        });
-        if (timeToCollisionA < 0)
+        final var collisionB = LinearPoint.collisionPoint(
+            LinearPoint.from(
+                intersectionPoint.x,
+                PreciseDecimal.from(0)
+            ),
+            LinearPoint.from(
+                this.pointB.point.toCartesian().x,
+                PreciseDecimal.mul(coefficientB, this.pointB.vector.speed)
+            )
+        );
+        if (collisionB.x.smallerThan(PreciseDecimal.from(0)))
             return null;
-        final var { x: timeToCollisionB } = mechanics.collision({
-            a: { initialPoint: intersectionPoint.x, speed: 0 },
-            b: {
-                initialPoint: b.x,
-                speed: coefficientA * b.speed,
-            },
-        });
-        if (timeToCollisionB < 0)
-            return null;
-        final var timeUntilCollision = Math.min(timeToCollisionA, timeToCollisionB);
-        final var timeDifferenceToPoint = Math.abs(timeToCollisionA - timeToCollisionB);
+        final var timeUntilCollision = PreciseDecimal.min(
+            collisionA.x,
+            collisionB.x
+        );
+        final var timeDifferenceToPoint = PreciseDecimal.sub(
+            collisionA.x,
+            collisionB.x
+        ).abs();
 
-        return {
-            a: a.id,
-            b: b.id,
-            timeUntilCollision: numberFns.fix(timeUntilCollision),
-            collisionPoint: {
-                x: numberFns.fix(intersectionPoint.x),
-                y: numberFns.fix(intersectionPoint.y),
-            },
-            timeDifferenceToPoint: numberFns.fix(timeDifferenceToPoint),
-        };*/
-
-        return null;
+        return new CollisionDTOBuilder()
+            .setA(this.pointA.id)
+            .setB(this.pointB.id)
+            .setTimeUntilCollision(timeUntilCollision)
+            .setCollisionPoint(intersectionPoint)
+            .setTimeDifferenceToPoint(timeDifferenceToPoint)
+            .build();
     }
 }

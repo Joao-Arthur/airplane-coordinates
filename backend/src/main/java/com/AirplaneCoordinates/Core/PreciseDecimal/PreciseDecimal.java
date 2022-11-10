@@ -242,6 +242,14 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
         );
     }
 
+    public static final PreciseDecimal min(final PreciseDecimal a, final PreciseDecimal b) {
+        return a.smallerThan(b) ? a : b;
+    }
+
+    public static final PreciseDecimal max(final PreciseDecimal a, final PreciseDecimal b) {
+        return a.greaterThan(b) ? a : b;
+    }
+
     public static final PreciseDecimal atan(final PreciseDecimal a, final PreciseDecimal b) {
         if (
             a.equals(PreciseDecimal.from(0)) &&
