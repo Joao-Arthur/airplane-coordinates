@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
-import com.AirplaneCoordinates.Core.Mathematics.ComparisionOperations;
+import com.AirplaneCoordinates.Core.Mathematics.Comparision;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
-public final class PreciseDecimal implements ComparisionOperations<PreciseDecimal> {
+public final class PreciseDecimal implements Comparision<PreciseDecimal> {
     private static final int PRECISION = 100;
     private static final int ROUNDING_PRECISION = PRECISION -6;
     private static final MathContext MATH_CONTEXT = new MathContext(PRECISION, RoundingMode.HALF_EVEN);

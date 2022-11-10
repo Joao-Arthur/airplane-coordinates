@@ -2,64 +2,94 @@ package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 
-public final class PreciseDecimalComparisionTest {
+public class PreciseDecimalComparisionTest {
     @Test
-    public final void compareAsc() {
-        final var items = new ArrayList<PreciseDecimal>();
-        items.add(PreciseDecimal.from(10));
-        items.add(PreciseDecimal.from(-2));
-        items.add(PreciseDecimal.from(3));
-        items.add(PreciseDecimal.from("46.5"));
-        items.add(PreciseDecimal.from(3));
-
-        final var actual = items
-            .stream()
-            .sorted(PreciseDecimal::compareAsc)
-            .collect(Collectors.toList());
-
-        final var expected = new ArrayList<PreciseDecimal>();
-        expected.add(PreciseDecimal.from(-2));
-        expected.add(PreciseDecimal.from(3));
-        expected.add(PreciseDecimal.from(3));
-        expected.add(PreciseDecimal.from(10));
-        expected.add(PreciseDecimal.from("46.5"));
-
+    public final void smallerThan() {
         assertEquals(
-            Arrays.toString(actual.toArray()),
-            Arrays.toString(expected.toArray())
+            PreciseDecimal.from(1).smallerThan(
+                PreciseDecimal.from(0)
+            ),
+            false
+        );
+        assertEquals(
+            PreciseDecimal.from("3.33332").smallerThan(
+                PreciseDecimal.from("3.33332")
+            ),
+            false
+        );
+        assertEquals(
+            PreciseDecimal.from("5.5555554").smallerThan(
+                PreciseDecimal.from("5.5555555")
+            ),
+            true
         );
     }
 
     @Test
-    public final void compareDesc() {
-        final var items = new ArrayList<PreciseDecimal>();
-        items.add(PreciseDecimal.from(10));
-        items.add(PreciseDecimal.from(-2));
-        items.add(PreciseDecimal.from(3));
-        items.add(PreciseDecimal.from("46.5"));
-        items.add(PreciseDecimal.from(3));
-
-        final var actual = items
-            .stream()
-            .sorted(PreciseDecimal::compareDesc)
-            .collect(Collectors.toList());
-
-        final var expected = new ArrayList<PreciseDecimal>();
-        expected.add(PreciseDecimal.from("46.5"));
-        expected.add(PreciseDecimal.from(10));
-        expected.add(PreciseDecimal.from(3));
-        expected.add(PreciseDecimal.from(3));
-        expected.add(PreciseDecimal.from(-2));
-
+    public final void smallerOrEquals() {
         assertEquals(
-            Arrays.toString(actual.toArray()),
-            Arrays.toString(expected.toArray())
+            PreciseDecimal.from(1).smallerOrEquals(
+                PreciseDecimal.from(0)
+            ),
+            false
+        );
+        assertEquals(
+            PreciseDecimal.from("3.33332").smallerOrEquals(
+                PreciseDecimal.from("3.33332")
+            ),
+            true
+        );
+        assertEquals(
+            PreciseDecimal.from("5.5555554").smallerOrEquals(
+                PreciseDecimal.from("5.5555555")
+            ),
+            true
+        );
+    }
+
+    @Test
+    public final void greaterThan() {
+        assertEquals(
+            PreciseDecimal.from(1).greaterThan(
+                PreciseDecimal.from(0)
+            ),
+            true
+        );
+        assertEquals(
+            PreciseDecimal.from("3.33332").greaterThan(
+                PreciseDecimal.from("3.33332")
+            ),
+            false
+        );
+        assertEquals(
+            PreciseDecimal.from("5.5555554").greaterThan(
+                PreciseDecimal.from("5.5555555")
+            ),
+            false
+        );
+    }
+
+    @Test
+    public final void greaterOrEquals() {
+        assertEquals(
+            PreciseDecimal.from(1).greaterOrEquals(
+                PreciseDecimal.from(0)
+            ),
+            true
+        );
+        assertEquals(
+            PreciseDecimal.from("3.33332").greaterOrEquals(
+                PreciseDecimal.from("3.33332")
+            ),
+            true
+        );
+        assertEquals(
+            PreciseDecimal.from("5.5555554").greaterOrEquals(
+                PreciseDecimal.from("5.5555555")
+            ),
+            false
         );
     }
 }
