@@ -15,7 +15,7 @@ public final class SameFunctionCollisionService implements CollisionPointService
     }
 
     public final CollisionDTO getCollisionPoint() { 
-        final var fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
+        /*final var fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
 
         final var coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));
         final var coefficientB = Math.abs(Math.cos(b.direction * Math.PI / 180));
@@ -76,7 +76,7 @@ public final class SameFunctionCollisionService implements CollisionPointService
                 y: numberFns.fix(y),
             },
             timeDifferenceToPoint: numberFns.fix(timeDifferenceToPoint),
-        };
+        };*/
 
         return null;
     }

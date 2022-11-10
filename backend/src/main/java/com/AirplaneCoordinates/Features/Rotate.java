@@ -1,6 +1,5 @@
 package com.AirplaneCoordinates.Features;
 
-import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianOperations;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
@@ -13,11 +12,11 @@ public final class Rotate {
         final PreciseDecimal angle
     ) {
         final var angleValue = Deg.from(angle).normalized();
-        final var offsetPoint = CartesianOperations.sub(point.toCartesian(), centerOfRotation);
+        final var offsetPoint = CartesianPoint.sub(point.toCartesian(), centerOfRotation);
         final var pointAsPolar = offsetPoint.toPolar();
         final var rotatedPoint = pointAsPolar.rotate(angleValue);
         final var pointAsCartesian = rotatedPoint.toCartesian();
-        final var unoffsetedPoint = CartesianOperations.sum(pointAsCartesian, centerOfRotation);
+        final var unoffsetedPoint = CartesianPoint.sum(pointAsCartesian, centerOfRotation);
     
         switch(point.planeType) {
             case CARTESIAN:

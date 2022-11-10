@@ -21,16 +21,16 @@ public final class PointsCloseToPointServiceTest {
         points.add(PlanePointWithId.from("3", PlanePoint.from(Plane.CARTESIAN, -2, -2)));
         points.add(PlanePointWithId.from("4", PlanePoint.from(Plane.CARTESIAN, 10, 10)));
 
-        final var actualResult = PointsCloseToPointService.execute(points, PreciseDecimal.from(10));
+        final var actual = new PointsCloseToPointService(points, PreciseDecimal.from(10)).execute();
 
-        final var expectedResult = new ArrayList<PointCloseToPointDTO>();
-        expectedResult.add(PointCloseToPointDTO.from( "3", "2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145"));
-        expectedResult.add(PointCloseToPointDTO.from( "1", 8));
-        expectedResult.add(PointCloseToPointDTO.from("2", 10));
+        final var expected = new ArrayList<PointCloseToPointDTO>();
+        expected.add(PointCloseToPointDTO.from("3", "2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145"));
+        expected.add(PointCloseToPointDTO.from("1", 8));
+        expected.add(PointCloseToPointDTO.from("2", 10));
 
         assertEquals(
-            Arrays.toString(actualResult.toArray()),
-            Arrays.toString(expectedResult.toArray())
+            Arrays.toString(actual.toArray()),
+            Arrays.toString(expected.toArray())
         );
     }
 }

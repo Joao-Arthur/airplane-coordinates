@@ -1,6 +1,10 @@
 package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
+import com.AirplaneCoordinates.Core.Mathematics.ComparisionOperations;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
@@ -44,12 +48,12 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
     private static final PreciseDecimal from(final BigDecimal value) {
         final var plainValue = value.stripTrailingZeros().toPlainString();
         if (!plainValue.contains("."))
-            return plainValue;
+            return new PreciseDecimal(plainValue);
         final var arr = plainValue.split("\\.");
         final var integerPart = arr[0];
         final var decimalPart = arr[1];
         if (decimalPart.length() <= PreciseDecimal.PRECISION)
-            return plainValue;
+            return new PreciseDecimal(plainValue);
         final var finalValue = integerPart + "." + decimalPart.substring(0, PreciseDecimal.PRECISION);
         return new PreciseDecimal(new BigDecimal(finalValue).stripTrailingZeros().toPlainString());
     }
@@ -149,7 +153,6 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
     }
 
     public final PreciseDecimal round() {
-        final var this.bigDecimalValue = new BigDecimal(this.value, PreciseDecimal.ROUNDING_MATH_CONTEXT);
         final var roundedValue = PreciseDecimal.bigDecimalToRoundedString(
             BigDecimalMath.round(this.bigDecimalValue, PreciseDecimal.ROUNDING_MATH_CONTEXT)
         );
@@ -246,11 +249,23 @@ public final class PreciseDecimal implements ComparisionOperations<PreciseDecima
         )
             return PreciseDecimal.from(0);
         return PreciseDecimal.from(
-            BigDecimalMath.atan2(aValue, b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
+            BigDecimalMath.atan2(a.bigDecimalValue, b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
-    public static final int compare(final PreciseDecimal a, final PreciseDecimal b) {
-        return a.bigDecimalValue.compareTo(b.bigDecimalValue);
+    public static final int compareAsc(final PreciseDecimal a, final PreciseDecimal b) {
+        if(a.value.equals(b.value))
+            return 0;
+        if(a.greaterThan(b))
+            return 1;
+        return -1;
+    }
+
+    public static final int compareDesc(final PreciseDecimal a, final PreciseDecimal b) {
+        if(a.value.equals(b.value))
+            return 0;
+        if(a.greaterThan(b))
+            return -1;
+        return 1;
     }
 }

@@ -1,7 +1,7 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
-import com.AirplaneCoordinates.Core.LinearFunction;
+import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class DifferentFunctionsCollisionService implements CollisionPointService {
@@ -17,7 +17,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
     }
 
     public final CollisionDTO getCollisionPoint() {
-        final var fx = LinearFunction.from(
+        /*final var fx = LinearFunction.from(
             this.pointA.point.toCartesian(),
             this.pointA.vector.direction
         );
@@ -85,7 +85,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
                 y: numberFns.fix(intersectionPoint.y),
             },
             timeDifferenceToPoint: numberFns.fix(timeDifferenceToPoint),
-        };
+        };*/
 
         return null;
     }

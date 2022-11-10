@@ -1,6 +1,5 @@
 package com.AirplaneCoordinates.Features;
 
-import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianOperations;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
@@ -9,14 +8,14 @@ public final class Translate {
         switch (point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(
-                    CartesianOperations.sum(
+                    CartesianPoint.sum(
                         point.toCartesian(),
                         factor
                     ).round()
                 );
             case POLAR:
                 return PlanePoint.fromPolar(
-                    CartesianOperations.sum(
+                    CartesianPoint.sum(
                         point.toCartesian(),
                         factor
                     ).toPolar().round()

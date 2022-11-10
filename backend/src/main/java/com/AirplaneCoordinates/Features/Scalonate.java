@@ -1,6 +1,6 @@
 package com.AirplaneCoordinates.Features;
 
-import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianOperations;
+import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
@@ -9,14 +9,14 @@ public final class Scalonate {
         switch (point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(
-                    CartesianOperations.mul(
+                    CartesianPoint.mul(
                         point.toCartesian(),
                         factor
                     ).round()
                 );
             case POLAR:
                 return PlanePoint.fromPolar(
-                    CartesianOperations.mul(
+                    CartesianPoint.mul(
                         point.toCartesian(),
                         factor
                     ).toPolar().round()

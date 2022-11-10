@@ -1,3 +1,5 @@
+package com.AirplaneCoordinates.Core.Mathematics;
+
 public interface ComparisionOperations<T> {
     public boolean greaterThan(final T other);
     public boolean greaterOrEquals(final T other);

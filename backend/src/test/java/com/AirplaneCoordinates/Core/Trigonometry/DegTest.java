@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public final class DegreeTest {
+public final class DegTest {
     @Test
     public final void toStringTest() {
         assertEquals(

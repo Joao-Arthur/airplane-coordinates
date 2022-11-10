@@ -2,6 +2,10 @@ package com.AirplaneCoordinates.Core.PreciseDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -738,6 +742,60 @@ public final class PreciseDecimalTest {
                 PreciseDecimal.from(3)
             ).toString(),
             PreciseDecimal.from("-1.212025656524324398835401627713290942321609043806637130847073429399205018921975170570753003401633161").toString()
+        );
+    }
+
+    @Test
+    public final void compareAsc() {
+        final var items = new ArrayList<PreciseDecimal>();
+        items.add(PreciseDecimal.from(10));
+        items.add(PreciseDecimal.from(-2));
+        items.add(PreciseDecimal.from(3));
+        items.add(PreciseDecimal.from("46.5"));
+        items.add(PreciseDecimal.from(3));
+
+        final var actual = items
+            .stream()
+            .sorted(PreciseDecimal::compareAsc)
+            .collect(Collectors.toList());
+
+        final var expected = new ArrayList<PreciseDecimal>();
+        expected.add(PreciseDecimal.from(-2));
+        expected.add(PreciseDecimal.from(3));
+        expected.add(PreciseDecimal.from(3));
+        expected.add(PreciseDecimal.from(10));
+        expected.add(PreciseDecimal.from("46.5"));
+
+        assertEquals(
+            Arrays.toString(actual.toArray()),
+            Arrays.toString(expected.toArray())
+        );
+    }
+
+    @Test
+    public final void compareDesc() {
+        final var items = new ArrayList<PreciseDecimal>();
+        items.add(PreciseDecimal.from(10));
+        items.add(PreciseDecimal.from(-2));
+        items.add(PreciseDecimal.from(3));
+        items.add(PreciseDecimal.from("46.5"));
+        items.add(PreciseDecimal.from(3));
+
+        final var actual = items
+            .stream()
+            .sorted(PreciseDecimal::compareDesc)
+            .collect(Collectors.toList());
+
+        final var expected = new ArrayList<PreciseDecimal>();
+        expected.add(PreciseDecimal.from("46.5"));
+        expected.add(PreciseDecimal.from(10));
+        expected.add(PreciseDecimal.from(3));
+        expected.add(PreciseDecimal.from(3));
+        expected.add(PreciseDecimal.from(-2));
+
+        assertEquals(
+            Arrays.toString(actual.toArray()),
+            Arrays.toString(expected.toArray())
         );
     }
 }
