@@ -16,10 +16,9 @@ public final class Translate {
     }
 
     public final PlanePoint execute() {
-        final var resultPoint = CartesianPoint.sum(
-            this.point.toCartesian(),
-            this.factor
-        );
+        final var resultPoint = this.point
+            .toCartesian()
+            .plus(this.factor);
 
         switch (this.point.planeType) {
             case CARTESIAN:

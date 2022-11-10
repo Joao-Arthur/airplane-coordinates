@@ -22,11 +22,11 @@ public final class Rotate {
 
     public final PlanePoint execute() {
         final var angleValue = Deg.from(this.angle).normalized();
-        final var offsetPoint = CartesianPoint.sub(this.point.toCartesian(), this.centerOfRotation);
+        final var offsetPoint = this.point.toCartesian().minus(this.centerOfRotation);
         final var pointAsPolar = offsetPoint.toPolar();
         final var rotatedPoint = pointAsPolar.rotate(angleValue);
         final var pointAsCartesian = rotatedPoint.toCartesian();
-        final var unoffsetedPoint = CartesianPoint.sum(pointAsCartesian, this.centerOfRotation);
+        final var unoffsetedPoint = pointAsCartesian.plus(this.centerOfRotation);
     
         switch(this.point.planeType) {
             case CARTESIAN:

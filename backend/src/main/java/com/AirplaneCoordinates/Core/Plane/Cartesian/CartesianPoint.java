@@ -1,10 +1,13 @@
 package com.AirplaneCoordinates.Core.Plane.Cartesian;
 
+import com.AirplaneCoordinates.Core.Mathematics.Arithmetic;
 import com.AirplaneCoordinates.Core.Plane.Polar.PolarPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Rad;
 
-public final class CartesianPoint {
+public final class CartesianPoint implements
+    Arithmetic<CartesianPoint>
+{
     public final PreciseDecimal x;
     public final PreciseDecimal y;
 
@@ -80,36 +83,43 @@ public final class CartesianPoint {
         );
     }
 
-    public static final CartesianPoint sum(final CartesianPoint a, final CartesianPoint b) {
+    public final CartesianPoint plus(final CartesianPoint other) {
         return CartesianPoint.from(
-            a.x.plus(b.x),
-            a.y.plus(b.y)
+            this.x.plus(other.x),
+            this.y.plus(other.y)
         );
     }
 
-    public static final CartesianPoint sub(final CartesianPoint a, final CartesianPoint b) {
+    public final CartesianPoint minus(final CartesianPoint other) {
         return CartesianPoint.from(
-            a.x.minus(b.x),
-            a.y.minus(b.y)
+            this.x.minus(other.x),
+            this.y.minus(other.y)
         );
     }
 
-    public static final CartesianPoint mul(final CartesianPoint a, final CartesianPoint b) {
+    public final CartesianPoint times(final CartesianPoint other) {
         return CartesianPoint.from(
-           a.x.times(b.x),
-           a.y.times(b.y) 
+           this.x.times(other.x),
+           this.y.times(other.y) 
         );
     }
 
-    public static final CartesianPoint div(final CartesianPoint a, final CartesianPoint b) {
+    public final CartesianPoint divide(final CartesianPoint other) {
         return CartesianPoint.from(
-           a.x.divide(b.x),
-           a.y.divide(b.y) 
+           this.x.divide(other.x),
+           this.y.divide(other.y) 
+        );
+    }
+
+    public final CartesianPoint remainder(final CartesianPoint other) {
+        return CartesianPoint.from(
+           this.x.remainder(other.x),
+           this.y.remainder(other.y) 
         );
     }
 
     public static final PreciseDecimal distance(final CartesianPoint a, final CartesianPoint b) {
-        final var delta = CartesianPoint.sub(a, b);
+        final var delta = a.minus(b);
         
         final var xSquare = delta.x.square();
         final var ySquare = delta.y.square();

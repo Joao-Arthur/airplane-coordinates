@@ -106,33 +106,33 @@ public final class CartesianPointTest {
     }
 
     @Test
-    public final void sum() {
+    public final void plus() {
         assertEquals(
-            CartesianPoint.sum(
-                CartesianPoint.from(4, 7),
-                CartesianPoint.from(2, -3)
-            ).toString(),
+            CartesianPoint
+                .from(4, 7)
+                .plus(CartesianPoint.from(2, -3))
+                .toString(),
             CartesianPoint.from(6, 4).toString()
         );
         assertEquals(
-            CartesianPoint.sum(
-                CartesianPoint.from(-1, 3),
-                CartesianPoint.from(2, -3)
-            ).toString(),
+            CartesianPoint
+                .from(-1, 3)
+                .plus(CartesianPoint.from(2, -3))
+                .toString(),
             CartesianPoint.from(1, 0).toString()
         );
         assertEquals(
-            CartesianPoint.sum(
-                CartesianPoint.from(4, 7),
-                CartesianPoint.from(0, 0)
-            ).toString(),
+            CartesianPoint
+                .from(4, 7)
+                .plus(CartesianPoint.from(0, 0))
+                .toString(),
             CartesianPoint.from(4, 7).toString()
         );
         assertEquals(
-            CartesianPoint.sum(
-                CartesianPoint.from(6, 4),
-                CartesianPoint.from(-4, -7)
-            ).toString(),
+            CartesianPoint
+                .from(6, 4)
+                .plus(CartesianPoint.from(-4, -7))
+                .toString(),
             CartesianPoint.from(2, -3).toString()
         );
     }
