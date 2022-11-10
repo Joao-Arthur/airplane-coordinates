@@ -20,7 +20,11 @@ public final class LinearFunction {
     public final String toString() {
         return "y = " +
             this.a.format() + "x " +
-            (this.b.equals(PreciseDecimal.from(0)) ? "+0" : this.b.format());
+            (
+                this.b.equals(PreciseDecimal.from(0))
+                ? "+0"
+                : this.b.format()
+            );
     }
 
     public static final LinearFunction from(

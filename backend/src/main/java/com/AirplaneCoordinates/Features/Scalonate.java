@@ -1,11 +1,10 @@
 package com.AirplaneCoordinates.Features;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
-import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
 public final class Scalonate {
-    public static PlanePoint execute(final PlanePoint point, final CartesianPoint factor) {
+    public static final PlanePoint execute(final PlanePoint point, final CartesianPoint factor) {
         switch (point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(

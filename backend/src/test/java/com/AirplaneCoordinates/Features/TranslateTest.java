@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,17 +17,17 @@ public final class TranslateTest {
     @Test
     public final void polarTranslate() {
         assertEquals(
-            Translate.execute(
+            new Translate(
                 PlanePoint.from(Plane.POLAR, 1, 0),
                 CartesianPoint.from(-2, 0)
-            ).toString(),
+            ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 1, 180).toString()
         );
         assertEquals(
-            Translate.execute(
+            new Translate(
                 PlanePoint.from(Plane.POLAR, 1, 45),
                 CartesianPoint.from(1, 1)
-            ).toString(),
+            ).execute().toString(),
             PlanePoint.from(
                 Plane.POLAR,
                 "2.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641572",
@@ -40,10 +39,10 @@ public final class TranslateTest {
     @Test
     public final void cartesianTranslate() {
         assertEquals(
-            Translate.execute(
+            new Translate(
                 PlanePoint.from(Plane.CARTESIAN, 5, -1),
                 CartesianPoint.from(-2, 2)
-            ).toString(),
+            ).execute().toString(),
             PlanePoint.from(Plane.CARTESIAN, 3, 1).toString()
         );
     }
@@ -101,8 +100,8 @@ public final class TranslateTest {
     ) {
         final var pointBefore = PlanePoint.from(plane, pointX, pointY);
         final var factor = CartesianPoint.from(factorX, factorY);
-        final var movedPoint = Translate.execute(pointBefore, factor);
-        final var pointAfter = Translate.execute(movedPoint, factor.opposite());
+        final var movedPoint = new Translate(pointBefore, factor).execute();
+        final var pointAfter = new Translate(movedPoint, factor.opposite()).execute();
         assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
@@ -122,14 +121,14 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = Translate.execute(
+                        final var movedPoint = new Translate(
                             pointBefore,
                             factor
-                        );
-                        final var pointAfter = Translate.execute(
+                        ).execute();
+                        final var pointAfter = new Translate(
                             movedPoint,
                             factor.opposite()
-                        );
+                        ).execute();
                         assertEquals(
                             pointAfter.toString(),
                             pointBefore.toString()
@@ -156,14 +155,14 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = Translate.execute(
+                        final var movedPoint = new Translate(
                             pointBefore,
                             factor
-                        );
-                        final var pointAfter = Translate.execute(
+                        ).execute();
+                        final var pointAfter = new Translate(
                             movedPoint,
                             factor.opposite()
-                        );
+                        ).execute();
                         assertEquals(
                             pointAfter.toString(),
                             pointBefore.toString()
@@ -191,14 +190,14 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = Translate.execute(
+                        final var movedPoint = new Translate(
                             pointBefore,
                             factor
-                        );
-                        final var pointAfter = Translate.execute(
+                        ).execute();
+                        final var pointAfter = new Translate(
                             movedPoint,
                             factor.opposite()
-                        );
+                        ).execute();
                         assertEquals(
                             pointAfter.toString(),
                             pointBefore.toString()
@@ -227,14 +226,14 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = Translate.execute(
+                        final var movedPoint = new Translate(
                             pointBefore,
                             factor
-                        );
-                        final var pointAfter = Translate.execute(
+                        ).execute();
+                        final var pointAfter = new Translate(
                             movedPoint,
                             factor.opposite()
-                        );
+                        ).execute();
                         assertEquals(
                             pointAfter.toString(),
                             pointBefore.toString()
