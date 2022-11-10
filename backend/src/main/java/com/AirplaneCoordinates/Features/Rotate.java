@@ -6,19 +6,29 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class Rotate {
-    public static final PlanePoint execute(
+    private final PlanePoint point;
+    private final CartesianPoint centerOfRotation;
+    private final PreciseDecimal angle;
+
+    public Rotate(
         final PlanePoint point,
         final CartesianPoint centerOfRotation,
         final PreciseDecimal angle
     ) {
-        final var angleValue = Deg.from(angle).normalized();
-        final var offsetPoint = CartesianPoint.sub(point.toCartesian(), centerOfRotation);
+        this.point = point;
+        this.centerOfRotation = centerOfRotation;
+        this.angle = angle;
+    }
+
+    public final PlanePoint execute() {
+        final var angleValue = Deg.from(this.angle).normalized();
+        final var offsetPoint = CartesianPoint.sub(this.point.toCartesian(), this.centerOfRotation);
         final var pointAsPolar = offsetPoint.toPolar();
         final var rotatedPoint = pointAsPolar.rotate(angleValue);
         final var pointAsCartesian = rotatedPoint.toCartesian();
-        final var unoffsetedPoint = CartesianPoint.sum(pointAsCartesian, centerOfRotation);
+        final var unoffsetedPoint = CartesianPoint.sum(pointAsCartesian, this.centerOfRotation);
     
-        switch(point.planeType) {
+        switch(this.point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(unoffsetedPoint.round());
             case POLAR:

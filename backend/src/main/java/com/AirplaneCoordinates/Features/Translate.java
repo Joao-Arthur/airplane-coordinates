@@ -16,25 +16,19 @@ public final class Translate {
     }
 
     public final PlanePoint execute() {
+        final var resultPoint = CartesianPoint.sum(
+            this.point.toCartesian(),
+            this.factor
+        );
+
         switch (this.point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(
-                    CartesianPoint
-                        .sum(
-                            this.point.toCartesian(),
-                            this.factor
-                        )
-                        .round()
+                    resultPoint.round()
                 );
             case POLAR:
                 return PlanePoint.fromPolar(
-                    CartesianPoint
-                        .sum(
-                            this.point.toCartesian(),
-                            this.factor
-                        )
-                        .toPolar()
-                        .round()
+                    resultPoint.toPolar().round()
                 );
             default:
                 throw new RuntimeException("planeType is required");
