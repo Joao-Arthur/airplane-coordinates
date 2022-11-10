@@ -59,9 +59,9 @@ public final class LinearPoint {
     }
 
     public final PreciseDecimal timeTo(final PreciseDecimal point) {
-        return PreciseDecimal.div(
-            PreciseDecimal.sub(point, this.initialPoint),
-            this.speed
-        );
+        final var val1 = point.minus(this.initialPoint);
+        final var val2 = val1.divide(this.speed);
+
+        return val2;
     }
 }

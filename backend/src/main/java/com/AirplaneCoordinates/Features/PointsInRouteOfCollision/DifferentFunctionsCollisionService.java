@@ -27,8 +27,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
             this.pointB.point.toCartesian(),
             this.pointB.vector.direction
         );
-        final var intersectionPoint = LinearFunction
-            .intersect(fx, gx);
+        final var intersectionPoint = LinearFunction.intersectionPoint(fx, gx);
         final var coefficientA = Deg
             .from(this.pointA.vector.direction)
             .toRad()
@@ -39,17 +38,18 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
             .toRad()
             .value
             .cos();
-        final var intersectionPoint = LinearPoint.collisionPoint(
-            LinearPoint.from(
-                this.pointA.point.toCartesian().x,
-                PreciseDecimal.mul(coefficientA, this.pointA.vector.speed)
-            ),
-            LinearPoint.from(
-                this.pointB.point.toCartesian().x,
-                PreciseDecimal.mul(coefficientB, this.pointB.vector.speed)
-            )
-        );
-        final var y = fx.execute(intersectionPoint.x);
+        //final var collisionPoint = LinearPoint.collisionPoint(
+        //    LinearPoint.from(
+        //        this.pointA.point.toCartesian().x,
+        //        coefficientA.times(this.pointA.vector.speed)
+        //    ),
+        //    LinearPoint.from(
+        //        this.pointB.point.toCartesian().x,
+        //        coefficientB.times(this.pointB.vector.speed)
+        //    )
+        //);
+        //final var y = fx.execute(collisionPoint.x);
+
         final var collisionA = LinearPoint.collisionPoint(
             LinearPoint.from(
                 intersectionPoint.x,
@@ -57,7 +57,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
             ),
             LinearPoint.from(
                 this.pointA.point.toCartesian().x,
-                PreciseDecimal.mul(coefficientA, this.pointA.vector.speed)
+                coefficientA.times(this.pointA.vector.speed)
             )
         );
         if (collisionA.x.smallerThan(PreciseDecimal.from(0)))
@@ -69,7 +69,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
             ),
             LinearPoint.from(
                 this.pointB.point.toCartesian().x,
-                PreciseDecimal.mul(coefficientB, this.pointB.vector.speed)
+                coefficientB.times(this.pointB.vector.speed)
             )
         );
         if (collisionB.x.smallerThan(PreciseDecimal.from(0)))
@@ -78,10 +78,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
             collisionA.x,
             collisionB.x
         );
-        final var timeDifferenceToPoint = PreciseDecimal.sub(
-            collisionA.x,
-            collisionB.x
-        ).abs();
+        final var timeDifferenceToPoint = collisionA.x.minus(collisionB.x).abs();
 
         return new CollisionDTOBuilder()
             .setA(this.pointA.id)

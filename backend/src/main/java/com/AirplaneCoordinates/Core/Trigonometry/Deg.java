@@ -21,9 +21,9 @@ public final class Deg {
     public final PreciseDecimal normalized() {
         final var fullCircle = PreciseDecimal.from(360);
 
-        final var val1 = PreciseDecimal.rem(this.value, fullCircle);
-        final var val2 = PreciseDecimal.sum(val1, fullCircle);
-        final var val3 = PreciseDecimal.rem(val2, fullCircle);
+        final var val1 = this.value.remainder(fullCircle);
+        final var val2 = val1.plus(fullCircle);
+        final var val3 = val2.remainder(fullCircle);
         
         return val3;
     }
@@ -39,8 +39,8 @@ public final class Deg {
         final var halfCircle = PreciseDecimal.from(180);
         final var pi = PreciseDecimal.pi();
 
-        final var val1 = PreciseDecimal.mul(this.normalized(), pi);
-        final var val2 = PreciseDecimal.div(val1, halfCircle);
+        final var val1 = this.normalized().times(pi);
+        final var val2 = val1.divide(halfCircle);
 
         return Rad.from(val2);
     }

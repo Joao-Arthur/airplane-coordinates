@@ -22,8 +22,8 @@ public final class Rad {
         final var halfCircle = PreciseDecimal.from(180);
         final var pi = PreciseDecimal.pi();
 
-        final var val1 = PreciseDecimal.mul(this.value, halfCircle);
-        final var val2 = PreciseDecimal.div(val1, pi);
+        final var val1 = this.value.times(halfCircle);
+        final var val2 = val1.divide(pi);
 
         return Deg.from(val2);
     }   

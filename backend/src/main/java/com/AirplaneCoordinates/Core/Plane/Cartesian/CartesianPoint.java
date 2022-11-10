@@ -46,10 +46,11 @@ public final class CartesianPoint {
     }
 
     public final PolarPoint toPolar() {
-        final var r = PreciseDecimal.sum(
-            this.x.square(),
-            this.y.square()
-        ).sqrt();
+        final var xSquare = this.x.square();
+        final var ySquare = this.y.square();
+        final var val1 = xSquare.plus(ySquare);
+        final var r = val1.sqrt();
+
         final var a = Rad
             .from(PreciseDecimal.atan(this.y, this.x))
             .toDeg()
@@ -81,35 +82,41 @@ public final class CartesianPoint {
 
     public static final CartesianPoint sum(final CartesianPoint a, final CartesianPoint b) {
         return CartesianPoint.from(
-            PreciseDecimal.sum(a.x, b.x),
-            PreciseDecimal.sum(a.y, b.y)
+            a.x.plus(b.x),
+            a.y.plus(b.y)
         );
     }
 
     public static final CartesianPoint sub(final CartesianPoint a, final CartesianPoint b) {
         return CartesianPoint.from(
-            PreciseDecimal.sub(a.x, b.x),
-            PreciseDecimal.sub(a.y, b.y)
+            a.x.minus(b.x),
+            a.y.minus(b.y)
         );
     }
 
     public static final CartesianPoint mul(final CartesianPoint a, final CartesianPoint b) {
         return CartesianPoint.from(
-           PreciseDecimal.mul(a.x, b.x),
-           PreciseDecimal.mul(a.y, b.y) 
+           a.x.times(b.x),
+           a.y.times(b.y) 
         );
     }
 
     public static final CartesianPoint div(final CartesianPoint a, final CartesianPoint b) {
         return CartesianPoint.from(
-           PreciseDecimal.div(a.x, b.x),
-           PreciseDecimal.div(a.y, b.y) 
+           a.x.divide(b.x),
+           a.y.divide(b.y) 
         );
     }
 
     public static final PreciseDecimal distance(final CartesianPoint a, final CartesianPoint b) {
         final var delta = CartesianPoint.sub(a, b);
         
-        return PreciseDecimal.sum(delta.x.square(), delta.y.square()).sqrt();
+        final var xSquare = delta.x.square();
+        final var ySquare = delta.y.square();
+
+        final var val1 = xSquare.plus(ySquare);
+        final var val2 = val1.sqrt();
+        
+        return val2;
     }
 }

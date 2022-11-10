@@ -4,11 +4,15 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
+import com.AirplaneCoordinates.Core.Mathematics.Arithmetic;
 import com.AirplaneCoordinates.Core.Mathematics.Comparision;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 
-public final class PreciseDecimal implements Comparision<PreciseDecimal> {
+public final class PreciseDecimal implements
+    Comparision<PreciseDecimal>,
+    Arithmetic<PreciseDecimal>
+{
     private static final int PRECISION = 100;
     private static final int ROUNDING_PRECISION = PRECISION -6;
     private static final MathContext MATH_CONTEXT = new MathContext(PRECISION, RoundingMode.HALF_EVEN);
@@ -212,33 +216,33 @@ public final class PreciseDecimal implements Comparision<PreciseDecimal> {
         return this.bigDecimalValue.compareTo(other.bigDecimalValue) < 1;
     }
 
-    public static final PreciseDecimal sum(final PreciseDecimal a, final PreciseDecimal b) {
+    public final PreciseDecimal plus(final PreciseDecimal other) {
         return PreciseDecimal.from(
-            a.bigDecimalValue.add(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
+            this.bigDecimalValue.add(other.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
     
-    public static final PreciseDecimal sub(final PreciseDecimal a, final PreciseDecimal b) {
+    public final PreciseDecimal minus(final PreciseDecimal other) {
         return PreciseDecimal.from(
-            a.bigDecimalValue.subtract(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
+            this.bigDecimalValue.subtract(other.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
-    public static final PreciseDecimal mul(final PreciseDecimal a, final PreciseDecimal b) {
+    public final PreciseDecimal times(final PreciseDecimal other) {
         return PreciseDecimal.from(
-            a.bigDecimalValue.multiply(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
+            this.bigDecimalValue.multiply(other.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
-    public static final PreciseDecimal div(final PreciseDecimal a, final PreciseDecimal b) {
+    public final PreciseDecimal divide(final PreciseDecimal other) {
         return PreciseDecimal.from(
-            a.bigDecimalValue.divide(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
+            this.bigDecimalValue.divide(other.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 
-    public static final PreciseDecimal rem(final PreciseDecimal a, final PreciseDecimal b) {
+    public final PreciseDecimal remainder(final PreciseDecimal other) {
         return PreciseDecimal.from(
-            a.bigDecimalValue.remainder(b.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
+            this.bigDecimalValue.remainder(other.bigDecimalValue, PreciseDecimal.MATH_CONTEXT)
         );
     }
 

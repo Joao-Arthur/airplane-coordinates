@@ -59,8 +59,8 @@ public final class LinearFunction {
         final PreciseDecimal angle
     ) {
         final var angularCoefficient = Deg.from(angle).toRad().value.tan();
-        final var expected = PreciseDecimal.mul(angularCoefficient, point.x);
-        final var linearCoefficient = PreciseDecimal.sub(point.y, expected);
+        final var expected = angularCoefficient.times(point.x);
+        final var linearCoefficient = point.y.minus(expected);
 
         return new LinearFunction(
             angularCoefficient.round(),
@@ -69,12 +69,12 @@ public final class LinearFunction {
     }
 
     public final PreciseDecimal root() {
-        return PreciseDecimal.div(this.b.opposite(), this.a);
+        return this.b.opposite().divide(this.a);
     }
 
     public final PreciseDecimal execute(final PreciseDecimal x) {
-        final var val1 = PreciseDecimal.mul(this.a, x);
-        final var val2 = PreciseDecimal.sum(val1, this.b);
+        final var val1 = this.a.times(x);
+        final var val2 = val1.plus(this.b);
 
         return val2;
     }
@@ -84,8 +84,8 @@ public final class LinearFunction {
         final LinearFunction gx
     ) {
         return LinearFunction.from(
-            PreciseDecimal.sub(fx.a, gx.a),
-            PreciseDecimal.sub(fx.b, gx.b)
+            fx.a.minus(gx.a),
+            fx.b.minus(gx.b)
         );
     }
 

@@ -54,20 +54,14 @@ public final class PolarPoint {
 
     public final CartesianPoint toCartesian() {
         final var radValue = Deg.from(this.a).toRad().value;
-        final var x = PreciseDecimal.mul(
-            this.r,
-            radValue.cos()
-        );
-        final var y = PreciseDecimal.mul(
-            this.r,
-            radValue.sin()
-        );
+        final var x = this.r.times(radValue.cos());
+        final var y = this.r.times(radValue.sin());
 
         return CartesianPoint.from(x, y);
     }
 
     public final PolarPoint rotate(final PreciseDecimal angle) {
-        final var angleSum = PreciseDecimal.sum(this.a, angle);
+        final var angleSum = this.a.plus(angle);
         final var normalizedAngle = Deg.from(angleSum).normalized();
 
         return new PolarPoint(

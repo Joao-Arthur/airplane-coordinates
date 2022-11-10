@@ -22,12 +22,16 @@ public final class PreciseDecimalArithmeticTest {
         "-1, -1.1, -2.1",
         "2.2, 3.33, 5.53",
     })
-    public final void sum(final String a, final String b, final String result) {
+    public final void plus(
+        final String a,
+        final String b,
+        final String result
+    ) {
         assertEquals(
-            PreciseDecimal.sum(
-                PreciseDecimal.from(a),
-                PreciseDecimal.from(b)
-            ).toString(),
+            PreciseDecimal
+                .from(a)
+                .plus(PreciseDecimal.from(b))
+                .toString(),
             PreciseDecimal.from(result).toString()
         );
     }
@@ -47,12 +51,12 @@ public final class PreciseDecimalArithmeticTest {
         "-7.2, 0.2, -7.4",
         "-0.35, -3.35, 3",
     })
-    public final void sub(final String a, final String b, final String result) {
+    public final void minus(final String a, final String b, final String result) {
         assertEquals(
-            PreciseDecimal.sub(
-                PreciseDecimal.from(a),
-                PreciseDecimal.from(b)
-            ).toString(),
+            PreciseDecimal
+                .from(a)
+                .minus(PreciseDecimal.from(b))
+                .toString(),
             PreciseDecimal.from(result).toString()
         );
     }
@@ -71,12 +75,12 @@ public final class PreciseDecimalArithmeticTest {
         "1.2, -4, -4.8",
         "-2.2, -2.2, 4.84",
     })
-    public final void mul(final String a, final String b, final String result) {
+    public final void times(final String a, final String b, final String result) {
         assertEquals(
-            PreciseDecimal.mul(
-                PreciseDecimal.from(a),
-                PreciseDecimal.from(b)
-            ).toString(),
+            PreciseDecimal
+                .from(a)
+                .times(PreciseDecimal.from(b))
+                .toString(),
             PreciseDecimal.from(result).toString()
         );
     }
@@ -96,12 +100,12 @@ public final class PreciseDecimalArithmeticTest {
         "4, -0.8, -5",
         "-2, -0.1, 20",
     })
-    public final void div(final String a, final String b, final String result) {
+    public final void divide(final String a, final String b, final String result) {
         assertEquals(
-            PreciseDecimal.div(
-                PreciseDecimal.from(a),
-                PreciseDecimal.from(b)
-            ).toString(),
+            PreciseDecimal
+                .from(a)
+                .divide(PreciseDecimal.from(b))
+                .toString(),
             PreciseDecimal.from(result).toString()
         );
     }
@@ -116,16 +120,16 @@ public final class PreciseDecimalArithmeticTest {
         "2.22, 1.11, 0",
         "10, 2, 0",
     })
-    public final void rem(
+    public final void remainder(
         final String a,
         final String b,
         final String result
     ) {
         assertEquals(
-            PreciseDecimal.rem(
-                PreciseDecimal.from(a),
-                PreciseDecimal.from(b)
-            ).toString(),
+            PreciseDecimal
+                .from(a)
+                .remainder(PreciseDecimal.from(b))
+                .toString(),
             PreciseDecimal.from(result).toString()
         );
     }
@@ -133,45 +137,45 @@ public final class PreciseDecimalArithmeticTest {
     @Test
     public final void preciseCalculations() { 
         assertEquals(
-            PreciseDecimal.sum(
-                PreciseDecimal.from("0.1"),
-                PreciseDecimal.from("0.2")
-            ).toString(),
+            PreciseDecimal
+                .from("0.1")
+                .plus(PreciseDecimal.from("0.2"))
+                .toString(),
             PreciseDecimal.from("0.3").toString()
         );
         assertEquals(
-            PreciseDecimal.sum(
-                PreciseDecimal.from("0.1234567890123456789012345678901"),
-                PreciseDecimal.from("0.1234321003123432100312343210036")
-            ).toString(),
+            PreciseDecimal
+                .from("0.1234567890123456789012345678901")
+                .plus(PreciseDecimal.from("0.1234321003123432100312343210036"))
+                .toString(),
             PreciseDecimal.from("0.2468888893246888889324688888937").toString()
         );
         assertEquals(
-            PreciseDecimal.mul(
-                PreciseDecimal.from("0.8937593473846237864238745"),
-                PreciseDecimal.from("0.6986723567253716276345786345")
-            ).toString(),
+            PreciseDecimal
+                .from("0.8937593473846237864238745")
+                .times(PreciseDecimal.from("0.6986723567253716276345786345"))
+                .toString(),
             PreciseDecimal.from("0.62444494958254521156041254853945406639389341840937025").toString()
         );
         assertEquals(
-            PreciseDecimal.div(
-                PreciseDecimal.from("0.6244449495825452115604125485"),
-                PreciseDecimal.from("0.8937593473846237864238745")
-            ).toString(),
+            PreciseDecimal
+                .from("0.6244449495825452115604125485")
+                .divide(PreciseDecimal.from("0.8937593473846237864238745"))
+                .toString(),
             PreciseDecimal.from("0.6986723567253716276345786344558560517332249999067102148534359217562859252534394065632348653940470129").toString()
         );
         assertEquals(
-            PreciseDecimal.sum(
-                PreciseDecimal.from(1),
-                PreciseDecimal.from("0.0000000000000000000000000001")
-            ).toString(),
+            PreciseDecimal
+                .from(1)
+                .plus(PreciseDecimal.from("0.0000000000000000000000000001"))
+                .toString(),
             PreciseDecimal.from("1.0000000000000000000000000001").toString()
         );
         assertEquals(
-            PreciseDecimal.sub(
-                PreciseDecimal.from("1.0000000000000000000000000001"),
-                PreciseDecimal.from("0.0000000000000000000000000001")
-            ).toString(),
+            PreciseDecimal
+                .from("1.0000000000000000000000000001")
+                .minus(PreciseDecimal.from("0.0000000000000000000000000001"))
+                .toString(),
             PreciseDecimal.from("1").toString()
         );
     }
