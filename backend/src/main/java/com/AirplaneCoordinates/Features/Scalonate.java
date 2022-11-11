@@ -16,10 +16,9 @@ public final class Scalonate {
     }
 
     public final PlanePoint execute() {
-        final var resultPoint = CartesianPoint.mul(
-            this.point.toCartesian(),
-            this.factor
-        );
+        final var resultPoint = this.point
+            .toCartesian()
+            .times(this.factor);
 
         switch (this.point.planeType) {
             case CARTESIAN:

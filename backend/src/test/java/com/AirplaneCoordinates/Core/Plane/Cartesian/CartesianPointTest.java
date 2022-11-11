@@ -140,24 +140,24 @@ public final class CartesianPointTest {
     @Test
     public final void sub() {
         assertEquals(
-            CartesianPoint.sub(
-                CartesianPoint.from(6, 3),
-                CartesianPoint.from(4, 7)
-            ).toString(),
+            CartesianPoint
+                .from(6, 3)
+                .minus(CartesianPoint.from(4, 7))
+                .toString(),
             CartesianPoint.from(2, -4).toString()
         );
         assertEquals(
-            CartesianPoint.sub(
-                CartesianPoint.from(1, 0),
-                CartesianPoint.from(-1, 3)
-            ).toString(),
+            CartesianPoint
+                .from(1, 0)
+                .minus(CartesianPoint.from(-1, 3))
+                .toString(),
             CartesianPoint.from(2, -3).toString()
         );
         assertEquals(
-            CartesianPoint.sub(
-                CartesianPoint.from(4, 7),
-                CartesianPoint.from(4, 7)
-            ).toString(),
+            CartesianPoint
+                .from(4, 7)
+                .minus(CartesianPoint.from(4, 7))
+                .toString(),
             CartesianPoint.from(0, 0).toString()
         );
     }
@@ -165,24 +165,24 @@ public final class CartesianPointTest {
     @Test
     public final void mul() {
         assertEquals(
-            CartesianPoint.mul(
-                CartesianPoint.from(4, 7),
-                CartesianPoint.from(2, -3)
-            ).toString(),
+            CartesianPoint
+                .from(4, 7)
+                .times(CartesianPoint.from(2, -3))
+                .toString(),
             CartesianPoint.from(8, -21).toString()
         );
         assertEquals(
-            CartesianPoint.mul(
-                CartesianPoint.from(-1, 3),
-                CartesianPoint.from(2, -3)
-            ).toString(),
+            CartesianPoint
+                .from(-1, 3)
+                .times(CartesianPoint.from(2, -3))
+                .toString(),
             CartesianPoint.from(-2, -9).toString()
         );
         assertEquals(
-            CartesianPoint.mul(
-                CartesianPoint.from(-1,3),
-                CartesianPoint.from(0, 0)
-            ).toString(),
+            CartesianPoint
+                .from(-1,3)
+                .times(CartesianPoint.from(0, 0))
+                .toString(),
             CartesianPoint.from(0, 0).toString()
         );
     }
@@ -190,24 +190,24 @@ public final class CartesianPointTest {
     @Test
     public final void div() {
         assertEquals(
-            CartesianPoint.div(
-                CartesianPoint.from(8, -21),
-                CartesianPoint.from(4, 7)
-            ).toString(),
+            CartesianPoint
+                .from(8, -21)
+                .divide(CartesianPoint.from(4, 7))
+                .toString(),
             CartesianPoint.from(2, -3).toString()
         );
         assertEquals(
-            CartesianPoint.div(
-                CartesianPoint.from(-2, -9),
-                CartesianPoint.from(-1, 3)
-            ).toString(),
+            CartesianPoint
+                .from(-2, -9)
+                .divide(CartesianPoint.from(-1, 3))
+                .toString(),
             CartesianPoint.from(2, -3).toString()
         );
         assertEquals(
-            CartesianPoint.div(
-                CartesianPoint.from(0, 0),
-                CartesianPoint.from(-1,3)
-            ).toString(),
+            CartesianPoint
+                .from(0, 0)
+                .divide(CartesianPoint.from(-1,3))
+                .toString(),
             CartesianPoint.from(0, 0).toString()
         );
     }
