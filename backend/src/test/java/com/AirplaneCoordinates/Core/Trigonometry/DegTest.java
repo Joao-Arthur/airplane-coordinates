@@ -138,4 +138,33 @@ public final class DegTest {
             isInfinite
         );
     }
+
+    @ParameterizedTest
+    @CsvSource({
+        "0, 10, 10",
+        "90, 10, 10",
+        "180, 10, -10",
+        "270, 10, -10",
+        "360, 10, 10",
+        "45, 10, 10",
+        "135, 10, -10",
+        "225, 10, -10",
+        "315, 10, 10",
+        "405, 10, 10",
+    })
+    public final void getValueInEachQuadrant(
+        final int angle,
+        final int value,
+        final int expectedValue
+    ) {
+        assertEquals(
+            Deg
+                .from(PreciseDecimal.from(angle))
+                .getValueInEachQuadrant(
+                    PreciseDecimal.from(value)
+                )
+                .toString(),
+            PreciseDecimal.from(expectedValue).toString()
+        );
+    }
 }

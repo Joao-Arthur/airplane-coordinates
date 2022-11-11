@@ -1,5 +1,8 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
+import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 public final class InfiniteTangentInOnePointCollisionService implements CollisionPointService {
     private final PlanePointWithVector pointA;
@@ -14,35 +17,55 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
     }
 
     public final CollisionDTO getCollisionPoint() {
-        /*final var fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
-        final var gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.direction });
-        final var coefficientA = [90, 270].includes(a.direction) ? 0 : Math.abs(Math.cos(a.direction * Math.PI / 180));
-        final var coefficientB = [90, 270].includes(b.direction) ? 0 : Math.abs(Math.cos(b.direction * Math.PI / 180));
+        final var fx = LinearFunction.from(
+            this.pointA.point.toCartesian(),
+            this.pointA.vector.direction
+        );
+        final var gx = LinearFunction.from(
+            this.pointB.point.toCartesian(),
+            this.pointB.vector.direction
+        );
+        final var intersectionPoint = LinearFunction.intersectionPoint(fx, gx);
+        final var isInfiniteTangentA = Deg
+            .from(this.pointA.vector.direction)
+            .isInfiniteTangent();
+        final var isInfiniteTangentB = Deg
+            .from(this.pointB.vector.direction)
+            .isInfiniteTangent();
+        final var coefficientA = isInfiniteTangentA
+            ? PreciseDecimal.from(0)
+            : Deg
+                .from(this.pointA.vector.direction)
+                .toRad()
+                .value
+                .cos();
+        final var coefficientB = isInfiniteTangentB
+            ? PreciseDecimal.from(0)
+            : Deg
+                .from(this.pointB.vector.direction)
+                .toRad()
+                .value
+                .cos();
+
+        /*
         final var { y: x } = mechanics.collision({
             a: {
                 initialPoint: a.x,
-                speed: trigonometry.getValueInEachQuadrant({
-                    value: coefficientA * a.speed,
-                    angle: a.direction,
-                }),
+                speed: coefficientA * a.speed
             },
             b: {
                 initialPoint: b.x,
-                speed: trigonometry.getValueInEachQuadrant({
-                    value: coefficientB * b.speed,
-                    angle: b.direction,
-                }),
+                speed: coefficientB * b.speed
             },
         });
-        final var y = linearFunction.execute([90, 270].includes(a.direction) ? gx : fx, x);
+        final var y = linearFunction.execute(isInfiniteTangentA ? gx : fx, x);
         if (!Number.isFinite(y))
             return null;
         final var { x: timeToCollisionA } = mechanics.collision({
-            a: { initialPoint: [90, 270].includes(a.direction) ? y : x, speed: 0 },
+            a: { initialPoint: isInfiniteTangentA ? y : x, speed: 0 },
             b: {
-                initialPoint: [90, 270].includes(a.direction) ? a.y : a.x,
-                speed: trigonometry.getValueInEachQuadrant({
-                    value: [90, 270].includes(a.direction) ? a.speed : coefficientA * a.speed,
+                initialPoint: isInfiniteTangentA ? a.y : a.x,
+                speed: isInfiniteTangentA ? a.speed : coefficientA * a.speed,
                     angle: a.direction,
                 }),
             },
@@ -50,11 +73,11 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
         if (timeToCollisionA < 0)
             return null;
         final var { x: timeToCollisionB } = mechanics.collision({
-            a: { initialPoint: [90, 270].includes(b.direction) ? y : x, speed: 0 },
+            a: { initialPoint: isInfiniteTangentB ? y : x, speed: 0 },
             b: {
-                initialPoint: [90, 270].includes(b.direction) ? b.y : b.x,
+                initialPoint: isInfiniteTangentB ? b.y : b.x,
                 speed: trigonometry.getValueInEachQuadrant({
-                    value: [90, 270].includes(b.direction) ? b.speed : coefficientB * b.speed,
+                    value: isInfiniteTangentB ? b.speed : coefficientB * b.speed,
                     angle: b.direction,
                 }),
             },
@@ -63,8 +86,6 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
             return null;
         final var timeUntilCollision = Math.min(timeToCollisionA, timeToCollisionB);
         final var timeDifferenceToPoint = Math.abs(timeToCollisionA - timeToCollisionB);
-
-
 
         return new CollisionDTOBuilder()
             .setA(this.pointA.id)
