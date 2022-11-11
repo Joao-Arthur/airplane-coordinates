@@ -1,5 +1,6 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
+import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class SameFunctionCollisionService implements CollisionPointService {
@@ -15,7 +16,10 @@ public final class SameFunctionCollisionService implements CollisionPointService
     }
 
     public final CollisionDTO getCollisionPoint() { 
-
+        final var cartesianA = this.pointA.point.toCartesian();
+        final var cartesianB = this.pointB.point.toCartesian();
+        final var isInfiniteTangentA = Deg.from(this.pointA.vector.direction).isInfiniteTangent();
+        final var isInfiniteTangentB = Deg.from(this.pointB.vector.direction).isInfiniteTangent();
         /*final var fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
 
         final var coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));

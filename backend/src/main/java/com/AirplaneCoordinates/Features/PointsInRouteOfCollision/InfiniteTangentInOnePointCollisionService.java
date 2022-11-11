@@ -17,21 +17,19 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
     }
 
     public final CollisionDTO getCollisionPoint() {
+        final var cartesianA = this.pointA.point.toCartesian();
+        final var cartesianB = this.pointB.point.toCartesian();
+        final var isInfiniteTangentA = Deg.from(this.pointA.vector.direction).isInfiniteTangent();
+        final var isInfiniteTangentB = Deg.from(this.pointB.vector.direction).isInfiniteTangent();
         final var fx = LinearFunction.from(
-            this.pointA.point.toCartesian(),
+            cartesianA,
             this.pointA.vector.direction
         );
         final var gx = LinearFunction.from(
-            this.pointB.point.toCartesian(),
+            cartesianB,
             this.pointB.vector.direction
         );
         final var intersectionPoint = LinearFunction.intersectionPoint(fx, gx);
-        final var isInfiniteTangentA = Deg
-            .from(this.pointA.vector.direction)
-            .isInfiniteTangent();
-        final var isInfiniteTangentB = Deg
-            .from(this.pointB.vector.direction)
-            .isInfiniteTangent();
         final var coefficientA = isInfiniteTangentA
             ? PreciseDecimal.from(0)
             : Deg

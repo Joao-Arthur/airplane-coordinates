@@ -19,12 +19,15 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
     }
 
     public final CollisionDTO getCollisionPoint() {
+        final var cartesianA = this.pointA.point.toCartesian();
+        final var cartesianB = this.pointB.point.toCartesian();
+
         final var fx = LinearFunction.from(
-            this.pointA.point.toCartesian(),
+            cartesianA,
             this.pointA.vector.direction
         );
         final var gx = LinearFunction.from(
-            this.pointB.point.toCartesian(),
+            cartesianB,
             this.pointB.vector.direction
         );
         final var intersectionPoint = LinearFunction.intersectionPoint(fx, gx);
@@ -40,11 +43,11 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
             .cos();
         //final var collisionPoint = LinearPoint.collisionPoint(
         //    LinearPoint.from(
-        //        this.pointA.point.toCartesian().x,
+        //        cartesianA.x,
         //        coefficientA.times(this.pointA.vector.speed)
         //    ),
         //    LinearPoint.from(
-        //        this.pointB.point.toCartesian().x,
+        //        cartesianB.x,
         //        coefficientB.times(this.pointB.vector.speed)
         //    )
         //);
@@ -56,7 +59,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
                 PreciseDecimal.from(0)
             ),
             LinearPoint.from(
-                this.pointA.point.toCartesian().x,
+                cartesianA.x,
                 coefficientA.times(this.pointA.vector.speed)
             )
         );
@@ -68,7 +71,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
                 PreciseDecimal.from(0)
             ),
             LinearPoint.from(
-                this.pointB.point.toCartesian().x,
+                cartesianB.x,
                 coefficientB.times(this.pointB.vector.speed)
             )
         );

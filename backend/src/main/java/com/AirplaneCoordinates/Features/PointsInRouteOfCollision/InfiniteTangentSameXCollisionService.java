@@ -3,6 +3,7 @@ package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 import com.AirplaneCoordinates.Core.Mechanics.LinearPoint;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class InfiniteTangentSameXCollisionService implements CollisionPointService {
@@ -18,6 +19,11 @@ public final class InfiniteTangentSameXCollisionService implements CollisionPoin
     }
 
     public final CollisionDTO getCollisionPoint() {
+        final var cartesianA = this.pointA.point.toCartesian();
+        final var cartesianB = this.pointB.point.toCartesian();
+        final var isInfiniteTangentA = Deg.from(this.pointA.vector.direction).isInfiniteTangent();
+        final var isInfiniteTangentB = Deg.from(this.pointB.vector.direction).isInfiniteTangent();
+
         final var collisionPoint = LinearPoint.collisionPoint(
             LinearPoint.from(
                 this.pointA.point.toCartesian().y,
