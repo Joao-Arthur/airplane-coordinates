@@ -5,14 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import com.AirplaneCoordinates.Core.Mechanics.Vector;
+import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class InfiniteTangentSameXCollisionServiceTest {
     @Test
     public final void getCollisionPoint() {
-        /*assertEquals(
+        assertEquals(
             new InfiniteTangentSameXCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -24,8 +26,14 @@ public final class InfiniteTangentSameXCollisionServiceTest {
                     PlanePoint.from(Plane.CARTESIAN, 4, 7),
                     Vector.from(270, 9)
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint().toString(),
+            new CollisionDTO(
+                "1",
+                "2",
+                PreciseDecimal.from(0),
+                CartesianPoint.from(4, 4),
+                PreciseDecimal.from(0)
+            ).toString()
         );
         assertEquals(
             new InfiniteTangentSameXCollisionService(
@@ -39,8 +47,71 @@ public final class InfiniteTangentSameXCollisionServiceTest {
                     PlanePoint.from(Plane.CARTESIAN, -2, 4),
                     Vector.from(270, 7)
                 ))
+            ).getCollisionPoint().toString(),
+            new CollisionDTO(
+                "1",
+                "2",
+                PreciseDecimal.from(0),
+                CartesianPoint.from(-2, -2),
+                PreciseDecimal.from(0)
+            ).toString()
+        );
+        assertEquals(
+            new InfiniteTangentSameXCollisionService(
+                PointDTO.from(new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 2, 2),
+                    Vector.from(90, 1)
+                )),
+                PointDTO.from(new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 2, -2),
+                    Vector.from(90, 1)
+                ))
             ).getCollisionPoint(),
             null
-        );*/
+        );
+        assertEquals(
+            new InfiniteTangentSameXCollisionService(
+                PointDTO.from(new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 2, 2),
+                    Vector.from(90, 1)
+                )),
+                PointDTO.from(new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 2, -2),
+                    Vector.from(90, 2)
+                ))
+            ).getCollisionPoint().toString(),
+            new CollisionDTO(
+                "1",
+                "2",
+                PreciseDecimal.from(4),
+                CartesianPoint.from(2, 6),
+                PreciseDecimal.from(0)
+            ).toString()
+        );
+        assertEquals(
+            new InfiniteTangentSameXCollisionService(
+                PointDTO.from(new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, -5, -10),
+                    Vector.from(90, 1)
+                )),
+                PointDTO.from(new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, -5, 20),
+                    Vector.from(270, 2)
+                ))
+            ).getCollisionPoint().toString(),
+            new CollisionDTO(
+                "1",
+                "2",
+                PreciseDecimal.from(10),
+                CartesianPoint.from(-5, 0),
+                PreciseDecimal.from(0)
+            ).toString()
+        );
     }
 }

@@ -19,7 +19,7 @@ public final class SamePositionCollisionService implements CollisionPointService
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(PreciseDecimal.from(0))
-            .setCollisionPoint(this.pointA.asCartesian)
+            .setCollisionPoint(this.pointA.asCartesian.round())
             .setTimeDifferenceToPoint(PreciseDecimal.from(0))
             .build();
     }

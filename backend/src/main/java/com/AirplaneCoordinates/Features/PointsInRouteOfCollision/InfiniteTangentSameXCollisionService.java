@@ -25,12 +25,12 @@ public final class InfiniteTangentSameXCollisionService implements CollisionPoin
         return new CollisionDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
-            .setTimeUntilCollision(collisionPoint.x)
+            .setTimeUntilCollision(collisionPoint.x.round())
             .setCollisionPoint(
                 CartesianPoint.from(
                     this.pointA.asCartesian.x,
                     collisionPoint.y
-                )
+                ).round()
             )
             .setTimeDifferenceToPoint(PreciseDecimal.from(0))
             .build();

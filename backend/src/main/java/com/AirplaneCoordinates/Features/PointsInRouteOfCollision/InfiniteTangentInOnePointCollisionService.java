@@ -56,9 +56,9 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
         return new CollisionDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
-            .setTimeUntilCollision(timeUntilCollision)
-            .setCollisionPoint(CartesianPoint.from(collisionPoint.x, y))
-            .setTimeDifferenceToPoint(timeDifferenceToPoint)
+            .setTimeUntilCollision(timeUntilCollision.round())
+            .setCollisionPoint(CartesianPoint.from(collisionPoint.x, y).round())
+            .setTimeDifferenceToPoint(timeDifferenceToPoint.round())
             .build();
     }
 }
