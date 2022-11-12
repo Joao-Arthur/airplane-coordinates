@@ -22,14 +22,16 @@ public final class SameFunctionCollisionService implements CollisionPointService
             this.pointA.fx,
             this.pointB.fx
         );
+        if (this.pointA.linearPoint.speed.equals(this.pointB.linearPoint.speed))
+            return null;
         final var collisionPoint = LinearPoint.collisionPoint(
             this.pointA.linearPoint,
             this.pointB.linearPoint
         );
-        final var y = this.pointA.fx.execute(collisionPoint.x);
+        final var y = this.pointA.fx.execute(collisionPoint.y);
         final var collisionA = LinearPoint.collisionPoint(
             LinearPoint.from(
-                intersectionPoint.x,
+                collisionPoint.y,
                 PreciseDecimal.from(0)
             ),
             this.pointA.linearPoint
@@ -38,7 +40,7 @@ public final class SameFunctionCollisionService implements CollisionPointService
             return null;
         final var collisionB = LinearPoint.collisionPoint(
             LinearPoint.from(
-                intersectionPoint.x,
+                collisionPoint.y,
                 PreciseDecimal.from(0)
             ),
             this.pointB.linearPoint
@@ -54,9 +56,9 @@ public final class SameFunctionCollisionService implements CollisionPointService
         return new CollisionDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
-            .setTimeUntilCollision(timeUntilCollision)
-            .setCollisionPoint(CartesianPoint.from(collisionPoint.x, y))
-            .setTimeDifferenceToPoint(timeDifferenceToPoint)
+            .setTimeUntilCollision(timeUntilCollision.round())
+            .setCollisionPoint(CartesianPoint.from(collisionPoint.y, y).round())
+            .setTimeDifferenceToPoint(timeDifferenceToPoint.round())
             .build();
     }
 }

@@ -52,7 +52,7 @@ public final class PointDTO {
             asCartesian.x,
             Deg
                 .from(planePoint.vector.direction)
-                .getValueInEachQuadrant(
+                .getCosValueInQuadrant(
                     coefficient.times(planePoint.vector.speed)
                 )
         );

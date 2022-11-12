@@ -152,7 +152,7 @@ public final class DegTest {
         "315, 10, 10",
         "405, 10, 10",
     })
-    public final void getValueInEachQuadrant(
+    public final void getCosValueInQuadrant(
         final int angle,
         final int value,
         final int expectedValue
@@ -160,7 +160,7 @@ public final class DegTest {
         assertEquals(
             Deg
                 .from(PreciseDecimal.from(angle))
-                .getValueInEachQuadrant(
+                .getCosValueInQuadrant(
                     PreciseDecimal.from(value)
                 )
                 .toString(),

@@ -45,7 +45,7 @@ public final class Deg {
         return Rad.from(val2);
     }
 
-    public final PreciseDecimal getValueInEachQuadrant(final PreciseDecimal value) {        
+    public final PreciseDecimal getCosValueInQuadrant(final PreciseDecimal value) {        
         if (this.normalized().smallerOrEquals(PreciseDecimal.from(90)))
             return value;
         if (this.normalized().smallerOrEquals(PreciseDecimal.from(180)))
@@ -53,5 +53,15 @@ public final class Deg {
         if (this.normalized().smallerOrEquals(PreciseDecimal.from(270)))
             return value.opposite();
         return value;
-    }    
+    }
+
+    public final PreciseDecimal getSinValueInQuadrant(final PreciseDecimal value) {        
+        if (this.normalized().smallerOrEquals(PreciseDecimal.from(90)))
+            return value;
+        if (this.normalized().smallerOrEquals(PreciseDecimal.from(180)))
+            return value;
+        if (this.normalized().smallerOrEquals(PreciseDecimal.from(270)))
+            return value.opposite();
+        return value.opposite();
+    }
 }

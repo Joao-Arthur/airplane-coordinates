@@ -19,7 +19,7 @@ public final class LinearFunction {
     @Override
     public final String toString() {
         return "y = " +
-            this.a.format() + "x " +
+            this.a.format() + "x" +
             (
                 this.b.equals(PreciseDecimal.from(0))
                 ? "+0"
@@ -69,6 +69,9 @@ public final class LinearFunction {
     }
 
     public final PreciseDecimal root() {
+        // Does not cover a = 0, b <> 0
+        if (this.b.equals(PreciseDecimal.from(0)))
+            return PreciseDecimal.from(0);
         return this.b.opposite().divide(this.a);
     }
 
@@ -93,7 +96,7 @@ public final class LinearFunction {
         final LinearFunction fx,
         final LinearFunction gx
     ) {
-        final var intersectedFn = LinearFunction.intersect(fx, gx );
+        final var intersectedFn = LinearFunction.intersect(fx, gx);
         final var root = intersectedFn.root();
         final var fy = fx.execute(root);
 

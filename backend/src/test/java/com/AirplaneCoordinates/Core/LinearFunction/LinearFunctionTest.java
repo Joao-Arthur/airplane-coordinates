@@ -17,14 +17,14 @@ public final class LinearFunctionTest {
                 PreciseDecimal.from("-5"),
                 PreciseDecimal.from("7.26")
             ).toString(),
-            "y = -5x +7.26"
+            "y = -5x+7.26"
         );
         assertEquals(
             LinearFunction.from(
                 PreciseDecimal.from("2"),
                 PreciseDecimal.from("-1.11")
             ).toString(),
-            "y = +2x -1.11"
+            "y = +2x-1.11"
         );
 
         assertEquals(
@@ -32,7 +32,7 @@ public final class LinearFunctionTest {
                 PreciseDecimal.from("0"),
                 PreciseDecimal.from("0")
             ).toString(),
-            "y = 0x +0"
+            "y = 0x+0"
         );
     }
 
@@ -179,6 +179,7 @@ public final class LinearFunctionTest {
         "1, 0, -1, 0, 0, 0",
         "2, 5, -2, 5, 0, 5",
         "5, 5, -0.5, 10.5, 1, 10",
+        "0.5, 0, 0.5, 0, 0, 0",
     })
     public final void intersectionPoint(
         final String fxa,
