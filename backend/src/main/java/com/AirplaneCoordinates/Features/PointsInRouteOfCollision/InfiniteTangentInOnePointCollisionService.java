@@ -1,8 +1,9 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
+import com.AirplaneCoordinates.Core.Mechanics.LinearPoint;
+import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class InfiniteTangentInOnePointCollisionService implements CollisionPointService {
     private final PointDTO pointA;
@@ -17,56 +18,47 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
     }
 
     public final CollisionDTO getCollisionPoint() {
-        final var intersectionPoint = LinearFunction.intersectionPoint(fx, gx);
-
-        /*
-        final var { y: x } = mechanics.collision({
-            a: {
-                initialPoint: a.x,
-                speed: coefficientA * a.speed
-            },
-            b: {
-                initialPoint: b.x,
-                speed: coefficientB * b.speed
-            },
-        });
-        final var y = linearFunction.execute(isInfiniteTangentA ? gx : fx, x);
-        if (!Number.isFinite(y))
+        final var intersectionPoint = LinearFunction.intersectionPoint(
+            this.pointA.fx,
+            this.pointB.fx
+        );
+        final var collisionPoint = LinearPoint.collisionPoint(
+            this.pointA.linearPoint,
+            this.pointB.linearPoint
+        );
+        final var y = this.pointA.isInfiniteTangent
+            ? this.pointB.fx.execute(collisionPoint.x)
+            : this.pointA.fx.execute(collisionPoint.x);
+        final var collisionA = LinearPoint.collisionPoint(
+            LinearPoint.from(
+                intersectionPoint.x,
+                PreciseDecimal.from(0)
+            ),
+            this.pointA.linearPoint
+        );
+        if (collisionA.x.smallerThan(PreciseDecimal.from(0)))
             return null;
-        final var { x: timeToCollisionA } = mechanics.collision({
-            a: { initialPoint: isInfiniteTangentA ? y : x, speed: 0 },
-            b: {
-                initialPoint: isInfiniteTangentA ? a.y : a.x,
-                speed: isInfiniteTangentA ? a.speed : coefficientA * a.speed,
-                    angle: a.direction,
-                }),
-            },
-        });
-        if (timeToCollisionA < 0)
+        final var collisionB = LinearPoint.collisionPoint(
+            LinearPoint.from(
+                intersectionPoint.x,
+                PreciseDecimal.from(0)
+            ),
+            this.pointB.linearPoint
+        );
+        if (collisionB.x.smallerThan(PreciseDecimal.from(0)))
             return null;
-        final var { x: timeToCollisionB } = mechanics.collision({
-            a: { initialPoint: isInfiniteTangentB ? y : x, speed: 0 },
-            b: {
-                initialPoint: isInfiniteTangentB ? b.y : b.x,
-                speed: trigonometry.getValueInEachQuadrant({
-                    value: isInfiniteTangentB ? b.speed : coefficientB * b.speed,
-                    angle: b.direction,
-                }),
-            },
-        });
-        if (timeToCollisionB < 0)
-            return null;
-        final var timeUntilCollision = Math.min(timeToCollisionA, timeToCollisionB);
-        final var timeDifferenceToPoint = Math.abs(timeToCollisionA - timeToCollisionB);
+        final var timeUntilCollision = PreciseDecimal.min(
+            collisionA.x,
+            collisionB.x
+        );
+        final var timeDifferenceToPoint = collisionA.x.minus(collisionB.x).abs();
 
         return new CollisionDTOBuilder()
-            .setA(this.pointA.id)
-            .setB(this.pointB.id)
+            .setA(this.pointA.planePoint.id)
+            .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(timeUntilCollision)
-            .setCollisionPoint(CartesianPoint.from(x, y))
+            .setCollisionPoint(CartesianPoint.from(collisionPoint.x, y))
             .setTimeDifferenceToPoint(timeDifferenceToPoint)
-            .build();*/
- 
-        return null;
+            .build();
     }
 }
