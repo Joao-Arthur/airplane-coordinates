@@ -23,4 +23,15 @@ public final class CollisionDTO {
         this.collisionPoint = collisionPoint;
         this.timeDifferenceToPoint = timeDifferenceToPoint;
     }
+
+    @Override
+    public final String toString() {
+        return "{ " +
+            "a: " + this.a + ", " +
+            "b: " + this.b + ", " +
+            "timeUntilCollision: " + this.timeUntilCollision + ", " +
+            "collisionPoint: " + this.collisionPoint + ", " +
+            "timeDifferenceToPoint: " + this.timeDifferenceToPoint + ", " +
+        "}";
+    }
 }

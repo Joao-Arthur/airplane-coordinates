@@ -31,7 +31,7 @@ public final class PointDTO {
         this.linearPoint = linearPoint;
     }
 
-    public final PointDTO from(final PlanePointWithVector planePoint) {
+    public final static PointDTO from(final PlanePointWithVector planePoint) {
         final var asCartesian = planePoint.point.toCartesian();
         final var isInfiniteTangent = Deg
             .from(planePoint.vector.direction)
