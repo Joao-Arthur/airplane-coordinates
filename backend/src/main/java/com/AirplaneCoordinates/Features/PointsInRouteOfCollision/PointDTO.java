@@ -51,9 +51,9 @@ public final class PointDTO {
         final var linearPoint = LinearPoint.from(
             asCartesian.x,
             Deg
-                .from(coefficient)
+                .from(planePoint.vector.direction)
                 .getValueInEachQuadrant(
-                    coefficient.times(planePoint.vector.direction)
+                    coefficient.times(planePoint.vector.speed)
                 )
         );
 

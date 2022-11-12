@@ -53,9 +53,9 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
         return new CollisionDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
-            .setTimeUntilCollision(timeUntilCollision)
-            .setCollisionPoint(intersectionPoint)
-            .setTimeDifferenceToPoint(timeDifferenceToPoint)
+            .setTimeUntilCollision(timeUntilCollision.round())
+            .setCollisionPoint(intersectionPoint.round())
+            .setTimeDifferenceToPoint(timeDifferenceToPoint.round())
             .build();
     }
 }

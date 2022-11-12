@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class PreciseDecimalAggregationsTest {
+public final class PreciseDecimalAggregationsTest {
     @Test
     public final void min() {
         assertEquals(

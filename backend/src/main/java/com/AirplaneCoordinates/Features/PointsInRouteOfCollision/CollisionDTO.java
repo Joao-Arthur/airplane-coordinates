@@ -31,7 +31,7 @@ public final class CollisionDTO {
             "b: " + this.b + ", " +
             "timeUntilCollision: " + this.timeUntilCollision + ", " +
             "collisionPoint: " + this.collisionPoint + ", " +
-            "timeDifferenceToPoint: " + this.timeDifferenceToPoint + ", " +
-        "}";
+            "timeDifferenceToPoint: " + this.timeDifferenceToPoint +
+        " }";
     }
 }
