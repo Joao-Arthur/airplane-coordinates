@@ -1,14 +1,12 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-import com.AirplaneCoordinates.Features.PlanePointWithVector;
-
 public final class ParallelLinesCollisionService implements CollisionPointService {
-    private final PlanePointWithVector pointA;
-    private final PlanePointWithVector pointB;
+    private final PointDTO pointA;
+    private final PointDTO pointB;
     
     public ParallelLinesCollisionService(
-        final PlanePointWithVector pointA,
-        final PlanePointWithVector pointB
+        final PointDTO pointA,
+        final PointDTO pointB
     ) {
         this.pointA = pointA;
         this.pointB = pointB;

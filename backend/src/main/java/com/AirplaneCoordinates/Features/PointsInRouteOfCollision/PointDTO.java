@@ -9,7 +9,7 @@ import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class PointDTO {
     public final PlanePointWithVector planePoint;
-    public final CartesianPoint pointAsCartesian;
+    public final CartesianPoint asCartesian;
     public final boolean isInfiniteTangent;
     public final LinearFunction fx;
     public final PreciseDecimal coefficient;
@@ -17,14 +17,14 @@ public final class PointDTO {
     
     private PointDTO(
         final PlanePointWithVector planePoint,
-        final CartesianPoint pointAsCartesian,
+        final CartesianPoint asCartesian,
         final boolean isInfiniteTangent,
         final LinearFunction fx,
         final PreciseDecimal coefficient,
         final LinearPoint linearPoint
     ) {
         this.planePoint = planePoint;
-        this.pointAsCartesian = pointAsCartesian;
+        this.asCartesian = asCartesian;
         this.isInfiniteTangent = isInfiniteTangent;
         this.fx = fx;
         this.coefficient = coefficient;
@@ -32,12 +32,12 @@ public final class PointDTO {
     }
 
     public final PointDTO from(final PlanePointWithVector planePoint) {
-        final var pointAsCartesian = planePoint.point.toCartesian();
+        final var asCartesian = planePoint.point.toCartesian();
         final var isInfiniteTangent = Deg
             .from(planePoint.vector.direction)
             .isInfiniteTangent();
         final var fx = LinearFunction.from(
-            pointAsCartesian,
+            asCartesian,
             planePoint.vector.direction
         );
         final var coefficient = isInfiniteTangent
@@ -49,16 +49,17 @@ public final class PointDTO {
                 .cos()
                 .abs();
         final var linearPoint = LinearPoint.from(
-            pointAsCartesian.x,
-            Deg.from(coefficient)
-            .getValueInEachQuadrant(
-                coefficient.times(planePoint.vector.direction)
-            )
+            asCartesian.x,
+            Deg
+                .from(coefficient)
+                .getValueInEachQuadrant(
+                    coefficient.times(planePoint.vector.direction)
+                )
         );
 
         return new PointDTO(
             planePoint,
-            pointAsCartesian,
+            asCartesian,
             isInfiniteTangent,
             fx,
             coefficient,

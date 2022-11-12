@@ -3,47 +3,21 @@ package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
-import com.AirplaneCoordinates.Features.PlanePointWithVector;
+
 public final class InfiniteTangentInOnePointCollisionService implements CollisionPointService {
-    private final PlanePointWithVector pointA;
-    private final PlanePointWithVector pointB;
+    private final PointDTO pointA;
+    private final PointDTO pointB;
     
     public InfiniteTangentInOnePointCollisionService(
-        final PlanePointWithVector pointA,
-        final PlanePointWithVector pointB
+        final PointDTO pointA,
+        final PointDTO pointB
     ) {
         this.pointA = pointA;
         this.pointB = pointB;
     }
 
     public final CollisionDTO getCollisionPoint() {
-        final var cartesianA = this.pointA.point.toCartesian();
-        final var cartesianB = this.pointB.point.toCartesian();
-        final var isInfiniteTangentA = Deg.from(this.pointA.vector.direction).isInfiniteTangent();
-        final var isInfiniteTangentB = Deg.from(this.pointB.vector.direction).isInfiniteTangent();
-        final var fx = LinearFunction.from(
-            cartesianA,
-            this.pointA.vector.direction
-        );
-        final var gx = LinearFunction.from(
-            cartesianB,
-            this.pointB.vector.direction
-        );
         final var intersectionPoint = LinearFunction.intersectionPoint(fx, gx);
-        final var coefficientA = isInfiniteTangentA
-            ? PreciseDecimal.from(0)
-            : Deg
-                .from(this.pointA.vector.direction)
-                .toRad()
-                .value
-                .cos();
-        final var coefficientB = isInfiniteTangentB
-            ? PreciseDecimal.from(0)
-            : Deg
-                .from(this.pointB.vector.direction)
-                .toRad()
-                .value
-                .cos();
 
         /*
         final var { y: x } = mechanics.collision({

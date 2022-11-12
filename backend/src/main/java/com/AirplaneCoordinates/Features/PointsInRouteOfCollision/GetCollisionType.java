@@ -1,49 +1,34 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
-import com.AirplaneCoordinates.Core.Trigonometry.Deg;
-import com.AirplaneCoordinates.Features.PlanePointWithVector;
-
 public final class GetCollisionType {
-    private final PlanePointWithVector pointA;
-    private final PlanePointWithVector pointB;
+    private final PointDTO pointA;
+    private final PointDTO pointB;
     
     public GetCollisionType(
-        final PlanePointWithVector pointA,
-        final PlanePointWithVector pointB
+        final PointDTO pointA,
+        final PointDTO pointB
     ) {
         this.pointA = pointA;
         this.pointB = pointB;
     }
 
     public final CollisionType getCollisionType() {
-        final var cartesianA = this.pointA.point.toCartesian();
-        final var cartesianB = this.pointB.point.toCartesian();
-        final var isInfiniteTangentA = Deg.from(this.pointA.vector.direction).isInfiniteTangent();
-        final var isInfiniteTangentB = Deg.from(this.pointB.vector.direction).isInfiniteTangent();
-        if (
-            cartesianA.x.equals(cartesianB.x) &&
-            cartesianA.y.equals(cartesianB.y)
-        )
+        final var isXEquals = this.pointA.asCartesian.x.equals(this.pointB.asCartesian.x);
+        final var isYEquals = this.pointA.asCartesian.y.equals(this.pointB.asCartesian.y);
+        final var isAEquals = this.pointA.fx.a.equals(this.pointB.fx.a);
+        final var isBEquals = this.pointA.fx.b.equals(this.pointB.fx.b);
+
+        if (isXEquals && isYEquals)
             return CollisionType.SAME_POSITION;
-        if (isInfiniteTangentA && isInfiniteTangentB) {
-            if (cartesianA.x.equals(cartesianB.x))
-                return CollisionType.INFINITE_TANGENT_SAME_X;
+        if (this.pointA.isInfiniteTangent && this.pointB.isInfiniteTangent && isXEquals)
+            return CollisionType.INFINITE_TANGENT_SAME_X;
+        if (this.pointA.isInfiniteTangent && this.pointB.isInfiniteTangent)
             return CollisionType.PARALLEL_LINES;
-        }
-        if (isInfiniteTangentA || isInfiniteTangentB)
+        if (this.pointA.isInfiniteTangent || this.pointB.isInfiniteTangent)
             return CollisionType.INFINITE_TANGENT_IN_ONE_POINT;
-        final var fx = LinearFunction.from(
-            cartesianA,
-            this.pointA.vector.direction
-        );
-        final var gx = LinearFunction.from(
-            cartesianB,
-            this.pointB.vector.direction
-        );
-        if (fx.a.equals(gx.a) && fx.b.equals(gx.b))
+        if (isAEquals && isBEquals)
             return CollisionType.SAME_FUNCTION;
-        if (fx.a.equals(gx.a))
+        if (isAEquals)
             return CollisionType.PARALLEL_LINES;
         return CollisionType.DIFFERENT_FUNCTIONS;
     }

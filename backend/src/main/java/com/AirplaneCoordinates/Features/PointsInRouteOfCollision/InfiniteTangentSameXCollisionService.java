@@ -3,49 +3,32 @@ package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 import com.AirplaneCoordinates.Core.Mechanics.LinearPoint;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Core.Trigonometry.Deg;
-import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class InfiniteTangentSameXCollisionService implements CollisionPointService {
-    private final PlanePointWithVector pointA;
-    private final PlanePointWithVector pointB;
+    private final PointDTO pointA;
+    private final PointDTO pointB;
     
     public InfiniteTangentSameXCollisionService(
-        final PlanePointWithVector pointA,
-        final PlanePointWithVector pointB
+        final PointDTO pointA,
+        final PointDTO pointB
     ) {
         this.pointA = pointA;
         this.pointB = pointB;
     }
 
     public final CollisionDTO getCollisionPoint() {
-        final var cartesianA = this.pointA.point.toCartesian();
-        final var cartesianB = this.pointB.point.toCartesian();
-        final var isInfiniteTangentA = Deg.from(this.pointA.vector.direction).isInfiniteTangent();
-        final var isInfiniteTangentB = Deg.from(this.pointB.vector.direction).isInfiniteTangent();
-
         final var collisionPoint = LinearPoint.collisionPoint(
-            LinearPoint.from(
-                this.pointA.point.toCartesian().y,
-                this.pointA.vector.direction.equals(PreciseDecimal.from(90))
-                    ? this.pointA.vector.speed
-                    : this.pointA.vector.speed.opposite()
-            ),
-            LinearPoint.from(
-                this.pointB.point.toCartesian().y,
-                this.pointB.vector.direction.equals(PreciseDecimal.from(90))
-                    ? this.pointB.vector.speed
-                    : this.pointB.vector.speed.opposite()
-            )
+            this.pointA.linearPoint,
+            this.pointB.linearPoint
         );
 
         return new CollisionDTOBuilder()
-            .setA(this.pointA.id)
-            .setB(this.pointB.id)
+            .setA(this.pointA.planePoint.id)
+            .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(collisionPoint.x)
             .setCollisionPoint(
                 CartesianPoint.from(
-                    this.pointA.point.toCartesian().x,
+                    this.pointA.asCartesian.x,
                     collisionPoint.y
                 )
             )
