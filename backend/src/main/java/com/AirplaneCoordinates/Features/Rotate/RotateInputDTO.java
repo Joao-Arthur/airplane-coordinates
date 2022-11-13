@@ -18,4 +18,13 @@ public final class RotateInputDTO {
         this.centerOfRotation = centerOfRotation;
         this.angle = angle;
     }
+
+    @Override
+    public final String toString() {
+        return "{ " +
+            "point: " + this.point + ", " +
+            "centerOfRotation: " + this.centerOfRotation + ", " +
+            "angle: " + this.angle +
+        " }";
+    }
 }

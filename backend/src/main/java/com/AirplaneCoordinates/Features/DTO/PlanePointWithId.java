@@ -18,7 +18,7 @@ public final class PlanePointWithId {
     public final String toString() {
         return "{ " +
             "id: " + this.id + ", " +
-            "point: " + this.point.toString() +
+            "point: " + this.point +
         " }";
     }
 

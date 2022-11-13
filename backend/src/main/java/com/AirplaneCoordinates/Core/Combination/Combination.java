@@ -18,8 +18,8 @@ public final class Combination<T> {
     @Override
     public final String toString() {
         return "{ " +
-            "a: " + this.a.toString() + ", " +
-            "b: " + this.b.toString() +
+            "a: " + this.a + ", " +
+            "b: " + this.b +
         " }";
     }
 

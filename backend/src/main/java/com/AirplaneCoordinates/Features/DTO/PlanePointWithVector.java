@@ -22,8 +22,8 @@ public final class PlanePointWithVector {
     public final String toString() {
         return "{ " +
             "id: " + this.id + ", " +
-            "point: " + this.point.toString() + ", " +
-            "vector: " + this.vector.toString() +
+            "point: " + this.point + ", " +
+            "vector: " + this.vector +
         " }";
     }
 }

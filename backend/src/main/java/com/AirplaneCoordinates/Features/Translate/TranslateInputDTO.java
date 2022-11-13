@@ -14,4 +14,12 @@ public final class TranslateInputDTO {
         this.point = point;
         this.factor = factor;
     }
+
+    @Override
+    public final String toString() {
+        return "{ " +
+            "point: " + this.point + ", " +
+            "factor: " + this.factor +
+        " }";
+    }
 }

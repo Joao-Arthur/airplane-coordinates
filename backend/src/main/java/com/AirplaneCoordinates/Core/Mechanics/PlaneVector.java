@@ -17,8 +17,8 @@ public final class PlaneVector {
     @Override
     public final String toString() {
         return "{ " +
-            "point: " + this.point.toString() + ", " +
-            "vector: " + this.vector.toString() +
+            "point: " + this.point + ", " +
+            "vector: " + this.vector +
         " }";
     }
 }
