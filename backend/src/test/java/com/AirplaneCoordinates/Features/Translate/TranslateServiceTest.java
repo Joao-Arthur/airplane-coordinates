@@ -18,15 +18,19 @@ public final class TranslateServiceTest {
     public final void polarTranslate() {
         assertEquals(
             new TranslateService(
-                PlanePoint.from(Plane.POLAR, 1, 0),
-                CartesianPoint.from(-2, 0)
+                new TranslateInputDTO(
+                    PlanePoint.from(Plane.POLAR, 1, 0),
+                    CartesianPoint.from(-2, 0)
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 1, 180).toString()
         );
         assertEquals(
             new TranslateService(
-                PlanePoint.from(Plane.POLAR, 1, 45),
-                CartesianPoint.from(1, 1)
+                new TranslateInputDTO(
+                    PlanePoint.from(Plane.POLAR, 1, 45),
+                    CartesianPoint.from(1, 1)
+                )
             ).execute().toString(),
             PlanePoint.from(
                 Plane.POLAR,
@@ -40,8 +44,10 @@ public final class TranslateServiceTest {
     public final void cartesianTranslate() {
         assertEquals(
             new TranslateService(
-                PlanePoint.from(Plane.CARTESIAN, 5, -1),
-                CartesianPoint.from(-2, 2)
+                new TranslateInputDTO(
+                    PlanePoint.from(Plane.CARTESIAN, 5, -1),
+                    CartesianPoint.from(-2, 2)
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.CARTESIAN, 3, 1).toString()
         );
@@ -100,8 +106,12 @@ public final class TranslateServiceTest {
     ) {
         final var pointBefore = PlanePoint.from(plane, pointX, pointY);
         final var factor = CartesianPoint.from(factorX, factorY);
-        final var movedPoint = new TranslateService(pointBefore, factor).execute();
-        final var pointAfter = new TranslateService(movedPoint, factor.opposite()).execute();
+        final var movedPoint = new TranslateService(
+            new TranslateInputDTO(pointBefore, factor)
+        ).execute();
+        final var pointAfter = new TranslateService(
+            new TranslateInputDTO(movedPoint, factor.opposite())
+        ).execute();
         assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
@@ -122,12 +132,16 @@ public final class TranslateServiceTest {
                             String.valueOf(factorY)
                         );
                         final var movedPoint = new TranslateService(
-                            pointBefore,
-                            factor
+                            new TranslateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new TranslateService(
-                            movedPoint,
-                            factor.opposite()
+                            new TranslateInputDTO(
+                                movedPoint,
+                                factor.opposite()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),
@@ -156,12 +170,16 @@ public final class TranslateServiceTest {
                             String.valueOf(factorY)
                         );
                         final var movedPoint = new TranslateService(
-                            pointBefore,
-                            factor
+                            new TranslateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new TranslateService(
-                            movedPoint,
-                            factor.opposite()
+                            new TranslateInputDTO(
+                                movedPoint,
+                                factor.opposite()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),
@@ -191,12 +209,16 @@ public final class TranslateServiceTest {
                             String.valueOf(factorY)
                         );
                         final var movedPoint = new TranslateService(
-                            pointBefore,
-                            factor
+                            new TranslateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new TranslateService(
-                            movedPoint,
-                            factor.opposite()
+                            new TranslateInputDTO(
+                                movedPoint,
+                                factor.opposite()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),
@@ -227,12 +249,16 @@ public final class TranslateServiceTest {
                             String.valueOf(factorY)
                         );
                         final var movedPoint = new TranslateService(
-                            pointBefore,
-                            factor
+                            new TranslateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new TranslateService(
-                            movedPoint,
-                            factor.opposite()
+                            new TranslateInputDTO(
+                                movedPoint,
+                                factor.opposite()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),

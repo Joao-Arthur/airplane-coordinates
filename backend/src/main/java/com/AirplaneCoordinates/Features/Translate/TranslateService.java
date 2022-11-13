@@ -1,26 +1,20 @@
 package com.AirplaneCoordinates.Features.Translate;
 
-import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
 public final class TranslateService {
-    private final PlanePoint point;
-    private final CartesianPoint factor;
+    private final TranslateInputDTO dto;
 
-    public TranslateService(
-        final PlanePoint point,
-        final CartesianPoint factor
-    ) {
-        this.point = point;
-        this.factor = factor;
+    public TranslateService(final TranslateInputDTO dto) {
+        this.dto = dto;
     }
 
     public final PlanePoint execute() {
-        final var resultPoint = this.point
+        final var resultPoint = this.dto.point
             .toCartesian()
-            .plus(this.factor);
+            .plus(this.dto.factor);
 
-        switch (this.point.planeType) {
+        switch (this.dto.point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(
                     resultPoint.round()

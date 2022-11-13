@@ -1,34 +1,24 @@
 package com.AirplaneCoordinates.Features.Rotate;
 
-import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
 public final class RotateService {
-    private final PlanePoint point;
-    private final CartesianPoint centerOfRotation;
-    private final PreciseDecimal angle;
+    private final RotateInputDTO dto;
 
-    public RotateService(
-        final PlanePoint point,
-        final CartesianPoint centerOfRotation,
-        final PreciseDecimal angle
-    ) {
-        this.point = point;
-        this.centerOfRotation = centerOfRotation;
-        this.angle = angle;
+    public RotateService(final RotateInputDTO dto) {
+        this.dto = dto;
     }
 
     public final PlanePoint execute() {
-        final var angleValue = Deg.from(this.angle).normalized();
-        final var offsetPoint = this.point.toCartesian().minus(this.centerOfRotation);
+        final var angleValue = Deg.from(this.dto.angle).normalized();
+        final var offsetPoint = this.dto.point.toCartesian().minus(this.dto.centerOfRotation);
         final var pointAsPolar = offsetPoint.toPolar();
         final var rotatedPoint = pointAsPolar.rotate(angleValue);
         final var pointAsCartesian = rotatedPoint.toCartesian();
-        final var unoffsetedPoint = pointAsCartesian.plus(this.centerOfRotation);
+        final var unoffsetedPoint = pointAsCartesian.plus(this.dto.centerOfRotation);
     
-        switch(this.point.planeType) {
+        switch(this.dto.point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(unoffsetedPoint.round());
             case POLAR:

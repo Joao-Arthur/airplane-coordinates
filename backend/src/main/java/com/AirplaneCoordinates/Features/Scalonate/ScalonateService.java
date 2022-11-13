@@ -1,26 +1,20 @@
 package com.AirplaneCoordinates.Features.Scalonate;
 
-import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
 public final class ScalonateService {
-    private final PlanePoint point;
-    private final CartesianPoint factor;
+    private final ScalonateInputDTO dto;
 
-    public ScalonateService(
-        final PlanePoint point,
-        final CartesianPoint factor
-    ) {
-        this.point = point;
-        this.factor = factor;
+    public ScalonateService(final ScalonateInputDTO dto) {
+        this.dto = dto;
     }
 
     public final PlanePoint execute() {
-        final var resultPoint = this.point
+        final var resultPoint = this.dto.point
             .toCartesian()
-            .times(this.factor);
+            .times(this.dto.factor);
 
-        switch (this.point.planeType) {
+        switch (this.dto.point.planeType) {
             case CARTESIAN:
                 return PlanePoint.fromCartesian(
                     resultPoint.round()

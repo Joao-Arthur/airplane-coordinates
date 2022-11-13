@@ -18,29 +18,37 @@ public final class ScalonateServiceTest {
     public final void polarScalonate() {
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.POLAR, 1, 0),
-                CartesianPoint.from(-2, 0)
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.POLAR, 1, 0),
+                    CartesianPoint.from(-2, 0)
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 2, 180).toString()
         );
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.POLAR, 1, 45),
-                CartesianPoint.from(2, 2)
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.POLAR, 1, 45),
+                    CartesianPoint.from(2, 2)
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 2, 45).toString()
         );
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.POLAR, 100, 60),
-                CartesianPoint.from("0.5", "0.5")
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.POLAR, 100, 60),
+                    CartesianPoint.from("0.5", "0.5")
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 50, 60).toString()
         );
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.POLAR, 100, 60),
-                CartesianPoint.from("1", "0.5")
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.POLAR, 100, 60),
+                    CartesianPoint.from("1", "0.5")
+                )
             ).execute().toString(),
             PlanePoint.from(
                 Plane.POLAR,
@@ -50,8 +58,10 @@ public final class ScalonateServiceTest {
         );
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.POLAR, 6, 47),
-                CartesianPoint.from(0, 0)
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.POLAR, 6, 47),
+                    CartesianPoint.from(0, 0)
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 0, 0).toString()
         );
@@ -61,22 +71,28 @@ public final class ScalonateServiceTest {
     public final void cartesianScalonate() {
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.CARTESIAN, 5, -1),
-                CartesianPoint.from(-2, 2)
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.CARTESIAN, 5, -1),
+                    CartesianPoint.from(-2, 2)
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.CARTESIAN, -10, -2).toString()
         );
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.CARTESIAN, 479001600, -479001600),
-                CartesianPoint.from("-0.5", "0.5")
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.CARTESIAN, 479001600, -479001600),
+                    CartesianPoint.from("-0.5", "0.5")
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.CARTESIAN, "-239500800", "-239500800").toString()
         );
         assertEquals(
             new ScalonateService(
-                PlanePoint.from(Plane.CARTESIAN, 75, -7),
-                CartesianPoint.from(0, 0)
+                new ScalonateInputDTO(
+                    PlanePoint.from(Plane.CARTESIAN, 75, -7),
+                    CartesianPoint.from(0, 0)
+                )
             ).execute().toString(),
             PlanePoint.from(Plane.CARTESIAN, 0, 0).toString()
         );
@@ -133,38 +149,47 @@ public final class ScalonateServiceTest {
     ) {
         final var pointBefore = PlanePoint.from(plane, pointX, pointY);
         final var factor = CartesianPoint.from(factorX, factorY);
-        final var movedPoint = new ScalonateService(pointBefore, factor).execute();
-        final var pointAfter = new ScalonateService(movedPoint, factor.reverse()).execute();
+        final var movedPoint = new ScalonateService(
+            new ScalonateInputDTO(pointBefore, factor)
+        ).execute();
+        final var pointAfter = new ScalonateService(
+            new ScalonateInputDTO(movedPoint, factor.reverse())
+        ).execute();
         assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
     @Test
     @Tag("slow")
     public final void backAndForthCartesianSlow() {
-        final var valuesDouble = new Double[] {
-            -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0
+        final var values = new String[] {
+            "-1", "-0.8", "-0.5", "-0.4", "-0.2", "-0.1",
+            "0.1", "0.2", "0.4", "0.5", "0.8", "1"
         };
 
         for (float pointX = -10f; pointX <= 10f; pointX += 0.1f) {
             for (float pointY = -10f; pointY <= 10f; pointY += 0.1f) {
-                for (int i = 0; i < valuesDouble.length; i++) {
-                    for (int j = 0; j < valuesDouble.length; j++) {
+                for (int i = 0; i < values.length; i++) {
+                    for (int j = 0; j < values.length; j++) {
                         final var pointBefore = PlanePoint.from(
                             Plane.CARTESIAN,
                             new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
                             new BigDecimal(pointY).stripTrailingZeros().toPlainString()
                         );
                         final var factor = CartesianPoint.from(
-                            String.valueOf(valuesDouble[i]),
-                            String.valueOf(valuesDouble[j])
+                            values[i],
+                            values[j]
                         );
                         final var movedPoint = new ScalonateService(
-                            pointBefore,
-                            factor
+                            new ScalonateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new ScalonateService(
-                            movedPoint,
-                            factor.reverse()
+                            new ScalonateInputDTO(
+                                movedPoint,
+                                factor.reverse()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),
@@ -179,30 +204,41 @@ public final class ScalonateServiceTest {
     @Test
     @Tag("moderate")
     public final void backAndForthCartesian() {
-        final var valuesDouble = new Double[] {
-            -1.0, -0.8, -0.5, -0.4, -0.2, -0.1, 0.1, 0.2, 0.4, 0.5, 0.8, 1.0
+        final var values = new String[] {
+            "-1", "-0.8", "-0.5", "-0.4", "-0.2", "-0.1",
+            "0.1", "0.2", "0.4", "0.5", "0.8", "1"
+        };
+        final var otherValues = new String[] {
+            "-10", "-9.5", "-8", "-5",
+            "-4", "-2.5", "-2", "-1",
+            "1", "2", "2.5", "4",
+            "5", "8", "9.5", "10"
         };
 
-        for (int i = 0; i < valuesDouble.length; i++) {
-            for (int j = 0; j < valuesDouble.length; j++) {
-                for (int k = 0; k < valuesDouble.length; k++) {
-                    for (int l = 0; l < valuesDouble.length; l++) {
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values.length; j++) {
+                for (int k = 0; k < values.length; k++) {
+                    for (int l = 0; l < values.length; l++) {
                         final var pointBefore = PlanePoint.from(
                             Plane.CARTESIAN,
-                            new BigDecimal(valuesDouble[i]).stripTrailingZeros().toPlainString(),
-                            new BigDecimal(valuesDouble[j]).stripTrailingZeros().toPlainString()
+                            values[i],
+                            values[j]
                         );
                         final var factor = CartesianPoint.from(
-                            String.valueOf(valuesDouble[k]),
-                            String.valueOf(valuesDouble[l])
+                            values[k],
+                            values[l]
                         );
                         final var movedPoint = new ScalonateService(
-                            pointBefore,
-                            factor
+                            new ScalonateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new ScalonateService(
-                            movedPoint,
-                            factor.reverse()
+                            new ScalonateInputDTO(
+                                movedPoint,
+                                factor.reverse()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),
@@ -215,24 +251,28 @@ public final class ScalonateServiceTest {
 
         for (float pointX = -1f; pointX <= 1f; pointX += 0.1f) {
             for (float pointY = -1f; pointY <= 1f; pointY += 0.1f) {
-                for (int i = 0; i < valuesDouble.length; i++) {
-                    for (int j = 0; j < valuesDouble.length; j++) {
+                for (int i = 0; i < values.length; i++) {
+                    for (int j = 0; j < values.length; j++) {
                         final var pointBefore = PlanePoint.from(
                             Plane.CARTESIAN,
                             new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
                             new BigDecimal(pointY).stripTrailingZeros().toPlainString()
                         );
                         final var factor = CartesianPoint.from(
-                            String.valueOf(valuesDouble[i]),
-                            String.valueOf(valuesDouble[j])
+                            values[i],
+                            values[j]
                         );
                         final var movedPoint = new ScalonateService(
-                            pointBefore,
-                            factor
+                            new ScalonateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new ScalonateService(
-                            movedPoint,
-                            factor.reverse()
+                            new ScalonateInputDTO(
+                                movedPoint,
+                                factor.reverse()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),
@@ -243,31 +283,31 @@ public final class ScalonateServiceTest {
             }
         }
 
-        final var valuesIntValues = new Double[] {
-            -10.0, -9.5, -8.0, -5.0, -4.0, -2.5, -2.0, -1.0,
-            1.0, 2.0, 2.5, 4.0, 5.0, 8.0, 9.5, 10.0
-        };
 
-        for (int i = 0; i < valuesIntValues.length; i++) {
-            for (int j = 0; j < valuesIntValues.length; j++) {
-                for (int k = 0; k < valuesIntValues.length; k++) {
-                    for (int l = 0; l < valuesIntValues.length; l++) {
+        for (int i = 0; i < otherValues.length; i++) {
+            for (int j = 0; j < otherValues.length; j++) {
+                for (int k = 0; k < otherValues.length; k++) {
+                    for (int l = 0; l < otherValues.length; l++) {
                         final var pointBefore = PlanePoint.from(
                             Plane.CARTESIAN,
-                            new BigDecimal(valuesIntValues[i]).stripTrailingZeros().toPlainString(),
-                            new BigDecimal(valuesIntValues[j]).stripTrailingZeros().toPlainString()
+                            otherValues[i],
+                            otherValues[j]
                         );
                         final var factor = CartesianPoint.from(
-                            String.valueOf(valuesIntValues[k]),
-                            String.valueOf(valuesIntValues[l])
+                            otherValues[k],
+                            otherValues[l]
                         );
                         final var movedPoint = new ScalonateService(
-                            pointBefore,
-                            factor
+                            new ScalonateInputDTO(
+                                pointBefore,
+                                factor
+                            )
                         ).execute();
                         final var pointAfter = new ScalonateService(
-                            movedPoint,
-                            factor.reverse()
+                            new ScalonateInputDTO(
+                                movedPoint,
+                                factor.reverse()
+                            )
                         ).execute();
                         assertEquals(
                             pointAfter.toString(),
