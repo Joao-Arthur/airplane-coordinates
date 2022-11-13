@@ -8,8 +8,7 @@ describe('dtoToSavedAirplane', () => {
                 id: '1',
                 x: 0,
                 y: -10,
-                speed: 100,
-                direction: 100,
+                vector: { speed: 100, direction: 100 },
             },
             'POLAR',
         )).toEqual({
@@ -25,8 +24,7 @@ describe('dtoToSavedAirplane', () => {
                 id: '1',
                 x: 4,
                 y: -5,
-                speed: 100,
-                direction: 100,
+                vector: { speed: 100, direction: 100 },
             },
             'CARTESIAN',
         )).toEqual({

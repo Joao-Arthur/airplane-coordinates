@@ -21,6 +21,6 @@ export function drawAirplanes({
                 point,
                 size: airplaneSize,
             }),
-            airportDimensions => drawContext.drawImage(airportDimensions, '/airplane.png', airplane.direction),
+            airportDimensions => drawContext.drawImage(airportDimensions, '/airplane.png', airplane.vector.direction),
         )({ x: airplane.x, y: airplane.y });
 }

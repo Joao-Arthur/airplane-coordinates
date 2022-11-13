@@ -10,48 +10,48 @@ type paramsType = {
 }
 
 export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
-    const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.direction });
-    const coefficientA = [90, 270].includes(a.direction) ? 0 : Math.abs(Math.cos(a.direction * Math.PI / 180));
-    const coefficientB = [90, 270].includes(b.direction) ? 0 : Math.abs(Math.cos(b.direction * Math.PI / 180));
+    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.vector.direction });
+    const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.vector.direction });
+    const coefficientA = [90, 270].includes(a.vector.direction) ? 0 : Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
+    const coefficientB = [90, 270].includes(b.vector.direction) ? 0 : Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
     const { y: x } = mechanics.collision({
         a: {
             initialPoint: a.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * a.speed,
-                angle: a.direction,
+                value: coefficientA * a.vector.speed,
+                angle: a.vector.direction,
             }),
         },
         b: {
             initialPoint: b.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientB * b.speed,
-                angle: b.direction,
+                value: coefficientB * b.vector.speed,
+                angle: b.vector.direction,
             }),
         },
     });
-    const y = linearFunction.execute([90, 270].includes(a.direction) ? gx : fx, x);
+    const y = linearFunction.execute([90, 270].includes(a.vector.direction) ? gx : fx, x);
     if (!Number.isFinite(y))
         return undefined;
     const { x: timeToCollisionA } = mechanics.collision({
-        a: { initialPoint: [90, 270].includes(a.direction) ? y : x, speed: 0 },
+        a: { initialPoint: [90, 270].includes(a.vector.direction) ? y : x, speed: 0 },
         b: {
-            initialPoint: [90, 270].includes(a.direction) ? a.y : a.x,
+            initialPoint: [90, 270].includes(a.vector.direction) ? a.y : a.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: [90, 270].includes(a.direction) ? a.speed : coefficientA * a.speed,
-                angle: a.direction,
+                value: [90, 270].includes(a.vector.direction) ? a.vector.speed : coefficientA * a.vector.speed,
+                angle: a.vector.direction,
             }),
         },
     });
     if (timeToCollisionA < 0)
         return undefined;
     const { x: timeToCollisionB } = mechanics.collision({
-        a: { initialPoint: [90, 270].includes(b.direction) ? y : x, speed: 0 },
+        a: { initialPoint: [90, 270].includes(b.vector.direction) ? y : x, speed: 0 },
         b: {
-            initialPoint: [90, 270].includes(b.direction) ? b.y : b.x,
+            initialPoint: [90, 270].includes(b.vector.direction) ? b.y : b.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: [90, 270].includes(b.direction) ? b.speed : coefficientB * b.speed,
-                angle: b.direction,
+                value: [90, 270].includes(b.vector.direction) ? b.vector.speed : coefficientB * b.vector.speed,
+                angle: b.vector.direction,
             }),
         },
     });

@@ -8,8 +8,8 @@ type paramsType = {
 
 export function collisionFromInfiniteTangentBothAirplanes({ a, b }: paramsType) {
     const { x: timeUntilCollision, y } = mechanics.collision({
-        a: { initialPoint: a.y, speed: a.direction === 90 ? a.speed : -a.speed },
-        b: { initialPoint: b.y, speed: b.direction === 90 ? b.speed : -b.speed },
+        a: { initialPoint: a.y, speed: a.vector.direction === 90 ? a.vector.speed : -a.vector.speed },
+        b: { initialPoint: b.y, speed: b.vector.direction === 90 ? b.vector.speed : -b.vector.speed },
     });
     if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(y))
         return undefined;

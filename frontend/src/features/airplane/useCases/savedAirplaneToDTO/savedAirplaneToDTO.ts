@@ -12,6 +12,6 @@ export function savedAirplaneToDTO(airplane: savedAirplaneType): airplaneType {
                 r: airplane.planePoint.a,
                 a: airplane.planePoint.b,
             })),
-        ...airplane.vector,
+        vector: airplane.vector,
     } as const;
 }

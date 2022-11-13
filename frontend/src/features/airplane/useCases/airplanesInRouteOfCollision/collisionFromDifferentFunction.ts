@@ -10,30 +10,30 @@ type paramsType = {
 }
 
 export function collisionFromDifferentFunction({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.direction });
-    const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.direction });
+    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.vector.direction });
+    const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.vector.direction });
     const intersectionPoint = linearFunction.findInsersectionPoint({
         fx,
         gx,
     });
     if (!intersectionPoint)
         return undefined;
-    const coefficientA = Math.abs(Math.cos(a.direction * Math.PI / 180));
-    const coefficientB = Math.abs(Math.cos(b.direction * Math.PI / 180));
+    const coefficientA = Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
+    const coefficientB = Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
 
     const { y: x } = mechanics.collision({
         a: {
             initialPoint: a.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * a.speed,
-                angle: a.direction,
+                value: coefficientA * a.vector.speed,
+                angle: a.vector.direction,
             }),
         },
         b: {
             initialPoint: b.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientB * b.speed,
-                angle: b.direction,
+                value: coefficientB * b.vector.speed,
+                angle: b.vector.direction,
             }),
         },
     });
@@ -45,8 +45,8 @@ export function collisionFromDifferentFunction({ a, b }: paramsType) {
         b: {
             initialPoint: a.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * a.speed,
-                angle: a.direction,
+                value: coefficientA * a.vector.speed,
+                angle: a.vector.direction,
             }),
         },
     });
@@ -57,8 +57,8 @@ export function collisionFromDifferentFunction({ a, b }: paramsType) {
         b: {
             initialPoint: b.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * b.speed,
-                angle: b.direction,
+                value: coefficientA * b.vector.speed,
+                angle: b.vector.direction,
             }),
         },
     });
