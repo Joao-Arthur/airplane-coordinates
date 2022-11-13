@@ -21,42 +21,42 @@ public final class ArithmeticController {
         this.gateway = new ArithmeticGateway(new SystemLogger());
     }
 
-    @PostMapping
+    @PostMapping("/translate")
     public final TranslateOutputDTO translate(
         final TranslateInputDTO params
     ) {
         return this.gateway.translate(params);
     }
 
-    @PostMapping
+    @PostMapping("/scalonate")
     public final ScalonateOutputDTO scalonate(
         final ScalonateInputDTO params
     ) {
         return this.gateway.scalonate(params);
     }
 
-    @PostMapping
+    @PostMapping("/rotate")
     public final RotateOutputDTO rotate(
         final RotateInputDTO params
     ) {
         return this.gateway.rotate(params);
     }
 
-    @PostMapping
+    @PostMapping("/closeToPoint")
     public final PointsCloseToPointOutputDTO pointsCloseToPoint(
         final PointsCloseToPointInputDTO params
     ) {
         return this.gateway.pointsCloseToPoint(params);
     }
 
-    @PostMapping
+    @PostMapping("/closeToEachOther")
     public final PointsCloseToEachOtherOutputDTO pointsCloseToEachOther(
         final PointsCloseToEachOtherInputDTO params
     ) {
         return this.gateway.pointsCloseToEachOther(params);
     }
 
-    @PostMapping
+    @PostMapping("/routeOfCollision")
     public final PointsInRouteOfCollisionOutputDTO pointsInRouteOfCollision(
         final PointsInRouteOfCollisionInputDTO params
     ) {
