@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.AirplaneCoordinates.Core.Mechanics.Vector;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
-import com.AirplaneCoordinates.Features.PlanePointWithVector;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithVector;
 
 public final class GetCollisionTypeTest {
     @Test

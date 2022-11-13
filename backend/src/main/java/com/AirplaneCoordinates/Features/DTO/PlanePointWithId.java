@@ -1,4 +1,4 @@
-package com.AirplaneCoordinates.Features;
+package com.AirplaneCoordinates.Features.DTO;
 
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 

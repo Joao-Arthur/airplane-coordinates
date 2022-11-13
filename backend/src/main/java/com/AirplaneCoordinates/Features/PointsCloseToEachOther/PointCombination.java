@@ -1,6 +1,6 @@
 package com.AirplaneCoordinates.Features.PointsCloseToEachOther;
 
-import com.AirplaneCoordinates.Features.PlanePointWithId;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class PointCombination {
     public final PlanePointWithId a;

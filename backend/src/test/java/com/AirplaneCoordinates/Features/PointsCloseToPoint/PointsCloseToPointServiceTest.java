@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Features.PlanePointWithId;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class PointsCloseToPointServiceTest {
     @Test

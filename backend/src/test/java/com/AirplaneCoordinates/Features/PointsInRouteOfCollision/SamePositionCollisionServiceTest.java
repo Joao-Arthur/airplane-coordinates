@@ -9,7 +9,7 @@ import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Features.PlanePointWithVector;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithVector;
 
 public final class SamePositionCollisionServiceTest {
     @Test

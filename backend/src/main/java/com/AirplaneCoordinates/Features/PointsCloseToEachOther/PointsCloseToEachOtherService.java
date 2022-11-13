@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.AirplaneCoordinates.Core.Combination.Combination;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Features.PlanePointWithId;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class PointsCloseToEachOtherService {
     private final List<PlanePointWithId> points;

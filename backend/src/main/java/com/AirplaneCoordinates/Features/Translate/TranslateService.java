@@ -1,13 +1,13 @@
-package com.AirplaneCoordinates.Features.Scalonate;
+package com.AirplaneCoordinates.Features.Translate;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
-public final class Scalonate {
+public final class TranslateService {
     private final PlanePoint point;
     private final CartesianPoint factor;
 
-    public Scalonate(
+    public TranslateService(
         final PlanePoint point,
         final CartesianPoint factor
     ) {
@@ -18,7 +18,7 @@ public final class Scalonate {
     public final PlanePoint execute() {
         final var resultPoint = this.point
             .toCartesian()
-            .times(this.factor);
+            .plus(this.factor);
 
         switch (this.point.planeType) {
             case CARTESIAN:

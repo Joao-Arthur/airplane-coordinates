@@ -12,11 +12,11 @@ import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 
-public final class RotateTest {
+public final class RotateServiceTest {
     @Test
     public final void polarRotate() {
         assertEquals(
-            new Rotate(
+            new RotateService(
                 PlanePoint.from(Plane.POLAR, "1.22", "11.11"),
                 CartesianPoint.from(0, 0),
                 PreciseDecimal.from(50)
@@ -28,7 +28,7 @@ public final class RotateTest {
     @Test
     public final void polarRotateOffseted() {
         assertEquals(
-            new Rotate(
+            new RotateService(
                 PlanePoint.from(Plane.POLAR, 4, 90),
                 CartesianPoint.from(4, 4),
                 PreciseDecimal.from(90)
@@ -36,7 +36,7 @@ public final class RotateTest {
             PlanePoint.from(Plane.POLAR, 4, 0).toString()
         );
         assertEquals(
-            new Rotate(
+            new RotateService(
                 PlanePoint.from(Plane.POLAR, 4, 45),
                 CartesianPoint.from(8, 8),
                 PreciseDecimal.from(180)
@@ -52,7 +52,7 @@ public final class RotateTest {
     @Test
     public final void cartesianRotate() {
         assertEquals(
-            new Rotate(
+            new RotateService(
                 PlanePoint.from(Plane.CARTESIAN, 4, 4),
                 CartesianPoint.from(8, 0),
                 PreciseDecimal.from(90)
@@ -64,7 +64,7 @@ public final class RotateTest {
     @Test
     public final void cartesianRotateOffseted() {
         assertEquals(
-            new Rotate(
+            new RotateService(
                 PlanePoint.from(Plane.CARTESIAN, 0, 4),
                 CartesianPoint.from(4, 4),
                 PreciseDecimal.from(90)
@@ -72,7 +72,7 @@ public final class RotateTest {
             PlanePoint.from(Plane.CARTESIAN, 4, 0).toString()
         );
         assertEquals(
-            new Rotate(
+            new RotateService(
                 PlanePoint.from(Plane.CARTESIAN, -4, 4),
                 CartesianPoint.from(-8, 4),
                 PreciseDecimal.from(270)
@@ -171,8 +171,8 @@ public final class RotateTest {
         final var pointBefore = PlanePoint.from(plane, pointA, pointB);
         final var centerOfRotation = CartesianPoint.from(centerX, centerY);
         final var angleValue = PreciseDecimal.from(angle);
-        final var movedPoint = new Rotate(pointBefore, centerOfRotation, angleValue).execute();
-        final var pointAfter = new Rotate(movedPoint, centerOfRotation, angleValue.opposite()).execute();
+        final var movedPoint = new RotateService(pointBefore, centerOfRotation, angleValue).execute();
+        final var pointAfter = new RotateService(movedPoint, centerOfRotation, angleValue.opposite()).execute();
         assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
@@ -187,8 +187,8 @@ public final class RotateTest {
                             final var pointBefore = PlanePoint.from(Plane.CARTESIAN, pointX, pointY);
                             final var centerOfRotation = CartesianPoint.from(centerX, centerY);
                             final var angleValue = PreciseDecimal.from(angle);
-                            final var movedPoint = new Rotate(pointBefore, centerOfRotation, angleValue).execute();
-                            final var pointAfter = new Rotate(movedPoint, centerOfRotation, angleValue.opposite()).execute();
+                            final var movedPoint = new RotateService(pointBefore, centerOfRotation, angleValue).execute();
+                            final var pointAfter = new RotateService(movedPoint, centerOfRotation, angleValue.opposite()).execute();
                             assertEquals(pointAfter.toString(), pointBefore.toString());
                         }
                     }
@@ -208,8 +208,8 @@ public final class RotateTest {
                             final var pointBefore = PlanePoint.from(Plane.CARTESIAN, pointX, pointY);
                             final var centerOfRotation = CartesianPoint.from(centerX, centerY);
                             final var angleValue = PreciseDecimal.from(angle);
-                            final var movedPoint = new Rotate(pointBefore, centerOfRotation, angleValue).execute();
-                            final var pointAfter = new Rotate(movedPoint, centerOfRotation, angleValue.opposite()).execute();
+                            final var movedPoint = new RotateService(pointBefore, centerOfRotation, angleValue).execute();
+                            final var pointAfter = new RotateService(movedPoint, centerOfRotation, angleValue.opposite()).execute();
                             assertEquals(pointAfter.toString(), pointBefore.toString());
                         }
                     }
@@ -229,8 +229,8 @@ public final class RotateTest {
                             final var pointBefore = PlanePoint.from(Plane.CARTESIAN, pointR, pointA);
                             final var centerOfRotation = CartesianPoint.from(centerX, centerY);
                             final var angleValue = PreciseDecimal.from(angle);
-                            final var movedPoint = new Rotate(pointBefore, centerOfRotation, angleValue).execute();
-                            final var pointAfter = new Rotate(movedPoint, centerOfRotation, angleValue.opposite()).execute();
+                            final var movedPoint = new RotateService(pointBefore, centerOfRotation, angleValue).execute();
+                            final var pointAfter = new RotateService(movedPoint, centerOfRotation, angleValue.opposite()).execute();
                             assertEquals(pointAfter.toString(), pointBefore.toString());
                         }
                     }
@@ -250,8 +250,8 @@ public final class RotateTest {
                             final var pointBefore = PlanePoint.from(Plane.CARTESIAN, pointR, pointA);
                             final var centerOfRotation = CartesianPoint.from(centerX, centerY);
                             final var angleValue = PreciseDecimal.from(angle);
-                            final var movedPoint = new Rotate(pointBefore, centerOfRotation, angleValue).execute();
-                            final var pointAfter = new Rotate(movedPoint, centerOfRotation, angleValue.opposite()).execute();
+                            final var movedPoint = new RotateService(pointBefore, centerOfRotation, angleValue).execute();
+                            final var pointAfter = new RotateService(movedPoint, centerOfRotation, angleValue.opposite()).execute();
                             assertEquals(pointAfter.toString(), pointBefore.toString());
                         }
                     }

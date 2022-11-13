@@ -5,12 +5,12 @@ import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
 
-public final class Rotate {
+public final class RotateService {
     private final PlanePoint point;
     private final CartesianPoint centerOfRotation;
     private final PreciseDecimal angle;
 
-    public Rotate(
+    public RotateService(
         final PlanePoint point,
         final CartesianPoint centerOfRotation,
         final PreciseDecimal angle

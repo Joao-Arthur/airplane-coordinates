@@ -5,7 +5,7 @@ import com.AirplaneCoordinates.Core.Mechanics.LinearPoint;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Core.Trigonometry.Deg;
-import com.AirplaneCoordinates.Features.PlanePointWithVector;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithVector;
 
 public final class PointDTO {
     public final PlanePointWithVector planePoint;

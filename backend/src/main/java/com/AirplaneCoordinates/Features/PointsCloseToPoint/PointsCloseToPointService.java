@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Features.PlanePointWithId;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class PointsCloseToPointService {
     private final List<PlanePointWithId> points;

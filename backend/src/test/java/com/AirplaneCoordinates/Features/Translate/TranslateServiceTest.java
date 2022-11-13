@@ -13,18 +13,18 @@ import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
-public final class TranslateTest {
+public final class TranslateServiceTest {
     @Test
     public final void polarTranslate() {
         assertEquals(
-            new Translate(
+            new TranslateService(
                 PlanePoint.from(Plane.POLAR, 1, 0),
                 CartesianPoint.from(-2, 0)
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 1, 180).toString()
         );
         assertEquals(
-            new Translate(
+            new TranslateService(
                 PlanePoint.from(Plane.POLAR, 1, 45),
                 CartesianPoint.from(1, 1)
             ).execute().toString(),
@@ -39,7 +39,7 @@ public final class TranslateTest {
     @Test
     public final void cartesianTranslate() {
         assertEquals(
-            new Translate(
+            new TranslateService(
                 PlanePoint.from(Plane.CARTESIAN, 5, -1),
                 CartesianPoint.from(-2, 2)
             ).execute().toString(),
@@ -100,8 +100,8 @@ public final class TranslateTest {
     ) {
         final var pointBefore = PlanePoint.from(plane, pointX, pointY);
         final var factor = CartesianPoint.from(factorX, factorY);
-        final var movedPoint = new Translate(pointBefore, factor).execute();
-        final var pointAfter = new Translate(movedPoint, factor.opposite()).execute();
+        final var movedPoint = new TranslateService(pointBefore, factor).execute();
+        final var pointAfter = new TranslateService(movedPoint, factor.opposite()).execute();
         assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
@@ -121,11 +121,11 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = new Translate(
+                        final var movedPoint = new TranslateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Translate(
+                        final var pointAfter = new TranslateService(
                             movedPoint,
                             factor.opposite()
                         ).execute();
@@ -155,11 +155,11 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = new Translate(
+                        final var movedPoint = new TranslateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Translate(
+                        final var pointAfter = new TranslateService(
                             movedPoint,
                             factor.opposite()
                         ).execute();
@@ -190,11 +190,11 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = new Translate(
+                        final var movedPoint = new TranslateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Translate(
+                        final var pointAfter = new TranslateService(
                             movedPoint,
                             factor.opposite()
                         ).execute();
@@ -226,11 +226,11 @@ public final class TranslateTest {
                             String.valueOf(factorX),
                             String.valueOf(factorY)
                         );
-                        final var movedPoint = new Translate(
+                        final var movedPoint = new TranslateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Translate(
+                        final var pointAfter = new TranslateService(
                             movedPoint,
                             factor.opposite()
                         ).execute();

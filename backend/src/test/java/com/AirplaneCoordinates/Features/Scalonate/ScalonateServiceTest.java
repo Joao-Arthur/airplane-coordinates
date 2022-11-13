@@ -13,32 +13,32 @@ import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
-public final class ScalonateTest {
+public final class ScalonateServiceTest {
     @Test
     public final void polarScalonate() {
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.POLAR, 1, 0),
                 CartesianPoint.from(-2, 0)
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 2, 180).toString()
         );
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.POLAR, 1, 45),
                 CartesianPoint.from(2, 2)
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 2, 45).toString()
         );
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.POLAR, 100, 60),
                 CartesianPoint.from("0.5", "0.5")
             ).execute().toString(),
             PlanePoint.from(Plane.POLAR, 50, 60).toString()
         );
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.POLAR, 100, 60),
                 CartesianPoint.from("1", "0.5")
             ).execute().toString(),
@@ -49,7 +49,7 @@ public final class ScalonateTest {
             ).toString()
         );
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.POLAR, 6, 47),
                 CartesianPoint.from(0, 0)
             ).execute().toString(),
@@ -60,21 +60,21 @@ public final class ScalonateTest {
     @Test
     public final void cartesianScalonate() {
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.CARTESIAN, 5, -1),
                 CartesianPoint.from(-2, 2)
             ).execute().toString(),
             PlanePoint.from(Plane.CARTESIAN, -10, -2).toString()
         );
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.CARTESIAN, 479001600, -479001600),
                 CartesianPoint.from("-0.5", "0.5")
             ).execute().toString(),
             PlanePoint.from(Plane.CARTESIAN, "-239500800", "-239500800").toString()
         );
         assertEquals(
-            new Scalonate(
+            new ScalonateService(
                 PlanePoint.from(Plane.CARTESIAN, 75, -7),
                 CartesianPoint.from(0, 0)
             ).execute().toString(),
@@ -133,8 +133,8 @@ public final class ScalonateTest {
     ) {
         final var pointBefore = PlanePoint.from(plane, pointX, pointY);
         final var factor = CartesianPoint.from(factorX, factorY);
-        final var movedPoint = new Scalonate(pointBefore, factor).execute();
-        final var pointAfter = new Scalonate(movedPoint, factor.reverse()).execute();
+        final var movedPoint = new ScalonateService(pointBefore, factor).execute();
+        final var pointAfter = new ScalonateService(movedPoint, factor.reverse()).execute();
         assertEquals(pointAfter.toString(), pointBefore.toString());
     }
 
@@ -158,11 +158,11 @@ public final class ScalonateTest {
                             String.valueOf(valuesDouble[i]),
                             String.valueOf(valuesDouble[j])
                         );
-                        final var movedPoint = new Scalonate(
+                        final var movedPoint = new ScalonateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Scalonate(
+                        final var pointAfter = new ScalonateService(
                             movedPoint,
                             factor.reverse()
                         ).execute();
@@ -196,11 +196,11 @@ public final class ScalonateTest {
                             String.valueOf(valuesDouble[k]),
                             String.valueOf(valuesDouble[l])
                         );
-                        final var movedPoint = new Scalonate(
+                        final var movedPoint = new ScalonateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Scalonate(
+                        final var pointAfter = new ScalonateService(
                             movedPoint,
                             factor.reverse()
                         ).execute();
@@ -226,11 +226,11 @@ public final class ScalonateTest {
                             String.valueOf(valuesDouble[i]),
                             String.valueOf(valuesDouble[j])
                         );
-                        final var movedPoint = new Scalonate(
+                        final var movedPoint = new ScalonateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Scalonate(
+                        final var pointAfter = new ScalonateService(
                             movedPoint,
                             factor.reverse()
                         ).execute();
@@ -261,11 +261,11 @@ public final class ScalonateTest {
                             String.valueOf(valuesIntValues[k]),
                             String.valueOf(valuesIntValues[l])
                         );
-                        final var movedPoint = new Scalonate(
+                        final var movedPoint = new ScalonateService(
                             pointBefore,
                             factor
                         ).execute();
-                        final var pointAfter = new Scalonate(
+                        final var pointAfter = new ScalonateService(
                             movedPoint,
                             factor.reverse()
                         ).execute();
