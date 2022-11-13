@@ -23,7 +23,9 @@ export function scalonateAirplaneCoordinatesService({
             x,
             y,
         });
-        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
+        airplaneRepository.update(
+            dtoToSavedAirplane(updatedAirplane, airplane.planePoint.type),
+        );
     }
     logger.success('Escalonamento realizado com sucesso!');
 }

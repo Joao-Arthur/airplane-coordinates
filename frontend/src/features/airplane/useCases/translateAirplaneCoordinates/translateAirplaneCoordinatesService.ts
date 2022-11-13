@@ -23,7 +23,9 @@ export function translateAirplaneCoordinatesService({
             x,
             y,
         });
-        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
+        airplaneRepository.update(
+            dtoToSavedAirplane(updatedAirplane, airplane.planePoint.type),
+        );
     }
     logger.success('Transformação realizada com sucesso!');
 }

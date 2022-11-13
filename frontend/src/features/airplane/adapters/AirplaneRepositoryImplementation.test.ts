@@ -6,36 +6,24 @@ describe('AirplaneRepositoryImplementation', () => {
         const airplaneRepository = new AirplaneRepositoryImplementation();
         airplaneRepository.add({
             id: '1',
-            type: 'CARTESIAN',
-            a: 1,
-            b: 1,
-            speed: 1,
-            direction: 1,
+            planePoint: { type: 'CARTESIAN', a: 1, b: 1 },
+            vector: { speed: 1, direction: 1 },
         });
         airplaneRepository.add({
             id: '2',
-            type: 'CARTESIAN',
-            a: 2,
-            b: 2,
-            speed: 2,
-            direction: 2,
+            planePoint: { type: 'CARTESIAN', a: 2, b: 2 },
+            vector: { speed: 2, direction: 2 },
         });
         expect(airplaneRepository.retrieve()).toEqual([
             {
                 id: '1',
-                type: 'CARTESIAN',
-                a: 1,
-                b: 1,
-                speed: 1,
-                direction: 1,
+                planePoint: { type: 'CARTESIAN', a: 1, b: 1 },
+                vector: { speed: 1, direction: 1 },
             },
             {
                 id: '2',
-                type: 'CARTESIAN',
-                a: 2,
-                b: 2,
-                speed: 2,
-                direction: 2,
+                planePoint: { type: 'CARTESIAN', a: 2, b: 2 },
+                vector: { speed: 2, direction: 2 },
             },
         ]);
     });
@@ -44,27 +32,18 @@ describe('AirplaneRepositoryImplementation', () => {
         const airplaneRepository = new AirplaneRepositoryImplementation();
         airplaneRepository.add({
             id: '1',
-            type: 'CARTESIAN',
-            a: 1,
-            b: 1,
-            speed: 1,
-            direction: 1,
+            planePoint: { type: 'CARTESIAN', a: 1, b: 1 },
+            vector: { speed: 1, direction: 1 },
         });
         airplaneRepository.update({
             id: '1',
-            type: 'POLAR',
-            a: 10,
-            b: 10,
-            speed: 10,
-            direction: 10,
+            planePoint: { type: 'POLAR', a: 10, b: 10 },
+            vector: { speed: 10, direction: 10 },
         });
         expect(airplaneRepository.retrieve()).toEqual([{
             id: '1',
-            type: 'POLAR',
-            a: 10,
-            b: 10,
-            speed: 10,
-            direction: 10,
+            planePoint: { type: 'POLAR', a: 10, b: 10 },
+            vector: { speed: 10, direction: 10 },
         }]);
     });
 
@@ -72,11 +51,8 @@ describe('AirplaneRepositoryImplementation', () => {
         const airplaneRepository = new AirplaneRepositoryImplementation();
         airplaneRepository.add({
             id: '1',
-            type: 'CARTESIAN',
-            a: 1,
-            b: 1,
-            speed: 1,
-            direction: 1,
+            planePoint: { type: 'CARTESIAN', a: 1, b: 1 },
+            vector: { speed: 1, direction: 1 },
         });
         expect(airplaneRepository.retrieve().length).toBe(1);
         airplaneRepository.remove('1');

@@ -40,13 +40,27 @@ export function AirplanesTable() {
                                     }}
                                 />
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>{airplane.id}</td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.x}</td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.y}</td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.radius}</td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.angle}</td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.speed}</td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>{airplane.direction}</td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>
+                                {airplane.id}
+                            </td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'CARTESIAN' ? airplane.planePoint.a : undefined}
+                            </td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'CARTESIAN' ? airplane.planePoint.b : undefined}
+                            </td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'POLAR' ? airplane.planePoint.a : undefined}
+                            </td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'POLAR' ? airplane.planePoint.b : undefined}
+                            </td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                                {airplane.vector.speed}
+                            </td>
+                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                                {airplane.vector.direction}
+                            </td>
                             <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
                                 <IconButton><BsFillEyeFill /></IconButton>
                             </td>

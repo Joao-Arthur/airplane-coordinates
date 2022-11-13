@@ -25,7 +25,9 @@ export function rotateAirplaneCoordinatesService({
             centerOfRotationX,
             centerOfRotationY,
         });
-        airplaneRepository.update(dtoToSavedAirplane(updatedAirplane, airplane.type));
+        airplaneRepository.update(
+            dtoToSavedAirplane(updatedAirplane, airplane.planePoint.type),
+        );
     }
     logger.success('Rotação realizada com sucesso!');
 }

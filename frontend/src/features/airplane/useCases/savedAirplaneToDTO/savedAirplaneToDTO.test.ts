@@ -5,15 +5,8 @@ describe('savedAirplaneToDTO', () => {
     it('should transform a polar airplane to dto', () => {
         expect(savedAirplaneToDTO({
             id: '1',
-            planePoint: {
-                type: 'POLAR',
-                a: 10,
-                b: 270,
-            },
-            vector: {
-                speed: 100,
-                direction: 100,
-            },
+            planePoint: { type: 'POLAR', a: 10, b: 270 },
+            vector: { speed: 100, direction: 100 },
         })).toEqual({
             id: '1',
             x: 0,
@@ -26,15 +19,8 @@ describe('savedAirplaneToDTO', () => {
     it('should transform a cartesian airplane to dto', () => {
         expect(savedAirplaneToDTO({
             id: '1',
-            planePoint: {
-                type: 'CARTESIAN',
-                a: 4,
-                b: -5,
-            },
-            vector: {
-                speed: 100,
-                direction: 100,
-            },
+            planePoint: { type: 'CARTESIAN', a: 4, b: -5 },
+            vector: { speed: 100, direction: 100 },
         })).toEqual({
             id: '1',
             x: 4,
