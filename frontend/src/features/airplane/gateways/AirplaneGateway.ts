@@ -1,7 +1,7 @@
 import { LoggerImplementationProxy } from '../../logger/adapters/LoggerImplementationProxy';
 import { messageType } from '../../logger/model';
 import { uniqueIdentifierBig } from '../../uniqueIdentifier/adapters/uniqueIdentifierBig';
-import { uniqueIdentifierImplementation } from '../../uniqueIdentifier/adapters/uniqueIdentifierImplementation';
+import { UniqueIdentifierImplementation } from '../../uniqueIdentifier/adapters/UniqueIdentifierImplementation';
 import { AirplaneRepositoryImplementationProxy } from '../adapters/AirplaneRepositoryImplementationProxy';
 import { airplaneType, savedAirplaneType } from '../models';
 import { addAirplaneService, airplaneParamsType } from '../useCases/addAirplane';
@@ -55,13 +55,13 @@ export type gatewayTranslateAirplaneCoordinatesParamsType = {
 export class AirplaneGateway {
     private readonly logger = new LoggerImplementationProxy(uniqueIdentifierBig);
     private readonly airplaneRepository = new AirplaneRepositoryImplementationProxy();
-    private readonly uniqueIdentifier = uniqueIdentifierImplementation;
+    private readonly uniqueIdentifier = new UniqueIdentifierImplementation();
 
     public addAirplane({ airplaneParams }: gatewayAddAirplaneParamsType) {
         addAirplaneService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
-            uniqueIdentifier: this.uniqueIdentifier,
+            uniqueIdentifier: () => this.uniqueIdentifier.getUnique(),
             airplaneParams,
         });
     }
