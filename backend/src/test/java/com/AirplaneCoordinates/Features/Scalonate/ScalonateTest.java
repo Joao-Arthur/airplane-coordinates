@@ -1,4 +1,4 @@
-package com.AirplaneCoordinates.Features;
+package com.AirplaneCoordinates.Features.Scalonate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

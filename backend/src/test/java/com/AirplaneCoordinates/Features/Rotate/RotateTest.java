@@ -1,4 +1,4 @@
-package com.AirplaneCoordinates.Features;
+package com.AirplaneCoordinates.Features.Rotate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

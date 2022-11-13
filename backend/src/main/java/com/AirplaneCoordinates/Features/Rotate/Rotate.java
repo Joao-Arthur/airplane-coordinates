@@ -1,4 +1,4 @@
-package com.AirplaneCoordinates.Features;
+package com.AirplaneCoordinates.Features.Rotate;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
