@@ -1,6 +1,7 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,34 +14,8 @@ import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class DifferentFunctionsCollisionServiceTest {
     @Test
-    public final void getCollisionPoint() {
-        assertEquals(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
-                    "1",
-                    PlanePoint.from(Plane.CARTESIAN, 5, 2),
-                    Vector.from(10, 2)
-                )),
-                PointDTO.from(new PlanePointWithVector(
-                    "2",
-                    PlanePoint.from(Plane.CARTESIAN, 8, 10),
-                    Vector.from(300, 3)
-                ))
-            ).getCollisionPoint().toString(),
-            new CollisionDTO(
-                "1",
-                "2",
-                PreciseDecimal.from(
-                    "2.609902191542677500469973584804738125240122490292839939099618811199830171909999591660616865167562112"
-                ),
-                CartesianPoint.from(
-                    "11.91485328731401625070496037720710718786018373543925990864942821679974525786499938749092529775134317",
-                    "3.21927520219408414791113521017034269993719666608248158304415726206524988169837824530969366909604842"
-                ),
-                PreciseDecimal.from("0.900860831069461218090526025195134499133509143336760227414255746881140504517139657460103845324889316")
-            ).toString()
-        );
-        assertEquals(
+    public final void getCollisionPointNull() {
+        assertNull(
             new DifferentFunctionsCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -52,10 +27,9 @@ public final class DifferentFunctionsCollisionServiceTest {
                     PlanePoint.from(Plane.CARTESIAN, 5, -7),
                     Vector.from(52, 8)
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint()
         );
-        assertEquals(
+        assertNull(
             new DifferentFunctionsCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -67,9 +41,12 @@ public final class DifferentFunctionsCollisionServiceTest {
                     PlanePoint.from(Plane.CARTESIAN, 2, 0),
                     Vector.from(135, 2)
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint()
         );
+    }
+
+    @Test
+    public final void getCollisionPointSameSpeed() {
         assertEquals(
             new DifferentFunctionsCollisionService(
                 PointDTO.from(new PlanePointWithVector(
@@ -152,6 +129,36 @@ public final class DifferentFunctionsCollisionServiceTest {
                 PreciseDecimal.from("2.206755837924983512973789406685409966553887449700976650397016993235401555684220432158920676558579734"),
                 CartesianPoint.from("0", "0.9326153163099971856600123895991189026221260165027518356218648964784367667778130731062536465145457468"),
                 PreciseDecimal.from(0)
+            ).toString()
+        );
+    }
+
+    @Test
+    public final void getCollisionPointDifferentSpeed() {
+        assertEquals(
+            new DifferentFunctionsCollisionService(
+                PointDTO.from(new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 5, 2),
+                    Vector.from(10, 2)
+                )),
+                PointDTO.from(new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 8, 10),
+                    Vector.from(300, 3)
+                ))
+            ).getCollisionPoint().toString(),
+            new CollisionDTO(
+                "1",
+                "2",
+                PreciseDecimal.from(
+                    "2.609902191542677500469973584804738125240122490292839939099618811199830171909999591660616865167562112"
+                ),
+                CartesianPoint.from(
+                    "11.91485328731401625070496037720710718786018373543925990864942821679974525786499938749092529775134317",
+                    "3.21927520219408414791113521017034269993719666608248158304415726206524988169837824530969366909604842"
+                ),
+                PreciseDecimal.from("0.900860831069461218090526025195134499133509143336760227414255746881140504517139657460103845324889316")
             ).toString()
         );
         assertEquals(

@@ -1,6 +1,7 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +14,26 @@ import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class SameFunctionCollisionServiceTest {
     @Test
+    public final void getCollisionPointNull() {
+        assertNull(
+            new SameFunctionCollisionService(
+                PointDTO.from(new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, -1, 1),
+                    Vector.from(45, 1)
+                )),
+                PointDTO.from(new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 1, 3),
+                    Vector.from(45, 1)
+                ))
+            ).getCollisionPoint()
+        );
+    }
+
+    @Test
     public final void getCollisionPoint() {
-       assertEquals(
+        assertEquals(
             new SameFunctionCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -70,21 +89,6 @@ public final class SameFunctionCollisionServiceTest {
                 CartesianPoint.from("1.25", "3.125"),
                 PreciseDecimal.from(0)
             ).toString()
-        );
-       assertEquals(
-            new SameFunctionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
-                    "1",
-                    PlanePoint.from(Plane.CARTESIAN, -1, 1),
-                    Vector.from(45, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
-                    "2",
-                    PlanePoint.from(Plane.CARTESIAN, 1, 3),
-                    Vector.from(45, 1)
-                ))
-            ).getCollisionPoint(),
-            null
         );
         assertEquals(
             new SameFunctionCollisionService(

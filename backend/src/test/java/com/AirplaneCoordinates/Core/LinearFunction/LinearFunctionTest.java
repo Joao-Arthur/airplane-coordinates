@@ -1,6 +1,7 @@
 package com.AirplaneCoordinates.Core.LinearFunction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -208,12 +209,11 @@ public final class LinearFunctionTest {
         final String a,
         final String b
     ) {
-        assertEquals(
+        assertNull(
             LinearFunction.intersectionPoint(
                 LinearFunction.from(a, b), 
                 LinearFunction.from(a, b) 
-            ),
-            null
+            )
         );
     }
 }

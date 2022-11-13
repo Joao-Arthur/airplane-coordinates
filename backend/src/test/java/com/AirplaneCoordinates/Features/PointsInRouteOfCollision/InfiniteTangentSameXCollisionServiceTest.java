@@ -1,6 +1,7 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,24 @@ import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
 import com.AirplaneCoordinates.Features.PlanePointWithVector;
 
 public final class InfiniteTangentSameXCollisionServiceTest {
+    @Test
+    public final void getCollisionPointNull() {
+        assertNull(
+            new InfiniteTangentSameXCollisionService(
+                PointDTO.from(new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 2, 2),
+                    Vector.from(90, 1)
+                )),
+                PointDTO.from(new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, 2, -2),
+                    Vector.from(90, 1)
+                ))
+            ).getCollisionPoint()
+        );
+    }
+
     @Test
     public final void getCollisionPoint() {
         assertEquals(
@@ -56,21 +75,7 @@ public final class InfiniteTangentSameXCollisionServiceTest {
                 PreciseDecimal.from(0)
             ).toString()
         );
-        assertEquals(
-            new InfiniteTangentSameXCollisionService(
-                PointDTO.from(new PlanePointWithVector(
-                    "1",
-                    PlanePoint.from(Plane.CARTESIAN, 2, 2),
-                    Vector.from(90, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
-                    "2",
-                    PlanePoint.from(Plane.CARTESIAN, 2, -2),
-                    Vector.from(90, 1)
-                ))
-            ).getCollisionPoint(),
-            null
-        );
+
         assertEquals(
             new InfiniteTangentSameXCollisionService(
                 PointDTO.from(new PlanePointWithVector(

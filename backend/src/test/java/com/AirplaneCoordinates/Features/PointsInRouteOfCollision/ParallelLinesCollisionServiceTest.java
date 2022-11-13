@@ -1,6 +1,6 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ import com.AirplaneCoordinates.Features.PlanePointWithVector;
 public final class ParallelLinesCollisionServiceTest {
     @Test
     public final void getCollisionPoint() {
-        assertEquals(
+        assertNull(
             new ParallelLinesCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -30,10 +30,9 @@ public final class ParallelLinesCollisionServiceTest {
                         "0.5"
                     )
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint()
         );
-        assertEquals(
+        assertNull(
             new ParallelLinesCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -51,10 +50,9 @@ public final class ParallelLinesCollisionServiceTest {
                         "7"
                     )
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint()
         );
-        assertEquals(
+        assertNull(
             new ParallelLinesCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -66,10 +64,9 @@ public final class ParallelLinesCollisionServiceTest {
                     PlanePoint.from(Plane.CARTESIAN, 1, -2),
                     Vector.from(180, 3)
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint()
         );
-        assertEquals(
+        assertNull(
             new ParallelLinesCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -81,10 +78,9 @@ public final class ParallelLinesCollisionServiceTest {
                     PlanePoint.from(Plane.CARTESIAN, 1, -2),
                     Vector.from(90, 4)
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint()
         );
-        assertEquals(
+        assertNull(
             new ParallelLinesCollisionService(
                 PointDTO.from(new PlanePointWithVector(
                     "1",
@@ -96,8 +92,7 @@ public final class ParallelLinesCollisionServiceTest {
                     PlanePoint.from(Plane.CARTESIAN, 1, -2),
                     Vector.from(270, 4)
                 ))
-            ).getCollisionPoint(),
-            null
+            ).getCollisionPoint()
         );
     }
 }
