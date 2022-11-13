@@ -5,25 +5,21 @@ import java.util.stream.Collectors;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class PointsCloseToPointService {
-    private final List<PlanePointWithId> points;
-    private final PreciseDecimal maxDistance;
+    private final PointsCloseToPointInputDTO dto;
 
     public PointsCloseToPointService(
-        final List<PlanePointWithId> points,
-        final PreciseDecimal maxDistance
+        final PointsCloseToPointInputDTO dto
     ) {
-        this.points = points;
-        this.maxDistance = maxDistance;
+        this.dto = dto;
     }
 
-    public final List<PointCloseToPointDTO> execute() {
-        return this.points
+    public final List<PointsCloseToPointOutputDTO> execute() {
+        return this.dto.points
             .stream()
             .map(point ->
-                PointCloseToPointDTO.from(
+                new PointsCloseToPointOutputDTO(
                     point.id,
                     CartesianPoint.distance(
                         point.point.toCartesian(),
@@ -32,10 +28,13 @@ public final class PointsCloseToPointService {
                 )
             )
             .filter(point ->
-                point.distanceFromPoint.smallerOrEquals(this.maxDistance)
+                point.distanceFromPoint.smallerOrEquals(this.dto.maxDistance)
             )
             .sorted((a, b) ->
-                PreciseDecimal.compareAsc(a.distanceFromPoint, b.distanceFromPoint)
+                PreciseDecimal.compareAsc(
+                    a.distanceFromPoint,
+                    b.distanceFromPoint
+                )
             )
             .collect(Collectors.toList());
     }

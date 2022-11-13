@@ -4,11 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public final class PointCloseToPointDTOTest {
+import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+
+public final class PointCloseToPointOutputDTOTest {
     @Test
     public final void toStringTest() {
         assertEquals(
-            PointCloseToPointDTO.from("4", "4.2768").toString(),
+            new PointsCloseToPointOutputDTO("4", PreciseDecimal.from("4.2768")).toString(),
             "{ id: 4, distanceFromPoint: 4.2768 }"
         );
     }

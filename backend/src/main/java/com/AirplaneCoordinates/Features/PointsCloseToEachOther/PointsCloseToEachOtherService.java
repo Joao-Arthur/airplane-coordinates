@@ -6,26 +6,22 @@ import java.util.stream.Collectors;
 import com.AirplaneCoordinates.Core.Combination.Combination;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
-import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class PointsCloseToEachOtherService {
-    private final List<PlanePointWithId> points;
-    private final PreciseDecimal maxDistance;
+    private final PointsCloseToEachOtherInputDTO dto;
 
     public PointsCloseToEachOtherService(
-        final List<PlanePointWithId> points,
-        final PreciseDecimal maxDistance
+        final PointsCloseToEachOtherInputDTO dto
     ) {
-        this.points = points;
-        this.maxDistance = maxDistance;
+        this.dto = dto;
     }
 
-    public final List<PointCloseToEachOtherDTO> execute() {
+    public final List<PointsCloseToEachOtherOutputDTO> execute() {
         return Combination
-            .getCombinations(this.points)
+            .getCombinations(this.dto.points)
             .stream()
             .map(point ->
-                PointCloseToEachOtherDTO.from(
+                new PointsCloseToEachOtherOutputDTO(
                     point.a.id,
                     point.b.id,
                     CartesianPoint.distance(
@@ -35,10 +31,13 @@ public final class PointsCloseToEachOtherService {
                 )
             )
             .filter(point ->
-                point.distanceFromPoint.smallerOrEquals(this.maxDistance)
+                point.distanceFromPoint.smallerOrEquals(this.dto.maxDistance)
             )
             .sorted((a, b) ->
-                PreciseDecimal.compareAsc(a.distanceFromPoint, b.distanceFromPoint)
+                PreciseDecimal.compareAsc(
+                    a.distanceFromPoint,
+                    b.distanceFromPoint
+                )
             )
             .collect(Collectors.toList());
     }
