@@ -179,7 +179,6 @@ public final class LinearFunctionTest {
         "1, 0, -1, 0, 0, 0",
         "2, 5, -2, 5, 0, 5",
         "5, 5, -0.5, 10.5, 1, 10",
-        "0.5, 0, 0.5, 0, 0, 0",
     })
     public final void intersectionPoint(
         final String fxa,
@@ -195,6 +194,26 @@ public final class LinearFunctionTest {
                 LinearFunction.from(gxa, gxb) 
             ).toString(),
             CartesianPoint.from(x, y).toString()
+        );
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "0.5, 0",
+        "2, -1",
+        "1, 1",
+        "2.22, 1.1",
+    })
+    public final void intersectionPointSameFunction(
+        final String a,
+        final String b
+    ) {
+        assertEquals(
+            LinearFunction.intersectionPoint(
+                LinearFunction.from(a, b), 
+                LinearFunction.from(a, b) 
+            ),
+            null
         );
     }
 }

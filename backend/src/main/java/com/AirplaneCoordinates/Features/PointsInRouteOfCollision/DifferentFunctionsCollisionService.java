@@ -21,10 +21,14 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
             this.pointA.fx,
             this.pointB.fx
         );
+        if (intersectionPoint == null)
+            return null;
         final var collisionPoint = LinearPoint.collisionPoint(
             this.pointA.linearPoint,
             this.pointB.linearPoint
         );
+        if (collisionPoint == null)
+            return null;
         final var y = this.pointA.fx.execute(collisionPoint.x);
         final var collisionA = LinearPoint.collisionPoint(
             LinearPoint.from(

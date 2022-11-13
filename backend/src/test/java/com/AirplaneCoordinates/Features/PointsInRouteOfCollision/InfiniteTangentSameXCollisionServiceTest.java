@@ -30,8 +30,8 @@ public final class InfiniteTangentSameXCollisionServiceTest {
             new CollisionDTO(
                 "1",
                 "2",
-                PreciseDecimal.from(0),
-                CartesianPoint.from(4, 4),
+                PreciseDecimal.from("0.7142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857143"),
+                CartesianPoint.from("4", "0.571428571428571428571428571428571428571428571428571428571428571428571428571428571428571428571428571"),
                 PreciseDecimal.from(0)
             ).toString()
         );
@@ -51,8 +51,8 @@ public final class InfiniteTangentSameXCollisionServiceTest {
             new CollisionDTO(
                 "1",
                 "2",
-                PreciseDecimal.from(0),
-                CartesianPoint.from(-2, -2),
+                PreciseDecimal.from("-0.0833333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333"),
+                CartesianPoint.from("-2", "4.583333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333334"),
                 PreciseDecimal.from(0)
             ).toString()
         );

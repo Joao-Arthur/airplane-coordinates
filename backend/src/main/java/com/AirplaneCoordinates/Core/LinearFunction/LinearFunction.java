@@ -69,9 +69,8 @@ public final class LinearFunction {
     }
 
     public final PreciseDecimal root() {
-        // Does not cover a = 0, b <> 0
-        if (this.b.equals(PreciseDecimal.from(0)))
-            return PreciseDecimal.from(0);
+        if (this.a.equals(PreciseDecimal.from(0)))
+            return null;
         return this.b.opposite().divide(this.a);
     }
 
@@ -98,6 +97,8 @@ public final class LinearFunction {
     ) {
         final var intersectedFn = LinearFunction.intersect(fx, gx);
         final var root = intersectedFn.root();
+        if (root == null)
+            return null;
         final var fy = fx.execute(root);
 
         return CartesianPoint.from(root, fy);

@@ -1,6 +1,5 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-import com.AirplaneCoordinates.Core.LinearFunction.LinearFunction;
 import com.AirplaneCoordinates.Core.Mechanics.LinearPoint;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
@@ -18,16 +17,12 @@ public final class SameFunctionCollisionService implements CollisionPointService
     }
 
     public final CollisionDTO getCollisionPoint() {
-        final var intersectionPoint = LinearFunction.intersectionPoint(
-            this.pointA.fx,
-            this.pointB.fx
-        );
-        if (this.pointA.linearPoint.speed.equals(this.pointB.linearPoint.speed))
-            return null;
         final var collisionPoint = LinearPoint.collisionPoint(
             this.pointA.linearPoint,
             this.pointB.linearPoint
         );
+        if (collisionPoint == null)
+            return null;
         final var y = this.pointA.fx.execute(collisionPoint.y);
         final var collisionA = LinearPoint.collisionPoint(
             LinearPoint.from(
