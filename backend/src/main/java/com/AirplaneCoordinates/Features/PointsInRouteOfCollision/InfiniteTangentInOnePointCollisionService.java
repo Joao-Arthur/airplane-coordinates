@@ -18,7 +18,7 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
         this.pointB = pointB;
     }
 
-    public final CollisionDTO getCollisionPoint() {
+    public final PointsInRouteOfCollisionOutputDTO getCollisionPoint() {
         final var intersectionPoint = LinearFunction.intersectionPoint(
             this.pointA.fx,
             this.pointB.fx
@@ -84,7 +84,7 @@ public final class InfiniteTangentInOnePointCollisionService implements Collisio
         );
         final var timeDifferenceToPoint = collisionA.x.minus(collisionB.x).abs();
 
-        return new CollisionDTOBuilder()
+        return new PointsInRouteOfCollisionOutputDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(timeUntilCollision.round())

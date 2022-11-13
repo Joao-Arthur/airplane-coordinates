@@ -17,7 +17,7 @@ public final class PlanePointWithVectorTest {
                 PlanePoint.from(Plane.CARTESIAN, "-3", "2.41"),
                 Vector.from(135, 3)
             ).toString(),
-            "{ id: 5, point: (CARTESIAN, -3, 2.41), vector: (135º, 3km/h) }"
+            "{ id: 5, point: (CARTESIAN, -3, 2.41), vector: (135º, 3 km/h) }"
         );
     }
 }

@@ -18,7 +18,7 @@ public final class LinearPoint {
 
     @Override
     public final String toString() {
-        return  "(" + this.initialPoint + "km, " + this.speed + "km/h)";
+        return  "(" + this.initialPoint + " km, " + this.speed + " km/h)";
     }
 
     public static final LinearPoint from(

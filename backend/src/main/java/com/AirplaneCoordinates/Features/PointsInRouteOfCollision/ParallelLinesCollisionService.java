@@ -12,7 +12,7 @@ public final class ParallelLinesCollisionService implements CollisionPointServic
         this.pointB = pointB;
     }
 
-    public final CollisionDTO getCollisionPoint() {
+    public final PointsInRouteOfCollisionOutputDTO getCollisionPoint() {
         return null;
     }
 }

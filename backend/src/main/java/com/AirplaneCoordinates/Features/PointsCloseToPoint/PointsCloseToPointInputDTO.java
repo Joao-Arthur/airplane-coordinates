@@ -3,6 +3,7 @@ package com.AirplaneCoordinates.Features.PointsCloseToPoint;
 import java.util.List;
 
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import com.AirplaneCoordinates.Core.Serialization.Serializer;
 import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class PointsCloseToPointInputDTO {
@@ -19,8 +20,11 @@ public final class PointsCloseToPointInputDTO {
 
     @Override
     public final String toString() {
-        return "{ " +
-
-        " }";
+        return "{" + "\n" +
+        "    points: [" + "\n" +
+        Serializer.serialize(this.points, 8) +
+        "    ]" + "\n" +
+        "    maxDistance: " + this.maxDistance + "\n" +
+        "}";
     }
 }

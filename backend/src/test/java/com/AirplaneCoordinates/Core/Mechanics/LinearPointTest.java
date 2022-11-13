@@ -14,7 +14,7 @@ public final class LinearPointTest {
     public final void toStringTest() {
         assertEquals(
             LinearPoint.from("-42.1", "+2.202").toString(),
-            "(-42.1km, +2.202km/h)"
+            "(-42.1 km, +2.202 km/h)"
         );
     }
 

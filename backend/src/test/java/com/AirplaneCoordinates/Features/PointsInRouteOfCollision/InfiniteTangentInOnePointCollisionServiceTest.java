@@ -46,7 +46,7 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
                     Vector.from(180, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(10),
@@ -70,7 +70,7 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
                     )
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(0),
@@ -95,7 +95,7 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
                     Vector.from(180, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(5),
@@ -116,7 +116,7 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
                     Vector.from(180, 2)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(5),
@@ -137,7 +137,7 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
                     Vector.from(153, 4)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("1.964070915860131412524371199120117550314996467309844788348954528498946877170614514007384895855467296"),
@@ -158,7 +158,7 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
                     Vector.from(90, 6)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("1.672057133434589024839524231398375705926727285671584141803161207775357958962343615741435515147868357"),
@@ -179,7 +179,7 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
                     Vector.from(0, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(5),

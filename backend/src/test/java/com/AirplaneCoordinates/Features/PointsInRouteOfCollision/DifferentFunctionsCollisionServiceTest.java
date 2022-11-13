@@ -60,7 +60,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(135, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145"),
@@ -81,7 +81,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(125, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("3.486893591242196039675366833448743541140960839516955840655123547527881329058884126748735265163522056"),
@@ -102,7 +102,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(115, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("4.732403166304997035867356652417659575970785240358470748834195983745747686660878385224077305115896275"),
@@ -123,7 +123,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(155, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("2.206755837924983512973789406685409966553887449700976650397016993235401555684220432158920676558579734"),
@@ -148,7 +148,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(300, 3)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(
@@ -174,7 +174,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(135, 2)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641572"),
@@ -195,7 +195,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(125, 4)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("0.8717233978105490099188417083621858852852402098792389601637808868819703322647210316871838162908805139"),
@@ -216,7 +216,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(115, 2)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("2.366201583152498517933678326208829787985392620179235374417097991872873843330439192612038652557948138"),
@@ -237,7 +237,7 @@ public final class DifferentFunctionsCollisionServiceTest {
                     Vector.from(155, 2)
                 ))
             ).getCollisionPoint().toString(),
-            new CollisionDTO(
+            new PointsInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("1.103377918962491756486894703342704983276943724850488325198508496617700777842110216079460338279289867"),
