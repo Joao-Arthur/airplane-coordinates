@@ -21,7 +21,7 @@ export function airplanesCloseToEachOtherBusiness({
             ({ a, b }) => ({
                 a: a.id,
                 b: b.id,
-                distance: cartesianPlane.distance(a, b),
+                distance: cartesianPlane.distance(a.planePoint, b.planePoint),
             } as const),
         )
         .filter(({ distance }) => distance <= maxDistance)

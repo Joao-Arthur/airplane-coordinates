@@ -10,21 +10,21 @@ type paramsType = {
 }
 
 export function collisionFromSameFunction({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.vector.direction });
+    const fx = linearFunction.fromPoint({ point: a.planePoint, angle: a.vector.direction });
 
     const coefficientA = Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
     const coefficientB = Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
 
     const { y: x } = mechanics.collision({
         a: {
-            initialPoint: a.x,
+            initialPoint: a.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
             }),
         },
         b: {
-            initialPoint: b.x,
+            initialPoint: b.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientB * b.vector.speed,
                 angle: b.vector.direction,
@@ -38,7 +38,7 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
     const { x: timeToCollisionA } = mechanics.collision({
         a: { initialPoint: x, speed: 0 },
         b: {
-            initialPoint: a.x,
+            initialPoint: a.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
@@ -50,7 +50,7 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
     const { x: timeToCollisionB } = mechanics.collision({
         a: { initialPoint: x, speed: 0 },
         b: {
-            initialPoint: b.x,
+            initialPoint: b.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * b.vector.speed,
                 angle: b.vector.direction,

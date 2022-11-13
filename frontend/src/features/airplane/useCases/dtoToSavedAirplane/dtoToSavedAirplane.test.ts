@@ -6,8 +6,7 @@ describe('dtoToSavedAirplane', () => {
         expect(dtoToSavedAirplane(
             {
                 id: '1',
-                x: 0,
-                y: -10,
+                planePoint: { x: 0, y: -10 },
                 vector: { speed: 100, direction: 100 },
             },
             'POLAR',
@@ -22,8 +21,7 @@ describe('dtoToSavedAirplane', () => {
         expect(dtoToSavedAirplane(
             {
                 id: '1',
-                x: 4,
-                y: -5,
+                planePoint: { x: 4, y: -5 },
                 vector: { speed: 100, direction: 100 },
             },
             'CARTESIAN',

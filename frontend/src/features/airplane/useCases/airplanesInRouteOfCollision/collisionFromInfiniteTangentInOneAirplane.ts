@@ -10,20 +10,20 @@ type paramsType = {
 }
 
 export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.vector.direction });
-    const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.vector.direction });
+    const fx = linearFunction.fromPoint({ point: a.planePoint, angle: a.vector.direction });
+    const gx = linearFunction.fromPoint({ point: b.planePoint, angle: b.vector.direction });
     const coefficientA = [90, 270].includes(a.vector.direction) ? 0 : Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
     const coefficientB = [90, 270].includes(b.vector.direction) ? 0 : Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
     const { y: x } = mechanics.collision({
         a: {
-            initialPoint: a.x,
+            initialPoint: a.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
             }),
         },
         b: {
-            initialPoint: b.x,
+            initialPoint: b.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientB * b.vector.speed,
                 angle: b.vector.direction,
@@ -36,7 +36,7 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
     const { x: timeToCollisionA } = mechanics.collision({
         a: { initialPoint: [90, 270].includes(a.vector.direction) ? y : x, speed: 0 },
         b: {
-            initialPoint: [90, 270].includes(a.vector.direction) ? a.y : a.x,
+            initialPoint: [90, 270].includes(a.vector.direction) ? a.planePoint.y : a.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: [90, 270].includes(a.vector.direction) ? a.vector.speed : coefficientA * a.vector.speed,
                 angle: a.vector.direction,
@@ -48,7 +48,7 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
     const { x: timeToCollisionB } = mechanics.collision({
         a: { initialPoint: [90, 270].includes(b.vector.direction) ? y : x, speed: 0 },
         b: {
-            initialPoint: [90, 270].includes(b.vector.direction) ? b.y : b.x,
+            initialPoint: [90, 270].includes(b.vector.direction) ? b.planePoint.y : b.planePoint.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: [90, 270].includes(b.vector.direction) ? b.vector.speed : coefficientB * b.vector.speed,
                 angle: b.vector.direction,

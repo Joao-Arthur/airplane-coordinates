@@ -10,9 +10,9 @@ type paramsType = {
 export function scalonateAirplaneCoordinatesBusiness({ airplane, x, y }: paramsType): airplaneType {
     return {
         ...airplane,
-        ...cartesianPlane.scalonate({
-            point: { x: airplane.x, y: airplane.y },
+        planePoint: cartesianPlane.scalonate({
+            point: airplane.planePoint,
             factor: { x, y },
         }),
-    } as const;
+    };
 } 

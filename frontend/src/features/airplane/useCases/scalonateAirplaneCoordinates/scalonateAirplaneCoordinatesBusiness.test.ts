@@ -4,30 +4,29 @@ import { scalonateAirplaneCoordinatesBusiness } from './scalonateAirplaneCoordin
 describe('scalonateAirplaneCoordinatesBusiness', () => {
     it('should scalonate the airplane dimensions', () => {
         expect(scalonateAirplaneCoordinatesBusiness({
-            airplane: { id: '1', x: 4, y: 7, vector: { speed: 0, direction: 0 } },
+            airplane: { id: '1', planePoint: { x: 4, y: 7 }, vector: { speed: 0, direction: 0 } },
             x: 2,
             y: -3,
-        })).toEqual({ id: '1', x: 8, y: -21, vector: { speed: 0, direction: 0 } });
+        })).toEqual({ id: '1', planePoint: { x: 8, y: -21 }, vector: { speed: 0, direction: 0 } });
 
         expect(scalonateAirplaneCoordinatesBusiness({
-            airplane: { id: '2', x: -1, y: 3, vector: { speed: 0, direction: 0 } },
+            airplane: { id: '2', planePoint: { x: -1, y: 3 }, vector: { speed: 0, direction: 0 } },
             x: 2,
             y: -3,
-        })).toEqual({ id: '2', x: -2, y: -9, vector: { speed: 0, direction: 0 } },
-        );
+        })).toEqual({ id: '2', planePoint: { x: -2, y: -9 }, vector: { speed: 0, direction: 0 } });
 
         expect(scalonateAirplaneCoordinatesBusiness({
-            airplane: { id: '1', x: 4, y: 7, vector: { speed: 0, direction: 0 } },
+            airplane: { id: '1', planePoint: { x: 4, y: 7 }, vector: { speed: 0, direction: 0 } },
             x: 0,
             y: 0,
-        })).toEqual({ id: '1', x: 0, y: 0, vector: { speed: 0, direction: 0 } });
+        })).toEqual({ id: '1', planePoint: { x: 0, y: 0 }, vector: { speed: 0, direction: 0 } });
 
         expect(scalonateAirplaneCoordinatesBusiness({
-            airplane: { id: '2', x: -1, y: 3, vector: { speed: 0, direction: 0 } },
+            airplane: { id: '2', planePoint: { x: -1, y: 3 }, vector: { speed: 0, direction: 0 } },
             x: 0,
             y: 0,
         })).toEqual(
-            { id: '2', x: 0, y: 0, vector: { speed: 0, direction: 0 } },
+            { id: '2', planePoint: { x: 0, y: 0 }, vector: { speed: 0, direction: 0 } },
         );
     });
 });

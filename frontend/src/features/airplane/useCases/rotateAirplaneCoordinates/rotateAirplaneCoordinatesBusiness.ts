@@ -18,7 +18,7 @@ export function rotateAirplaneCoordinatesBusiness({
 }: paramsType): airplaneType {
     return {
         ...airplane,
-        ...pipe(
+        planePoint: pipe(
             point => ({
                 x: point.x - centerOfRotationX,
                 y: point.y - centerOfRotationY,
@@ -30,6 +30,6 @@ export function rotateAirplaneCoordinatesBusiness({
                 x: point.x + centerOfRotationX,
                 y: point.y + centerOfRotationY,
             }),
-        )({ x: airplane.x, y: airplane.y }),
-    } as const;
+        )(airplane.planePoint),
+    };
 }

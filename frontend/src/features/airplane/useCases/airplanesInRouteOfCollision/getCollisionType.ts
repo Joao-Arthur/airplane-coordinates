@@ -8,13 +8,13 @@ type paramsType = {
 }
 
 export function getCollisionType({ a, b }: paramsType) {
-    if (a.x === b.x && a.y === b.y)
+    if (a.planePoint.x === b.planePoint.x && a.planePoint.y === b.planePoint.y)
         return 'SAME_POSITION';
     if (
         [90, 270].includes(trigonometry.fixAngle(a.vector.direction)) &&
         [90, 270].includes(trigonometry.fixAngle(b.vector.direction))
     ) {
-        if (a.x === b.x)
+        if (a.planePoint.x === b.planePoint.x)
             return 'INFINITE_TANGENT_SAME_X';
         return 'PARALLEL_LINES';
     }
@@ -23,8 +23,8 @@ export function getCollisionType({ a, b }: paramsType) {
         [90, 270].includes(b.vector.direction)
     )
         return 'INFINITE_TANGENT_IN_ONE_AIRPLANE';
-    const fx = linearFunction.fromPoint({ point: { x: a.x, y: a.y }, angle: a.vector.direction });
-    const gx = linearFunction.fromPoint({ point: { x: b.x, y: b.y }, angle: b.vector.direction });
+    const fx = linearFunction.fromPoint({ point: a.planePoint, angle: a.vector.direction });
+    const gx = linearFunction.fromPoint({ point: b.planePoint, angle: b.vector.direction });
     if (fx.a === gx.a) {
         if (fx.b === gx.b)
             return 'SAME_FUNCTION';

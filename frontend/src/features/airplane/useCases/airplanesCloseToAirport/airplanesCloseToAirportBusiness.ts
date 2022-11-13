@@ -11,11 +11,11 @@ export function airplanesCloseToAirportBusiness({
     maxDistance,
 }: paramsType) {
     return airplanes
-        .map(({ id, x, y }) => ({
+        .map(({ id, planePoint }) => ({
             id,
             distanceFromAirport: cartesianPlane
                 .distance(
-                    { x, y },
+                    planePoint,
                     { x: 0, y: 0 },
                 ),
         } as const))

@@ -10,9 +10,9 @@ type paramsType = {
 export function translateAirplaneCoordinatesBusiness({ airplane, x, y }: paramsType): airplaneType {
     return {
         ...airplane,
-        ...cartesianPlane.translate({
-            point: { x: airplane.x, y: airplane.y },
+        planePoint: cartesianPlane.translate({
+            point: airplane.planePoint,
             factor: { x, y },
         }),
-    } as const;
+    };
 } 
