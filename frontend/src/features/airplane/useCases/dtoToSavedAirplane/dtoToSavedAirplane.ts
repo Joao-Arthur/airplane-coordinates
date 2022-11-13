@@ -9,18 +9,19 @@ export function dtoToSavedAirplane(airplane: airplaneType, type: 'CARTESIAN' | '
 
     return {
         id: airplane.id,
-        speed: airplane.speed,
-        direction: airplane.direction,
-        type,
-        ...(
-            type === 'CARTESIAN'
-                ? {
-                    a: airplane.x,
-                    b: airplane.y,
-                } : {
-                    a: pointAsPolar.r,
-                    b: pointAsPolar.a,
-                }
-        ),
-    } as const;
+        planePoint: type === 'CARTESIAN'
+            ? {
+                type: 'CARTESIAN',
+                a: airplane.x,
+                b: airplane.y,
+            } : {
+                type: 'POLAR',
+                a: pointAsPolar.r,
+                b: pointAsPolar.a,
+            },
+        vector: {
+            speed: airplane.speed,
+            direction: airplane.direction,
+        },
+    };
 }

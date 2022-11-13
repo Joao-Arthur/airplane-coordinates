@@ -14,11 +14,15 @@ describe('dtoToSavedAirplane', () => {
             'POLAR',
         )).toEqual({
             id: '1',
-            type: 'POLAR',
-            a: 10,
-            b: 270,
-            speed: 100,
-            direction: 100,
+            planePoint: {
+                type: 'POLAR',
+                a: 10,
+                b: 270,
+            },
+            vector: {
+                speed: 100,
+                direction: 100,
+            },
         });
     });
 
@@ -34,11 +38,15 @@ describe('dtoToSavedAirplane', () => {
             'CARTESIAN',
         )).toEqual({
             id: '1',
-            type: 'CARTESIAN',
-            a: 4,
-            b: -5,
-            speed: 100,
-            direction: 100,
+            planePoint: {
+                type: 'CARTESIAN',
+                a: 4,
+                b: -5,
+            },
+            vector: {
+                speed: 100,
+                direction: 100,
+            },
         });
     });
 });

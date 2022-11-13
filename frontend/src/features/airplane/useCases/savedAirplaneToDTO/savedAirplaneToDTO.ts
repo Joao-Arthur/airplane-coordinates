@@ -4,17 +4,14 @@ import { airplaneType, savedAirplaneType } from '../../models';
 export function savedAirplaneToDTO(airplane: savedAirplaneType): airplaneType {
     return {
         id: airplane.id,
-        speed: airplane.speed,
-        direction: airplane.direction,
-        ...(
-            (airplane.type === 'CARTESIAN')
-                ? {
-                    x: airplane.a,
-                    y: airplane.b,
-                } : cartesianPlane.fromPolar({
-                    r: airplane.a,
-                    a: airplane.b,
-                })
-        ),
+        ...(airplane.planePoint.type === 'CARTESIAN'
+            ? {
+                x: airplane.planePoint.a,
+                y: airplane.planePoint.b,
+            } : cartesianPlane.fromPolar({
+                r: airplane.planePoint.a,
+                a: airplane.planePoint.b,
+            })),
+        ...airplane.vector,
     } as const;
 }
