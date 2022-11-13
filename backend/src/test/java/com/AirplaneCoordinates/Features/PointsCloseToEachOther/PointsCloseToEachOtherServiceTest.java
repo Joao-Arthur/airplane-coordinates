@@ -3,7 +3,6 @@ package com.AirplaneCoordinates.Features.PointsCloseToEachOther;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,15 +24,17 @@ public final class PointsCloseToEachOtherServiceTest {
             new PointsCloseToEachOtherInputDTO(points, PreciseDecimal.from(10))
         ).execute();
 
-        final var expected = new ArrayList<PointsCloseToEachOtherOutputDTO>();
-        expected.add(new PointsCloseToEachOtherOutputDTO("3", "4", PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145")));
-        expected.add(new PointsCloseToEachOtherOutputDTO("2", "4", PreciseDecimal.from("8.246211251235321099642819711948154050294398450747240868797267146189908692675243187175727301621368593")));
-        expected.add(new PointsCloseToEachOtherOutputDTO("1", "2", PreciseDecimal.from(10)));
-        expected.add(new PointsCloseToEachOtherOutputDTO("2", "3", PreciseDecimal.from(10)));
+        final var expectedItems = new ArrayList<PointCloseToEachOtherOutputDTO>();
+        expectedItems.add(new PointCloseToEachOtherOutputDTO("3", "4", PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145")));
+        expectedItems.add(new PointCloseToEachOtherOutputDTO("2", "4", PreciseDecimal.from("8.246211251235321099642819711948154050294398450747240868797267146189908692675243187175727301621368593")));
+        expectedItems.add(new PointCloseToEachOtherOutputDTO("1", "2", PreciseDecimal.from(10)));
+        expectedItems.add(new PointCloseToEachOtherOutputDTO("2", "3", PreciseDecimal.from(10)));
+
+        final var expected = new PointsCloseToEachOtherOutputDTO(expectedItems);
 
         assertEquals(
-            Arrays.toString(actual.toArray()),
-            Arrays.toString(expected.toArray())
+            actual.toString(),
+            expected.toString()
         );
     }
 }

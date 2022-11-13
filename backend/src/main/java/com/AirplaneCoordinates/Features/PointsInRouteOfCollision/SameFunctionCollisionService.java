@@ -16,7 +16,7 @@ public final class SameFunctionCollisionService implements CollisionPointService
         this.pointB = pointB;
     }
 
-    public final PointsInRouteOfCollisionOutputDTO getCollisionPoint() {
+    public final PointInRouteOfCollisionOutputDTO getCollisionPoint() {
         final var collisionPoint = LinearPoint.collisionPoint(
             this.pointA.linearPoint,
             this.pointB.linearPoint
@@ -48,7 +48,7 @@ public final class SameFunctionCollisionService implements CollisionPointService
         );
         final var timeDifferenceToPoint = collisionA.x.minus(collisionB.x).abs();
 
-        return new PointsInRouteOfCollisionOutputDTOBuilder()
+        return new PointInRouteOfCollisionOutputDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(timeUntilCollision.round())

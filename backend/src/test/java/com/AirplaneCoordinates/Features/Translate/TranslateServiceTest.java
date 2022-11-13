@@ -23,7 +23,9 @@ public final class TranslateServiceTest {
                     CartesianPoint.from(-2, 0)
                 )
             ).execute().toString(),
-            PlanePoint.from(Plane.POLAR, 1, 180).toString()
+            new TranslateOutputDTO(
+                PlanePoint.from(Plane.POLAR, 1, 180)
+            ).toString()
         );
         assertEquals(
             new TranslateService(
@@ -32,10 +34,12 @@ public final class TranslateServiceTest {
                     CartesianPoint.from(1, 1)
                 )
             ).execute().toString(),
-            PlanePoint.from(
-                Plane.POLAR,
-                "2.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641572",
-                "45"
+            new TranslateOutputDTO(
+                PlanePoint.from(
+                    Plane.POLAR,
+                    "2.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641572",
+                    "45"
+                )
             ).toString()
         );
     }
@@ -49,7 +53,9 @@ public final class TranslateServiceTest {
                     CartesianPoint.from(-2, 2)
                 )
             ).execute().toString(),
-            PlanePoint.from(Plane.CARTESIAN, 3, 1).toString()
+            new TranslateOutputDTO(
+                PlanePoint.from(Plane.CARTESIAN, 3, 1)
+            ).toString()
         );
     }
 
@@ -104,13 +110,21 @@ public final class TranslateServiceTest {
         final String factorX,
         final String factorY
     ) {
-        final var pointBefore = PlanePoint.from(plane, pointX, pointY);
+        final var pointBefore = new TranslateOutputDTO(
+            PlanePoint.from(plane, pointX, pointY)
+        );
         final var factor = CartesianPoint.from(factorX, factorY);
         final var movedPoint = new TranslateService(
-            new TranslateInputDTO(pointBefore, factor)
+            new TranslateInputDTO(
+                pointBefore.point,
+                factor
+            )
         ).execute();
         final var pointAfter = new TranslateService(
-            new TranslateInputDTO(movedPoint, factor.opposite())
+            new TranslateInputDTO(
+                movedPoint.point,
+                factor.opposite()
+            )
         ).execute();
         assertEquals(pointAfter.toString(), pointBefore.toString());
     }
@@ -122,10 +136,12 @@ public final class TranslateServiceTest {
             for (float pointY = -10f; pointY <= 10f; pointY += 0.1f) {
                 for (float factorX = -10f; factorX <= 10f; factorX += 0.1f) {
                     for (float factorY = -10f; factorY <= 10f; factorY += 0.1f) {
-                        final var pointBefore = PlanePoint.from(
-                            Plane.CARTESIAN,
-                            new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
-                            new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                        final var pointBefore = new TranslateOutputDTO(
+                            PlanePoint.from(
+                                Plane.CARTESIAN,
+                                new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
+                                new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                            )
                         );
                         final var factor = CartesianPoint.from(
                             String.valueOf(factorX),
@@ -133,13 +149,13 @@ public final class TranslateServiceTest {
                         );
                         final var movedPoint = new TranslateService(
                             new TranslateInputDTO(
-                                pointBefore,
+                                pointBefore.point,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new TranslateService(
                             new TranslateInputDTO(
-                                movedPoint,
+                                movedPoint.point,
                                 factor.opposite()
                             )
                         ).execute();
@@ -160,10 +176,12 @@ public final class TranslateServiceTest {
             for (float pointY = -1f; pointY <= 1f; pointY += 0.1f) {
                 for (float factorX = -1f; factorX <= 1f; factorX += 0.1f) {
                     for (float factorY = -1f; factorY <= 1f; factorY += 0.1f) {
-                        final var pointBefore = PlanePoint.from(
-                            Plane.CARTESIAN,
-                            new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
-                            new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                        final var pointBefore = new TranslateOutputDTO(
+                            PlanePoint.from(
+                                Plane.CARTESIAN,
+                                new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
+                                new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                            )
                         );
                         final var factor = CartesianPoint.from(
                             String.valueOf(factorX),
@@ -171,13 +189,13 @@ public final class TranslateServiceTest {
                         );
                         final var movedPoint = new TranslateService(
                             new TranslateInputDTO(
-                                pointBefore,
+                                pointBefore.point,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new TranslateService(
                             new TranslateInputDTO(
-                                movedPoint,
+                                movedPoint.point,
                                 factor.opposite()
                             )
                         ).execute();
@@ -199,10 +217,12 @@ public final class TranslateServiceTest {
                 if (r == 1 && a == 90) continue;
                 for (float factorX = -10f; factorX <= 10f; factorX += 1f) {
                     for (float factorY = -10f; factorY <= 10f; factorY += 1f) {
-                        final var pointBefore = PlanePoint.from(
-                            Plane.POLAR,
-                            new BigDecimal(r).stripTrailingZeros().toPlainString(),
-                            new BigDecimal(a).stripTrailingZeros().toPlainString()
+                        final var pointBefore = new TranslateOutputDTO(
+                            PlanePoint.from(
+                                Plane.POLAR,
+                                new BigDecimal(r).stripTrailingZeros().toPlainString(),
+                                new BigDecimal(a).stripTrailingZeros().toPlainString()
+                            )
                         );
                         final var factor = CartesianPoint.from(
                             String.valueOf(factorX),
@@ -210,13 +230,13 @@ public final class TranslateServiceTest {
                         );
                         final var movedPoint = new TranslateService(
                             new TranslateInputDTO(
-                                pointBefore,
+                                pointBefore.point,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new TranslateService(
                             new TranslateInputDTO(
-                                movedPoint,
+                                movedPoint.point,
                                 factor.opposite()
                             )
                         ).execute();
@@ -239,10 +259,12 @@ public final class TranslateServiceTest {
                 if (a == 270) continue;
                 for (float factorX = -10f; factorX <= 10f; factorX += 5f) {
                     for (float factorY = -10f; factorY <= 10f; factorY += 5f) {
-                        final var pointBefore = PlanePoint.from(
-                            Plane.POLAR,
-                            new BigDecimal(r).stripTrailingZeros().toPlainString(),
-                            new BigDecimal(a).stripTrailingZeros().toPlainString()
+                        final var pointBefore = new TranslateOutputDTO(
+                            PlanePoint.from(
+                                Plane.POLAR,
+                                new BigDecimal(r).stripTrailingZeros().toPlainString(),
+                                new BigDecimal(a).stripTrailingZeros().toPlainString()
+                            )
                         );
                         final var factor = CartesianPoint.from(
                             String.valueOf(factorX),
@@ -250,13 +272,13 @@ public final class TranslateServiceTest {
                         );
                         final var movedPoint = new TranslateService(
                             new TranslateInputDTO(
-                                pointBefore,
+                                pointBefore.point,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new TranslateService(
                             new TranslateInputDTO(
-                                movedPoint,
+                                movedPoint.point,
                                 factor.opposite()
                             )
                         ).execute();

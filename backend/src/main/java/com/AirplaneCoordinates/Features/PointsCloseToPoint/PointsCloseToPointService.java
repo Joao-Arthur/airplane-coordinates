@@ -1,6 +1,5 @@
 package com.AirplaneCoordinates.Features.PointsCloseToPoint;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
@@ -15,27 +14,30 @@ public final class PointsCloseToPointService {
         this.dto = dto;
     }
 
-    public final List<PointsCloseToPointOutputDTO> execute() {
-        return this.dto.points
-            .stream()
-            .map(point ->
-                new PointsCloseToPointOutputDTO(
-                    point.id,
-                    CartesianPoint.distance(
-                        point.point.toCartesian(),
-                        CartesianPoint.from(0, 0)
+    public final PointsCloseToPointOutputDTO execute() {
+        return new PointsCloseToPointOutputDTO(
+            this.dto
+                .points
+                .stream()
+                .map(point ->
+                    new PointCloseToPointOutputDTO(
+                        point.id,
+                        CartesianPoint.distance(
+                            point.point.toCartesian(),
+                            CartesianPoint.from(0, 0)
+                        )
                     )
                 )
-            )
-            .filter(point ->
-                point.distanceFromPoint.smallerOrEquals(this.dto.maxDistance)
-            )
-            .sorted((a, b) ->
-                PreciseDecimal.compareAsc(
-                    a.distanceFromPoint,
-                    b.distanceFromPoint
+                .filter(point ->
+                    point.distanceFromPoint.smallerOrEquals(this.dto.maxDistance)
                 )
-            )
-            .collect(Collectors.toList());
+                .sorted((a, b) ->
+                    PreciseDecimal.compareAsc(
+                        a.distanceFromPoint,
+                        b.distanceFromPoint
+                    )
+                )
+                .collect(Collectors.toList())
+        );
     }
 }

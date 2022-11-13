@@ -11,7 +11,7 @@ public final class CollisionDTOTest {
     @Test
     public final void toStringTest() {
         assertEquals(
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "A",
                 "B",
                 PreciseDecimal.from("2"),

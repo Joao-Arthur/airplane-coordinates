@@ -16,29 +16,31 @@ public final class PointsCloseToEachOtherService {
         this.dto = dto;
     }
 
-    public final List<PointsCloseToEachOtherOutputDTO> execute() {
-        return Combination
-            .getCombinations(this.dto.points)
-            .stream()
-            .map(point ->
-                new PointsCloseToEachOtherOutputDTO(
-                    point.a.id,
-                    point.b.id,
-                    CartesianPoint.distance(
-                        point.a.point.toCartesian(),
-                        point.b.point.toCartesian()
+    public final PointsCloseToEachOtherOutputDTO execute() {
+        return new PointsCloseToEachOtherOutputDTO(
+            Combination
+                .getCombinations(this.dto.points)
+                .stream()
+                .map(point ->
+                    new PointCloseToEachOtherOutputDTO(
+                        point.a.id,
+                        point.b.id,
+                        CartesianPoint.distance(
+                            point.a.point.toCartesian(),
+                            point.b.point.toCartesian()
+                        )
                     )
                 )
-            )
-            .filter(point ->
-                point.distanceFromPoint.smallerOrEquals(this.dto.maxDistance)
-            )
-            .sorted((a, b) ->
-                PreciseDecimal.compareAsc(
-                    a.distanceFromPoint,
-                    b.distanceFromPoint
+                .filter(point ->
+                    point.distanceFromPoint.smallerOrEquals(this.dto.maxDistance)
                 )
-            )
-            .collect(Collectors.toList());
+                .sorted((a, b) ->
+                    PreciseDecimal.compareAsc(
+                        a.distanceFromPoint,
+                        b.distanceFromPoint
+                    )
+                )
+                .collect(Collectors.toList())
+        );
     }
 }

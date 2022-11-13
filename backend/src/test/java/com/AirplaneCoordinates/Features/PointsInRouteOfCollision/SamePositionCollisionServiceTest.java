@@ -27,7 +27,7 @@ public final class SamePositionCollisionServiceTest {
                     Vector.from(17, 9)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(0),
@@ -48,7 +48,7 @@ public final class SamePositionCollisionServiceTest {
                     Vector.from(17, 9)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(0),
@@ -69,7 +69,7 @@ public final class SamePositionCollisionServiceTest {
                     Vector.from(17, 9)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(0),

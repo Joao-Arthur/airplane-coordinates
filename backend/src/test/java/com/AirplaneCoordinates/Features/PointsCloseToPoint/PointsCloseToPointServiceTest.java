@@ -3,7 +3,6 @@ package com.AirplaneCoordinates.Features.PointsCloseToPoint;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,14 +24,16 @@ public final class PointsCloseToPointServiceTest {
             new PointsCloseToPointInputDTO(points, PreciseDecimal.from(10))
         ).execute();
 
-        final var expected = new ArrayList<PointsCloseToPointOutputDTO>();
-        expected.add(new PointsCloseToPointOutputDTO("3", PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145")));
-        expected.add(new PointsCloseToPointOutputDTO("1", PreciseDecimal.from(8)));
-        expected.add(new PointsCloseToPointOutputDTO("2", PreciseDecimal.from(10)));
+        final var expectedItems = new ArrayList<PointCloseToPointOutputDTO>();
+        expectedItems.add(new PointCloseToPointOutputDTO("3", PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283145")));
+        expectedItems.add(new PointCloseToPointOutputDTO("1", PreciseDecimal.from(8)));
+        expectedItems.add(new PointCloseToPointOutputDTO("2", PreciseDecimal.from(10)));
+
+        final var expected = new PointsCloseToPointOutputDTO(expectedItems);
 
         assertEquals(
-            Arrays.toString(actual.toArray()),
-            Arrays.toString(expected.toArray())
+            actual.toString(),
+            expected.toString()
         );
     }
 }

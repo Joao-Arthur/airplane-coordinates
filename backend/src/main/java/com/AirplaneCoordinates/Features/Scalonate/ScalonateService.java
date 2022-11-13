@@ -9,19 +9,23 @@ public final class ScalonateService {
         this.dto = dto;
     }
 
-    public final PlanePoint execute() {
+    public final ScalonateOutputDTO execute() {
         final var resultPoint = this.dto.point
             .toCartesian()
             .times(this.dto.factor);
 
         switch (this.dto.point.planeType) {
             case CARTESIAN:
-                return PlanePoint.fromCartesian(
-                    resultPoint.round()
+                return new ScalonateOutputDTO(
+                    PlanePoint.fromCartesian(
+                        resultPoint.round()
+                    )
                 );
             case POLAR:
-                return PlanePoint.fromPolar(
-                    resultPoint.toPolar().round()
+                return new ScalonateOutputDTO(
+                    PlanePoint.fromPolar(
+                        resultPoint.toPolar().round()
+                    )
                 );
             default:
                 throw new RuntimeException("planeType is required");

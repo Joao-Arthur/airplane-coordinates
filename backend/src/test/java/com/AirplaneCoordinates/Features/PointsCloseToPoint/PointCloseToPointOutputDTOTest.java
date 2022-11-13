@@ -10,7 +10,7 @@ public final class PointCloseToPointOutputDTOTest {
     @Test
     public final void toStringTest() {
         assertEquals(
-            new PointsCloseToPointOutputDTO("4", PreciseDecimal.from("4.2768")).toString(),
+            new PointCloseToPointOutputDTO("4", PreciseDecimal.from("4.2768")).toString(),
             "{ id: 4, distanceFromPoint: 4.2768 }"
         );
     }

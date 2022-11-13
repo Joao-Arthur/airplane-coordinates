@@ -20,10 +20,10 @@ public final class PointsCloseToEachOtherInputDTO {
 
     @Override
     public final String toString() {
-        return "{" + "\n" +
-        "    points: [" + "\n" +
+        return "{\n" +
+        "    points: [\n" +
         Serializer.serialize(this.points, 8) +
-        "    ]" + "\n" +
+        "    ],\n" +
         "    maxDistance: " + this.maxDistance + "\n" +
         "}";
     }

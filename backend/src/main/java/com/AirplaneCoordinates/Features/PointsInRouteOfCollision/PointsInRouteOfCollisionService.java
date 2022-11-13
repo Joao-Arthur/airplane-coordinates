@@ -1,6 +1,5 @@
 package com.AirplaneCoordinates.Features.PointsInRouteOfCollision;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import com.AirplaneCoordinates.Core.Combination.Combination;
@@ -15,28 +14,30 @@ public final class PointsInRouteOfCollisionService {
         this.dto = dto;
     }
 
-    public final List<PointsInRouteOfCollisionOutputDTO> execute() {
-        return Combination
-            .getCombinations(this.dto.points)
-            .stream()
-            .map(
-                point -> new CollisionPointServiceFactory(
-                    PointDTO.from(point.a),
-                    PointDTO.from(point.b)
+    public final PointsInRouteOfCollisionOutputDTO execute() {
+        return new PointsInRouteOfCollisionOutputDTO(
+            Combination
+                .getCombinations(this.dto.points)
+                .stream()
+                .map(
+                    point -> new CollisionPointServiceFactory(
+                        PointDTO.from(point.a),
+                        PointDTO.from(point.b)
+                    )
+                        .getService()
+                        .getCollisionPoint()
                 )
-                    .getService()
-                    .getCollisionPoint()
-            )
-            .filter(point -> point != null)
-            .filter(point ->
-                point.timeDifferenceToPoint.smallerOrEquals(this.dto.maxTime)
-            )
-            .sorted((a, b) ->
-                PreciseDecimal.compareAsc(
-                    a.timeUntilCollision,
-                    b.timeUntilCollision
+                .filter(point -> point != null)
+                .filter(point ->
+                    point.timeDifferenceToPoint.smallerOrEquals(this.dto.maxTime)
                 )
-            )
-            .collect(Collectors.toList());
+                .sorted((a, b) ->
+                    PreciseDecimal.compareAsc(
+                        a.timeUntilCollision,
+                        b.timeUntilCollision
+                    )
+                )
+                .collect(Collectors.toList())
+        );
     }
 }

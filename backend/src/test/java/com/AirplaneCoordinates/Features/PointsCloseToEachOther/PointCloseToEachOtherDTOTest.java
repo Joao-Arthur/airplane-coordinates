@@ -10,7 +10,7 @@ public final class PointCloseToEachOtherDTOTest {
     @Test
     public final void toStringTest() {
         assertEquals(
-            new PointsCloseToEachOtherOutputDTO("3", "5", PreciseDecimal.from("-17.86")).toString(),
+            new PointCloseToEachOtherOutputDTO("3", "5", PreciseDecimal.from("-17.86")).toString(),
             "{ a: 3, b: 5, distanceFromPoint: -17.86 }"
         );
     }

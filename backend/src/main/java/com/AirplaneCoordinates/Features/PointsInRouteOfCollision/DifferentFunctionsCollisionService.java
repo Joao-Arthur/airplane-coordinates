@@ -16,7 +16,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
         this.pointB = pointB;
     }
 
-    public final PointsInRouteOfCollisionOutputDTO getCollisionPoint() {
+    public final PointInRouteOfCollisionOutputDTO getCollisionPoint() {
         final var intersectionPoint = LinearFunction.intersectionPoint(
             this.pointA.fx,
             this.pointB.fx
@@ -54,7 +54,7 @@ public final class DifferentFunctionsCollisionService implements CollisionPointS
         );
         final var timeDifferenceToPoint = collisionA.x.minus(collisionB.x).abs();
 
-        return new PointsInRouteOfCollisionOutputDTOBuilder()
+        return new PointInRouteOfCollisionOutputDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(timeUntilCollision.round())

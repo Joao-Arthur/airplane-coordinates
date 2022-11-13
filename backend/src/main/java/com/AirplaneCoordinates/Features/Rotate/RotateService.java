@@ -10,7 +10,7 @@ public final class RotateService {
         this.dto = dto;
     }
 
-    public final PlanePoint execute() {
+    public final RotateOutputDTO execute() {
         final var angleValue = Deg.from(this.dto.angle).normalized();
         final var offsetPoint = this.dto.point.toCartesian().minus(this.dto.centerOfRotation);
         final var pointAsPolar = offsetPoint.toPolar();
@@ -20,9 +20,13 @@ public final class RotateService {
     
         switch(this.dto.point.planeType) {
             case CARTESIAN:
-                return PlanePoint.fromCartesian(unoffsetedPoint.round());
+                return new RotateOutputDTO(
+                    PlanePoint.fromCartesian(unoffsetedPoint.round())
+                );
             case POLAR:
-                return PlanePoint.fromPolar(unoffsetedPoint.toPolar().round());
+                return new RotateOutputDTO(
+                    PlanePoint.fromPolar(unoffsetedPoint.toPolar().round())
+                );
             default:
                 throw new RuntimeException("planeType is required"); 
         }

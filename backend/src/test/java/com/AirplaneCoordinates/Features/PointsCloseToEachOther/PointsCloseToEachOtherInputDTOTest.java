@@ -25,12 +25,12 @@ public final class PointsCloseToEachOtherInputDTOTest {
         assertEquals(
             dto.toString(),
             "{\n" +
-            "    points: [\n" + 
+            "    points: [\n" +
             "        { id: 1, point: (CARTESIAN, 10, 10) },\n" +
             "        { id: 2, point: (CARTESIAN, 10, 20) },\n" +
             "        { id: 3, point: (CARTESIAN, 0, 20) },\n" +
             "        { id: 4, point: (CARTESIAN, 2, 22) },\n" +
-            "    ]\n" +
+            "    ],\n" +
             "    maxDistance: 10\n" +
             "}"
         );

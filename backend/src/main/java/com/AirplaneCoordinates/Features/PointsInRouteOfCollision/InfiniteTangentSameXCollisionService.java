@@ -17,7 +17,7 @@ public final class InfiniteTangentSameXCollisionService implements CollisionPoin
         this.pointB = pointB;
     }
 
-    public final PointsInRouteOfCollisionOutputDTO getCollisionPoint() {
+    public final PointInRouteOfCollisionOutputDTO getCollisionPoint() {
         final var collisionPoint = LinearPoint.collisionPoint(
             LinearPoint.from(
                 this.pointA.asCartesian.y,
@@ -35,7 +35,7 @@ public final class InfiniteTangentSameXCollisionService implements CollisionPoin
         if (collisionPoint == null)
             return null;
 
-        return new PointsInRouteOfCollisionOutputDTOBuilder()
+        return new PointInRouteOfCollisionOutputDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(collisionPoint.x.round())

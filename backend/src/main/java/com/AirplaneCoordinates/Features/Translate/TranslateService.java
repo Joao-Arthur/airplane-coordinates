@@ -9,19 +9,23 @@ public final class TranslateService {
         this.dto = dto;
     }
 
-    public final PlanePoint execute() {
+    public final TranslateOutputDTO execute() {
         final var resultPoint = this.dto.point
             .toCartesian()
             .plus(this.dto.factor);
 
         switch (this.dto.point.planeType) {
             case CARTESIAN:
-                return PlanePoint.fromCartesian(
-                    resultPoint.round()
+                return new TranslateOutputDTO(
+                    PlanePoint.fromCartesian(
+                        resultPoint.round()
+                    )
                 );
             case POLAR:
-                return PlanePoint.fromPolar(
-                    resultPoint.toPolar().round()
+                return new TranslateOutputDTO(
+                    PlanePoint.fromPolar(
+                        resultPoint.toPolar().round()
+                    )
                 );
             default:
                 throw new RuntimeException("planeType is required");

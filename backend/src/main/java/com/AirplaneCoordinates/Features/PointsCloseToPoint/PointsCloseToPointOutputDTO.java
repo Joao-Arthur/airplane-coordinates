@@ -1,24 +1,24 @@
 package com.AirplaneCoordinates.Features.PointsCloseToPoint;
 
-import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import java.util.List;
 
-public final class PointsCloseToPointOutputDTO {
-    public final String id;
-    public final PreciseDecimal distanceFromPoint;
+import com.AirplaneCoordinates.Core.Serialization.Serializer;
+
+public class PointsCloseToPointOutputDTO {
+    public final List<PointCloseToPointOutputDTO> points;
 
     public PointsCloseToPointOutputDTO(
-        final String id,
-        final PreciseDecimal distanceFromPoint
+        final List<PointCloseToPointOutputDTO> points
     ) {
-        this.id = id;
-        this.distanceFromPoint = distanceFromPoint;
+        this.points = points;
     }
 
     @Override
     public final String toString() {
-        return "{ " +
-            "id: " + this.id + ", " +
-            "distanceFromPoint: " + this.distanceFromPoint + 
-        " }";
+        return "{\n" +
+        "    points: [\n" +
+        Serializer.serialize(this.points, 8) +
+        "    ]\n" +
+        "}";
     }
 }

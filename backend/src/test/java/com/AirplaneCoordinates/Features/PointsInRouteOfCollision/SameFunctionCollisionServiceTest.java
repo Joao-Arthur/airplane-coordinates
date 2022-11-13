@@ -52,7 +52,7 @@ public final class SameFunctionCollisionServiceTest {
                     )
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("0.6388765649999399132597639053517932101258909598890073497916849272601488358965156855469755452510806501"),
@@ -82,7 +82,7 @@ public final class SameFunctionCollisionServiceTest {
                     )
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("0.2795084971874737120511467085914095294300772949514407155338621556763151157047256124268018010473477843"),
@@ -103,7 +103,7 @@ public final class SameFunctionCollisionServiceTest {
                     Vector.from(45, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("2.828427124746190097603377448419396157139343750753896146353359475981464956924214077700775068655283148"),
@@ -124,7 +124,7 @@ public final class SameFunctionCollisionServiceTest {
                     Vector.from(225, 1)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641572"),
@@ -145,7 +145,7 @@ public final class SameFunctionCollisionServiceTest {
                     Vector.from(180, 9)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("0.3636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363635"),

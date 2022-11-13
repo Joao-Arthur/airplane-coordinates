@@ -46,7 +46,7 @@ public final class InfiniteTangentSameXCollisionServiceTest {
                     Vector.from(270, 9)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("0.7142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857143"),
@@ -67,7 +67,7 @@ public final class InfiniteTangentSameXCollisionServiceTest {
                     Vector.from(270, 7)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("-0.0833333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333"),
@@ -89,7 +89,7 @@ public final class InfiniteTangentSameXCollisionServiceTest {
                     Vector.from(90, 2)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(4),
@@ -110,7 +110,7 @@ public final class InfiniteTangentSameXCollisionServiceTest {
                     Vector.from(270, 2)
                 ))
             ).getCollisionPoint().toString(),
-            new PointsInRouteOfCollisionOutputDTO(
+            new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(10),

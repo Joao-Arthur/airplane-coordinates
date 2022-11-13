@@ -14,8 +14,8 @@ public final class SamePositionCollisionService implements CollisionPointService
         this.pointB = pointB;
     }
 
-    public final PointsInRouteOfCollisionOutputDTO getCollisionPoint() {
-        return new PointsInRouteOfCollisionOutputDTOBuilder()
+    public final PointInRouteOfCollisionOutputDTO getCollisionPoint() {
+        return new PointInRouteOfCollisionOutputDTOBuilder()
             .setA(this.pointA.planePoint.id)
             .setB(this.pointB.planePoint.id)
             .setTimeUntilCollision(PreciseDecimal.from(0))

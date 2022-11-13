@@ -15,14 +15,15 @@ public final class PointsInRouteOfCollisionInputDTO {
         final PreciseDecimal maxTime
     ) {
         this.points = points;
+        this.maxTime = maxTime;
     }
 
     @Override
     public final String toString() {
-        return "{" + "\n" +
-        "    points: [" + "\n" +
+        return "{\n" +
+        "    points: [\n" +
         Serializer.serialize(this.points, 8) +
-        "    ]," + "\n" +
+        "    ],\n" +
         "    maxTime: " + this.maxTime + "\n" +
         "}";
     }
