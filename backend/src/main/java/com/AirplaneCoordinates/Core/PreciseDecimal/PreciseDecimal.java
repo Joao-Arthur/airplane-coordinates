@@ -14,7 +14,7 @@ public final class PreciseDecimal implements
     Arithmetic<PreciseDecimal>
 {
     private static final int PRECISION = 100;
-    private static final int ROUNDING_PRECISION = PRECISION -6;
+    private static final int ROUNDING_PRECISION = PRECISION -7;
     private static final MathContext MATH_CONTEXT = new MathContext(PRECISION, RoundingMode.HALF_EVEN);
     private static final MathContext ROUNDING_MATH_CONTEXT = new MathContext(ROUNDING_PRECISION, RoundingMode.HALF_EVEN);
 

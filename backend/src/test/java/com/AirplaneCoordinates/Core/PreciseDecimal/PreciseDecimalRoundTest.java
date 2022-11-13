@@ -16,6 +16,10 @@ public final class PreciseDecimalRoundTest {
             PreciseDecimal.from(0).toString()
         );
         assertEquals(
+            PreciseDecimal.from("0").round().toString(),
+            PreciseDecimal.from(0).toString()
+        );
+        assertEquals(
             PreciseDecimal.from(-3).round().toString(),
             PreciseDecimal.from(-3).toString()
         );
@@ -64,12 +68,12 @@ public final class PreciseDecimalRoundTest {
             PreciseDecimal.from(7).toString()
         );
         assertEquals(
-            PreciseDecimal.from("0").round().toString(),
-            PreciseDecimal.from("0").toString()
+            PreciseDecimal.from("0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000267779").round().toString(),
+            PreciseDecimal.from(0).toString()
         );
         assertEquals(
             PreciseDecimal.from("0.0").round().toString(),
-            PreciseDecimal.from("0").toString()
+            PreciseDecimal.from(0).toString()
         );
         assertEquals(
             PreciseDecimal.from("128397194.12986127861287461248026874653874653876437865").round().toString(),
@@ -79,19 +83,19 @@ public final class PreciseDecimalRoundTest {
             PreciseDecimal.from(
                 "-0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008925923158962873287395684462014298936503822914355030584503253124672887066979806660820263610315112846"
             ).round().toString(),
-            PreciseDecimal.from("0").toString()
+            PreciseDecimal.from(0).toString()
         );
         assertEquals(
             PreciseDecimal.from(
                 "-0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001785168730185325876330195087697043801180875908126664775654369943120098476233794486654297087559171119"
             ).round().toString(),
-            PreciseDecimal.from("0").toString()
+            PreciseDecimal.from(0).toString()
         );
         assertEquals(
             PreciseDecimal.from(
                 "0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002677770460680870630367848597990798145006512910656987836884117554320577928487771481205784002962934467"
             ).round().toString(),
-            PreciseDecimal.from("0").toString()
+            PreciseDecimal.from(0).toString()
         );
     }
 }
