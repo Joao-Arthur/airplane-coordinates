@@ -7,13 +7,16 @@ describe('LoggerImplementation', () => {
         const loggerImplementation = new LoggerImplementation(uniqueIdentifierBig);
         loggerImplementation.info('this is a info message');
         loggerImplementation.success('this is a success message');
+        loggerImplementation.success('this is a success message');
+        loggerImplementation.success('this is a success message');
         loggerImplementation.warn('this is a warning message');
         loggerImplementation.error('this is a error message');
+        loggerImplementation.error('this is a error message');
         expect(loggerImplementation.retrieve()).toEqual([
-            { content: 'this is a error message', type: 'error' },
-            { content: 'this is a warning message', type: 'warn' },
-            { content: 'this is a success message', type: 'success' },
-            { content: 'this is a info message', type: 'info' },
+            { type: 'error', content: 'this is a error message', amount: 2 },
+            { type: 'warn', content: 'this is a warning message', amount: 1 },
+            { type: 'success', content: 'this is a success message', amount: 3 },
+            { type: 'info', content: 'this is a info message', amount: 1 },
         ]);
 
     });

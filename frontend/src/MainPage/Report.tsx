@@ -25,7 +25,22 @@ export function Report() {
                                         report.type === 'error' ? 'bg-red-50' : '',
                                         report.type === 'warn' ? 'bg-yellow-50' : '',
                                     )
-                                }>{report.content}</td>
+                                }>
+                                    {report.amount > 1 ? (
+                                        <>
+                                            <span
+                                                className={
+                                                    classNames('px-4 py-1 rounded',
+                                                        report.type === 'success' ? 'bg-green-100' : '',
+                                                        report.type === 'error' ? 'bg-red-100' : '',
+                                                        report.type === 'warn' ? 'bg-yellow-100' : '',
+                                                    )}
+                                            >
+                                                {report.amount}
+                                            </span> - {report.content}
+                                        </>
+                                    ) : report.content}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

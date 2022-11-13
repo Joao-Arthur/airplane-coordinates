@@ -8,20 +8,32 @@ export class LoggerImplementation implements loggerRepositoryType {
 
     public constructor(private readonly uniqueIdentifier: uniqueIdentifierType) { }
 
+    private addMessage(message: messageType) {
+        const top = mapFns.top(this.messagesDatabase);
+        const sameContent = top?.value.content === message.content;
+        if (sameContent)
+            this.messagesDatabase.set(top.key, {
+                ...message,
+                amount: top.value.amount + 1,
+            });
+        else
+            this.messagesDatabase.set(this.uniqueIdentifier(), message);
+    }
+
     public info(message: string) {
-        this.messagesDatabase.set(this.uniqueIdentifier(), { type: 'info', content: message });
+        this.addMessage({ type: 'info', content: message, amount: 1 });
     }
 
     public success(message: string) {
-        this.messagesDatabase.set(this.uniqueIdentifier(), { type: 'success', content: message });
+        this.addMessage({ type: 'success', content: message, amount: 1 });
     }
 
     public warn(message: string) {
-        this.messagesDatabase.set(this.uniqueIdentifier(), { type: 'warn', content: message });
+        this.addMessage({ type: 'warn', content: message, amount: 1 });
     }
 
     public error(message: string) {
-        this.messagesDatabase.set(this.uniqueIdentifier(), { type: 'error', content: message });
+        this.addMessage({ type: 'error', content: message, amount: 1 });
     }
 
     public retrieve() {

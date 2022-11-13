@@ -11,10 +11,8 @@ export function airplanesInRouteOfCollisionService({
         .retrieve()
         .map(savedAirplaneToDTO);
     const airplanesInRouteOfCollision = airplanesInRouteOfCollisionBusiness({ airplanes, maxTime });
-    if (!airplanesInRouteOfCollision.length) {
-        logger.info('Nenhum avião em rota de colisão nesse tempo');
-        return;
-    }
+    if (!airplanesInRouteOfCollision.length)
+        return logger.info('Nenhum avião em rota de colisão nesse tempo');
     for (const airplane of airplanesInRouteOfCollision)
         logger.info(
             `Avião "${airplane.a}" e "${airplane.b}" vão passar a ${airplane.timeDifferenceToPoint}s de diferença no ponto (${airplane.collisionPoint.x}, ${airplane.collisionPoint.y}) daqui ${airplane.timeUntilCollision}s`,

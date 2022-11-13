@@ -11,10 +11,8 @@ export function airplanesCloseToAirportService({
         .retrieve()
         .map(savedAirplaneToDTO);
     const closeAirplanes = airplanesCloseToAirportBusiness({ airplanes, maxDistance });
-    if (!closeAirplanes.length) {
-        logger.info('Nenhum avião encontrado nessa distância');
-        return;
-    }
+    if (!closeAirplanes.length)
+        return logger.info('Nenhum avião encontrado nessa distância');
     for (const airplane of closeAirplanes)
         logger.info(
             `Avião "${airplane.id}" a ${airplane.distanceFromAirport}m do aeroporto`,

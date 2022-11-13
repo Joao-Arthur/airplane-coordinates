@@ -10,10 +10,8 @@ export function translateAirplaneCoordinatesService({
     x,
     y,
 }: translateAirplaneCoordinatesParamsType) {
-    if (!selectedIds.length) {
-        logger.warn('É necessário selecionar ao menos um avião!');
-        return;
-    }
+    if (!selectedIds.length)
+        return logger.warn('É necessário selecionar ao menos um avião!');
     const airplanes = airplaneRepository
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));

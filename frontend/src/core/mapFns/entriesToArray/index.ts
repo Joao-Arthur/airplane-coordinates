@@ -1,0 +1,1 @@
+export { entriesToArray } from './entriesToArray';
