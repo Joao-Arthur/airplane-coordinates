@@ -7,46 +7,41 @@ import { Select } from '../components/Select';
 import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 type fieldsType = {
+    readonly coordinatesType: 'CARTESIAN' | 'POLAR';
     readonly x: number;
     readonly y: number;
-    readonly radius: number;
-    readonly angle: number;
+    readonly r: number;
+    readonly a: number;
     readonly speed: number;
     readonly direction: number;
-    readonly coordinatesType: 'cartesian' | 'polar';
 }
 
 export function AddAirplane() {
     const { add } = useAirplanes();
     const { register, handleSubmit, watch } = useForm<fieldsType>({
         defaultValues: {
+            coordinatesType: 'CARTESIAN',
             x: 0,
             y: 0,
-            radius: 0,
-            angle: 0,
+            r: 0,
+            a: 0,
             speed: 0,
             direction: 0,
-            coordinatesType: 'cartesian',
         },
     });
 
-    function onHandleSubmit({ speed, direction, x, y, radius, angle, coordinatesType }: fieldsType) {
+    function onHandleSubmit({ speed, direction, x, y, r, a, coordinatesType }: fieldsType) {
         add({
             airplaneParams: {
                 speed,
                 direction,
-                ...(coordinatesType === 'cartesian' ? {
-                    type: coordinatesType,
-                    x,
-                    y,
-                    radius: undefined,
-                    angle: undefined,
+                type: coordinatesType,
+                ...(coordinatesType === 'CARTESIAN' ? {
+                    a: x,
+                    b: y,
                 } : {
-                    type: coordinatesType,
-                    radius,
-                    angle,
-                    x: undefined,
-                    y: undefined,
+                    a: r,
+                    b: a,
                 }),
             },
         });
@@ -58,20 +53,20 @@ export function AddAirplane() {
                 {...register('coordinatesType')}
                 title='Coordenadas'
                 options={[
-                    { name: 'polar', label: 'Polares' },
-                    { name: 'cartesian', label: 'Cartesianas' },
+                    { name: 'POLAR', label: 'Polares' },
+                    { name: 'CARTESIAN', label: 'Cartesianas' },
                 ]}
             />
             <Group>
-                {watch('coordinatesType') === 'cartesian' ? (
+                {watch('coordinatesType') === 'CARTESIAN' ? (
                     <>
                         <Input {...register('x', { valueAsNumber: true, required: true })} title='X' key='x' />
                         <Input  {...register('y', { valueAsNumber: true, required: true })} title='Y' key='y' />
                     </>
                 ) : (
                     <>
-                        <Input {...register('radius', { valueAsNumber: true, required: true })} title='Raio' key='radius' />
-                        <Input {...register('angle', { valueAsNumber: true, required: true })} title='Ângulo' key='angle' />
+                        <Input {...register('r', { valueAsNumber: true, required: true })} title='Raio' key='r' />
+                        <Input {...register('a', { valueAsNumber: true, required: true })} title='Ângulo' key='a' />
                     </>
                 )}
                 <Input {...register('speed', { valueAsNumber: true, required: true })} title='Velocidade' />

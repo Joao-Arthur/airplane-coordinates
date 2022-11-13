@@ -8,7 +8,7 @@ type paramsType = {
 
 export function rotate({ point, angle }: paramsType): polarPointType {
     return {
-        radius: point.radius,
-        angle: trigonometry.fixAngle(point.angle + angle),
+        r: point.r,
+        a: trigonometry.fixAngle(point.a + angle),
     } as const;
 }

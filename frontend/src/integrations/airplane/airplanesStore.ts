@@ -16,8 +16,10 @@ export const useAirplaneStore = create<state>(set => ({
     airplanes: [],
     setAirplanes: (airplanes: readonly savedAirplaneType[]) => set(() => ({ airplanes })),
     selectedAirplanes: [],
-    selectAirplane: (id: airplaneType['id']) => set(({ selectedAirplanes }) => ({ selectedAirplanes: selectedAirplanes.concat(id) })),
-    unselectAirplane: (id: airplaneType['id']) => set(({ selectedAirplanes }) => ({ selectedAirplanes: selectedAirplanes.filter(selected => selected !== id) })),
+    selectAirplane: (id: airplaneType['id']) => set(({ selectedAirplanes }) =>
+        ({ selectedAirplanes: selectedAirplanes.concat(id) })),
+    unselectAirplane: (id: airplaneType['id']) => set(({ selectedAirplanes }) =>
+        ({ selectedAirplanes: selectedAirplanes.filter(selected => selected !== id) })),
     reports: [],
     setReports: (reports: readonly messageType[]) => set(() => ({ reports })),
 }));

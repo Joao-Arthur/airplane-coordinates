@@ -5,11 +5,9 @@ describe('savedAirplaneToDTO', () => {
     it('should transform a polar airplane to dto', () => {
         expect(savedAirplaneToDTO({
             id: '1',
-            type: 'polar',
-            x: undefined,
-            y: undefined,
-            radius: 10,
-            angle: 270,
+            type: 'POLAR',
+            a: 10,
+            b: 270,
             speed: 100,
             direction: 100,
         })).toEqual({
@@ -24,11 +22,9 @@ describe('savedAirplaneToDTO', () => {
     it('should transform a cartesian airplane to dto', () => {
         expect(savedAirplaneToDTO({
             id: '1',
-            type: 'cartesian',
-            x: 4,
-            y: -5,
-            radius: undefined,
-            angle: undefined,
+            type: 'CARTESIAN',
+            a: 4,
+            b: -5,
             speed: 100,
             direction: 100,
         })).toEqual({
