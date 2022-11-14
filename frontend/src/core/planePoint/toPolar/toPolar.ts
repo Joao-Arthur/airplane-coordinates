@@ -6,13 +6,13 @@ export function toPolar(point: planePointType): polarPointType {
     switch (point.planeType) {
         case 'CARTESIAN':
             return polarPlane.fromCartesian({
-                x: point.a,
-                y: point.b,
+                x: Number(point.a),
+                y: Number(point.b),
             });
         case 'POLAR':
             return {
-                r: point.a,
-                a: point.b,
+                r: Number(point.a),
+                a: Number(point.b),
             };
     }
 }

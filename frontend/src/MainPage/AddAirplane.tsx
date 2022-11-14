@@ -8,10 +8,10 @@ import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 type fieldsType = {
     readonly coordinatesType: 'CARTESIAN' | 'POLAR';
-    readonly x: number;
-    readonly y: number;
-    readonly r: number;
-    readonly a: number;
+    readonly x: string;
+    readonly y: string;
+    readonly r: string;
+    readonly a: string;
     readonly speed: number;
     readonly direction: number;
 }
@@ -21,10 +21,10 @@ export function AddAirplane() {
     const { register, handleSubmit, watch } = useForm<fieldsType>({
         defaultValues: {
             coordinatesType: 'CARTESIAN',
-            x: 0,
-            y: 0,
-            r: 0,
-            a: 0,
+            x: '0',
+            y: '0',
+            r: '0',
+            a: '0',
             speed: 0,
             direction: 0,
         },
@@ -60,13 +60,13 @@ export function AddAirplane() {
             <Group>
                 {watch('coordinatesType') === 'CARTESIAN' ? (
                     <>
-                        <Input {...register('x', { valueAsNumber: true, required: true })} title='X' key='x' />
-                        <Input  {...register('y', { valueAsNumber: true, required: true })} title='Y' key='y' />
+                        <Input {...register('x', { required: true })} title='X' key='x' />
+                        <Input  {...register('y', { required: true })} title='Y' key='y' />
                     </>
                 ) : (
                     <>
-                        <Input {...register('r', { valueAsNumber: true, required: true })} title='Raio' key='r' />
-                        <Input {...register('a', { valueAsNumber: true, required: true })} title='Ângulo' key='a' />
+                        <Input {...register('r', { required: true })} title='Raio' key='r' />
+                        <Input {...register('a', { required: true })} title='Ângulo' key='a' />
                     </>
                 )}
                 <Input {...register('speed', { valueAsNumber: true, required: true })} title='Velocidade' />

@@ -4,15 +4,15 @@ import { collisionFromDifferentFunction } from './collisionFromDifferentFunction
 describe('collisionFromDifferentFunction', () => {
     it('should return undefined when there is no collision', () => {
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: 3, b: 5 }, vector: { direction: 45, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 135, speed: 2 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '3', b: '5' }, vector: { direction: 45, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 135, speed: 2 } },
         })).toEqual(undefined);
     });
 
     it('should return the difference when speed is the same', () => {
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 45, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 135, speed: 1 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 45, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 135, speed: 1 } },
         })).toEqual({
             a: '1',
             b: '2',
@@ -21,8 +21,8 @@ describe('collisionFromDifferentFunction', () => {
             timeDifferenceToPoint: 0,
         });
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 55, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 125, speed: 1 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 55, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 125, speed: 1 } },
         })).toEqual({
             a: '1',
             b: '2',
@@ -31,8 +31,8 @@ describe('collisionFromDifferentFunction', () => {
             timeDifferenceToPoint: 0,
         });
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 65, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 115, speed: 1 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 65, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 115, speed: 1 } },
         })).toEqual({
             a: '1',
             b: '2',
@@ -41,8 +41,8 @@ describe('collisionFromDifferentFunction', () => {
             timeDifferenceToPoint: 0,
         });
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 25, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 155, speed: 1 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 25, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 155, speed: 1 } },
         })).toEqual({
             a: '1',
             b: '2',
@@ -54,8 +54,8 @@ describe('collisionFromDifferentFunction', () => {
 
     it('should return the difference when speed is not the same', () => {
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 45, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 135, speed: 2 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 45, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 135, speed: 2 } },
         })).toEqual({
             a: '1',
             b: '2',
@@ -64,8 +64,8 @@ describe('collisionFromDifferentFunction', () => {
             timeDifferenceToPoint: 1.4142135624,
         });
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 55, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 125, speed: 4 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 55, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 125, speed: 4 } },
         })).toEqual({
             a: '1',
             b: '2',
@@ -74,8 +74,8 @@ describe('collisionFromDifferentFunction', () => {
             timeUntilCollision: 0.8717233978,
         });
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 65, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 115, speed: 2 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 65, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 115, speed: 2 } },
         })).toEqual({
             a: '1',
             b: '2',
@@ -84,8 +84,8 @@ describe('collisionFromDifferentFunction', () => {
             timeDifferenceToPoint: 2.3662015832,
         });
         expect(collisionFromDifferentFunction({
-            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: -2, b: 0 }, vector: { direction: 25, speed: 1 } },
-            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: 2, b: 0 }, vector: { direction: 155, speed: 2 } },
+            a: { id: '1', planePoint: { planeType: 'CARTESIAN', a: '-2', b: '0' }, vector: { direction: 25, speed: 1 } },
+            b: { id: '2', planePoint: { planeType: 'CARTESIAN', a: '2', b: '0' }, vector: { direction: 155, speed: 2 } },
         })).toEqual({
             a: '1',
             b: '2',

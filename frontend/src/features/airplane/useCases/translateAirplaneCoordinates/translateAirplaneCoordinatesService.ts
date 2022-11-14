@@ -16,11 +16,7 @@ export function translateAirplaneCoordinatesService({
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         postFetch('arithmetic/translate', {
-            point: {
-                planeType: airplane.planePoint.planeType,
-                a: airplane.planePoint.a.toString(),
-                b: airplane.planePoint.b.toString(),
-            },
+            point: airplane.planePoint,
             factor: {
                 x: x.toString(),
                 y: y.toString(),

@@ -4,7 +4,7 @@ import { planePointType } from './planePointType';
 export function fromCartesian(point: cartesianPointType): planePointType {
     return {
         planeType: 'CARTESIAN',
-        a: point.x,
-        b: point.y,
+        a: String(point.x),
+        b: String(point.y),
     };
 }
