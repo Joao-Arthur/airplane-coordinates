@@ -23,12 +23,10 @@ public final class ArithmeticGateway {
 
     private final void logInput(final String input) {
         this.logger.log("Input: " + input);
-        this.logger.subSeparator();
     }
 
     private final void logOutput(final String output) {
         this.logger.log("Output: " + output);
-        this.logger.separator();
     }
 
     public final TranslateOutputDTO translate(

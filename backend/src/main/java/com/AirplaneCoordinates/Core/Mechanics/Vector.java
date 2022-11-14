@@ -16,7 +16,7 @@ public final class Vector {
 
     @Override
     public final String toString() {
-        return  "(" + this.direction + "º, " + this.speed + " km/h)";
+        return "(" + this.direction + "º, " + this.speed + " km/h)";
     }
 
     public static final Vector from(

@@ -15,10 +15,10 @@ public final class PointsCloseToEachOtherInputDTOTest {
     @Test
     public final void toStringTest() {
         final var points = new ArrayList<PlanePointWithId>();
-        points.add(PlanePointWithId.from("1", PlanePoint.from(Plane.CARTESIAN, 10, 10)));
-        points.add(PlanePointWithId.from("2", PlanePoint.from(Plane.CARTESIAN, 10, 20)));
-        points.add(PlanePointWithId.from("3", PlanePoint.from(Plane.CARTESIAN, 0, 20)));
-        points.add(PlanePointWithId.from("4", PlanePoint.from(Plane.CARTESIAN, 2, 22)));
+        points.add(new PlanePointWithId("1", PlanePoint.from(Plane.CARTESIAN, 10, 10)));
+        points.add(new PlanePointWithId("2", PlanePoint.from(Plane.CARTESIAN, 10, 20)));
+        points.add(new PlanePointWithId("3", PlanePoint.from(Plane.CARTESIAN, 0, 20)));
+        points.add(new PlanePointWithId("4", PlanePoint.from(Plane.CARTESIAN, 2, 22)));
 
         final var dto = new PointsCloseToEachOtherInputDTO(points, PreciseDecimal.from(10));
 

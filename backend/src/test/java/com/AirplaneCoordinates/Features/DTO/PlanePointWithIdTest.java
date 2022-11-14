@@ -11,7 +11,7 @@ public final class PlanePointWithIdTest {
     @Test
     public final void toStringTest() {
         assertEquals(
-            PlanePointWithId.from(
+            new PlanePointWithId(
                 "5",
                 PlanePoint.from(Plane.CARTESIAN, "-3", "2.41")
             ).toString(),

@@ -6,7 +6,7 @@ public final class PlanePointWithId {
     public final String id;
     public final PlanePoint point;
 
-    private PlanePointWithId(
+    public PlanePointWithId(
         final String id,
         final PlanePoint point
     ) {
@@ -20,15 +20,5 @@ public final class PlanePointWithId {
             "id: " + this.id + ", " +
             "point: " + this.point +
         " }";
-    }
-
-    public static final PlanePointWithId from(
-        final String id,
-        final PlanePoint point
-    ) {
-        return new PlanePointWithId(
-            id,
-            point
-        );
     }
 }

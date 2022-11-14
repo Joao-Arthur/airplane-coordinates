@@ -9,7 +9,7 @@ public final class SystemLogger implements Logger {
     }
 
     public final void logWithDate(final String message) {
-        final var now = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+        final var now = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
         System.out.println(now + " - " + message);
     }
 
