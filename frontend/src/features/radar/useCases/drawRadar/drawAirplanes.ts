@@ -22,6 +22,10 @@ export function drawAirplanes({
                 point,
                 size: airplaneSize,
             }),
-            airportDimensions => drawContext.drawImage(airportDimensions, '/airplane.png', airplane.vector.direction),
+            airportDimensions => drawContext.drawImage(
+                airportDimensions,
+                '/airplane.png',
+                Number(airplane.vector.direction),
+            ),
         )(planePoint.toCartesian(airplane.planePoint));
 }

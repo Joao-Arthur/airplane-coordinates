@@ -13,24 +13,24 @@ type paramsType = {
 export function collisionFromSameFunction({ a, b }: paramsType) {
     const aAsCartesian = planePoint.toCartesian(a.planePoint);
     const bAsCartesian = planePoint.toCartesian(b.planePoint);
-    const fx = linearFunction.fromPoint({ point: aAsCartesian, angle: a.vector.direction });
+    const fx = linearFunction.fromPoint({ point: aAsCartesian, angle: Number(a.vector.direction) });
 
-    const coefficientA = Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
-    const coefficientB = Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
+    const coefficientA = Math.abs(Math.cos(Number(a.vector.direction) * Math.PI / 180));
+    const coefficientB = Math.abs(Math.cos(Number(b.vector.direction) * Math.PI / 180));
 
     const { y: x } = mechanics.collision({
         a: {
             initialPoint: aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * a.vector.speed,
-                angle: a.vector.direction,
+                value: coefficientA * Number(a.vector.speed),
+                angle: Number(a.vector.direction),
             }),
         },
         b: {
             initialPoint: bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientB * b.vector.speed,
-                angle: b.vector.direction,
+                value: coefficientB * Number(b.vector.speed),
+                angle: Number(b.vector.direction),
             }),
         },
     });
@@ -43,8 +43,8 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
         b: {
             initialPoint: aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * a.vector.speed,
-                angle: a.vector.direction,
+                value: coefficientA * Number(a.vector.speed),
+                angle: Number(a.vector.direction),
             }),
         },
     });
@@ -55,8 +55,8 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
         b: {
             initialPoint: bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
-                value: coefficientA * b.vector.speed,
-                angle: b.vector.direction,
+                value: coefficientA * Number(b.vector.speed),
+                angle: Number(b.vector.direction),
             }),
         },
     });

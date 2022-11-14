@@ -14,20 +14,20 @@ export function getCollisionType({ a, b }: paramsType) {
     if (aAsCartesian.x === bAsCartesian.x && aAsCartesian.y === bAsCartesian.y)
         return 'SAME_POSITION';
     if (
-        [90, 270].includes(trigonometry.fixAngle(a.vector.direction)) &&
-        [90, 270].includes(trigonometry.fixAngle(b.vector.direction))
+        [90, 270].includes(trigonometry.fixAngle(Number(a.vector.direction))) &&
+        [90, 270].includes(trigonometry.fixAngle(Number(b.vector.direction)))
     ) {
         if (aAsCartesian.x === bAsCartesian.x)
             return 'INFINITE_TANGENT_SAME_X';
         return 'PARALLEL_LINES';
     }
     if (
-        [90, 270].includes(a.vector.direction) ||
-        [90, 270].includes(b.vector.direction)
+        [90, 270].includes(Number(a.vector.direction)) ||
+        [90, 270].includes(Number(b.vector.direction))
     )
         return 'INFINITE_TANGENT_IN_ONE_AIRPLANE';
-    const fx = linearFunction.fromPoint({ point: aAsCartesian, angle: a.vector.direction });
-    const gx = linearFunction.fromPoint({ point: bAsCartesian, angle: b.vector.direction });
+    const fx = linearFunction.fromPoint({ point: aAsCartesian, angle: Number(a.vector.direction) });
+    const gx = linearFunction.fromPoint({ point: bAsCartesian, angle: Number(b.vector.direction) });
     if (fx.a === gx.a) {
         if (fx.b === gx.b)
             return 'SAME_FUNCTION';

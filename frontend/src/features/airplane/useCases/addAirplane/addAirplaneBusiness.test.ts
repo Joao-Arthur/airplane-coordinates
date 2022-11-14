@@ -7,7 +7,7 @@ describe('addAirplaneBusiness', () => {
         expect(() => addAirplaneBusiness({
             id: '1',
             planePoint: { planeType: 'CARTESIAN', a: '3', b: '7' },
-            vector: { speed: 100, direction: 100 },
+            vector: { speed: '100', direction: '100' },
             numberOfAirplanes: 1,
             maxNumberOfAirplanes: 1,
         })).toThrowError(MaxNumberOfAirplanesExceededError);

@@ -12,8 +12,8 @@ type fieldsType = {
     readonly y: string;
     readonly r: string;
     readonly a: string;
-    readonly speed: number;
-    readonly direction: number;
+    readonly speed: string;
+    readonly direction: string;
 }
 
 export function AddAirplane() {
@@ -25,8 +25,8 @@ export function AddAirplane() {
             y: '0',
             r: '0',
             a: '0',
-            speed: 0,
-            direction: 0,
+            speed: '0',
+            direction: '0',
         },
     });
 

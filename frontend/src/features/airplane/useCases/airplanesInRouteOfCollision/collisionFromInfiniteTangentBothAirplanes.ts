@@ -12,8 +12,8 @@ export function collisionFromInfiniteTangentBothAirplanes({ a, b }: paramsType) 
     const bAsCartesian = planePoint.toCartesian(b.planePoint);
 
     const { x: timeUntilCollision, y } = mechanics.collision({
-        a: { initialPoint: aAsCartesian.y, speed: a.vector.direction === 90 ? a.vector.speed : -a.vector.speed },
-        b: { initialPoint: bAsCartesian.y, speed: b.vector.direction === 90 ? b.vector.speed : -b.vector.speed },
+        a: { initialPoint: aAsCartesian.y, speed: Number(a.vector.direction) === 90 ? Number(a.vector.speed) : -Number(a.vector.speed) },
+        b: { initialPoint: bAsCartesian.y, speed: Number(b.vector.direction) === 90 ? Number(b.vector.speed) : -Number(b.vector.speed) },
     });
     if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(y))
         return undefined;
