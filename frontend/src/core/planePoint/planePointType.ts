@@ -1,5 +1,5 @@
 export type planePointType = {
-    readonly type: 'CARTESIAN' | 'POLAR';
+    readonly planeType: 'CARTESIAN' | 'POLAR';
     readonly a: number;
     readonly b: number;
 }

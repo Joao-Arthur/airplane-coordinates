@@ -3,7 +3,7 @@ import { cartesianPointType } from '../../cartesianPlane/cartesianPoint';
 import { planePointType } from '../planePointType';
 
 export function toCartesian(point: planePointType): cartesianPointType {
-    switch (point.type) {
+    switch (point.planeType) {
         case 'CARTESIAN':
             return {
                 x: point.a,

@@ -34,11 +34,11 @@ export function AddAirplane() {
         add({
             airplaneParams: {
                 planePoint: coordinatesType === 'CARTESIAN' ? {
-                    type: coordinatesType,
+                    planeType: coordinatesType,
                     a: x,
                     b: y,
                 } : {
-                    type: coordinatesType,
+                    planeType: coordinatesType,
                     a: r,
                     b: a,
                 },

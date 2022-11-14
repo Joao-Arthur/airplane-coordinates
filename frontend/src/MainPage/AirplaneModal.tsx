@@ -27,7 +27,7 @@ export function AirplaneModal({
     close,
 }: propsType) {
     function getLabelByType(cartesianLabel: string, polarLabel: string) {
-        switch (airplane?.planePoint.type) {
+        switch (airplane?.planePoint.planeType) {
             case 'CARTESIAN':
                 return cartesianLabel;
             case 'POLAR':

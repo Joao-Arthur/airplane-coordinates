@@ -1,3 +1,4 @@
+import { postFetch } from '../../../../core/httpRequest/httpRequest';
 import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
 import { translateAirplaneCoordinatesParamsType } from './translateAirplaneCoordinatesParams';
 
@@ -14,6 +15,17 @@ export function translateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
+        postFetch('arithmetic/translate', {
+            point: {
+                planeType: airplane.planePoint.planeType,
+                a: airplane.planePoint.a.toString(),
+                b: airplane.planePoint.b.toString(),
+            },
+            factor: {
+                x: x.toString(),
+                y: y.toString(),
+            },
+        });
         const updatedAirplane = translateAirplaneCoordinatesBusiness({
             airplane,
             x,

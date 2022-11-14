@@ -3,7 +3,7 @@ import { planePointType } from './planePointType';
 
 export function fromPolar(point: polarPointType): planePointType {
     return {
-        type: 'POLAR',
+        planeType: 'POLAR',
         a: point.r,
         b: point.a,
     };
