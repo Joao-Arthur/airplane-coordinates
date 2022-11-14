@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { IconButton } from '../components/IconButton';
-import { savedAirplaneType } from '../features/airplane/models';
+import { airplaneType } from '../features/airplane/models';
 import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
 import { AirplaneModal } from './AirplaneModal';
 
@@ -9,7 +9,7 @@ export function AirplanesTable() {
     const [
         selectedAirplane,
         setSelectedAirplane,
-    ] = useState<savedAirplaneType | undefined>(undefined);
+    ] = useState<airplaneType | undefined>(undefined);
 
     const airplanes = useAirplaneStore(state => state.airplanes);
     const selectedAirplanes = useAirplaneStore(state => state.selectedAirplanes);

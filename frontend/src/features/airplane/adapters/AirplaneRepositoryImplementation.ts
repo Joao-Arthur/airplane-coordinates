@@ -1,19 +1,19 @@
 import { mapFns } from '../../../core/mapFns';
-import { savedAirplaneType } from '../models';
+import { airplaneType } from '../models';
 import { airplaneRepositoryType } from '../ports/airplaneRepository';
 
 export class AirplaneRepositoryImplementation implements airplaneRepositoryType {
-    private readonly airplanesDatabase = new Map<savedAirplaneType['id'], savedAirplaneType>();
+    private readonly airplanesDatabase = new Map<airplaneType['id'], airplaneType>();
 
-    public add(airplane: savedAirplaneType) {
+    public add(airplane: airplaneType) {
         this.airplanesDatabase.set(airplane.id, airplane);
     }
 
-    public remove(id: savedAirplaneType['id']) {
+    public remove(id: airplaneType['id']) {
         this.airplanesDatabase.delete(id);
     }
 
-    public update(airplane: savedAirplaneType) {
+    public update(airplane: airplaneType) {
         this.airplanesDatabase.set(airplane.id, airplane);
     }
 

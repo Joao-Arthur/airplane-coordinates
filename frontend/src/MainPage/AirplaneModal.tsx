@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import Modal from 'react-modal';
 import { GrFormClose } from 'react-icons/gr';
-import { savedAirplaneType } from '../features/airplane/models';
+import { airplaneType } from '../features/airplane/models';
 
 type propsType = {
-    readonly airplane: savedAirplaneType | undefined;
+    readonly airplane: airplaneType | undefined;
     readonly close: () => void;
 }
 

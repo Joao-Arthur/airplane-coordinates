@@ -1,4 +1,3 @@
-import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { airplanesCloseToAirportBusiness } from './airplanesCloseToAirportBusiness';
 import { airplanesCloseToAirportParamsType } from './airplanesCloseToAirportParams';
 
@@ -7,9 +6,7 @@ export function airplanesCloseToAirportService({
     airplaneRepository,
     maxDistance,
 }: airplanesCloseToAirportParamsType) {
-    const airplanes = airplaneRepository
-        .retrieve()
-        .map(savedAirplaneToDTO);
+    const airplanes = airplaneRepository.retrieve();
     const closeAirplanes = airplanesCloseToAirportBusiness({ airplanes, maxDistance });
     if (!closeAirplanes.length)
         return logger.info('Nenhum avião encontrado nessa distância');

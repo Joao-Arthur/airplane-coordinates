@@ -1,8 +1,8 @@
-import { savedAirplaneType } from '../models';
+import { airplaneType } from '../models';
 
 export type airplaneRepositoryType = {
-    readonly add: (airplane: savedAirplaneType) => void;
-    readonly remove: (id: savedAirplaneType['id']) => void;
-    readonly update: (airplane: savedAirplaneType) => void;
-    readonly retrieve: () => readonly savedAirplaneType[];
+    readonly add: (airplane: airplaneType) => void;
+    readonly remove: (id: airplaneType['id']) => void;
+    readonly update: (airplane: airplaneType) => void;
+    readonly retrieve: () => readonly airplaneType[];
 };

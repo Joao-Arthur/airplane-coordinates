@@ -1,5 +1,6 @@
 import { pipe } from 'ramda';
 import { cartesianPlane } from '../../../../core/cartesianPlane';
+import { planePoint } from '../../../../core/planePoint';
 import { polarPlane } from '../../../../core/polarPlane';
 import { airplaneType } from '../../models';
 
@@ -30,6 +31,7 @@ export function rotateAirplaneCoordinatesBusiness({
                 x: point.x + centerOfRotationX,
                 y: point.y + centerOfRotationY,
             }),
-        )(airplane.planePoint),
+            point => planePoint.fromCartesian(point),
+        )(planePoint.toCartesian(airplane.planePoint)),
     };
 }

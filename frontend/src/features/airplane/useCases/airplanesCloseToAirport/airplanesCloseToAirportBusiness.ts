@@ -1,4 +1,5 @@
 import { cartesianPlane } from '../../../../core/cartesianPlane';
+import { planePoint } from '../../../../core/planePoint';
 import { airplaneType } from '../../models';
 
 type paramsType = {
@@ -11,11 +12,11 @@ export function airplanesCloseToAirportBusiness({
     maxDistance,
 }: paramsType) {
     return airplanes
-        .map(({ id, planePoint }) => ({
-            id,
+        .map(airplane => ({
+            id: airplane.id,
             distanceFromAirport: cartesianPlane
                 .distance(
-                    planePoint,
+                    planePoint.toCartesian(airplane.planePoint),
                     { x: 0, y: 0 },
                 ),
         } as const))

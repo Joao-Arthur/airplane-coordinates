@@ -3,7 +3,7 @@ import { messageType } from '../../logger/model';
 import { uniqueIdentifierBig } from '../../uniqueIdentifier/adapters/uniqueIdentifierBig';
 import { UniqueIdentifierImplementation } from '../../uniqueIdentifier/adapters/UniqueIdentifierImplementation';
 import { AirplaneRepositoryImplementationProxy } from '../adapters/AirplaneRepositoryImplementationProxy';
-import { airplaneType, savedAirplaneType } from '../models';
+import { airplaneType } from '../models';
 import { addAirplaneService, airplaneParamsType } from '../useCases/addAirplane';
 import { airplanesCloseToAirportService } from '../useCases/airplanesCloseToAirport';
 import { airplanesCloseToEachOtherService } from '../useCases/airplanesCloseToEachOther';
@@ -146,7 +146,7 @@ export class AirplaneGateway {
         this.logger.addCallback(callback);
     }
 
-    public onRepositoryUpdated(callback: (airplanes: readonly savedAirplaneType[]) => void) {
+    public onRepositoryUpdated(callback: (airplanes: readonly airplaneType[]) => void) {
         this.airplaneRepository.addCallback(callback);
     }
 

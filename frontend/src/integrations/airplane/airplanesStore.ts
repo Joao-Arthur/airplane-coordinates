@@ -1,10 +1,10 @@
 import create from 'zustand';
-import { airplaneType, savedAirplaneType } from '../../features/airplane/models';
+import { airplaneType } from '../../features/airplane/models';
 import { messageType } from '../../features/logger/model';
 
 type state = {
-    readonly airplanes: readonly savedAirplaneType[];
-    readonly setAirplanes: (airplanes: readonly savedAirplaneType[]) => void;
+    readonly airplanes: readonly airplaneType[];
+    readonly setAirplanes: (airplanes: readonly airplaneType[]) => void;
     readonly selectedAirplanes: readonly airplaneType['id'][];
     readonly selectAirplane: (id: airplaneType['id']) => void;
     readonly unselectAirplane: (id: airplaneType['id']) => void;
@@ -14,7 +14,7 @@ type state = {
 
 export const useAirplaneStore = create<state>(set => ({
     airplanes: [],
-    setAirplanes: (airplanes: readonly savedAirplaneType[]) => set(() => ({ airplanes })),
+    setAirplanes: (airplanes: readonly airplaneType[]) => set(() => ({ airplanes })),
     selectedAirplanes: [],
     selectAirplane: (id: airplaneType['id']) => set(({ selectedAirplanes }) =>
         ({ selectedAirplanes: selectedAirplanes.concat(id) })),

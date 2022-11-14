@@ -1,6 +1,7 @@
 import { linearFunction } from '../../../../core/linearFunction';
 import { mechanics } from '../../../../core/mechanics';
 import { numberFns } from '../../../../core/numberFns';
+import { planePoint } from '../../../../core/planePoint';
 import { trigonometry } from '../../../../core/trigonometry';
 import { airplaneType } from '../../models';
 
@@ -10,21 +11,23 @@ type paramsType = {
 }
 
 export function collisionFromSameFunction({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({ point: a.planePoint, angle: a.vector.direction });
+    const aAsCartesian = planePoint.toCartesian(a.planePoint);
+    const bAsCartesian = planePoint.toCartesian(b.planePoint);
+    const fx = linearFunction.fromPoint({ point: aAsCartesian, angle: a.vector.direction });
 
     const coefficientA = Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
     const coefficientB = Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
 
     const { y: x } = mechanics.collision({
         a: {
-            initialPoint: a.planePoint.x,
+            initialPoint: aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
             }),
         },
         b: {
-            initialPoint: b.planePoint.x,
+            initialPoint: bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientB * b.vector.speed,
                 angle: b.vector.direction,
@@ -38,7 +41,7 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
     const { x: timeToCollisionA } = mechanics.collision({
         a: { initialPoint: x, speed: 0 },
         b: {
-            initialPoint: a.planePoint.x,
+            initialPoint: aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
@@ -50,7 +53,7 @@ export function collisionFromSameFunction({ a, b }: paramsType) {
     const { x: timeToCollisionB } = mechanics.collision({
         a: { initialPoint: x, speed: 0 },
         b: {
-            initialPoint: b.planePoint.x,
+            initialPoint: bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * b.vector.speed,
                 angle: b.vector.direction,

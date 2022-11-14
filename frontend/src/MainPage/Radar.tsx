@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { savedAirplaneToDTO } from '../features/airplane/useCases/savedAirplaneToDTO';
 import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
 import { useRadarStore } from '../integrations/radar/radarStore';
 import { useRadar } from '../integrations/radar/useRadar';
@@ -12,7 +11,6 @@ export function Radar({ dimensions }: props) {
     const radarSettings = useRadarStore();
     const { draw } = useRadar();
     const airplanes = useAirplaneStore(state => state.airplanes);
-    const airplanesToDraw = airplanes.map(savedAirplaneToDTO);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -23,10 +21,10 @@ export function Radar({ dimensions }: props) {
             return;
         draw(
             context, { width: dimensions, height: dimensions },
-            airplanesToDraw,
+            airplanes,
             radarSettings,
         );
-    }, [dimensions, airplanesToDraw, draw, radarSettings]);
+    }, [dimensions, airplanes, draw, radarSettings]);
 
     return (
         <div className='h-full flex justify-center items-center'>

@@ -1,3 +1,4 @@
+import { planePoint } from '../../../../core/planePoint';
 import { airplaneType } from '../../models';
 
 type paramsType = {
@@ -6,11 +7,13 @@ type paramsType = {
 }
 
 export function collisionFromSamePosition({ a, b }: paramsType) {
+    const aAsCartesian = planePoint.toCartesian(a.planePoint);
+
     return {
         a: a.id,
         b: b.id,
         timeUntilCollision: 0,
-        collisionPoint: a.planePoint,
+        collisionPoint: aAsCartesian,
         timeDifferenceToPoint: 0,
     } as const;
 }

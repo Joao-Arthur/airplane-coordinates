@@ -1,4 +1,3 @@
-import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { deleteAirplaneBusiness } from './deleteAirplaneBusiness';
 import { deleteAirplaneParamsType } from './deleteAirplaneParams';
 
@@ -7,9 +6,7 @@ export function deleteAirplaneService({
     airplaneRepository,
     selectedIds,
 }: deleteAirplaneParamsType) {
-    const airplanes = airplaneRepository
-        .retrieve()
-        .map(savedAirplaneToDTO);
+    const airplanes = airplaneRepository.retrieve();
     if (!selectedIds.length)
         return logger.warn('É necessário selecionar ao menos um avião!');
     try {

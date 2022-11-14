@@ -6,17 +6,17 @@ describe('deleteAirplaneBusiness', () => {
     it('should throw error when id not in list', () => {
         expect(deleteAirplaneBusiness({
             airplanes: [
-                { id: 'aaa', planePoint: { x: 0, y: 0 }, vector: { direction: 0, speed: 0 } },
-                { id: 'bbb', planePoint: { x: 0, y: 0 }, vector: { direction: 0, speed: 0 } },
-                { id: 'ccc', planePoint: { x: 0, y: 0 }, vector: { direction: 0, speed: 0 } },
+                { id: 'aaa', planePoint: { type: 'CARTESIAN', a: 0, b: 0 }, vector: { direction: 0, speed: 0 } },
+                { id: 'bbb', planePoint: { type: 'CARTESIAN', a: 0, b: 0 }, vector: { direction: 0, speed: 0 } },
+                { id: 'ccc', planePoint: { type: 'CARTESIAN', a: 0, b: 0 }, vector: { direction: 0, speed: 0 } },
             ],
             airplaneToDelete: 'aaa',
         })).toBe(undefined);
         expect(() => deleteAirplaneBusiness({
             airplanes: [
-                { id: 'bbb', planePoint: { x: 0, y: 0 }, vector: { direction: 0, speed: 0 } },
-                { id: 'ccc', planePoint: { x: 0, y: 0 }, vector: { direction: 0, speed: 0 } },
-                { id: 'ddd', planePoint: { x: 0, y: 0 }, vector: { direction: 0, speed: 0 } },
+                { id: 'bbb', planePoint: { type: 'CARTESIAN', a: 0, b: 0 }, vector: { direction: 0, speed: 0 } },
+                { id: 'ccc', planePoint: { type: 'CARTESIAN', a: 0, b: 0 }, vector: { direction: 0, speed: 0 } },
+                { id: 'ddd', planePoint: { type: 'CARTESIAN', a: 0, b: 0 }, vector: { direction: 0, speed: 0 } },
             ],
             airplaneToDelete: 'aaa',
         })).toThrowError(AirplaneNotFoundError);

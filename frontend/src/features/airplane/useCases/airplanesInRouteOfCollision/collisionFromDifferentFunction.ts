@@ -1,6 +1,7 @@
 import { linearFunction } from '../../../../core/linearFunction';
 import { mechanics } from '../../../../core/mechanics';
 import { numberFns } from '../../../../core/numberFns';
+import { planePoint } from '../../../../core/planePoint';
 import { trigonometry } from '../../../../core/trigonometry';
 import { airplaneType } from '../../models';
 
@@ -10,8 +11,10 @@ type paramsType = {
 }
 
 export function collisionFromDifferentFunction({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({ point: a.planePoint, angle: a.vector.direction });
-    const gx = linearFunction.fromPoint({ point: b.planePoint, angle: b.vector.direction });
+    const aAsCartesian = planePoint.toCartesian(a.planePoint);
+    const bAsCartesian = planePoint.toCartesian(b.planePoint);
+    const fx = linearFunction.fromPoint({ point: aAsCartesian, angle: a.vector.direction });
+    const gx = linearFunction.fromPoint({ point: bAsCartesian, angle: b.vector.direction });
     const intersectionPoint = linearFunction.findInsersectionPoint({
         fx,
         gx,
@@ -21,29 +24,29 @@ export function collisionFromDifferentFunction({ a, b }: paramsType) {
     const coefficientA = Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
     const coefficientB = Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
 
-    const { y: x } = mechanics.collision({
+    const collisionPoint = mechanics.collision({
         a: {
-            initialPoint: a.planePoint.x,
+            initialPoint: aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
             }),
         },
         b: {
-            initialPoint: b.planePoint.x,
+            initialPoint: bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientB * b.vector.speed,
                 angle: b.vector.direction,
             }),
         },
     });
-    const y = linearFunction.execute(fx, x);
+    const y = linearFunction.execute(fx, collisionPoint.y);
     if (!Number.isFinite(y))
         return undefined;
     const { x: timeToCollisionA } = mechanics.collision({
         a: { initialPoint: intersectionPoint.x, speed: 0 },
         b: {
-            initialPoint: a.planePoint.x,
+            initialPoint: aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
@@ -55,7 +58,7 @@ export function collisionFromDifferentFunction({ a, b }: paramsType) {
     const { x: timeToCollisionB } = mechanics.collision({
         a: { initialPoint: intersectionPoint.x, speed: 0 },
         b: {
-            initialPoint: b.planePoint.x,
+            initialPoint: bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * b.vector.speed,
                 angle: b.vector.direction,

@@ -6,10 +6,10 @@ describe('airplanesCloseToEachOtherBusiness', () => {
         expect(
             airplanesCloseToEachOtherBusiness({
                 airplanes: [
-                    { id: '1', planePoint: { x: 10, y: 10 }, vector: { speed: 0, direction: 0 } },
-                    { id: '2', planePoint: { x: 10, y: 20 }, vector: { speed: 0, direction: 0 } },
-                    { id: '3', planePoint: { x: 0, y: 20 }, vector: { speed: 0, direction: 0 } },
-                    { id: '4', planePoint: { x: 2, y: 22 }, vector: { speed: 0, direction: 0 } },
+                    { id: '1', planePoint: { type: 'CARTESIAN', a: 10, b: 10 }, vector: { speed: 0, direction: 0 } },
+                    { id: '2', planePoint: { type: 'CARTESIAN', a: 10, b: 20 }, vector: { speed: 0, direction: 0 } },
+                    { id: '3', planePoint: { type: 'CARTESIAN', a: 0, b: 20 }, vector: { speed: 0, direction: 0 } },
+                    { id: '4', planePoint: { type: 'CARTESIAN', a: 2, b: 22 }, vector: { speed: 0, direction: 0 } },
                 ],
                 maxDistance: 10,
             }),

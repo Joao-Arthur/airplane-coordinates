@@ -1,4 +1,5 @@
 import { mechanics } from '../../../../core/mechanics';
+import { planePoint } from '../../../../core/planePoint';
 import { airplaneType } from '../../models';
 
 type paramsType = {
@@ -7,9 +8,12 @@ type paramsType = {
 }
 
 export function collisionFromInfiniteTangentBothAirplanes({ a, b }: paramsType) {
+    const aAsCartesian = planePoint.toCartesian(a.planePoint);
+    const bAsCartesian = planePoint.toCartesian(b.planePoint);
+
     const { x: timeUntilCollision, y } = mechanics.collision({
-        a: { initialPoint: a.planePoint.y, speed: a.vector.direction === 90 ? a.vector.speed : -a.vector.speed },
-        b: { initialPoint: b.planePoint.y, speed: b.vector.direction === 90 ? b.vector.speed : -b.vector.speed },
+        a: { initialPoint: aAsCartesian.y, speed: a.vector.direction === 90 ? a.vector.speed : -a.vector.speed },
+        b: { initialPoint: bAsCartesian.y, speed: b.vector.direction === 90 ? b.vector.speed : -b.vector.speed },
     });
     if (!Number.isFinite(timeUntilCollision) || !Number.isFinite(y))
         return undefined;
@@ -17,7 +21,7 @@ export function collisionFromInfiniteTangentBothAirplanes({ a, b }: paramsType) 
         a: a.id,
         b: b.id,
         timeUntilCollision,
-        collisionPoint: { x: a.planePoint.x, y },
+        collisionPoint: { x: aAsCartesian.x, y },
         timeDifferenceToPoint: 0,
     } as const;
 }

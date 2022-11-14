@@ -1,4 +1,3 @@
-import { savedAirplaneToDTO } from '../savedAirplaneToDTO';
 import { airplanesInRouteOfCollisionBusiness } from './airplanesInRouteOfCollisionBusiness';
 import { airplanesInRouteOfCollisionParamsType } from './airplanesInRouteOfCollisionParams';
 
@@ -7,9 +6,7 @@ export function airplanesInRouteOfCollisionService({
     airplaneRepository,
     maxTime,
 }: airplanesInRouteOfCollisionParamsType) {
-    const airplanes = airplaneRepository
-        .retrieve()
-        .map(savedAirplaneToDTO);
+    const airplanes = airplaneRepository.retrieve();
     const airplanesInRouteOfCollision = airplanesInRouteOfCollisionBusiness({ airplanes, maxTime });
     if (!airplanesInRouteOfCollision.length)
         return logger.info('Nenhum avião em rota de colisão nesse tempo');

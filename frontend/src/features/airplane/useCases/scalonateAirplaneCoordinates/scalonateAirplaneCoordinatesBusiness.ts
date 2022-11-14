@@ -1,4 +1,5 @@
 import { cartesianPlane } from '../../../../core/cartesianPlane';
+import { planePoint } from '../../../../core/planePoint';
 import { airplaneType } from '../../models';
 
 type paramsType = {
@@ -10,9 +11,9 @@ type paramsType = {
 export function scalonateAirplaneCoordinatesBusiness({ airplane, x, y }: paramsType): airplaneType {
     return {
         ...airplane,
-        planePoint: cartesianPlane.scalonate({
-            point: airplane.planePoint,
+        planePoint: planePoint.fromCartesian(cartesianPlane.scalonate({
+            point: planePoint.toCartesian(airplane.planePoint),
             factor: { x, y },
-        }),
+        })),
     };
 } 

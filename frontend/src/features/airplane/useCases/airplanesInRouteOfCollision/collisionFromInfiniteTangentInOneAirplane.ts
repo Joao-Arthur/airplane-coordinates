@@ -1,6 +1,7 @@
 import { linearFunction } from '../../../../core/linearFunction';
 import { mechanics } from '../../../../core/mechanics';
 import { numberFns } from '../../../../core/numberFns';
+import { planePoint } from '../../../../core/planePoint';
 import { trigonometry } from '../../../../core/trigonometry';
 import { airplaneType } from '../../models';
 
@@ -10,20 +11,22 @@ type paramsType = {
 }
 
 export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) {
-    const fx = linearFunction.fromPoint({ point: a.planePoint, angle: a.vector.direction });
-    const gx = linearFunction.fromPoint({ point: b.planePoint, angle: b.vector.direction });
+    const aAsCartesian = planePoint.toCartesian(a.planePoint);
+    const bAsCartesian = planePoint.toCartesian(b.planePoint);
+    const fx = linearFunction.fromPoint({ point: aAsCartesian, angle: a.vector.direction });
+    const gx = linearFunction.fromPoint({ point: bAsCartesian, angle: b.vector.direction });
     const coefficientA = [90, 270].includes(a.vector.direction) ? 0 : Math.abs(Math.cos(a.vector.direction * Math.PI / 180));
     const coefficientB = [90, 270].includes(b.vector.direction) ? 0 : Math.abs(Math.cos(b.vector.direction * Math.PI / 180));
     const { y: x } = mechanics.collision({
         a: {
-            initialPoint: a.planePoint.x,
+            initialPoint: aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientA * a.vector.speed,
                 angle: a.vector.direction,
             }),
         },
         b: {
-            initialPoint: b.planePoint.x,
+            initialPoint: bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: coefficientB * b.vector.speed,
                 angle: b.vector.direction,
@@ -36,7 +39,7 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
     const { x: timeToCollisionA } = mechanics.collision({
         a: { initialPoint: [90, 270].includes(a.vector.direction) ? y : x, speed: 0 },
         b: {
-            initialPoint: [90, 270].includes(a.vector.direction) ? a.planePoint.y : a.planePoint.x,
+            initialPoint: [90, 270].includes(a.vector.direction) ? aAsCartesian.y : aAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: [90, 270].includes(a.vector.direction) ? a.vector.speed : coefficientA * a.vector.speed,
                 angle: a.vector.direction,
@@ -48,7 +51,7 @@ export function collisionFromInfiniteTangentInOneAirplane({ a, b }: paramsType) 
     const { x: timeToCollisionB } = mechanics.collision({
         a: { initialPoint: [90, 270].includes(b.vector.direction) ? y : x, speed: 0 },
         b: {
-            initialPoint: [90, 270].includes(b.vector.direction) ? b.planePoint.y : b.planePoint.x,
+            initialPoint: [90, 270].includes(b.vector.direction) ? bAsCartesian.y : bAsCartesian.x,
             speed: trigonometry.getValueInEachQuadrant({
                 value: [90, 270].includes(b.vector.direction) ? b.vector.speed : coefficientB * b.vector.speed,
                 angle: b.vector.direction,

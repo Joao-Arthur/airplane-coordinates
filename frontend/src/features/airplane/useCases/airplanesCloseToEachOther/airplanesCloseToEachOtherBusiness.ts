@@ -1,5 +1,6 @@
 import { arrayFns } from '../../../../core/arrayFns';
 import { cartesianPlane } from '../../../../core/cartesianPlane';
+import { planePoint } from '../../../../core/planePoint';
 import { airplaneType } from '../../models';
 
 type paramsType = {
@@ -21,7 +22,10 @@ export function airplanesCloseToEachOtherBusiness({
             ({ a, b }) => ({
                 a: a.id,
                 b: b.id,
-                distance: cartesianPlane.distance(a.planePoint, b.planePoint),
+                distance: cartesianPlane.distance(
+                    planePoint.toCartesian(a.planePoint),
+                    planePoint.toCartesian(b.planePoint),
+                ),
             } as const),
         )
         .filter(({ distance }) => distance <= maxDistance)
