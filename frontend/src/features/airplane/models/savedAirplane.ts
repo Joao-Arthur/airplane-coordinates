@@ -1,10 +1,8 @@
+import { planePointType } from '../../../core/planePoint/planePointType';
+
 export type savedAirplaneType = {
     readonly id: string;
-    readonly planePoint: {
-        readonly type: 'CARTESIAN' | 'POLAR';
-        readonly a: number;
-        readonly b: number;
-    };
+    readonly planePoint: planePointType;
     readonly vector: {
         readonly speed: number;
         readonly direction: number;
