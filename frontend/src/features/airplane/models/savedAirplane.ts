@@ -8,5 +8,5 @@ export type savedAirplaneType = {
     readonly vector: {
         readonly speed: number;
         readonly direction: number;
-    }
+    };
 };

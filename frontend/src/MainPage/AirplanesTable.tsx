@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { IconButton } from '../components/IconButton';
+import { savedAirplaneType } from '../features/airplane/models';
 import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
+import { AirplaneModal } from './AirplaneModal';
 
 export function AirplanesTable() {
+    const [
+        selectedAirplane,
+        setSelectedAirplane,
+    ] = useState<savedAirplaneType | undefined>(undefined);
+
     const airplanes = useAirplaneStore(state => state.airplanes);
     const selectedAirplanes = useAirplaneStore(state => state.selectedAirplanes);
     const selectAirplane = useAirplaneStore(state => state.selectAirplane);
@@ -36,38 +44,43 @@ export function AirplanesTable() {
                                             selectAirplane(airplane.id);
                                         else
                                             unselectAirplane(airplane.id);
-
                                     }}
                                 />
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap'>
+                            <td style={{ width: '12.5%' }} className='px-2 py-1.5 font-medium text-gray-900 whitespace-nowrap'>
                                 {airplane.id}
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.type === 'CARTESIAN' ? airplane.planePoint.a : undefined}
+                            <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'CARTESIAN' ? airplane.planePoint.a.toFixed(2) : undefined}
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.type === 'CARTESIAN' ? airplane.planePoint.b : undefined}
+                            <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'CARTESIAN' ? airplane.planePoint.b.toFixed(2) : undefined}
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.type === 'POLAR' ? airplane.planePoint.a : undefined}
+                            <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'POLAR' ? airplane.planePoint.a.toFixed(2) : undefined}
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.type === 'POLAR' ? airplane.planePoint.b : undefined}
+                            <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
+                                {airplane.planePoint.type === 'POLAR' ? airplane.planePoint.b.toFixed(2) : undefined}
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                            <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
                                 {airplane.vector.speed}
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                            <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
                                 {airplane.vector.direction}
                             </td>
-                            <td style={{ width: '12.5%' }} className='px-4 py-2 text-gray-700 whitespace-nowrap'>
-                                <IconButton><BsFillEyeFill /></IconButton>
+                            <td className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
+                                <IconButton onClick={() => setSelectedAirplane(airplane)}>
+                                    <BsFillEyeFill />
+                                </IconButton>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </div >
+            <AirplaneModal
+                airplane={selectedAirplane}
+                close={() => setSelectedAirplane(undefined)}
+            />
+        </div>
     );
 }

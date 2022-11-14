@@ -8,16 +8,17 @@ export function addAirplaneService({
     airplaneParams,
 }: addAirplaneParamsType) {
     const numberOfAirplanes = airplaneRepository.retrieve().length;
+    const id = uniqueIdentifier();
     try {
         addAirplaneBusiness({
             ...airplaneParams,
-            id: uniqueIdentifier(),
+            id,
             numberOfAirplanes,
             maxNumberOfAirplanes: 10,
         });
         const airplaneToSave = {
             ...airplaneParams,
-            id: uniqueIdentifier(),
+            id,
         };
         airplaneRepository.add(airplaneToSave);
     } catch (error) {
