@@ -2,6 +2,7 @@ import { airplaneType } from '../../../airplane/models';
 import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { pipe } from 'ramda';
 import { radarContextType } from './radarContext';
+import { planePoint } from '../../../../core/planePoint';
 
 const airplaneSize = 50;
 
@@ -22,5 +23,5 @@ export function drawAirplanes({
                 size: airplaneSize,
             }),
             airportDimensions => drawContext.drawImage(airportDimensions, '/airplane.png', airplane.vector.direction),
-        )(airplane.planePoint);
+        )(planePoint.toCartesian(airplane.planePoint));
 }
