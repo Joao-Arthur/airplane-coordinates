@@ -1,1 +1,0 @@
-export { mechanics } from './mechanics'; 

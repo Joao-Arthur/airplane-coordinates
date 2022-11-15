@@ -1,1 +1,0 @@
-export { findInsersectionPoint } from './findInsersectionPoint';

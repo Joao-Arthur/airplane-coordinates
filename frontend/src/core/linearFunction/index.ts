@@ -1,1 +1,0 @@
-export { linearFunction } from './linearFunction';
