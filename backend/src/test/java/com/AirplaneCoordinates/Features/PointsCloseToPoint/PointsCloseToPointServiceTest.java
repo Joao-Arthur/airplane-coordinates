@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
@@ -21,7 +22,11 @@ public final class PointsCloseToPointServiceTest {
         points.add(new PlanePointWithId("4", PlanePoint.from(Plane.CARTESIAN, 10, 10)));
 
         final var actual = new PointsCloseToPointService(
-            new PointsCloseToPointInputDTO(points, PreciseDecimal.from(10))
+            new PointsCloseToPointInputDTO(
+                points,
+                CartesianPoint.from(0, 0),
+                PreciseDecimal.from(10)
+            )
         ).execute();
 
         final var expectedItems = new ArrayList<PointCloseToPointOutputDTO>();

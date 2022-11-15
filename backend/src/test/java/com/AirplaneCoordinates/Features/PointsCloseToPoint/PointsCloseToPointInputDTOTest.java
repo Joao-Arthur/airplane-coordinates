@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
@@ -20,7 +21,11 @@ public final class PointsCloseToPointInputDTOTest {
         points.add(new PlanePointWithId("3", PlanePoint.from(Plane.CARTESIAN, -2, -2)));
         points.add(new PlanePointWithId("4", PlanePoint.from(Plane.CARTESIAN, 10, 10)));
 
-        final var dto = new PointsCloseToPointInputDTO(points, PreciseDecimal.from(10));
+        final var dto = new PointsCloseToPointInputDTO(
+            points,
+            CartesianPoint.from(5, 7),
+            PreciseDecimal.from(10)
+        );
 
         assertEquals(
             dto.toString(),
@@ -31,6 +36,7 @@ public final class PointsCloseToPointInputDTOTest {
             "        { id: 3, point: (CARTESIAN, -2, -2) },\n" +
             "        { id: 4, point: (CARTESIAN, 10, 10) },\n" +
             "    ],\n" +
+            "    point: (5, 7),\n" +
             "    maxDistance: 10\n" +
             "}"
         );

@@ -24,7 +24,7 @@ public final class PointsCloseToPointService {
                         point.id,
                         CartesianPoint.distance(
                             point.point.toCartesian(),
-                            CartesianPoint.from(0, 0)
+                            this.dto.point
                         )
                     )
                 )
