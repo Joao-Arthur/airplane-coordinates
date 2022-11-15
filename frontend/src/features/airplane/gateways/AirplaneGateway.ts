@@ -42,14 +42,14 @@ export type gatewayRotateAirplaneCoordinatesParamsType = {
 
 export type gatewayScalonateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly x: number;
-    readonly y: number;
+    readonly x: string;
+    readonly y: string;
 };
 
 export type gatewayTranslateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly x: number;
-    readonly y: number;
+    readonly x: string;
+    readonly y: string;
 };
 
 export class AirplaneGateway {

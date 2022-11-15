@@ -7,15 +7,15 @@ import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
 import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 type fieldsType = {
-    readonly x: number;
-    readonly y: number;
+    readonly x: string;
+    readonly y: string;
 }
 
 export function Scalonate() {
     const { register, handleSubmit } = useForm<fieldsType>({
         defaultValues: {
-            x: 1,
-            y: 1,
+            x: '1',
+            y: '1',
         },
     });
     const { scalonateCoordinates } = useAirplanes();
@@ -28,8 +28,8 @@ export function Scalonate() {
     return (
         <Form name='Escalonar' onSubmit={handleSubmit(onHandleSubmit)}>
             <Group>
-                <Input {...register('x', { valueAsNumber: true, required: true })} title='X' />
-                <Input {...register('y', { valueAsNumber: true, required: true })} title='Y' />
+                <Input {...register('x', { required: true })} title='X' />
+                <Input {...register('y', { required: true })} title='Y' />
             </Group>
             <Button>Executar</Button>
         </Form>

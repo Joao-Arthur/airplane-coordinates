@@ -1,8 +1,7 @@
-import { postFetch } from '../../../../core/httpRequest/httpRequest';
-import { translateAirplaneCoordinatesBusiness } from './translateAirplaneCoordinatesBusiness';
+import { backend } from '../../../backend/backend';
 import { translateAirplaneCoordinatesParamsType } from './translateAirplaneCoordinatesParams';
 
-export function translateAirplaneCoordinatesService({
+export async function translateAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
@@ -15,19 +14,11 @@ export function translateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
-        postFetch('arithmetic/translate', {
+        const result = await backend.translate({
             point: airplane.planePoint,
-            factor: {
-                x: x.toString(),
-                y: y.toString(),
-            },
+            factor: { x, y },
         });
-        const updatedAirplane = translateAirplaneCoordinatesBusiness({
-            airplane,
-            x,
-            y,
-        });
-        airplaneRepository.update(updatedAirplane);
+        airplaneRepository.update({ ...airplane, planePoint: result.point });
     }
     logger.success('Transformação realizada com sucesso!');
 }

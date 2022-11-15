@@ -1,7 +1,7 @@
-import { scalonateAirplaneCoordinatesBusiness } from './scalonateAirplaneCoordinatesBusiness';
+import { backend } from '../../../backend/backend';
 import { scalonateAirplaneCoordinatesParamsType } from './scalonateAirplaneCoordinatesParams';
 
-export function scalonateAirplaneCoordinatesService({
+export async function scalonateAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
@@ -14,12 +14,11 @@ export function scalonateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
-        const updatedAirplane = scalonateAirplaneCoordinatesBusiness({
-            airplane,
-            x,
-            y,
+        const result = await backend.scalonate({
+            point: airplane.planePoint,
+            factor: { x, y },
         });
-        airplaneRepository.update(updatedAirplane);
+        airplaneRepository.update({ ...airplane, planePoint: result.point });
     }
     logger.success('Escalonamento realizado com sucesso!');
 }

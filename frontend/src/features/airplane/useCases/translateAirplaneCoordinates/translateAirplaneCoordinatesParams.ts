@@ -6,6 +6,6 @@ export type translateAirplaneCoordinatesParamsType = {
     readonly logger: loggerRepositoryType;
     readonly airplaneRepository: airplaneRepositoryType;
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly x: number;
-    readonly y: number;
+    readonly x: string;
+    readonly y: string;
 };

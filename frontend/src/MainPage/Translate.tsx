@@ -7,15 +7,15 @@ import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
 import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 type fieldsType = {
-    readonly x: number;
-    readonly y: number;
+    readonly x: string;
+    readonly y: string;
 }
 
 export function Translate() {
     const { register, handleSubmit } = useForm<fieldsType>({
         defaultValues: {
-            x: 0,
-            y: 0,
+            x: '0',
+            y: '0',
         },
     });
     const { translateCoordinates } = useAirplanes();
@@ -28,8 +28,8 @@ export function Translate() {
     return (
         <Form name='Transladar' onSubmit={handleSubmit(onHandleSubmit)}>
             <Group>
-                <Input {...register('x', { valueAsNumber: true, required: true })} title='X' />
-                <Input {...register('y', { valueAsNumber: true, required: true })} title='Y' />
+                <Input {...register('x', { required: true })} title='X' />
+                <Input {...register('y', { required: true })} title='Y' />
             </Group>
             <Button>Executar</Button>
         </Form>
