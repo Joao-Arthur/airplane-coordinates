@@ -27,7 +27,7 @@ public final class PointsInRouteOfCollisionOutputDTOPlain {
         return new PointsInRouteOfCollisionOutputDTOPlain(
             dto.points
                 .stream()
-                .map(point -> PointInRouteOfCollisionOutputDTOPlain.fromObject(point))
+                .map(PointInRouteOfCollisionOutputDTOPlain::fromObject)
                 .collect(Collectors.toList())
         );
     }

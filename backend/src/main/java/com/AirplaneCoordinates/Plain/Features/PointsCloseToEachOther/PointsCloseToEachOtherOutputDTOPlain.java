@@ -27,7 +27,7 @@ public final class PointsCloseToEachOtherOutputDTOPlain {
         return new PointsCloseToEachOtherOutputDTOPlain(
             dto.points
                 .stream()
-                .map(point -> PointCloseToEachOtherOutputDTOPlain.fromObject(point))
+                .map(PointCloseToEachOtherOutputDTOPlain::fromObject)
                 .collect(Collectors.toList())
         );
     }
