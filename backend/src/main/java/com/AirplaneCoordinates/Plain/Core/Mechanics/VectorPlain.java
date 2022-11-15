@@ -17,4 +17,11 @@ public final class VectorPlain {
     public final Vector toObject() {
         return Vector.from(direction, speed);
     }
+
+    public static final VectorPlain fromObject(final Vector vector) {
+        return new VectorPlain(
+            vector.direction.value,
+            vector.speed.value
+        );
+    }
 }

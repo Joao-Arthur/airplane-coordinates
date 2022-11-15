@@ -20,4 +20,22 @@ public final class PlanePointPlainTest {
             ).toString()
         );
     }
+
+    @Test
+    public final void fromObject() {
+        assertEquals(
+            PlanePointPlain.fromObject(
+                PlanePoint.from(
+                    Plane.POLAR,
+                    PreciseDecimal.from("1.11"),
+                    PreciseDecimal.from("2.22")
+                )
+            ).toObject().toString(),
+            PlanePoint.from(
+                Plane.POLAR,
+                PreciseDecimal.from("1.11"),
+                PreciseDecimal.from("2.22")
+            ).toString()
+        );
+    }
 }

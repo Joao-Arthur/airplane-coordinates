@@ -25,4 +25,12 @@ public final class PlanePointPlain {
             this.b
         );
     }
+
+    public static final PlanePointPlain fromObject(final PlanePoint planePoint) {
+        return new PlanePointPlain(
+            planePoint.planeType,
+            planePoint.a.value,
+            planePoint.b.value
+        );
+    }
 }

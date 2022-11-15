@@ -18,4 +18,20 @@ public final class VectorPlainTest {
             ).toString()
         );
     }
+
+    @Test
+    public final void fromObject() {
+        assertEquals(
+            VectorPlain.fromObject(
+                Vector.from(
+                    PreciseDecimal.from("1.11"),
+                    PreciseDecimal.from("2.22")
+                )
+            ).toObject().toString(),
+            Vector.from(
+                PreciseDecimal.from("1.11"),
+                PreciseDecimal.from("2.22")
+            ).toString()
+        );
+    }
 }

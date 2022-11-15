@@ -18,4 +18,20 @@ public final class CartesianPointPlainTest {
             ).toString()
         );
     }
+
+    @Test
+    public final void fromObject() {
+        assertEquals(
+            CartesianPointPlain.fromObject(
+                CartesianPoint.from(
+                    PreciseDecimal.from("1.11"),
+                    PreciseDecimal.from("2.22")
+                )
+            ).toObject().toString(),
+            CartesianPoint.from(
+                PreciseDecimal.from("1.11"),
+                PreciseDecimal.from("2.22")
+            ).toString()
+        );
+    }
 }

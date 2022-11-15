@@ -17,4 +17,11 @@ public final class CartesianPointPlain {
     public final CartesianPoint toObject() {
         return CartesianPoint.from(this.x, this.y);
     }
+
+    public static final CartesianPointPlain fromObject(final CartesianPoint cartesianPoint) {
+        return new CartesianPointPlain(
+            cartesianPoint.x.value,
+            cartesianPoint.y.value
+        );
+    }
 }
