@@ -1,6 +1,5 @@
 package com.AirplaneCoordinates.Features.PointsCloseToEachOther;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import com.AirplaneCoordinates.Core.Combination.Combination;
@@ -32,12 +31,12 @@ public final class PointsCloseToEachOtherService {
                     )
                 )
                 .filter(point ->
-                    point.distanceFromPoint.smallerOrEquals(this.dto.maxDistance)
+                    point.distance.smallerOrEquals(this.dto.maxDistance)
                 )
                 .sorted((a, b) ->
                     PreciseDecimal.compareAsc(
-                        a.distanceFromPoint,
-                        b.distanceFromPoint
+                        a.distance,
+                        b.distance
                     )
                 )
                 .collect(Collectors.toList())

@@ -20,6 +20,6 @@ export async function airplanesCloseToAirportService({
     const pointsToLog = [...closeToAirport.points].reverse();
     for (const point of pointsToLog)
         logger.info(
-            `Avião "${point.id}" a ${point.distanceFromPoint}m do aeroporto`,
+            `Avião "${point.id}" a ${point.distanceFromPoint}km do aeroporto`,
         );
 }

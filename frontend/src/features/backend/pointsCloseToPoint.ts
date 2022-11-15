@@ -1,3 +1,4 @@
+import { backendCartesianPointType } from '../../core/cartesianPlane/backendCartesianPoint';
 import { postFetch } from '../../core/httpRequest/httpRequest';
 import { planePointType } from '../../core/planePoint/planePointType';
 
@@ -6,10 +7,7 @@ type pointsCloseToPointIn = {
         id: string;
         point: planePointType;
     }[];
-    readonly point: {
-        readonly x: string;
-        readonly y: string;
-    };
+    readonly point: backendCartesianPointType;
     readonly maxDistance: string;
 }
 

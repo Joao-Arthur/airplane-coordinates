@@ -6,23 +6,23 @@ import com.AirplaneCoordinates.Features.PointsCloseToEachOther.PointCloseToEachO
 public final class PointCloseToEachOtherOutputDTOPlain {
     public final String a;
     public final String b;
-    public final String distanceFromPoint;
+    public final String distance;
 
     public PointCloseToEachOtherOutputDTOPlain(
         final String a,
         final String b,
-        final String distanceFromPoint
+        final String distance
     ) {
         this.a = a;
         this.b = b;
-        this.distanceFromPoint = distanceFromPoint;
+        this.distance = distance;
     }
 
     public final PointCloseToEachOtherOutputDTO toObject() {
         return new PointCloseToEachOtherOutputDTO(
             this.a,
             this.b,
-            PreciseDecimal.from(this.distanceFromPoint)
+            PreciseDecimal.from(this.distance)
         );
     }
 
@@ -30,7 +30,7 @@ public final class PointCloseToEachOtherOutputDTOPlain {
         return new PointCloseToEachOtherOutputDTOPlain(
             dto.a,
             dto.b,
-            dto.distanceFromPoint.value
+            dto.distance.value
         );
     }
 }

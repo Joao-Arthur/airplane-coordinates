@@ -1,3 +1,4 @@
+import { backendCartesianPointType } from '../../../core/cartesianPlane/backendCartesianPoint';
 import { LoggerImplementationProxy } from '../../logger/adapters/LoggerImplementationProxy';
 import { messageType } from '../../logger/model';
 import { uniqueIdentifierBig } from '../../uniqueIdentifier/adapters/uniqueIdentifierBig';
@@ -36,26 +37,17 @@ export type gatewayAirplanesInRouteOfCollisionParamsType = {
 export type gatewayRotateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
     readonly angle: string;
-    readonly centerOfRotation: {
-        readonly x: string;
-        readonly y: string;
-    }
+    readonly centerOfRotation: backendCartesianPointType;
 };
 
 export type gatewayScalonateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly factor: {
-        readonly x: string;
-        readonly y: string;
-    }
+    readonly factor: backendCartesianPointType;
 };
 
 export type gatewayTranslateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly factor: {
-        readonly x: string;
-        readonly y: string;
-    }
+    readonly factor: backendCartesianPointType;
 };
 
 export class AirplaneGateway {

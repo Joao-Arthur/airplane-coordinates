@@ -19,6 +19,6 @@ export async function airplanesCloseToEachOtherService({
     const pointsToLog = [...closeToEachOther.points].reverse();
     for (const point of pointsToLog)
         logger.info(
-            `Avião "${point.a}" e "${point.b}" a ${point.distanceFromPoint}m de distância entre si`,
+            `Avião "${point.a}" e "${point.b}" a ${point.distance}km de distância entre si`,
         );
 }

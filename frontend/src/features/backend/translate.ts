@@ -1,12 +1,10 @@
+import { backendCartesianPointType } from '../../core/cartesianPlane/backendCartesianPoint';
 import { postFetch } from '../../core/httpRequest/httpRequest';
 import { planePointType } from '../../core/planePoint/planePointType';
 
 type translateIn = {
     readonly point: planePointType;
-    readonly factor: {
-        x: string;
-        y: string;
-    };
+    readonly factor: backendCartesianPointType;
 }
 
 type translateOut = {

@@ -13,7 +13,7 @@ type pointsCloseToEachOtherOut = {
     readonly points: {
         a: string;
         b: string;
-        distanceFromPoint: string;
+        distance: string;
     }[];
 }
 

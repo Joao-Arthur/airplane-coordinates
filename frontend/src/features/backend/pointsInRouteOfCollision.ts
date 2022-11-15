@@ -1,3 +1,4 @@
+import { backendCartesianPointType } from '../../core/cartesianPlane/backendCartesianPoint';
 import { postFetch } from '../../core/httpRequest/httpRequest';
 import { planePointType } from '../../core/planePoint/planePointType';
 
@@ -14,10 +15,7 @@ type pointsCloseToPointOut = {
         a: string;
         b: string;
         timeUntilCollision: string;
-        collisionPoint: {
-            readonly x: string;
-            readonly y: string;
-        };
+        collisionPoint: backendCartesianPointType;
         timeDifferenceToPoint: string;
     }[];
 }

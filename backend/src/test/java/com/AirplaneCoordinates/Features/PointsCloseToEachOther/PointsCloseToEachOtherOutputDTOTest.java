@@ -23,10 +23,10 @@ public final class PointsCloseToEachOtherOutputDTOTest {
             dto.toString(),
             "{\n" +
             "    points: [\n" +
-            "        { a: 1, b: 2, distanceFromPoint: 1.11 },\n" +
-            "        { a: 2, b: 3, distanceFromPoint: 2.34 },\n" +
-            "        { a: 3, b: 4, distanceFromPoint: 4.57 },\n" +
-            "        { a: 4, b: 5, distanceFromPoint: 6.22 },\n" +
+            "        { a: 1, b: 2, distance: 1.11 },\n" +
+            "        { a: 2, b: 3, distance: 2.34 },\n" +
+            "        { a: 3, b: 4, distance: 4.57 },\n" +
+            "        { a: 4, b: 5, distance: 6.22 },\n" +
             "    ]\n" +
             "}"
         );

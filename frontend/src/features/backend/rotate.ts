@@ -1,12 +1,10 @@
+import { backendCartesianPointType } from '../../core/cartesianPlane/backendCartesianPoint';
 import { postFetch } from '../../core/httpRequest/httpRequest';
 import { planePointType } from '../../core/planePoint/planePointType';
 
 type rotateIn = {
     readonly point: planePointType;
-    readonly centerOfRotation: {
-        x: string;
-        y: string;
-    }
+    readonly centerOfRotation: backendCartesianPointType;
     readonly angle: string;
 }
 
