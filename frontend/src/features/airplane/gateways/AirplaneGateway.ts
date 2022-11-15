@@ -22,11 +22,11 @@ export type gatewayDeleteAirplaneParamsType = {
 };
 
 export type gatewayAirplanesCloseToAirportParamsType = {
-    readonly maxDistance: number;
+    readonly maxDistance: string;
 };
 
 export type gatewayAirplanesCloseToEachOtherParamsType = {
-    readonly maxDistance: number;
+    readonly maxDistance: string;
 };
 
 export type gatewayAirplanesInRouteOfCollisionParamsType = {

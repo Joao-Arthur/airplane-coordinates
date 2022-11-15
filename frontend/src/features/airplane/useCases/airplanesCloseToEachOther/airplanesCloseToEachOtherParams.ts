@@ -4,5 +4,5 @@ import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 export type airplanesCloseToEachOtherParamsType = {
     readonly logger: loggerRepositoryType;
     readonly airplaneRepository: airplaneRepositoryType;
-    readonly maxDistance: number;
+    readonly maxDistance: string;
 };

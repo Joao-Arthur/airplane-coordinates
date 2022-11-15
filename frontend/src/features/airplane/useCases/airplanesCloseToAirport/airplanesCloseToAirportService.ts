@@ -1,17 +1,25 @@
-import { airplanesCloseToAirportBusiness } from './airplanesCloseToAirportBusiness';
+import { backend } from '../../../backend/backend';
 import { airplanesCloseToAirportParamsType } from './airplanesCloseToAirportParams';
 
-export function airplanesCloseToAirportService({
+export async function airplanesCloseToAirportService({
     logger,
     airplaneRepository,
     maxDistance,
 }: airplanesCloseToAirportParamsType) {
     const airplanes = airplaneRepository.retrieve();
-    const closeAirplanes = airplanesCloseToAirportBusiness({ airplanes, maxDistance });
-    if (!closeAirplanes.length)
+    const closeAirplanes = await backend.pointsCloseToPoint({
+        points: airplanes.map(airplane => ({
+            id: airplane.id,
+            point: airplane.planePoint,
+        })),
+        point: { x: '0', y: '0' },
+        maxDistance,
+    });
+    if (!closeAirplanes.points.length)
         return logger.info('Nenhum avião encontrado nessa distância');
-    for (const airplane of closeAirplanes)
+    const pointsToLog = [...closeAirplanes.points].reverse();
+    for (const point of pointsToLog)
         logger.info(
-            `Avião "${airplane.id}" a ${airplane.distanceFromAirport}m do aeroporto`,
+            `Avião "${point.id}" a ${point.distanceFromPoint}m do aeroporto`,
         );
 }

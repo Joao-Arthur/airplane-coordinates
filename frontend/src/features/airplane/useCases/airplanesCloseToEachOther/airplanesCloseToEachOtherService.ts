@@ -1,17 +1,24 @@
-import { airplanesCloseToEachOtherBusiness } from './airplanesCloseToEachOtherBusiness';
+import { backend } from '../../../backend/backend';
 import { airplanesCloseToEachOtherParamsType } from './airplanesCloseToEachOtherParams';
 
-export function airplanesCloseToEachOtherService({
+export async function airplanesCloseToEachOtherService({
     logger,
     airplaneRepository,
     maxDistance,
 }: airplanesCloseToEachOtherParamsType) {
     const airplanes = airplaneRepository.retrieve();
-    const closeAirplanes = airplanesCloseToEachOtherBusiness({ airplanes, maxDistance });
-    if (!closeAirplanes.length)
+    const closeAirplanes = await backend.pointsCloseToEachOther({
+        points: airplanes.map(airplane => ({
+            id: airplane.id,
+            point: airplane.planePoint,
+        })),
+        maxDistance,
+    });
+    if (!closeAirplanes.points.length)
         return logger.info('Nenhum avião encontrado nessa distância');
-    for (const airplane of closeAirplanes)
+    const pointsToLog = [...closeAirplanes.points].reverse();
+    for (const point of pointsToLog)
         logger.info(
-            `Avião "${airplane.a}" e "${airplane.b}" a ${airplane.distance}m de distância entre si`,
+            `Avião "${point.a}" e "${point.b}" a ${point.distanceFromPoint}m de distância entre si`,
         );
 }
