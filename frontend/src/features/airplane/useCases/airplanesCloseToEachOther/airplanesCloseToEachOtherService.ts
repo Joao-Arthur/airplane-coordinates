@@ -7,16 +7,16 @@ export async function airplanesCloseToEachOtherService({
     maxDistance,
 }: airplanesCloseToEachOtherParamsType) {
     const airplanes = airplaneRepository.retrieve();
-    const closeAirplanes = await backend.pointsCloseToEachOther({
+    const closeToEachOther = await backend.pointsCloseToEachOther({
         points: airplanes.map(airplane => ({
             id: airplane.id,
             point: airplane.planePoint,
         })),
         maxDistance,
     });
-    if (!closeAirplanes.points.length)
+    if (!closeToEachOther.points.length)
         return logger.info('Nenhum avião encontrado nessa distância');
-    const pointsToLog = [...closeAirplanes.points].reverse();
+    const pointsToLog = [...closeToEachOther.points].reverse();
     for (const point of pointsToLog)
         logger.info(
             `Avião "${point.a}" e "${point.b}" a ${point.distanceFromPoint}m de distância entre si`,

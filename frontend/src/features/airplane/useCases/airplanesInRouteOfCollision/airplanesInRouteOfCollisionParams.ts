@@ -4,5 +4,5 @@ import { airplaneRepositoryType } from '../../ports/airplaneRepository';
 export type airplanesInRouteOfCollisionParamsType = {
     readonly logger: loggerRepositoryType;
     readonly airplaneRepository: airplaneRepositoryType;
-    readonly maxTime: number;
+    readonly maxTime: string;
 };

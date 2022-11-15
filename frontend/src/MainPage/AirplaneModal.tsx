@@ -59,7 +59,7 @@ export function AirplaneModal({
             <div className='flex-row'>
                 <div className='flex px-2 py-1 bg-slate-100'>
                     <div className="text-lg w-1/5">Id</div>
-                    <div>{airplane?.id}</div>
+                    <div className='min-w-0 overflow-auto'>{airplane?.id}</div>
                 </div>
                 <div className='flex px-2 py-1'>
                     <div className="text-lg w-1/5">Coordenadas</div>
@@ -67,19 +67,19 @@ export function AirplaneModal({
                 </div>
                 <div className='flex px-2 py-1 bg-slate-100'>
                     <div className="text-lg w-1/5">{getLabelByType('X', 'Raio')}</div>
-                    <div>{airplane?.planePoint.a}</div>
+                    <div className='min-w-0 overflow-auto'>{airplane?.planePoint.a}</div>
                 </div>
                 <div className='flex px-2 py-1'>
                     <div className="text-lg w-1/5">{getLabelByType('Y', 'Ângulo')}</div>
-                    <div>{airplane?.planePoint.b}</div>
+                    <div className='min-w-0 overflow-auto'>{airplane?.planePoint.b}</div>
                 </div>
                 <div className='flex px-2 py-1 bg-slate-100'>
                     <div className="text-lg w-1/5">Direção</div>
-                    <div>{airplane?.vector.direction}</div>
+                    <div className='min-w-0 overflow-auto'>{airplane?.vector.direction}</div>
                 </div>
                 <div className='flex px-2 py-1'>
                     <div className="text-lg w-1/5">Velocidade</div>
-                    <div>{airplane?.vector.speed}</div>
+                    <div className='min-w-0 overflow-auto'>{airplane?.vector.speed}</div>
                 </div>
             </div>
         </Modal>

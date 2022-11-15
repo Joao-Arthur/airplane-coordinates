@@ -5,13 +5,13 @@ import { Input } from '../components/Input';
 import { useAirplanes } from '../integrations/airplane/useAirplanes';
 
 type fieldsType = {
-    readonly maxTime: number;
+    readonly maxTime: string;
 }
 
 export function InRouteOfCollision() {
     const { register, handleSubmit } = useForm<fieldsType>({
         defaultValues: {
-            maxTime: 0,
+            maxTime: '0',
         },
     });
     const { getInRouteOfCollision } = useAirplanes();
@@ -22,7 +22,7 @@ export function InRouteOfCollision() {
 
     return (
         <Form name='Aviões em rota de colisão' onSubmit={handleSubmit(onHandleSubmit)}>
-            <Input {...register('maxTime', { min: '0', valueAsNumber: true, required: true })} title='Tempo mínimo' />
+            <Input {...register('maxTime', { min: '0', required: true })} title='Tempo mínimo' />
             <Button>Calcular</Button>
         </Form>
     );

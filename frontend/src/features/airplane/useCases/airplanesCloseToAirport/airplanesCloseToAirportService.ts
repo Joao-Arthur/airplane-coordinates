@@ -7,7 +7,7 @@ export async function airplanesCloseToAirportService({
     maxDistance,
 }: airplanesCloseToAirportParamsType) {
     const airplanes = airplaneRepository.retrieve();
-    const closeAirplanes = await backend.pointsCloseToPoint({
+    const closeToAirport = await backend.pointsCloseToPoint({
         points: airplanes.map(airplane => ({
             id: airplane.id,
             point: airplane.planePoint,
@@ -15,9 +15,9 @@ export async function airplanesCloseToAirportService({
         point: { x: '0', y: '0' },
         maxDistance,
     });
-    if (!closeAirplanes.points.length)
+    if (!closeToAirport.points.length)
         return logger.info('Nenhum avião encontrado nessa distância');
-    const pointsToLog = [...closeAirplanes.points].reverse();
+    const pointsToLog = [...closeToAirport.points].reverse();
     for (const point of pointsToLog)
         logger.info(
             `Avião "${point.id}" a ${point.distanceFromPoint}m do aeroporto`,

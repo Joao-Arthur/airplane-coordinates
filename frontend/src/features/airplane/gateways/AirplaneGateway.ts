@@ -30,7 +30,7 @@ export type gatewayAirplanesCloseToEachOtherParamsType = {
 };
 
 export type gatewayAirplanesInRouteOfCollisionParamsType = {
-    readonly maxTime: number;
+    readonly maxTime: string;
 };
 
 export type gatewayRotateAirplaneCoordinatesParamsType = {
