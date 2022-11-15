@@ -2,7 +2,7 @@ package com.AirplaneCoordinates.Features.Rotate;
 
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
-public class RotateOutputDTO {
+public final class RotateOutputDTO {
     public final PlanePoint point;
 
     public RotateOutputDTO(final PlanePoint point) {

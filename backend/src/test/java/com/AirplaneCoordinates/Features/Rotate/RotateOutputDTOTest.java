@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
-public class RotateOutputDTOTest {
+public final class RotateOutputDTOTest {
     @Test
     public final void toStringTest() {
         assertEquals(

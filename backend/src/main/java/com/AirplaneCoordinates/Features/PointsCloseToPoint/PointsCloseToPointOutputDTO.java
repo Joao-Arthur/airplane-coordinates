@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.AirplaneCoordinates.Core.Serialization.Serializer;
 
-public class PointsCloseToPointOutputDTO {
+public final class PointsCloseToPointOutputDTO {
     public final List<PointCloseToPointOutputDTO> points;
 
     public PointsCloseToPointOutputDTO(

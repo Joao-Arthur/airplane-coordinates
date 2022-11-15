@@ -2,7 +2,7 @@ package com.AirplaneCoordinates.Features.Scalonate;
 
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 
-public class ScalonateOutputDTO {
+public final class ScalonateOutputDTO {
     public final PlanePoint point;
 
     public ScalonateOutputDTO(final PlanePoint point) {
