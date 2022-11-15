@@ -35,21 +35,27 @@ export type gatewayAirplanesInRouteOfCollisionParamsType = {
 
 export type gatewayRotateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly angle: number;
-    readonly centerOfRotationX: number;
-    readonly centerOfRotationY: number;
+    readonly angle: string;
+    readonly centerOfRotation: {
+        readonly x: string;
+        readonly y: string;
+    }
 };
 
 export type gatewayScalonateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly x: string;
-    readonly y: string;
+    readonly factor: {
+        readonly x: string;
+        readonly y: string;
+    }
 };
 
 export type gatewayTranslateAirplaneCoordinatesParamsType = {
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly x: string;
-    readonly y: string;
+    readonly factor: {
+        readonly x: string;
+        readonly y: string;
+    }
 };
 
 export class AirplaneGateway {
@@ -101,44 +107,38 @@ export class AirplaneGateway {
     public rotateAirplanesCoordinates({
         selectedIds,
         angle,
-        centerOfRotationX,
-        centerOfRotationY,
+        centerOfRotation,
     }: gatewayRotateAirplaneCoordinatesParamsType) {
         rotateAirplaneCoordinatesService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
             selectedIds,
             angle,
-            centerOfRotationX,
-            centerOfRotationY,
+            centerOfRotation,
         });
     }
 
     public scalonateAirplanesCoordinates({
         selectedIds,
-        x,
-        y,
+        factor,
     }: gatewayScalonateAirplaneCoordinatesParamsType) {
         scalonateAirplaneCoordinatesService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
             selectedIds,
-            x,
-            y,
+            factor,
         });
     }
 
     public translateAirplanesCoordinates({
         selectedIds,
-        x,
-        y,
+        factor,
     }: gatewayTranslateAirplaneCoordinatesParamsType) {
         translateAirplaneCoordinatesService({
             logger: this.logger,
             airplaneRepository: this.airplaneRepository,
             selectedIds,
-            x,
-            y,
+            factor,
         });
     }
 

@@ -1,13 +1,12 @@
-import { rotateAirplaneCoordinatesBusiness } from './rotateAirplaneCoordinatesBusiness';
+import { backend } from '../../../backend/backend';
 import { rotateAirplaneCoordinatesParamsType } from './rotateAirplaneCoordinatesParams';
 
-export function rotateAirplaneCoordinatesService({
+export async function rotateAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
     angle,
-    centerOfRotationX,
-    centerOfRotationY,
+    centerOfRotation,
 }: rotateAirplaneCoordinatesParamsType) {
     if (!selectedIds.length)
         return logger.warn('É necessário selecionar ao menos um avião!');
@@ -15,13 +14,12 @@ export function rotateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
-        const updatedAirplane = rotateAirplaneCoordinatesBusiness({
-            airplane,
+        const result = await backend.rotate({
+            point: airplane.planePoint,
             angle,
-            centerOfRotationX,
-            centerOfRotationY,
+            centerOfRotation,
         });
-        airplaneRepository.update(updatedAirplane);
+        airplaneRepository.update({ ...airplane, planePoint: result.point });
     }
     logger.success('Rotação realizada com sucesso!');
 }

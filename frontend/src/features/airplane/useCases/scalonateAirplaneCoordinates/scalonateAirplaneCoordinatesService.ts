@@ -5,8 +5,7 @@ export async function scalonateAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
-    x,
-    y,
+    factor,
 }: scalonateAirplaneCoordinatesParamsType) {
     if (!selectedIds.length)
         return logger.warn('É necessário selecionar ao menos um avião!');
@@ -16,7 +15,7 @@ export async function scalonateAirplaneCoordinatesService({
     for (const airplane of airplanes) {
         const result = await backend.scalonate({
             point: airplane.planePoint,
-            factor: { x, y },
+            factor,
         });
         airplaneRepository.update({ ...airplane, planePoint: result.point });
     }

@@ -22,7 +22,7 @@ export function Scalonate() {
     const selectedIds = useAirplaneStore(state => state.selectedAirplanes);
 
     function onHandleSubmit({ x, y }: fieldsType) {
-        scalonateCoordinates({ selectedIds, x, y });
+        scalonateCoordinates({ selectedIds, factor: { x, y } });
     }
 
     return (

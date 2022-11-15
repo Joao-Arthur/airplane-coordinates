@@ -6,7 +6,9 @@ export type rotateAirplaneCoordinatesParamsType = {
     readonly logger: loggerRepositoryType;
     readonly airplaneRepository: airplaneRepositoryType;
     readonly selectedIds: readonly airplaneType['id'][];
-    readonly angle: number;
-    readonly centerOfRotationX: number;
-    readonly centerOfRotationY: number;
+    readonly angle: string;
+    readonly centerOfRotation: {
+        readonly x: string;
+        readonly y: string;
+    };
 };

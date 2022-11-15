@@ -5,8 +5,7 @@ export async function translateAirplaneCoordinatesService({
     logger,
     airplaneRepository,
     selectedIds,
-    x,
-    y,
+    factor,
 }: translateAirplaneCoordinatesParamsType) {
     if (!selectedIds.length)
         return logger.warn('É necessário selecionar ao menos um avião!');
@@ -16,7 +15,7 @@ export async function translateAirplaneCoordinatesService({
     for (const airplane of airplanes) {
         const result = await backend.translate({
             point: airplane.planePoint,
-            factor: { x, y },
+            factor,
         });
         airplaneRepository.update({ ...airplane, planePoint: result.point });
     }

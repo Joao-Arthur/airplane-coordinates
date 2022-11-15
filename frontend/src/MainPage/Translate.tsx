@@ -22,7 +22,7 @@ export function Translate() {
     const selectedIds = useAirplaneStore(state => state.selectedAirplanes);
 
     function onHandleSubmit({ x, y }: fieldsType) {
-        translateCoordinates({ selectedIds, x, y });
+        translateCoordinates({ selectedIds, factor: { x, y } });
     }
 
     return (
