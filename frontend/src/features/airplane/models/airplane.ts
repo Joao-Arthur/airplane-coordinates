@@ -3,6 +3,6 @@ import { vectorType } from '../../../core/vector/vector';
 
 export type airplaneType = {
     readonly id: string;
-    readonly planePoint: planePointType;
+    readonly point: planePointType;
     readonly vector: vectorType;
 };

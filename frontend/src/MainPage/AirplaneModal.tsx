@@ -27,7 +27,7 @@ export function AirplaneModal({
     close,
 }: propsType) {
     function getLabelByType(cartesianLabel: string, polarLabel: string) {
-        switch (airplane?.planePoint.planeType) {
+        switch (airplane?.point.planeType) {
             case 'CARTESIAN':
                 return cartesianLabel;
             case 'POLAR':
@@ -67,11 +67,11 @@ export function AirplaneModal({
                 </div>
                 <div className='flex px-2 py-1 bg-slate-100'>
                     <div className="text-lg w-1/5">{getLabelByType('X', 'Raio')}</div>
-                    <div className='min-w-0 overflow-auto'>{airplane?.planePoint.a}</div>
+                    <div className='min-w-0 overflow-auto'>{airplane?.point.a}</div>
                 </div>
                 <div className='flex px-2 py-1'>
                     <div className="text-lg w-1/5">{getLabelByType('Y', 'Ângulo')}</div>
-                    <div className='min-w-0 overflow-auto'>{airplane?.planePoint.b}</div>
+                    <div className='min-w-0 overflow-auto'>{airplane?.point.b}</div>
                 </div>
                 <div className='flex px-2 py-1 bg-slate-100'>
                     <div className="text-lg w-1/5">Direção</div>

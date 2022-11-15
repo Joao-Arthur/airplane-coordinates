@@ -15,11 +15,11 @@ export async function rotateAirplaneCoordinatesService({
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         const result = await backend.rotate({
-            point: airplane.planePoint,
+            point: airplane.point,
             angle,
             centerOfRotation,
         });
-        airplaneRepository.update({ ...airplane, planePoint: result.point });
+        airplaneRepository.update({ ...airplane, point: result.point });
     }
     logger.success('Rotação realizada com sucesso!');
 }

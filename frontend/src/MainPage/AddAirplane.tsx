@@ -33,7 +33,7 @@ export function AddAirplane() {
     function onHandleSubmit({ speed, direction, x, y, r, a, coordinatesType }: fieldsType) {
         add({
             airplaneParams: {
-                planePoint: coordinatesType === 'CARTESIAN' ? {
+                point: coordinatesType === 'CARTESIAN' ? {
                     planeType: coordinatesType,
                     a: x,
                     b: y,

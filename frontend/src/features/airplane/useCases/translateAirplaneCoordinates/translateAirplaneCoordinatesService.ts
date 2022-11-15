@@ -14,10 +14,10 @@ export async function translateAirplaneCoordinatesService({
         .filter(({ id }) => selectedIds.includes(id));
     for (const airplane of airplanes) {
         const result = await backend.translate({
-            point: airplane.planePoint,
+            point: airplane.point,
             factor,
         });
-        airplaneRepository.update({ ...airplane, planePoint: result.point });
+        airplaneRepository.update({ ...airplane, point: result.point });
     }
     logger.success('Transformação realizada com sucesso!');
 }

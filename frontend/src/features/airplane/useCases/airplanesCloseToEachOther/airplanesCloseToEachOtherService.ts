@@ -8,10 +8,7 @@ export async function airplanesCloseToEachOtherService({
 }: airplanesCloseToEachOtherParamsType) {
     const airplanes = airplaneRepository.retrieve();
     const closeToEachOther = await backend.pointsCloseToEachOther({
-        points: airplanes.map(airplane => ({
-            id: airplane.id,
-            point: airplane.planePoint,
-        })),
+        points: airplanes.map(({ id, point }) => ({ id, point })),
         maxDistance,
     });
     if (!closeToEachOther.points.length)

@@ -27,5 +27,5 @@ export function drawAirplanes({
                 '/airplane.png',
                 Number(airplane.vector.direction),
             ),
-        )(planePoint.toCartesian(airplane.planePoint));
+        )(planePoint.toCartesian(airplane.point));
 }

@@ -51,16 +51,16 @@ export function AirplanesTable() {
                                 {airplane.id}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.planeType === 'CARTESIAN' ? Number(airplane.planePoint.a).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'CARTESIAN' ? Number(airplane.point.a).toFixed(2) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.planeType === 'CARTESIAN' ? Number(airplane.planePoint.b).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'CARTESIAN' ? Number(airplane.point.b).toFixed(2) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.planeType === 'POLAR' ? Number(airplane.planePoint.a).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'POLAR' ? Number(airplane.point.a).toFixed(2) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.planePoint.planeType === 'POLAR' ? Number(airplane.planePoint.b).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'POLAR' ? Number(airplane.point.b).toFixed(2) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
                                 {airplane.vector.speed}

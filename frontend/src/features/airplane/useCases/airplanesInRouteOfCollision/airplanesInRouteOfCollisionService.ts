@@ -8,11 +8,7 @@ export async function airplanesInRouteOfCollisionService({
 }: airplanesInRouteOfCollisionParamsType) {
     const airplanes = airplaneRepository.retrieve();
     const inRouteOfCollision = await backend.pointsInRouteOfCollision({
-        points: airplanes.map(airplane => ({
-            id: airplane.id,
-            point: airplane.planePoint,
-            vector: airplane.vector,
-        })),
+        points: airplanes.map(({ id, point, vector }) => ({ id, point, vector })),
         maxTime,
     });
     if (!inRouteOfCollision.points.length)
