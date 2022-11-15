@@ -18,4 +18,11 @@ public final class PlanePointWithIdPlain {
     public final PlanePointWithId toObject() {
         return new PlanePointWithId(this.id, this.point.toObject());
     }
+
+    public static final PlanePointWithIdPlain fromObject(final PlanePointWithId planePointWithId) {
+        return new PlanePointWithIdPlain(
+            planePointWithId.id,
+            PlanePointPlain.fromObject(planePointWithId.point)
+        );
+    }
 }

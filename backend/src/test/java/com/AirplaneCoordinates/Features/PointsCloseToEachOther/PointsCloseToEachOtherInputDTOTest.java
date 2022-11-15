@@ -2,10 +2,9 @@
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
+import com.AirplaneCoordinates.Core.List.CustomArrayList;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
@@ -14,13 +13,14 @@ import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 public final class PointsCloseToEachOtherInputDTOTest {
     @Test
     public final void toStringTest() {
-        final var points = new ArrayList<PlanePointWithId>();
-        points.add(new PlanePointWithId("1", PlanePoint.from(Plane.CARTESIAN, 10, 10)));
-        points.add(new PlanePointWithId("2", PlanePoint.from(Plane.CARTESIAN, 10, 20)));
-        points.add(new PlanePointWithId("3", PlanePoint.from(Plane.CARTESIAN, 0, 20)));
-        points.add(new PlanePointWithId("4", PlanePoint.from(Plane.CARTESIAN, 2, 22)));
-
-        final var dto = new PointsCloseToEachOtherInputDTO(points, PreciseDecimal.from(10));
+        final var dto = new PointsCloseToEachOtherInputDTO(
+            new CustomArrayList<PlanePointWithId>()
+                .insert(new PlanePointWithId("1", PlanePoint.from(Plane.CARTESIAN, 10, 10)))
+                .insert(new PlanePointWithId("2", PlanePoint.from(Plane.CARTESIAN, 10, 20)))
+                .insert(new PlanePointWithId("3", PlanePoint.from(Plane.CARTESIAN, 0, 20)))
+                .insert(new PlanePointWithId("4", PlanePoint.from(Plane.CARTESIAN, 2, 22))),
+            PreciseDecimal.from(10)
+        );
 
         assertEquals(
             dto.toString(),

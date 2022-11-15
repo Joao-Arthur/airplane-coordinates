@@ -1,18 +1,23 @@
 package com.AirplaneCoordinates.Features.Translate;
 
-import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
+import java.util.List;
+
+import com.AirplaneCoordinates.Core.Serialization.Serializer;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class TranslateOutputDTO {
-    public final PlanePoint point;
+    public final List<PlanePointWithId> points;
 
-    public TranslateOutputDTO(final PlanePoint point) {
-        this.point = point;
+    public TranslateOutputDTO(final List<PlanePointWithId> points) {
+        this.points = points;
     }
 
     @Override
     public final String toString() {
-        return "{ " +
-            "point: " + this.point +
-        " }";
+        return "{\n" +
+        "    points: [\n" +
+        Serializer.serialize(this.points, 8) +
+        "    ]\n" +
+        "}";
     }
 }

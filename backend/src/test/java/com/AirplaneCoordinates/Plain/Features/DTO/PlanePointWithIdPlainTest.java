@@ -32,4 +32,28 @@ public final class PlanePointWithIdPlainTest {
             ).toString()
         );
     }
+
+    @Test
+    public final void fromObject() {
+        assertEquals(
+            PlanePointWithIdPlain.fromObject(
+                new PlanePointWithId(
+                    "AAA",
+                    PlanePoint.from(
+                        Plane.POLAR, 
+                        PreciseDecimal.from("-1.47"),
+                        PreciseDecimal.from("0.3")
+                    )
+                )
+            ).toObject().toString(),
+            new PlanePointWithId(
+                "AAA",
+                PlanePoint.from(
+                    Plane.POLAR, 
+                    PreciseDecimal.from("-1.47"),
+                    PreciseDecimal.from("0.3")
+                )
+            ).toString()
+        );
+    }
 }

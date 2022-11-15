@@ -1,24 +1,30 @@
 package com.AirplaneCoordinates.Plain.Features.Translate;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.AirplaneCoordinates.Features.Translate.TranslateInputDTO;
 import com.AirplaneCoordinates.Plain.Core.Plane.Cartesian.CartesianPointPlain;
-import com.AirplaneCoordinates.Plain.Core.Plane.Generic.PlanePointPlain;
+import com.AirplaneCoordinates.Plain.Features.DTO.PlanePointWithIdPlain;
 
 public final class TranslateInputDTOPlain {
-    public final PlanePointPlain point;
+    public final List<PlanePointWithIdPlain> points;
     public final CartesianPointPlain factor;
 
     public TranslateInputDTOPlain(
-        final PlanePointPlain point,
+        final List<PlanePointWithIdPlain> points,
         final CartesianPointPlain factor
     ) {
-        this.point = point;
+        this.points = points;
         this.factor = factor;
     }
 
     public final TranslateInputDTO toObject() {
         return new TranslateInputDTO(
-            this.point.toObject(),
+            this.points
+                .stream()
+                .map(point -> point.toObject())
+                .collect(Collectors.toList()),
             this.factor.toObject()
         );
     }   
