@@ -18,11 +18,21 @@ public final class TranslateOutputDTOPlainTest {
         assertEquals(
             new TranslateOutputDTOPlain(
                 new CustomArrayList<PlanePointWithIdPlain>()
-                    .insert(new PlanePointWithIdPlain("A", new PlanePointPlain(Plane.POLAR, "1", "2")))
+                    .insert(
+                        new PlanePointWithIdPlain(
+                            "A",
+                            new PlanePointPlain(Plane.POLAR, "1", "2")
+                        )
+                    )
             ).toObject().toString(),
             new TranslateOutputDTO(
                 new CustomArrayList<PlanePointWithId>()
-                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 1, 2)))
+                    .insert(
+                        new PlanePointWithId(
+                            "A",
+                            PlanePoint.from(Plane.POLAR, 1, 2)
+                        )
+                    )
             ).toString()
         );
     }
@@ -33,12 +43,16 @@ public final class TranslateOutputDTOPlainTest {
             TranslateOutputDTOPlain.fromObject(
                 new TranslateOutputDTO(
                     new CustomArrayList<PlanePointWithId>()
-                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 1, 2)))
+                        .insert(
+                            new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 1, 2))
+                        )
                 )
             ).toObject().toString(),
             new TranslateOutputDTO(
                 new CustomArrayList<PlanePointWithId>()
-                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 1, 2)))
+                    .insert(
+                        new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 1, 2))
+                    )
             ).toString()
         );
     }

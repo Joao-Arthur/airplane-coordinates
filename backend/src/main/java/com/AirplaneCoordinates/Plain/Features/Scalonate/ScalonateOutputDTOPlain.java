@@ -1,24 +1,33 @@
 package com.AirplaneCoordinates.Plain.Features.Scalonate;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.AirplaneCoordinates.Features.Scalonate.ScalonateOutputDTO;
-import com.AirplaneCoordinates.Plain.Core.Plane.Generic.PlanePointPlain;
+import com.AirplaneCoordinates.Plain.Features.DTO.PlanePointWithIdPlain;
 
 public final class ScalonateOutputDTOPlain {
-    public final PlanePointPlain point;
+    public List<PlanePointWithIdPlain> points;
 
-    public ScalonateOutputDTOPlain(final PlanePointPlain point) {
-        this.point = point;
+    public ScalonateOutputDTOPlain(final List<PlanePointWithIdPlain> points) {
+        this.points = points;
     }
 
     public final ScalonateOutputDTO toObject() {
         return new ScalonateOutputDTO(
-            this.point.toObject()
+            this.points
+                .stream()
+                .map(point -> point.toObject())
+                .collect(Collectors.toList())
         );
     }
 
     public static final ScalonateOutputDTOPlain fromObject(final ScalonateOutputDTO dto) {
         return new ScalonateOutputDTOPlain(
-            PlanePointPlain.fromObject(dto.point)
+            dto.points
+                .stream()
+                .map(PlanePointWithIdPlain::fromObject)
+                .collect(Collectors.toList())
         );
     }
 }

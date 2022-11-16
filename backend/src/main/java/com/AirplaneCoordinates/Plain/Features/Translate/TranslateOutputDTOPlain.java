@@ -9,7 +9,7 @@ import com.AirplaneCoordinates.Plain.Features.DTO.PlanePointWithIdPlain;
 public final class TranslateOutputDTOPlain {
     public List<PlanePointWithIdPlain> points;
 
-    public TranslateOutputDTOPlain(List<PlanePointWithIdPlain> points) {
+    public TranslateOutputDTOPlain(final List<PlanePointWithIdPlain> points) {
         this.points = points;
     }
 

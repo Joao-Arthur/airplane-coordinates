@@ -7,10 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import com.AirplaneCoordinates.Core.List.CustomArrayList;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class RotateServiceTest {
     @Test
@@ -18,13 +20,15 @@ public final class RotateServiceTest {
         assertEquals(
             new RotateService(
                 new RotateInputDTO(
-                    PlanePoint.from(Plane.POLAR, "1.22", "11.11"),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, "1.22", "11.11"))),
                     CartesianPoint.from(0, 0),
                     PreciseDecimal.from(50)
                 )
             ).execute().toString(),
             new RotateOutputDTO(
-                PlanePoint.from(Plane.POLAR, "1.22", "61.11")
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, "1.22", "61.11")))
             ).toString()
         );
     }
@@ -34,29 +38,38 @@ public final class RotateServiceTest {
         assertEquals(
             new RotateService(
                 new RotateInputDTO(
-                    PlanePoint.from(Plane.POLAR, 4, 90),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 4, 90))),
                     CartesianPoint.from(4, 4),
                     PreciseDecimal.from(90)
                 )
             ).execute().toString(),
             new RotateOutputDTO(
-                PlanePoint.from(Plane.POLAR, 4, 0)
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 4, 0)))
             ).toString()
         );
         assertEquals(
             new RotateService(
                 new RotateInputDTO(
-                    PlanePoint.from(Plane.POLAR, 4, 45),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 4, 45))),
                     CartesianPoint.from(8, 8),
                     PreciseDecimal.from(180)
                 )
             ).execute().toString(),
             new RotateOutputDTO(
-                PlanePoint.from(
-                    Plane.POLAR,
-                    "18.62741699796952078082701958735516925711475000603116917082687580785171965539371262160620054924226516",
-                    "45"
-                )
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(
+                        new PlanePointWithId(
+                            "A",
+                            PlanePoint.from(
+                                Plane.POLAR,
+                                "18.62741699796952078082701958735516925711475000603116917082687580785171965539371262160620054924226516",
+                                "45"
+                            )
+                        )
+                    )
             ).toString()
         );
     }
@@ -66,13 +79,15 @@ public final class RotateServiceTest {
         assertEquals(
             new RotateService(
                 new RotateInputDTO(
-                    PlanePoint.from(Plane.CARTESIAN, 4, 4),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 4, 4))),
                     CartesianPoint.from(8, 0),
                     PreciseDecimal.from(90)
                 )
             ).execute().toString(),
             new RotateOutputDTO(
-                PlanePoint.from(Plane.CARTESIAN, 4, -4)
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 4, -4)))
             ).toString()
         );
     }
@@ -82,25 +97,29 @@ public final class RotateServiceTest {
         assertEquals(
             new RotateService(
                 new RotateInputDTO(
-                    PlanePoint.from(Plane.CARTESIAN, 0, 4),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 0, 4))),
                     CartesianPoint.from(4, 4),
                     PreciseDecimal.from(90)
                 )
             ).execute().toString(),
             new RotateOutputDTO(
-                PlanePoint.from(Plane.CARTESIAN, 4, 0)
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 4, 0)))
             ).toString()
         );
         assertEquals(
             new RotateService(
                 new RotateInputDTO(
-                    PlanePoint.from(Plane.CARTESIAN, -4, 4),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, -4, 4))),
                     CartesianPoint.from(-8, 4),
                     PreciseDecimal.from(270)
                 )
             ).execute().toString(),
             new RotateOutputDTO(
-                PlanePoint.from(Plane.CARTESIAN, -8, 0)
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, -8, 0)))
             ).toString()
         );
     }
@@ -191,21 +210,22 @@ public final class RotateServiceTest {
         final String centerY,
         final String angle
     ) {
-        final var pointBefore = new RotateOutputDTO(
-            PlanePoint.from(plane, pointA, pointB)
+        final var pointBefore = new RotateOutputDTO(            
+            new CustomArrayList<PlanePointWithId>()
+                .insert(new PlanePointWithId("A", PlanePoint.from(plane, pointA, pointB)))
         );
         final var centerOfRotation = CartesianPoint.from(centerX, centerY);
         final var angleValue = PreciseDecimal.from(angle);
         final var movedPoint = new RotateService(
             new RotateInputDTO(
-                pointBefore.point,
+                pointBefore.points,
                 centerOfRotation,
                 angleValue
             )
         ).execute();
         final var pointAfter = new RotateService(
             new RotateInputDTO(
-                movedPoint.point,
+                movedPoint.points,
                 centerOfRotation,
                 angleValue.opposite()
             )
@@ -222,11 +242,17 @@ public final class RotateServiceTest {
                     for (int centerY = 0; centerY < 3; centerY++) {
                         for (int angle = 0; angle < 360; angle++) {
                             final var pointBefore = new RotateOutputDTO(
-                                PlanePoint.from(
-                                    Plane.CARTESIAN,
-                                    pointX,
-                                    pointY
-                                )
+                                new CustomArrayList<PlanePointWithId>()
+                                    .insert(
+                                        new PlanePointWithId(
+                                            "A",
+                                            PlanePoint.from(
+                                                Plane.CARTESIAN,
+                                                pointX,
+                                                pointY
+                                            )
+                                        )
+                                    )
                             );
                             final var centerOfRotation = CartesianPoint.from(
                                 centerX,
@@ -235,13 +261,13 @@ public final class RotateServiceTest {
                             final var angleValue = PreciseDecimal.from(angle);
                             final var movedPoint = new RotateService(
                                 new RotateInputDTO(
-                                    pointBefore.point,
+                                    pointBefore.points,
                                     centerOfRotation,
                                     angleValue)
                             ).execute();
                             final var pointAfter = new RotateService(
                                 new RotateInputDTO(
-                                    movedPoint.point,
+                                    movedPoint.points,
                                     centerOfRotation,
                                     angleValue.opposite()
                                 )
@@ -266,11 +292,17 @@ public final class RotateServiceTest {
                     for (int centerY = 0; centerY < 3; centerY++) {
                         for (int angle = 0; angle < 360; angle += 10) {
                             final var pointBefore = new RotateOutputDTO(
-                                PlanePoint.from(
-                                    Plane.CARTESIAN,
-                                    pointX,
-                                    pointY
-                                )
+                                new CustomArrayList<PlanePointWithId>()
+                                    .insert(
+                                        new PlanePointWithId(
+                                            "A",
+                                            PlanePoint.from(
+                                                Plane.CARTESIAN,
+                                                pointX,
+                                                pointY
+                                            )
+                                        )
+                                    )
                             );
                             final var centerOfRotation = CartesianPoint.from(
                                 centerX,
@@ -279,14 +311,14 @@ public final class RotateServiceTest {
                             final var angleValue = PreciseDecimal.from(angle);
                             final var movedPoint = new RotateService(
                                 new RotateInputDTO(
-                                    pointBefore.point,
+                                    pointBefore.points,
                                     centerOfRotation,
                                     angleValue
                                 )
                             ).execute();
                             final var pointAfter = new RotateService(
                                 new RotateInputDTO(
-                                    movedPoint.point,
+                                    movedPoint.points,
                                     centerOfRotation,
                                     angleValue.opposite()
                                 )
@@ -311,11 +343,17 @@ public final class RotateServiceTest {
                     for (int centerY = 0; centerY < 3; centerY++) {
                         for (int angle = 0; angle < 360; angle++) {
                             final var pointBefore = new RotateOutputDTO(
-                                PlanePoint.from(
-                                    Plane.CARTESIAN,
-                                    pointR,
-                                    pointA
-                                )
+                                new CustomArrayList<PlanePointWithId>()
+                                    .insert(
+                                        new PlanePointWithId(
+                                            "A",
+                                            PlanePoint.from(
+                                                Plane.CARTESIAN,
+                                                pointR,
+                                                pointA
+                                            )
+                                        )
+                                    )
                             );
                             final var centerOfRotation = CartesianPoint.from(
                                 centerX,
@@ -324,14 +362,14 @@ public final class RotateServiceTest {
                             final var angleValue = PreciseDecimal.from(angle);
                             final var movedPoint = new RotateService(
                                 new RotateInputDTO(
-                                    pointBefore.point,
+                                    pointBefore.points,
                                     centerOfRotation,
                                     angleValue
                                 )
                             ).execute();
                             final var pointAfter = new RotateService(
                                 new RotateInputDTO(
-                                    movedPoint.point,
+                                    movedPoint.points,
                                     centerOfRotation,
                                     angleValue.opposite()
                                 )
@@ -356,11 +394,17 @@ public final class RotateServiceTest {
                     for (int centerY = 0; centerY < 3; centerY++) {
                         for (int angle = 0; angle < 360; angle += 10) {
                             final var pointBefore = new RotateOutputDTO(
-                                PlanePoint.from(
-                                    Plane.CARTESIAN,
-                                    pointR,
-                                    pointA
-                                )
+                                new CustomArrayList<PlanePointWithId>()
+                                    .insert(
+                                        new PlanePointWithId(
+                                            "A",
+                                            PlanePoint.from(
+                                                Plane.CARTESIAN,
+                                                pointR,
+                                                pointA
+                                            )
+                                        )
+                                    )
                             );
                             final var centerOfRotation = CartesianPoint.from(
                                 centerX,
@@ -369,14 +413,14 @@ public final class RotateServiceTest {
                             final var angleValue = PreciseDecimal.from(angle);
                             final var movedPoint = new RotateService(
                                 new RotateInputDTO(
-                                    pointBefore.point,
+                                    pointBefore.points,
                                     centerOfRotation,
                                     angleValue
                                 )
                             ).execute();
                             final var pointAfter = new RotateService(
                                 new RotateInputDTO(
-                                    movedPoint.point,
+                                    movedPoint.points,
                                     centerOfRotation,
                                     angleValue.opposite()
                                 )

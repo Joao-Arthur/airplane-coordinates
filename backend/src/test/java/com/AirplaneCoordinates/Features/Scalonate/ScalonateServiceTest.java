@@ -9,9 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import com.AirplaneCoordinates.Core.List.CustomArrayList;
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
 import com.AirplaneCoordinates.Core.Plane.Generic.Plane;
 import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class ScalonateServiceTest {
     @Test
@@ -19,54 +21,75 @@ public final class ScalonateServiceTest {
         assertEquals(
             new ScalonateService(
                 new ScalonateInputDTO(
-                    PlanePoint.from(Plane.POLAR, 1, 0),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 1, 0))),
                     CartesianPoint.from(-2, 0)
                 )
             ).execute().toString(),
-            new ScalonateOutputDTO(PlanePoint.from(Plane.POLAR, 2, 180)).toString()
-        );
-        assertEquals(
-            new ScalonateService(
-                new ScalonateInputDTO(
-                    PlanePoint.from(Plane.POLAR, 1, 45),
-                    CartesianPoint.from(2, 2)
-                )
-            ).execute().toString(),
-            new ScalonateOutputDTO(PlanePoint.from(Plane.POLAR, 2, 45)).toString()
-        );
-        assertEquals(
-            new ScalonateService(
-                new ScalonateInputDTO(
-                    PlanePoint.from(Plane.POLAR, 100, 60),
-                    CartesianPoint.from("0.5", "0.5")
-                )
-            ).execute().toString(),
-            new ScalonateOutputDTO(PlanePoint.from(Plane.POLAR, 50, 60)).toString()
-        );
-        assertEquals(
-            new ScalonateService(
-                new ScalonateInputDTO(
-                    PlanePoint.from(Plane.POLAR, 100, 60),
-                    CartesianPoint.from("1", "0.5")
-                )
-            ).execute().toString(),
             new ScalonateOutputDTO(
-                PlanePoint.from(
-                    Plane.POLAR,
-                    "66.14378277661476476254039384098151064275647957706125450920836148002672058075709069400982216186359028",
-                    "40.8933946491309056054825252598699177650239247701694879239436224278406825108096473833900705055539013"
-                )
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 2, 180)))
             ).toString()
         );
         assertEquals(
             new ScalonateService(
                 new ScalonateInputDTO(
-                    PlanePoint.from(Plane.POLAR, 6, 47),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 1, 45))),
+                    CartesianPoint.from(2, 2)
+                )
+            ).execute().toString(),
+            new ScalonateOutputDTO(
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 2, 45)))
+            ).toString()
+        );
+        assertEquals(
+            new ScalonateService(
+                new ScalonateInputDTO(
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 100, 60))),
+                    CartesianPoint.from("0.5", "0.5")
+                )
+            ).execute().toString(),
+            new ScalonateOutputDTO(
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 50, 60)))
+            ).toString()
+        );
+        assertEquals(
+            new ScalonateService(
+                new ScalonateInputDTO(
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 100, 60))),
+                    CartesianPoint.from("1", "0.5")
+                )
+            ).execute().toString(),
+            new ScalonateOutputDTO(
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(
+                        new PlanePointWithId(
+                            "A",
+                            PlanePoint.from(
+                                Plane.POLAR,
+                                "66.14378277661476476254039384098151064275647957706125450920836148002672058075709069400982216186359028",
+                                "40.8933946491309056054825252598699177650239247701694879239436224278406825108096473833900705055539013"
+                            )
+                        )
+                    )
+            ).toString()
+        );
+        assertEquals(
+            new ScalonateService(
+                new ScalonateInputDTO(
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 6, 47))),
                     CartesianPoint.from(0, 0)
                 )
             ).execute().toString(),
             new ScalonateOutputDTO(
-                PlanePoint.from(Plane.POLAR, 0, 0)
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.POLAR, 0, 0)))
             ).toString()
         );
     }
@@ -76,34 +99,40 @@ public final class ScalonateServiceTest {
         assertEquals(
             new ScalonateService(
                 new ScalonateInputDTO(
-                    PlanePoint.from(Plane.CARTESIAN, 5, -1),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 5, -1))),
                     CartesianPoint.from(-2, 2)
                 )
             ).execute().toString(),
             new ScalonateOutputDTO(
-                PlanePoint.from(Plane.CARTESIAN, -10, -2)
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, -10, -2))) 
             ).toString()
         );
         assertEquals(
             new ScalonateService(
                 new ScalonateInputDTO(
-                    PlanePoint.from(Plane.CARTESIAN, 479001600, -479001600),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 479001600, -479001600))),
                     CartesianPoint.from("-0.5", "0.5")
                 )
             ).execute().toString(),
             new ScalonateOutputDTO(
-                PlanePoint.from(Plane.CARTESIAN, "-239500800", "-239500800")
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, "-239500800", "-239500800")))
             ).toString()
         );
         assertEquals(
             new ScalonateService(
                 new ScalonateInputDTO(
-                    PlanePoint.from(Plane.CARTESIAN, 75, -7),
+                    new CustomArrayList<PlanePointWithId>()
+                        .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 75, -7))),
                     CartesianPoint.from(0, 0)
                 )
             ).execute().toString(),
             new ScalonateOutputDTO(
-                PlanePoint.from(Plane.CARTESIAN, 0, 0)
+                new CustomArrayList<PlanePointWithId>()
+                    .insert(new PlanePointWithId("A", PlanePoint.from(Plane.CARTESIAN, 0, 0)))
             ).toString()
         );
     }
@@ -158,18 +187,19 @@ public final class ScalonateServiceTest {
         final String factorY
     ) {
         final var pointBefore = new ScalonateOutputDTO(
-            PlanePoint.from(plane, pointX, pointY)
+            new CustomArrayList<PlanePointWithId>()
+                .insert(new PlanePointWithId("A", PlanePoint.from(plane, pointX, pointY)))
         );
         final var factor = CartesianPoint.from(factorX, factorY);
         final var movedPoint = new ScalonateService(
             new ScalonateInputDTO(
-                pointBefore.point,
+                pointBefore.points,
                 factor
             )
         ).execute();
         final var pointAfter = new ScalonateService(
             new ScalonateInputDTO(
-                movedPoint.point,
+                movedPoint.points,
                 factor.reverse()
             )
         ).execute();
@@ -189,11 +219,17 @@ public final class ScalonateServiceTest {
                 for (int i = 0; i < values.length; i++) {
                     for (int j = 0; j < values.length; j++) {
                         final var pointBefore = new ScalonateOutputDTO(
-                            PlanePoint.from(
-                                Plane.CARTESIAN,
-                                new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
-                                new BigDecimal(pointY).stripTrailingZeros().toPlainString()
-                            )
+                            new CustomArrayList<PlanePointWithId>()
+                                .insert(
+                                    new PlanePointWithId(
+                                        "A",
+                                        PlanePoint.from(
+                                            Plane.CARTESIAN,
+                                            new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
+                                            new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                                        )
+                                    )
+                                )
                         );
                         final var factor = CartesianPoint.from(
                             values[i],
@@ -201,13 +237,13 @@ public final class ScalonateServiceTest {
                         );
                         final var movedPoint = new ScalonateService(
                             new ScalonateInputDTO(
-                                pointBefore.point,
+                                pointBefore.points,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new ScalonateService(
                             new ScalonateInputDTO(
-                                movedPoint.point,
+                                movedPoint.points,
                                 factor.reverse()
                             )
                         ).execute();
@@ -240,11 +276,17 @@ public final class ScalonateServiceTest {
                 for (int k = 0; k < values.length; k++) {
                     for (int l = 0; l < values.length; l++) {
                         final var pointBefore = new ScalonateOutputDTO(
-                            PlanePoint.from(
-                                Plane.CARTESIAN,
-                                values[i],
-                                values[j]
-                            )
+                            new CustomArrayList<PlanePointWithId>()
+                                .insert(
+                                    new PlanePointWithId(
+                                        "A",
+                                        PlanePoint.from(
+                                            Plane.CARTESIAN,
+                                            values[i],
+                                            values[j]
+                                        )
+                                    )
+                                )  
                         );
                         final var factor = CartesianPoint.from(
                             values[k],
@@ -252,13 +294,13 @@ public final class ScalonateServiceTest {
                         );
                         final var movedPoint = new ScalonateService(
                             new ScalonateInputDTO(
-                                pointBefore.point,
+                                pointBefore.points,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new ScalonateService(
                             new ScalonateInputDTO(
-                                movedPoint.point,
+                                movedPoint.points,
                                 factor.reverse()
                             )
                         ).execute();
@@ -276,11 +318,17 @@ public final class ScalonateServiceTest {
                 for (int i = 0; i < values.length; i++) {
                     for (int j = 0; j < values.length; j++) {
                         final var pointBefore = new ScalonateOutputDTO(
-                            PlanePoint.from(
-                                Plane.CARTESIAN,
-                                new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
-                                new BigDecimal(pointY).stripTrailingZeros().toPlainString()
-                            )
+                            new CustomArrayList<PlanePointWithId>()
+                                .insert(
+                                    new PlanePointWithId(
+                                        "A",
+                                        PlanePoint.from(
+                                            Plane.CARTESIAN,
+                                            new BigDecimal(pointX).stripTrailingZeros().toPlainString(),
+                                            new BigDecimal(pointY).stripTrailingZeros().toPlainString()
+                                        )
+                                    )
+                                )
                         );
                         final var factor = CartesianPoint.from(
                             values[i],
@@ -288,13 +336,13 @@ public final class ScalonateServiceTest {
                         );
                         final var movedPoint = new ScalonateService(
                             new ScalonateInputDTO(
-                                pointBefore.point,
+                                pointBefore.points,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new ScalonateService(
                             new ScalonateInputDTO(
-                                movedPoint.point,
+                                movedPoint.points,
                                 factor.reverse()
                             )
                         ).execute();
@@ -313,11 +361,17 @@ public final class ScalonateServiceTest {
                 for (int k = 0; k < otherValues.length; k++) {
                     for (int l = 0; l < otherValues.length; l++) {
                         final var pointBefore = new ScalonateOutputDTO(
-                            PlanePoint.from(
-                                Plane.CARTESIAN,
-                                otherValues[i],
-                                otherValues[j]
-                            )
+                            new CustomArrayList<PlanePointWithId>()
+                                .insert(
+                                    new PlanePointWithId(
+                                        "A",
+                                        PlanePoint.from(
+                                            Plane.CARTESIAN,
+                                            otherValues[i],
+                                            otherValues[j]
+                                        )
+                                    )
+                                )
                         );
                         final var factor = CartesianPoint.from(
                             otherValues[k],
@@ -325,13 +379,13 @@ public final class ScalonateServiceTest {
                         );
                         final var movedPoint = new ScalonateService(
                             new ScalonateInputDTO(
-                                pointBefore.point,
+                                pointBefore.points,
                                 factor
                             )
                         ).execute();
                         final var pointAfter = new ScalonateService(
                             new ScalonateInputDTO(
-                                movedPoint.point,
+                                movedPoint.points,
                                 factor.reverse()
                             )
                         ).execute();

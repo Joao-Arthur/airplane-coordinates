@@ -1,30 +1,35 @@
 package com.AirplaneCoordinates.Features.Rotate;
 
+import java.util.List;
+
 import com.AirplaneCoordinates.Core.Plane.Cartesian.CartesianPoint;
-import com.AirplaneCoordinates.Core.Plane.Generic.PlanePoint;
 import com.AirplaneCoordinates.Core.PreciseDecimal.PreciseDecimal;
+import com.AirplaneCoordinates.Core.Serialization.Serializer;
+import com.AirplaneCoordinates.Features.DTO.PlanePointWithId;
 
 public final class RotateInputDTO {
-    public final PlanePoint point;
+    public final List<PlanePointWithId> points;
     public final CartesianPoint centerOfRotation;
     public final PreciseDecimal angle;
 
     public RotateInputDTO(
-        final PlanePoint point,
+        final List<PlanePointWithId> points,
         final CartesianPoint centerOfRotation,
         final PreciseDecimal angle
     ) {
-        this.point = point;
+        this.points = points;
         this.centerOfRotation = centerOfRotation;
         this.angle = angle;
     }
 
     @Override
     public final String toString() {
-        return "{ " +
-            "point: " + this.point + ", " +
-            "centerOfRotation: " + this.centerOfRotation + ", " +
-            "angle: " + this.angle +
-        " }";
+        return "{\n" +
+        "    points: [\n" +
+        Serializer.serialize(this.points, 8) +
+        "    ],\n" +
+        "    centerOfRotation: " + this.centerOfRotation + ",\n" +
+        "    angle: " + this.angle + "\n" +
+        "}";
     }
 }
