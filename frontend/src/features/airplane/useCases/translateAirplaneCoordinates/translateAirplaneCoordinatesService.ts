@@ -13,7 +13,7 @@ export async function translateAirplaneCoordinatesService({
         .retrieve()
         .filter(({ id }) => selectedIds.includes(id))
         .map(({ id, point }) => ({ id, point }));
-    const result = await backend.scalonate({
+    const result = await backend.translate({
         points,
         factor,
     });
