@@ -69,7 +69,7 @@ export function AddAirplane() {
                         <Input {...register('a', { required: true })} title='Ângulo' key='a' />
                     </>
                 )}
-                <Input {...register('speed', { valueAsNumber: true, required: true })} title='Velocidade' />
+                <Input {...register('speed', {  min: '0', valueAsNumber: true, required: true })} title='Velocidade' />
                 <Input {...register('direction', { valueAsNumber: true, required: true })} title='Direção' />
             </Group>
             <Button>Adicionar</Button>
