@@ -1,14 +1,14 @@
 import { backendCartesianPointType } from '../../core/cartesianPlane/backendCartesianPoint';
 import { postFetch } from '../../core/httpRequest/httpRequest';
-import { planePointType } from '../../core/planePoint/planePointType';
+import { pointWithIdType } from './pointWithId';
 
 type translateIn = {
-    readonly point: planePointType;
+    readonly points: pointWithIdType[];
     readonly factor: backendCartesianPointType;
 }
 
 type translateOut = {
-    readonly point: planePointType;
+    readonly points: pointWithIdType[];
 }
 
 export function translate(params: translateIn): Promise<translateOut> {

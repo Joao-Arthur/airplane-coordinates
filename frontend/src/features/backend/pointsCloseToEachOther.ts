@@ -1,11 +1,8 @@
 import { postFetch } from '../../core/httpRequest/httpRequest';
-import { planePointType } from '../../core/planePoint/planePointType';
+import { pointWithIdType } from './pointWithId';
 
 type pointsCloseToEachOtherIn = {
-    readonly points: {
-        id: string;
-        point: planePointType;
-    }[];
+    readonly points: pointWithIdType[];
     readonly maxDistance: string;
 }
 

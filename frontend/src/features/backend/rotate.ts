@@ -1,15 +1,15 @@
 import { backendCartesianPointType } from '../../core/cartesianPlane/backendCartesianPoint';
 import { postFetch } from '../../core/httpRequest/httpRequest';
-import { planePointType } from '../../core/planePoint/planePointType';
+import { pointWithIdType } from './pointWithId';
 
 type rotateIn = {
-    readonly point: planePointType;
+    readonly points: pointWithIdType[];
     readonly centerOfRotation: backendCartesianPointType;
     readonly angle: string;
 }
 
 type rotateOut = {
-    readonly point: planePointType;
+    readonly points: pointWithIdType[];
 }
 
 export function rotate(params: rotateIn): Promise<rotateOut> {

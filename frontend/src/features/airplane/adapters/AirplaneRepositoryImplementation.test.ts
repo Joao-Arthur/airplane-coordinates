@@ -33,17 +33,13 @@ describe('AirplaneRepositoryImplementation', () => {
         airplaneRepository.add({
             id: '1',
             point: { planeType: 'CARTESIAN', a: '1', b: '1' },
-            vector: { speed: '1', direction: '1' },
+            vector: { speed: '6', direction: '6' },
         });
-        airplaneRepository.update({
-            id: '1',
-            point: { planeType: 'POLAR', a: '10', b: '10' },
-            vector: { speed: '10', direction: '10' },
-        });
+        airplaneRepository.updatePointById('1', { planeType: 'POLAR', a: '10', b: '10' });
         expect(airplaneRepository.retrieve()).toEqual([{
             id: '1',
             point: { planeType: 'POLAR', a: '10', b: '10' },
-            vector: { speed: '10', direction: '10' },
+            vector: { speed: '6', direction: '6' },
         }]);
     });
 

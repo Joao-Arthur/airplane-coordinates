@@ -9,15 +9,16 @@ export async function translateAirplaneCoordinatesService({
 }: translateAirplaneCoordinatesParamsType) {
     if (!selectedIds.length)
         return logger.warn('É necessário selecionar ao menos um avião!');
-    const airplanes = airplaneRepository
+    const points = airplaneRepository
         .retrieve()
-        .filter(({ id }) => selectedIds.includes(id));
-    for (const airplane of airplanes) {
-        const result = await backend.translate({
-            point: airplane.point,
-            factor,
-        });
-        airplaneRepository.update({ ...airplane, point: result.point });
-    }
+        .filter(({ id }) => selectedIds.includes(id))
+        .map(({ id, point }) => ({ id, point }));
+    const result = await backend.scalonate({
+        points,
+        factor,
+    });
+    result.points.forEach(({ id, point }) => {
+        airplaneRepository.updatePointById(id, point);
+    });
     logger.success('Transformação realizada com sucesso!');
 }

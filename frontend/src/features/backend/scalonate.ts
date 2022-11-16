@@ -1,14 +1,14 @@
 import { backendCartesianPointType } from '../../core/cartesianPlane/backendCartesianPoint';
 import { postFetch } from '../../core/httpRequest/httpRequest';
-import { planePointType } from '../../core/planePoint/planePointType';
+import { pointWithIdType } from './pointWithId';
 
 type scalonateIn = {
-    readonly point: planePointType;
+    readonly points: pointWithIdType[];
     readonly factor: backendCartesianPointType;
 }
 
 type scalonateOut = {
-    readonly point: planePointType;
+    readonly points: pointWithIdType[];
 }
 
 export function scalonate(params: scalonateIn): Promise<scalonateOut> {

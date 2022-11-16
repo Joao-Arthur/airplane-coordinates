@@ -17,8 +17,8 @@ export class AirplaneRepositoryImplementationProxy implements airplaneRepository
         this.dispatch();
     }
 
-    public update(airplane: airplaneType) {
-        this.repository.update(airplane);
+    public updatePointById(id: airplaneType['id'], point: airplaneType['point']) {
+        this.repository.updatePointById(id, point);
         this.dispatch();
     }
 

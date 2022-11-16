@@ -13,8 +13,11 @@ export class AirplaneRepositoryImplementation implements airplaneRepositoryType 
         this.airplanesDatabase.delete(id);
     }
 
-    public update(airplane: airplaneType) {
-        this.airplanesDatabase.set(airplane.id, airplane);
+    public updatePointById(id: airplaneType['id'], point: airplaneType['point']) {
+        const airplane = this.airplanesDatabase.get(id);
+        if (!airplane)
+            return;
+        this.airplanesDatabase.set(id, { ...airplane, point });
     }
 
     public retrieve() {
