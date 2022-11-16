@@ -48,17 +48,17 @@ public final class DifferentFunctionsCollisionServiceTest {
     @Test
     public final void getCollisionPointSameSpeed() {
         assertEquals(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -2, 0),
                     Vector.from(45, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 0),
                     Vector.from(135, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
