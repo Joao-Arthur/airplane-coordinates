@@ -14,9 +14,9 @@ export async function airplanesCloseToAirportService({
     });
     if (!closeToAirport.points.length)
         return logger.info('Nenhum avião encontrado nessa distância');
-    const pointsToLog = [...closeToAirport.points].reverse();
-    for (const point of pointsToLog)
+    const results = [...closeToAirport.points].reverse();
+    for (const result of results)
         logger.info(
-            `Avião "${point.id}" a ${point.distanceFromPoint}km do aeroporto`,
+            `Avião "${result.id}" a ${Number(result.distanceFromPoint).toFixed(2)}km do aeroporto`,
         );
 }

@@ -16,6 +16,9 @@ export async function airplanesInRouteOfCollisionService({
     const pointsToLog = [...inRouteOfCollision.points].reverse();
     for (const airplane of pointsToLog)
         logger.info(
-            `Avião "${airplane.a}" e "${airplane.b}" vão passar a ${airplane.timeDifferenceToPoint}h de diferença no ponto (${airplane.collisionPoint.x}, ${airplane.collisionPoint.y}) daqui ${airplane.timeUntilCollision}s`,
+            `Avião "${airplane.a}" e "${airplane.b}" ` +
+            `vão passar a ${Number(airplane.timeDifferenceToPoint).toFixed(2)}h de diferença ` +
+            `no ponto (${Number(airplane.collisionPoint.x).toFixed(2)}, ${Number(airplane.collisionPoint.y).toFixed(2)}) ` +
+            `daqui ${Number(airplane.timeUntilCollision).toFixed(2)}h`,
         );
 }

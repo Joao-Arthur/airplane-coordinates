@@ -16,7 +16,7 @@ export function Tab({ tabs }: props) {
 
     return (
         <>
-            <div className='flex text-sm font-medium border-gray-100 overflow-x-auto overflow-y-hidden'>
+            <div className='flex text-sm font-medium border-gray-100 overflow-x-auto overflow-y-hidden flex-shrink-0'>
                 {tabs.map(({ title }) => (
                     <div
                         key={title}

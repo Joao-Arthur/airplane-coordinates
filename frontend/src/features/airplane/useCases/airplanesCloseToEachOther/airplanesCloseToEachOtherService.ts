@@ -13,9 +13,9 @@ export async function airplanesCloseToEachOtherService({
     });
     if (!closeToEachOther.points.length)
         return logger.info('Nenhum avião encontrado nessa distância');
-    const pointsToLog = [...closeToEachOther.points].reverse();
-    for (const point of pointsToLog)
+    const results = [...closeToEachOther.points].reverse();
+    for (const result of results)
         logger.info(
-            `Avião "${point.a}" e "${point.b}" a ${point.distance}km de distância entre si`,
+            `Avião "${result.a}" e "${result.b}" a ${Number(result.distance).toFixed(2)}km de distância entre si`,
         );
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BsFillEyeFill } from 'react-icons/bs';
 import { IconButton } from '../components/IconButton';
+import { numberFns } from '../core/numberFns';
 import { airplaneType } from '../features/airplane/models';
 import { useAirplaneStore } from '../integrations/airplane/airplanesStore';
 import { AirplaneModal } from './AirplaneModal';
@@ -51,16 +52,16 @@ export function AirplanesTable() {
                                 {airplane.id}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'CARTESIAN' ? Number(airplane.point.a).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'CARTESIAN' ? numberFns.prettyFormat(Number(airplane.point.a)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'CARTESIAN' ? Number(airplane.point.b).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'CARTESIAN' ? numberFns.prettyFormat(Number(airplane.point.b)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'POLAR' ? Number(airplane.point.a).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'POLAR' ? numberFns.prettyFormat(Number(airplane.point.a)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'POLAR' ? Number(airplane.point.b).toFixed(2) : undefined}
+                                {airplane.point.planeType === 'POLAR' ? numberFns.prettyFormat(Number(airplane.point.b)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
                                 {airplane.vector.speed}
