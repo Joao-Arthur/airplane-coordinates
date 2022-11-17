@@ -52,16 +52,16 @@ export function AirplanesTable() {
                                 {airplane.id}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'CARTESIAN' ? numberFns.prettyFormat(Number(airplane.point.a)) : undefined}
+                                {airplane.point.planeType === 'CARTESIAN' ? numberFns.ellipsis(Number(airplane.point.a)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'CARTESIAN' ? numberFns.prettyFormat(Number(airplane.point.b)) : undefined}
+                                {airplane.point.planeType === 'CARTESIAN' ? numberFns.ellipsis(Number(airplane.point.b)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'POLAR' ? numberFns.prettyFormat(Number(airplane.point.a)) : undefined}
+                                {airplane.point.planeType === 'POLAR' ? numberFns.ellipsis(Number(airplane.point.a)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
-                                {airplane.point.planeType === 'POLAR' ? numberFns.prettyFormat(Number(airplane.point.b)) : undefined}
+                                {airplane.point.planeType === 'POLAR' ? numberFns.ellipsis(Number(airplane.point.b)) : undefined}
                             </td>
                             <td style={{ width: '12.5%' }} className='px-2 py-1.5 text-gray-700 whitespace-nowrap'>
                                 {airplane.vector.speed}

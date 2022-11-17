@@ -1,3 +1,4 @@
+import { numberFns } from '../../../../core/numberFns';
 import { backend } from '../../../backend/backend';
 import { airplanesCloseToAirportParamsType } from './airplanesCloseToAirportParams';
 
@@ -15,8 +16,10 @@ export async function airplanesCloseToAirportService({
     if (!closeToAirport.points.length)
         return logger.info('Nenhum avião encontrado nessa distância');
     const results = [...closeToAirport.points].reverse();
-    for (const result of results)
-        logger.info(
-            `Avião "${result.id}" a ${Number(result.distanceFromPoint).toFixed(2)}km do aeroporto`,
-        );
+    for (const result of results) {
+        const id = result.id;
+        const distanceFromPoint = numberFns.limitDecimals(Number(result.distanceFromPoint));
+
+        logger.info(`Avião "${id}": ${distanceFromPoint}km do aeroporto`);
+    }
 }

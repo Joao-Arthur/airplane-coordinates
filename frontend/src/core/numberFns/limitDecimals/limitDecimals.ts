@@ -1,4 +1,4 @@
-export function prettyFormat(value: number) {
+export function limitDecimals(value: number) {
     const stringDecimalValue = String(value).split('.')[1];
     if (!stringDecimalValue)
         return String(value);
@@ -10,5 +10,5 @@ export function prettyFormat(value: number) {
         return String(Number(roundedValue));
     if (stringDecimalRoundedValue.length < 2)
         return String(Number(roundedValue));
-    return roundedValue + '...';
+    return roundedValue;
 }

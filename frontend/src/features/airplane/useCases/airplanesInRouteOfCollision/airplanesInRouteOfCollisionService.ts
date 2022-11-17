@@ -1,3 +1,4 @@
+import { numberFns } from '../../../../core/numberFns';
 import { backend } from '../../../backend/backend';
 import { airplanesInRouteOfCollisionParamsType } from './airplanesInRouteOfCollisionParams';
 
@@ -13,12 +14,17 @@ export async function airplanesInRouteOfCollisionService({
     });
     if (!inRouteOfCollision.points.length)
         return logger.info('Nenhum avião em rota de colisão nesse tempo');
-    const pointsToLog = [...inRouteOfCollision.points].reverse();
-    for (const airplane of pointsToLog)
+    const results = [...inRouteOfCollision.points].reverse();
+    for (const result of results) {
+        const a = result.a;
+        const b = result.b;
+        const x = numberFns.limitDecimals(Number(result.collisionPoint.x));
+        const y = numberFns.limitDecimals(Number(result.collisionPoint.y));
+        const timeDifferenceToPoint = numberFns.formatHours(Number(result.timeDifferenceToPoint));
+        const timeUntilCollision = numberFns.formatHours(Number(result.timeUntilCollision));
+
         logger.info(
-            `Avião "${airplane.a}" e "${airplane.b}" ` +
-            `vão passar a ${Number(airplane.timeDifferenceToPoint).toFixed(2)}h de diferença ` +
-            `no ponto (${Number(airplane.collisionPoint.x).toFixed(2)}, ${Number(airplane.collisionPoint.y).toFixed(2)}) ` +
-            `daqui ${Number(airplane.timeUntilCollision).toFixed(2)}h`,
+            `Aviões "${a}" e "${b}": vão passar a ${timeDifferenceToPoint} de diferença no ponto (${x}, ${y}) daqui ${timeUntilCollision}`,
         );
+    }
 }
