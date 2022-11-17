@@ -167,7 +167,7 @@ public final class PreciseDecimal implements
             );
         final var oldDecimalPart = this.value.split("\\.")[1];
         final var newDecimalPart = roundedValue.split("\\.")[1];
-        // Conpare the old and new number of decimal digits
+        // Compare the old and new number of decimal digits
         if (newDecimalPart.length() + 10 >= oldDecimalPart.length())
             return PreciseDecimal.from(
                 this.value
@@ -175,6 +175,13 @@ public final class PreciseDecimal implements
         return PreciseDecimal.from(
             roundedValue
         );
+    }
+
+    public final PreciseDecimal roundedValue() {
+        final var roundedValue = PreciseDecimal.bigDecimalToRoundedString(
+            BigDecimalMath.round(this.bigDecimalValue, PreciseDecimal.ROUNDING_MATH_CONTEXT)
+        );
+        return PreciseDecimal.from(roundedValue);
     }
 
     private final String sign() {
