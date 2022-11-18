@@ -69,65 +69,65 @@ public final class DifferentFunctionsCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -2, 0),
                     Vector.from(55, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 0),
                     Vector.from(125, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("3.486893591242196039675366833448743541140960839516955840655123547527881329058884126748735265163522056"),
-                CartesianPoint.from("0", "2.856296013484229004321236969997001479267603224150638195223588254563391035055977065874605128250680718"),
+                CartesianPoint.from("0", "2.856296013484229004321236969997001479267603224150638195223588254563391035055977065874605128250680717"),
                 PreciseDecimal.from(0)
             ).toString()
         );
         assertEquals(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -2, 0),
                     Vector.from(65, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 0),
                     Vector.from(115, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
-                PreciseDecimal.from("4.732403166304997035867356652417659575970785240358470748834195983745747686660878385224077305115896275"),
-                CartesianPoint.from("0", "4.28901384101911723271252158209184436137186314855213796859827305340851007899795116014948054296706107"),
+                PreciseDecimal.from("4.732403166304997035867356652417659575970785240358470748834195983745747686660878385224077305115896278"),
+                CartesianPoint.from("0", "4.289013841019117232712521582091844361371863148552137968598273053408510078997951160149480542967061069"),
                 PreciseDecimal.from(0)
             ).toString()
         );
         assertEquals(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -2, 0),
                     Vector.from(25, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 0),
                     Vector.from(155, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
-                PreciseDecimal.from("2.206755837924983512973789406685409966553887449700976650397016993235401555684220432158920676558579734"),
-                CartesianPoint.from("0", "0.9326153163099971856600123895991189026221260165027518356218648964784367667778130731062536465145457468"),
+                PreciseDecimal.from("2.206755837924983512973789406685409966553887449700976650397016993235401555684220432158920676558579735"),
+                CartesianPoint.from("0", "0.9326153163099971856600123895991189026221260165027518356218648964784367667778130731062536465145457465"),
                 PreciseDecimal.from(0)
             ).toString()
         );
@@ -162,24 +162,24 @@ public final class DifferentFunctionsCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -2, 0),
                     Vector.from(45, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 0),
                     Vector.from(135, 2)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from("1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641572"),
                 CartesianPoint.from(0, 2),
-                PreciseDecimal.from("1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641574")
+                PreciseDecimal.from("1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641573")
             ).toString()
         );
         assertEquals(

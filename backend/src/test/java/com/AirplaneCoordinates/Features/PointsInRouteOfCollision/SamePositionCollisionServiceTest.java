@@ -15,17 +15,17 @@ public final class SamePositionCollisionServiceTest {
     @Test
     public final void getCollisionPoint() {
         assertEquals(
-            new SamePositionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 2, 5),
                     Vector.from(186, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 5),
                     Vector.from(17, 9)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
@@ -36,17 +36,17 @@ public final class SamePositionCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new SamePositionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 4, 7),
                     Vector.from(186, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 4, 7),
                     Vector.from(17, 9)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
@@ -57,17 +57,17 @@ public final class SamePositionCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new SamePositionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.POLAR, 1, 180),
                     Vector.from(186, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, -1, 0),
                     Vector.from(17, 9)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",

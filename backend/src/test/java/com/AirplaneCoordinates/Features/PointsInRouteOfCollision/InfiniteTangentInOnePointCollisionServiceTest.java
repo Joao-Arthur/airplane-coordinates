@@ -34,17 +34,17 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
     @Test
     public final void getCollisionPointSameSpeed() {
         assertEquals(
-            new InfiniteTangentInOnePointCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 0, -10),
                     Vector.from(90, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 10, 0),
                     Vector.from(180, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",

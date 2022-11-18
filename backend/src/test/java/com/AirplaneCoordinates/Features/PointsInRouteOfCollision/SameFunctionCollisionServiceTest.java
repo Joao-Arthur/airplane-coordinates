@@ -34,53 +34,53 @@ public final class SameFunctionCollisionServiceTest {
     @Test
     public final void getCollisionPoint() {
         assertEquals(
-            new SameFunctionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 2, 1),
                     Vector.from(
                         "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "4"
                     )
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 4, 2),
                     Vector.from(
                         "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "0.5"
                     )
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
-                PreciseDecimal.from("0.6388765649999399132597639053517932101258909598890073497916849272601488358965156855469755452510806501"),
+                PreciseDecimal.from("0.63887656499993991325976390535179321012589095988900734979168492726014883589651568554697554525108065"),
                 CartesianPoint.from(
                     "4.285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714286",
-                    "2.142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857143"
+                    "2.142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857142857142"
                 ),
                 PreciseDecimal.from(0)
             ).toString()
         );
         assertEquals(
-            new SameFunctionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 1, 3),
                     Vector.from(
                         "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "1"
                     )
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 3, 4),
                     Vector.from(
                         "206.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "7"
                     )
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
@@ -91,17 +91,17 @@ public final class SameFunctionCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new SameFunctionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -1, 1),
                     Vector.from(45, 2)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 1, 3),
                     Vector.from(45, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
@@ -112,17 +112,17 @@ public final class SameFunctionCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new SameFunctionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -1, 4),
                     Vector.from(45, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 1, 6),
                     Vector.from(225, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
@@ -133,22 +133,22 @@ public final class SameFunctionCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new SameFunctionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -2, 2),
                     Vector.from(0, 2)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 2),
                     Vector.from(180, 9)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
-                PreciseDecimal.from("0.3636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363635"),
+                PreciseDecimal.from("0.3636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636"),
                 CartesianPoint.from("-1.272727272727272727272727272727272727272727272727272727272727272727272727272727272727272727272727273", "2"),
                 PreciseDecimal.from(0)
             ).toString()
