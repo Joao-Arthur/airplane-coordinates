@@ -16,17 +16,17 @@ public final class SameFunctionCollisionServiceTest {
     @Test
     public final void getCollisionPointNull() {
         assertNull(
-            new SameFunctionCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -1, 1),
                     Vector.from(45, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 1, 3),
                     Vector.from(45, 1)
-                ))
+                )
             ).getCollisionPoint()
         );
     }

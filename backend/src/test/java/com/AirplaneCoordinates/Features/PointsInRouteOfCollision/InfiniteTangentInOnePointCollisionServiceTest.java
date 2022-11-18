@@ -83,17 +83,17 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
     @Test
     public final void getCollisionPointDifferentSpeed() {
         assertEquals(
-            new InfiniteTangentInOnePointCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 0, -10),
                     Vector.from(90, 2)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 10, 0),
                     Vector.from(180, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
@@ -104,17 +104,17 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new InfiniteTangentInOnePointCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 0, -10),
                     Vector.from(90, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 10, 0),
                     Vector.from(180, 2)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
@@ -167,17 +167,17 @@ public final class InfiniteTangentInOnePointCollisionServiceTest {
             ).toString()
         );
         assertEquals(
-            new InfiniteTangentInOnePointCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 2, 22),
                     Vector.from(270, 4)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, -3, 2),
                     Vector.from(0, 1)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",

@@ -13,23 +13,23 @@ public final class ParallelLinesCollisionServiceTest {
     @Test
     public final void getCollisionPoint() {
         assertNull(
-            new ParallelLinesCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 2, 1),
                     Vector.from(
                         "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "4"
                     )
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 4, 3),
                     Vector.from(
                         "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "0.5"
                     )
-                ))
+                )
             ).getCollisionPoint()
         );
         assertNull(
@@ -67,31 +67,31 @@ public final class ParallelLinesCollisionServiceTest {
             ).getCollisionPoint()
         );
         assertNull(
-            new ParallelLinesCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -1, 2),
                     Vector.from(90, 7)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 1, -2),
                     Vector.from(90, 4)
-                ))
+                )
             ).getCollisionPoint()
         );
         assertNull(
-            new ParallelLinesCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -1, 2),
                     Vector.from(90, 7)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 1, -2),
                     Vector.from(270, 4)
-                ))
+                )
             ).getCollisionPoint()
         );
     }

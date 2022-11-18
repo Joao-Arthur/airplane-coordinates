@@ -19,11 +19,6 @@ public final class DescribeFututePosition implements CollisionPointService {
     }
 
     public PointInRouteOfCollisionOutputDTO getCollisionPoint() {
-        // SamePosition - OK
-        // SameFunction - null cases
-        // Infinite tangent in one point - same speed
-        // Different function - same speed
-
         final var coefficientAX = Deg.from(this.pointA.vector.direction).getCosValueInQuadrant(Deg.from(this.pointA.vector.direction).toRad().value.cos().abs());
         final var coefficientBX = Deg.from(this.pointB.vector.direction).getCosValueInQuadrant(Deg.from(this.pointB.vector.direction).toRad().value.cos().abs());
         final var coefficientAY = Deg.from(this.pointA.vector.direction).getSinValueInQuadrant(Deg.from(this.pointA.vector.direction).toRad().value.sin().abs());
@@ -86,24 +81,15 @@ public final class DescribeFututePosition implements CollisionPointService {
         final var intersectionYWithoutSpeed = LinearFunction.intersectionPoint(fxAYWithoutSpeed, fxBYWithoutSpeed);
 
         if (intersectionXWithoutSpeed != null) {
-
             final var aXOnXTimeUntilIntersection = intersectionXWithoutSpeed.x.divide(this.pointA.vector.speed);
             final var bXOnXTimeUntilIntersection = intersectionXWithoutSpeed.x.divide(this.pointB.vector.speed);
             final var aYOnXTimeUntilIntersection = intersectionXWithoutSpeed.x.divide(this.pointA.vector.speed);
             final var bYOnXTimeUntilIntersection = intersectionXWithoutSpeed.x.divide(this.pointB.vector.speed);
-
-            System.out.println("aXOnXTimeUntilIntersection:" + aXOnXTimeUntilIntersection.round());
-            System.out.println("aYOnXTimeUntilIntersection:" + aYOnXTimeUntilIntersection.round());
-            System.out.println("bXOnXTimeUntilIntersection:" + bXOnXTimeUntilIntersection.round());
-            System.out.println("bYOnXTimeUntilIntersection:" + bYOnXTimeUntilIntersection.round());
-            //em teoria até aqui está ok
-
             final var timeUntilCollision = PreciseDecimal.min(
                 aXOnXTimeUntilIntersection,
                 bXOnXTimeUntilIntersection
             );
             final var timeDifferenceToPoint = aXOnXTimeUntilIntersection.minus(bXOnXTimeUntilIntersection).abs();
-
             final var aXOnXIntersection = fxAXWithoutSpeed.execute(intersectionXWithoutSpeed.x);
             final var aYOnXIntersection = fxAYWithoutSpeed.execute(intersectionXWithoutSpeed.x);
 
