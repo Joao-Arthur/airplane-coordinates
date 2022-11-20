@@ -81,26 +81,30 @@ public final class LinearFunction {
         return val2;
     }
 
-    public static final LinearFunction intersect(
+    public static final PreciseDecimal intersectionPoint(
         final LinearFunction fx,
         final LinearFunction gx
     ) {
-        return LinearFunction.from(
+        if(
+            fx.a.equals(PreciseDecimal.from(0)) &&
+           !gx.a.equals(PreciseDecimal.from(0))
+        )
+            return fx.b.minus(gx.b).divide(gx.a);
+
+        if (
+            gx.a.equals(PreciseDecimal.from(0)) &&
+           !fx.a.equals(PreciseDecimal.from(0))
+        )
+            return gx.b.minus(fx.b).divide(fx.a);
+
+
+        final var intersectedFn = LinearFunction.from(
             fx.a.minus(gx.a),
             fx.b.minus(gx.b)
         );
-    }
-
-    public static final CartesianPoint intersectionPoint(
-        final LinearFunction fx,
-        final LinearFunction gx
-    ) {
-        final var intersectedFn = LinearFunction.intersect(fx, gx);
         final var root = intersectedFn.root();
         if (root == null)
             return null;
-        final var fy = fx.execute(root);
-
-        return CartesianPoint.from(root, fy);
+        return root;
     }
 }

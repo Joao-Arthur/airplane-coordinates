@@ -20,11 +20,10 @@ public final class PointsInRouteOfCollisionService {
                 .getCombinations(this.dto.points)
                 .stream()
                 .map(
-                    point -> new CollisionPointServiceFactory(
-                        PointDTO.from(point.a),
-                        PointDTO.from(point.b)
+                    point -> new DescribeFututePosition(
+                        point.a,
+                        point.b
                     )
-                        .getService()
                         .getCollisionPoint()
                 )
                 .filter(point -> point != null)

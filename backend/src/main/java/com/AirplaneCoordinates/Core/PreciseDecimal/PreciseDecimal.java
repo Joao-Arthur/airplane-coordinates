@@ -273,17 +273,17 @@ public final class PreciseDecimal implements
     }
 
     public static final int compareAsc(final PreciseDecimal a, final PreciseDecimal b) {
-        if(a.value.equals(b.value))
+        if (a.value.equals(b.value))
             return 0;
-        if(a.greaterThan(b))
+        if (a.greaterThan(b))
             return 1;
         return -1;
     }
 
     public static final int compareDesc(final PreciseDecimal a, final PreciseDecimal b) {
-        if(a.value.equals(b.value))
+        if (a.value.equals(b.value))
             return 0;
-        if(a.greaterThan(b))
+        if (a.greaterThan(b))
             return -1;
         return 1;
     }

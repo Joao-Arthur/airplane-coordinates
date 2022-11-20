@@ -33,37 +33,37 @@ public final class ParallelLinesCollisionServiceTest {
             ).getCollisionPoint()
         );
         assertNull(
-            new ParallelLinesCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 1, 3),
                     Vector.from(
                         "26.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "1"
                     )
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 3, 5),
                     Vector.from(
                         "206.56505117707798935157219372045329467120421429964522102798601631528806582148474061170857381060216472",
                         "7"
                     )
-                ))
+                )
             ).getCollisionPoint()
         );
         assertNull(
-            new ParallelLinesCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -1, 2),
                     Vector.from(360, 5)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 1, -2),
                     Vector.from(180, 3)
-                ))
+                )
             ).getCollisionPoint()
         );
         assertNull(

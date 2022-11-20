@@ -157,44 +157,31 @@ public final class LinearFunctionTest {
         );
     }
 
-    @Test
-    public final void intersect() {
-        assertEquals(
-            LinearFunction.intersect(
-                LinearFunction.from(2, -8), 
-                LinearFunction.from(-3, 2) 
-            ).toString(),
-            LinearFunction.from(5, -10).toString()
-        );
-        assertEquals(
-            LinearFunction.intersect(
-                LinearFunction.from(4, 5), 
-                LinearFunction.from(3, 1) 
-            ).toString(),
-            LinearFunction.from(1, 4).toString()
-        );
-    }
-
     @ParameterizedTest
     @CsvSource({
-        "1, 0, -1, 0, 0, 0",
-        "2, 5, -2, 5, 0, 5",
-        "5, 5, -0.5, 10.5, 1, 10",
+        "1, 0, -1, 0, 0",
+        "2, 5, -2, 5, 0",
+        "5, 5, -0.5, 10.5, 1",
+        "0, 5, 1, 0, 5",
+        "0, 2, 1, -3, 5",
+        "0, 5, 0.25, 10, -20",
+        "1, 0, 0, 5, 5",
+        "1, -3, 0, 2, 5",
+        "0.25, 10, 0, 5, -20",
     })
     public final void intersectionPoint(
         final String fxa,
         final String fxb,
         final String gxa,
         final String gxb,
-        final String x,
-        final String y
+        final String result
     ) {
         assertEquals(
             LinearFunction.intersectionPoint(
                 LinearFunction.from(fxa, fxb), 
                 LinearFunction.from(gxa, gxb) 
             ).toString(),
-            CartesianPoint.from(x, y).toString()
+            result.toString()
         );
     }
 

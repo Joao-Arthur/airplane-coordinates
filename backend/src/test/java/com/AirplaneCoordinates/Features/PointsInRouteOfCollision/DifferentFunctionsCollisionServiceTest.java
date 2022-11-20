@@ -16,31 +16,45 @@ public final class DifferentFunctionsCollisionServiceTest {
     @Test
     public final void getCollisionPointNull() {
         assertNull(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, -2, 8),
                     Vector.from(200, 3)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 5, -7),
                     Vector.from(52, 8)
-                ))
+                )
             ).getCollisionPoint()
         );
         assertNull(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 3, 5),
                     Vector.from(45, 1)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 2, 0),
                     Vector.from(135, 2)
-                ))
+                )
+            ).getCollisionPoint()
+        );
+        assertNull(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
+                    "1",
+                    PlanePoint.from(Plane.CARTESIAN, 0, 0),
+                    Vector.from(179, 2)
+                ),
+                new PlanePointWithVector(
+                    "2",
+                    PlanePoint.from(Plane.CARTESIAN, -3, 4),
+                    Vector.from(170, 1)
+                )
             ).getCollisionPoint()
         );
     }
@@ -136,29 +150,29 @@ public final class DifferentFunctionsCollisionServiceTest {
     @Test
     public final void getCollisionPointDifferentSpeed() {
         assertEquals(
-            new DifferentFunctionsCollisionService(
-                PointDTO.from(new PlanePointWithVector(
+            new DescribeFututePosition(
+                new PlanePointWithVector(
                     "1",
                     PlanePoint.from(Plane.CARTESIAN, 5, 2),
                     Vector.from(10, 2)
-                )),
-                PointDTO.from(new PlanePointWithVector(
+                ),
+                new PlanePointWithVector(
                     "2",
                     PlanePoint.from(Plane.CARTESIAN, 8, 10),
                     Vector.from(300, 3)
-                ))
+                )
             ).getCollisionPoint().toString(),
             new PointInRouteOfCollisionOutputDTO(
                 "1",
                 "2",
                 PreciseDecimal.from(
-                    "2.609902191542677500469973584804738125240122490292839939099618811199830171909999591660616865167562112"
+                    "2.062673283970396327583264965806297507053836178792920062805159503267122343364369339942827181983700487"
                 ),
                 CartesianPoint.from(
-                    "11.91485328731401625070496037720710718786018373543925990864942821679974525786499938749092529775134317",
-                    "3.21927520219408414791113521017034269993719666608248158304415726206524988169837824530969366909604842"
+                    "11.09400992595559449137489744870944626058075426818938009420773925490068351504655400991424077297555073",
+                    "3.074538370651166171293463459071132161578194943301124830031013599133839282956480570706156561037285264"
                 ),
-                PreciseDecimal.from("0.900860831069461218090526025195134499133509143336760227414255746881140504517139657460103845324889316")
+                PreciseDecimal.from("1.031336641985198163791632482903148753526918089396460031402579751633561171682184669971413590991850244")
             ).toString()
         );
         assertEquals(
