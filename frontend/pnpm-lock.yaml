@@ -19,7 +19,7 @@ specifiers:
   eslint-plugin-jsx-a11y: ^6.6.1
   eslint-plugin-react: ^7.31.8
   eslint-plugin-react-hooks: ^4.6.0
-  funis: '=0.1.5'
+  funis: '=0.1.7'
   immer: ^9.0.15
   nanoid: ^4.0.0
   postcss: ^8.4.16
@@ -38,7 +38,7 @@ specifiers:
 
 dependencies:
   classnames: 2.3.2
-  funis: 0.1.5
+  funis: 0.1.7
   immer: 9.0.15
   nanoid: 4.0.0
   ramda: 0.28.0
@@ -1821,8 +1821,8 @@ packages:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
 
-  /funis/0.1.5:
-    resolution: {integrity: sha512-NrQsBiZOJiRk/PxqVKqA2lTT8fdymgnExrvoTPtsbBSugdAlAPs5HLyX+k2c4bLFRP9qHb7rzp6ApTWxGaGuOg==}
+  /funis/0.1.7:
+    resolution: {integrity: sha512-JVKsJ5Q0ZtdN4idRBXPOE8LWN4aGEVH1yGo8mUEHTNgGnSVK7FlMoLMFNalLhfhHhTJgZMx9QO7GeTSAm7DMgw==}
     engines: {node: '>=18.7.0'}
     dev: false
 
