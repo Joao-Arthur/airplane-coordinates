@@ -1,8 +1,9 @@
-import { airplaneType } from '../../../airplane/models';
+import { standard } from 'funis';
 import { cartesianPlane } from '../../../../core/cartesianPlane';
-import { pipe } from 'ramda';
-import { radarContextType } from './radarContext';
 import { planePoint } from '../../../../core/planePoint';
+import { cartesianPointType } from '../../../../core/cartesianPlane/cartesianPoint';
+import { airplaneType } from '../../../airplane/models';
+import { radarContextType } from './radarContext';
 
 const airplaneSize = 50;
 
@@ -12,8 +13,8 @@ export function drawAirplanes({
     settings: { numberOfParts },
 }: radarContextType, airplanes: readonly airplaneType[]) {
     for (const airplane of airplanes)
-        pipe(
-            position => cartesianPlane.relativeToAbsolute({
+        standard.pipe(
+            (position: cartesianPointType) => cartesianPlane.relativeToAbsolute({
                 dimensions,
                 position,
                 numberOfParts,

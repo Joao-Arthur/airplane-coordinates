@@ -1,4 +1,4 @@
-import { mapFns } from '../../../core/mapFns';
+import { maps } from 'funis';
 import { airplaneType } from '../models';
 import { airplaneRepositoryType } from '../ports/airplaneRepository';
 
@@ -21,6 +21,6 @@ export class AirplaneRepositoryImplementation implements airplaneRepositoryType 
     }
 
     public retrieve() {
-        return mapFns.valueToArray(this.airplanesDatabase);
+        return maps.values(this.airplanesDatabase);
     }
 }

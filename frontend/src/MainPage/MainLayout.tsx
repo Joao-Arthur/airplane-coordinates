@@ -1,8 +1,8 @@
 
 import { useRef, useState } from 'react';
 import { useDidMount } from 'rooks';
+import { numbers } from 'funis';
 import { Tab } from '../components/Tab';
-import { numberFns } from '../core/numberFns';
 import { AddAirplane } from './AddAirplane';
 import { DeleteAirplane } from './DeleteAirplane';
 import { AirplanesTable } from './AirplanesTable';
@@ -25,11 +25,7 @@ export function MainLayout() {
         const height = radarContainer?.current?.clientHeight || 0;
 
         setDimensions(
-            numberFns.between({
-                value: Math.min(width, height) - 50,
-                min: 0,
-                max: Number.POSITIVE_INFINITY,
-            }),
+            numbers.clamp(Math.min(width, height) - 50, { min: 0 }),
         );
     }
 

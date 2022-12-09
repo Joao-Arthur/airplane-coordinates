@@ -1,1 +1,0 @@
-export { entriesToArray } from './entriesToArray';

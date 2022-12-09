@@ -1,1 +1,0 @@
-export { mapFns } from './mapFns';

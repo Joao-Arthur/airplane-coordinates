@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@tailwindcss/forms': ^0.5.3
-  '@types/ramda': ^0.28.15
   '@types/react': ^18.0.20
   '@types/react-dom': ^18.0.6
   '@types/react-modal': ^3.13.1
@@ -23,7 +22,6 @@ specifiers:
   immer: ^9.0.15
   nanoid: ^4.0.0
   postcss: ^8.4.16
-  ramda: ^0.28.0
   react: ^18.2.0
   react-dom: ^18.2.0
   react-hook-form: ^7.36.1
@@ -41,7 +39,6 @@ dependencies:
   funis: 0.1.7
   immer: 9.0.15
   nanoid: 4.0.0
-  ramda: 0.28.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.36.1_react@18.2.0
@@ -52,7 +49,6 @@ dependencies:
 
 devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
-  '@types/ramda': 0.28.15
   '@types/react': 18.0.20
   '@types/react-dom': 18.0.6
   '@types/react-modal': 3.13.1
@@ -513,12 +509,6 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
-
-  /@types/ramda/0.28.15:
-    resolution: {integrity: sha512-FCaLNVZry65jW8x/FDnKgjgkCNQxgc5AYMQwdNn6yW5M+62R+0nt2Y36U43dTNora9hcquemfrY5gxhE5pcilQ==}
-    dependencies:
-      ts-toolbelt: 6.15.5
     dev: true
 
   /@types/react-dom/18.0.6:
@@ -2571,10 +2561,6 @@ packages:
       performance-now: 2.1.0
     dev: false
 
-  /ramda/0.28.0:
-    resolution: {integrity: sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==}
-    dev: false
-
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -2935,10 +2921,6 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
-    dev: true
-
-  /ts-toolbelt/6.15.5:
-    resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
     dev: true
 
   /tsconfig-paths/3.14.1:

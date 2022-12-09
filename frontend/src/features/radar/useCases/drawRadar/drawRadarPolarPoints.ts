@@ -1,4 +1,4 @@
-import { arrayFns } from '../../../../core/arrayFns';
+import { numbers } from 'funis';
 import { radarContextType } from './radarContext';
 
 export function drawRadarPolarPoints({
@@ -8,7 +8,7 @@ export function drawRadarPolarPoints({
 }: radarContextType) {
     const widthSize = width / numberOfParts;
     const heightSize = height / numberOfParts;
-    arrayFns
+    numbers
         .range(0, numberOfParts)
         .forEach(i =>
             drawContext.drawRing(

@@ -1,4 +1,4 @@
-import { mapFns } from '../../../core/mapFns';
+import { maps } from 'funis';
 import { uniqueIdentifierType } from '../../uniqueIdentifier/ports/uniqueIdentifier';
 import { messageType } from '../model';
 import { loggerRepositoryType } from '../ports/loggerRepository';
@@ -9,7 +9,7 @@ export class LoggerImplementation implements loggerRepositoryType {
     public constructor(private readonly uniqueIdentifier: uniqueIdentifierType) { }
 
     private addMessage(message: messageType) {
-        const top = mapFns.top(this.messagesDatabase);
+        const top = maps.last(this.messagesDatabase);
         const sameContent = top?.value.content === message.content;
         if (sameContent)
             this.messagesDatabase.set(top.key, {
@@ -37,7 +37,7 @@ export class LoggerImplementation implements loggerRepositoryType {
     }
 
     public retrieve() {
-        return [...mapFns.valueToArray(this.messagesDatabase)].reverse();
+        return [...maps.values(this.messagesDatabase)].reverse();
     }
 
     public clear() {

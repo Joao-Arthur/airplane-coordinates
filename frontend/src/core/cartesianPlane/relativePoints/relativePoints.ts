@@ -1,4 +1,4 @@
-import { arrayFns } from '../../arrayFns';
+import { numbers } from 'funis';
 import { cartesianPlane } from '../cartesianPlane';
 import { dimensionType } from '../dimension';
 
@@ -8,7 +8,7 @@ type paramsType = {
 }
 
 export function relativePoints({ dimensions, numberOfParts }: paramsType) {
-    return arrayFns
+    return numbers
         .range(0, numberOfParts)
         .map(i => i - Math.trunc(numberOfParts / 2))
         .map(i => ({
