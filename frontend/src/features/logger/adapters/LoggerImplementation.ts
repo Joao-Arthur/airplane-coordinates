@@ -10,11 +10,11 @@ export class LoggerImplementation implements loggerRepositoryType {
 
     private addMessage(message: messageType) {
         const top = maps.last(this.messagesDatabase);
-        const sameContent = top?.value.content === message.content;
+        const sameContent = top?.[1].content === message.content;
         if (sameContent)
-            this.messagesDatabase.set(top.key, {
+            this.messagesDatabase.set(top[0], {
                 ...message,
-                amount: top.value.amount + 1,
+                amount: top[1].amount + 1,
             });
         else
             this.messagesDatabase.set(this.uniqueIdentifier(), message);

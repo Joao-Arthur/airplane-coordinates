@@ -1,4 +1,4 @@
-import { standard } from 'funis';
+import { pipe } from 'funis';
 import { cartesianPlane } from '../../../../core/cartesianPlane';
 import { planePoint } from '../../../../core/planePoint';
 import { cartesianPointType } from '../../../../core/cartesianPlane/cartesianPoint';
@@ -13,7 +13,7 @@ export function drawAirplanes({
     settings: { numberOfParts },
 }: radarContextType, airplanes: readonly airplaneType[]) {
     for (const airplane of airplanes)
-        standard.pipe(
+        pipe(
             (position: cartesianPointType) => cartesianPlane.relativeToAbsolute({
                 dimensions,
                 position,
